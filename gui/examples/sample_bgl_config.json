@@ -1,0 +1,44 @@
+{
+  "data_loader_config": {
+    "log_type": "log",
+    "dimensions": {
+      "timestamp": ["Date"],
+      "body": ["Content"],
+      "attributes": ["Code1", "Code2"]
+    },
+    "infer_datetime": true,
+    "datetime_format": "%Y.%m.%d",
+    "reader_args": {
+      "log_format": "<Label> <Id> <Date> <Code1> <Time> <Code2> <Content>"
+    }
+  },
+  "preprocessor_config": {
+      "custom_delimiters_regex":[]
+  },
+  "log_parser_config": {
+    "parsing_algorithm": "drain",
+    "parsing_algo_params": {
+      "sim_th": 0.5,
+      "depth": 5
+    }
+  },
+  "feature_extractor_config": {
+      "group_by_category": ["Code1", "Code2"],
+      "group_by_time": "1min"
+  },
+  "log_vectorizer_config": {
+      "algo_name": "word2vec"
+  },
+  "categorical_encoder_config": {
+      "name": "label_encoder"
+  },
+  "anomaly_detection_config": {
+      "algo_name": "one_class_svm"
+  },
+  "clustering_config": {
+      "algo_name": "kmeans",
+      "algo_params": {
+          "n_clusters": 7
+      }
+  }
+}

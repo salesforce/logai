@@ -1,0 +1,13 @@
+{
+  "log_type": "log",
+  "dimensions": {
+    "timestamp": ["Date"],
+    "body": ["Content"],
+    "attributes": ["Code1", "Code2"]
+  },
+  "infer_datetime": true,
+  "datetime_format": "%Y.%m.%d",
+  "reader_args": {
+    "log_format": "<Label> <Id> <Date> <Code1> <Time> <Code2> <Content>"
+  }
+}

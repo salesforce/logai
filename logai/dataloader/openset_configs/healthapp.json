@@ -1,0 +1,18 @@
+{
+  "log_type": "csv",
+  "dimensions": {
+      "timestamp": ["Timestamps"],
+      "attributes": ["Action", "ID"
+      ],
+      "body": ["Details"
+      ]
+  },
+  "infer_datetime": true,
+  "datetime_format": "%Y%m%d-%H:%M:%S:%f",
+  "reader_args": {
+      "header": 0,
+      "sep": "|",
+      "on_bad_lines": "skip",
+      "names": ["Timestamps", "Action", "ID", "Details"]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "log_type": "log",
+  "dimensions": {
+    "timestamp": ["Date", "Time"],
+    "body": ["Content"],
+    "attributes": ["Level"],
+    "span_id": ["Pid"]
+  },
+  "infer_datetime": true,
+  "datetime_format": "%y%m%d %H%M%S",
+  "reader_args": {
+    "log_format": "<Date> <Time> <Pid> <Level> <Content>"
+  }
+}

@@ -1,0 +1,110 @@
+#
+# Copyright (c) 2022 Salesforce.com, inc.
+# All rights reserved.
+# SPDX-License-Identifier: BSD-3-Clause
+# For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+#
+#
+from datetime import datetime
+
+import numpy as np
+import pandas as pd
+from attr import dataclass
+from typing import Tuple, List
+
+from merlion.models.anomaly.dbl import DynamicBaseline, DynamicBaselineConfig
+from merlion.utils import TimeSeries
+
+from logai.algorithms.algo_interfaces import AnomalyDetectionAlgo
+from logai.config_interfaces import Config
+from logai.utils import constants
+from logai.utils.functions import pd_to_timeseries
+
+
+@dataclass
+class DBLDetectorParams(Config):
+    """
+    Dynamic Baseline Parameters
+    """
+    threshold: float = 0.0
+    fixed_period: Tuple[str, str] = None
+    train_window: str = None
+    wind_sz: str = "1h"
+    trends: List[str] = None
+    kwargs: dict = {}
+
+    def from_dict(self, config_dict):
+        super().from_dict(config_dict)
+
+        return
+
+
+class DBLDetector(AnomalyDetectionAlgo):
+    def __init__(self, params: DBLDetectorParams):
+        dbl_config = DynamicBaselineConfig(
+            fixed_period=params.fixed_period,
+            train_window=params.train_window,
+            wind_sz=params.wind_sz,
+            trends=params.trends,
+            **params.kwargs
+        )
+        self.model = DynamicBaseline(dbl_config)
+        self.min_ts_length = 10
+        self.threshold = params.threshold
+        return
+
+    def fit(self, log_features: pd.DataFrame):
+        """
+        Train
+        :param log_features: log feature dataframe must only contain two columns ['timestamp': datetime, 'counts': int].
+        :return:
+        """
+        self._is_valid_ts_df(log_features)
+
+        time_series = pd_to_timeseries(log_features)
+        self.model.train(time_series)
+        return
+
+    def predict(self, log_features: pd.DataFrame):
+        """
+        Predict anomaly scores for log_feature["timestamp", constants.LOGLINE_COUNTS]
+        :param log_features: log feature dataframe must contain two columns ['timestamp': datetime, 'counts': int].
+        :return: pd.Series(): index:log_features.index. value: anomaly score to indicate if anomaly or not.
+        """
+        self._is_valid_ts_df(log_features)
+
+        index = log_features.index
+        time_series = pd_to_timeseries(log_features)
+        test_pred = self.model.get_anomaly_label(time_series)
+        anom_score = test_pred.to_pd()
+        anom_score['trainval'] = False
+        anom_score.index = index
+        return anom_score
+
+    @staticmethod
+    def _is_valid_ts_df(log_feature):
+        columns = log_feature.columns.values
+
+        for c in columns:
+            if c not in [constants.LOG_TIMESTAMPS, constants.LOG_COUNTS]:
+                raise ValueError(
+                    "log feature dataframe must only contain two columns ['{}': datetime, '{}': int]".format(
+                        constants.LOG_TIMESTAMPS,
+                        constants.LOG_COUNTS
+                    ) + "Current columns: {}".format(columns)
+                )
+
+        if constants.LOG_TIMESTAMPS not in columns:
+            raise ValueError("dataframe must contain {} column".format(constants.LOG_TIMESTAMPS))
+
+        if constants.LOG_COUNTS not in columns:
+            raise ValueError("dataframe must contain {} column".format(constants.LOG_COUNTS))
+
+        for ts in log_feature[constants.LOG_TIMESTAMPS]:
+            if not isinstance(ts, datetime):
+                raise ValueError("{} must be datetime".format(constants.LOG_TIMESTAMPS))
+
+        return
+
+
+

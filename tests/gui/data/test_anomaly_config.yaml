@@ -1,0 +1,40 @@
+##
+## Copyright (c) 2022 Salesforce.com, inc.
+## All rights reserved.
+## SPDX-License-Identifier: BSD-3-Clause
+## For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+##
+##
+anomaly_detection_config:
+  algo_name: one_class_svm
+  algo_params: null
+  custom_params: null
+categorical_encoder_config:
+  name: label_encoder
+  params: null
+data_loader_config:
+  datetime_format: '%Y%m%d-%H:%M:%S:%f'
+  dimensions:
+    attributes: ["Action", "ID"]
+    body: ["Details"]
+    timestamp: ["Timestamps"]
+  filepath: /Users/qcheng/workspace/gitsoma/logai/tests/gui/data/HealthApp_format_2000.csv
+  infer_datetime: true
+  log_type: 'csv'
+  reader_args:
+    header: 0
+    names: ["Timestamps", "Action", "ID", "Details"]
+    on_bad_lines: 'skip'
+    sep: ','
+feature_extractor_config:
+  group_by_category: ["Action", "ID"]
+  group_by_time: '1min'
+log_parser_config:
+  parsing_algo_params:
+    sim_th: 0.4
+  parsing_algorithm: 'drain'
+log_vectorizer_config:
+  algo_name: 'word2vec'
+preprocessor_config:
+  custom_delimiters_regex: null
+

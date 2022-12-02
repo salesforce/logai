@@ -1,0 +1,32 @@
+##
+## Copyright (c) 2022 Salesforce.com, inc.
+## All rights reserved.
+## SPDX-License-Identifier: BSD-3-Clause
+## For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+##
+##
+
+# YAML file for log pattern discovery configuration.
+data_loader_config:
+  filepath: "/Users/qcheng/workspace/gitsoma/logai/logai/data/sf_datasets_new_labels/ailtn_with_label.csv"
+  log_type: 'csv'
+  dimensions:
+    attributes: ['cluster_label']
+    body: ['_raw']
+  header: 0
+
+preprocessor_config:
+  custom_delimiters_regex: ["`"]
+
+feature_extractor_config:
+   group_by_category: ['cluster_label']
+
+log_parser_config:
+  parsing_algorithm: 'drain'
+  parsing_algo_params:
+    sim_th: 0.1
+    extra_delimiters: []
+
+workflow_config:
+  similarity_threshold: 0.6
+  output_dir: './results/'
