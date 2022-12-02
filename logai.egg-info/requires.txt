@@ -10,7 +10,7 @@ py>=1.11.0
 docutils>=0.18.1
 Sphinx>=3.5.3
 tornado>=6.1
-Jinja2>=3.0.3
+Jinja2>=3.0.0
 setuptools>=60.9.3
 recommonmark>=0.7.1
 spacy>=3.2.2
@@ -26,7 +26,17 @@ torch>=1.10.1
 datasets>=1.18.3
 PyYAML>=6.0
 tqdm>=4.62.3
-en-core-web-sm@ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.2.0/en_core_web_sm-3.2.0-py3-none-any.whl
 matplotlib>=3.5.1
 seaborn>=0.11.2
 tokenizers>=0.11.6
+dash>=2.5.1
+dash-bootstrap-components>=1.2.1
+plotly>=5.9.0
+colorlog>=6.6.0
+Brotli>=1.0.9
+Pillow>=9.1.1
+sklearn>=0.0
+Cython>=0.29.30
+salesforce-merlion>=1.0.0
+numba>=0.56.3
+en-core-web-sm@ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.4.1/en_core_web_sm-3.4.1-py3-none-any.whl
