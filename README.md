@@ -8,6 +8,7 @@ For full license text, see the LICENSE file in the repo root or https://opensour
 
 ![logo](./img/logai_logo.jpg)
 
+[![tests](https://github.com/salesforce/logai/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/salesforce/logai/actions/workflows/tests.yml)
 
 # Log-AI: Log Analytics and Intelligence Library
 
