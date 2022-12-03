@@ -28,7 +28,7 @@ setup(
     long_description=readme,
     author="Qian Cheng, Amrita Saha, Wenzhuo Yang, Chenghao Liu, Gerald Woo, Doyen Sahoo, Steven Hoi",
     author_email="qcheng@salesforce.com",
-    python_requires=">=3.6.0",
+    python_requires=">=3.8.0",
     install_requires=REQUIRED,
     license=license,
     packages=find_packages(exclude=("tests", "docs")),
