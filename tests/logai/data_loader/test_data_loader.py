@@ -182,20 +182,6 @@ class TestFileDataLoader:
 
         return
 
-    # Script to create test files.
-    def test_create_files(self):
-        frp = "/Users/qcheng/workspace/gitsoma/logai/logai/data/open_datasets/HDFS_1/HDFS.log"
-        fwp = os.path.join(TEST_DATA_PATH, "HDFS_5000.log")
-        with open(fwp, "w+") as fw:
-            with open(frp, "r") as fr:
-                lines = fr.readlines()
-                counter = 0
-                for l in lines:
-                    if counter > 5000:
-                        break
-                    fw.write(l)
-                    counter += 1
-
 
     def _is_valid(self, file_config):
         dataloader = FileDataLoader(file_config)
