@@ -25,3 +25,6 @@ dist
 /gui/demo/data/
 /gui/uploaded_files/
 /tests/logai/test_data/HDFS/HDFS.log
+/tests/logai/test_data/temp/
+/tests/logai/test_data/BGL_AD/output/
+/tests/logai/test_data/HDFS_AD/output/

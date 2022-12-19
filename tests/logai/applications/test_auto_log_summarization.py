@@ -16,7 +16,7 @@ from logai.applications.application_interfaces import WorkFlowConfig
 from logai.dataloader.data_loader import DataLoaderConfig
 from logai.information_extraction.feature_extractor import FeatureExtractorConfig
 from logai.information_extraction.log_parser import LogParserConfig
-from logai.preprocess.preprocess import PreprocessorConfig
+from logai.preprocess.preprocessor import PreprocessorConfig
 
 
 TEST_LOG_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'test_data/HealthApp_2000.log')

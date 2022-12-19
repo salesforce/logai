@@ -23,7 +23,8 @@ from logai.information_extraction.categorical_encoder import CategoricalEncoderC
 from logai.information_extraction.feature_extractor import FeatureExtractorConfig
 from logai.information_extraction.log_parser import LogParserConfig
 from logai.information_extraction.log_vectorizer import VectorizerConfig
-from logai.preprocess.preprocess import PreprocessorConfig
+from logai.preprocess.preprocessor import PreprocessorConfig
+
 from logai.utils import constants
 from ..pages.utils import create_param_table
 

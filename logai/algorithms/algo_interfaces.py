@@ -8,6 +8,7 @@
 import abc
 
 import pandas as pd
+from logai.dataloader.data_model import LogRecordObject
 
 
 class ParsingAlgo(abc.ABC):
@@ -99,6 +100,16 @@ class AnomalyDetectionAlgo(abc.ABC):
         pass
 
 
+class NNAnomalyDetectionAlgo(abc.ABC):
+    @abc.abstractmethod
+    def fit(self, train_data, dev_data: LogRecordObject):
+        pass
+
+    @abc.abstractmethod
+    def predict(self, test_data: LogRecordObject):
+        pass
+
+
 class CategoricalEncodingAlgo(abc.ABC):
     """
     Interface for categorical encoders
@@ -107,4 +118,3 @@ class CategoricalEncodingAlgo(abc.ABC):
     @abc.abstractmethod
     def fit_transform(self, log_attributes: pd.DataFrame) -> pd.DataFrame:
         pass
-

@@ -17,7 +17,7 @@ from logai.information_extraction.categorical_encoder import CategoricalEncoder
 from logai.information_extraction.feature_extractor import FeatureExtractor
 from logai.information_extraction.log_parser import LogParser
 from logai.information_extraction.log_vectorizer import LogVectorizer
-from logai.preprocess.preprocess import Preprocessor
+from logai.preprocess.preprocessor import Preprocessor
 from logai.utils import constants
 from logai.utils.functions import pad
 

@@ -6,6 +6,7 @@
 #
 #
 import abc
+from dataclasses import fields
 
 
 class Config(abc.ABC):
@@ -15,7 +16,14 @@ class Config(abc.ABC):
             return
         for field in self.__dict__:
             # If there is a default and the value of the field is none we can assign a value
-            if field in config_dict.keys():
+            if field in config_dict:
                 setattr(self, field, config_dict[field])
 
         return
+
+    def as_dict(self):
+        d = {}
+        for field in fields(self.__class__):
+            val = getattr(self, field.name)
+            d[field.name] = val
+        return d

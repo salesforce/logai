@@ -69,8 +69,10 @@ class Clustering:
             )
 
     def fit(self, log_features: pd.DataFrame):
+        log_features.columns = log_features.columns.astype(str)
         self.model.fit(log_features)
         return
 
     def predict(self, log_features: pd.DataFrame) -> pd.Series:
+        log_features.columns = log_features.columns.astype(str)
         return self.model.predict(log_features)

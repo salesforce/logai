@@ -20,6 +20,7 @@ class TfIdfParams(Config):
     """
     Configuration of TF-IDF vectorizer.
     """
+
     input: str = "content"
     encoding: str = "utf-8"
     decode_error: str = "strict"
@@ -91,6 +92,8 @@ class TfIdf(VectorizationAlgo):
         :return:
         """
         self.model.fit(loglines)
+        self.vocab = self.model.vocabulary_
+        self.vocab_size = len(self.vocab)
         return
 
     def transform(self, loglines: pd.Series) -> pd.Series:

@@ -23,7 +23,7 @@ class OneClassSVMParams(Config):
     nu: float = 0.5
     shrinking: bool = True
     cache_size: float = 200
-    verbose: bool = -1
+    verbose: bool = False
 
     def from_dict(self, config_dict):
         super().from_dict(config_dict)

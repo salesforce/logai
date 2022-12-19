@@ -32,7 +32,6 @@ class TransformerAlgoConfig(Config):
 
     def from_dict(self, config_dict):
         super().from_dict(config_dict)
-        return
 
 
 class LogDataset(torch.utils.data.Dataset):

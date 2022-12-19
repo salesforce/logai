@@ -16,11 +16,22 @@ from merlion.utils import TimeSeries
 from logai.utils import constants
 
 
-def pad(x, max_len):
+
+def pad(x, max_len: np.array, padding_value:int =0):
+    """Method to trim or pad any 1-d numpy array to a given max length with the given padding value
+
+    Args:
+        x (np.array): given 1-d numpy array to be padded/trimmed
+        max_len (int): maximum length of padded/trimmed output
+        padding_value (int, optional): padding value. Defaults to 0.
+
+    Returns:
+        np.array: padded/trimmed numpy array 
+    """
     flattened_vector = x
     fill_size = max_len - len(flattened_vector)
     if fill_size > 0:
-        fill_zeros = np.full(fill_size, fill_value=0)
+        fill_zeros = np.full(fill_size, fill_value=padding_value)
         return np.concatenate((flattened_vector, fill_zeros), axis=0)
     else:
         return flattened_vector[:max_len]

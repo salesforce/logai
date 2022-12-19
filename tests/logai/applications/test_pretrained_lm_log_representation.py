@@ -23,7 +23,7 @@ from logai.dataloader.data_loader import DataLoaderConfig, FileDataLoader
 from logai.information_extraction.categorical_encoder import CategoricalEncoderConfig, CategoricalEncoder
 from logai.information_extraction.feature_extractor import FeatureExtractorConfig, FeatureExtractor
 from logai.information_extraction.log_parser import LogParser, LogParserConfig
-from logai.preprocess.preprocess import PreprocessorConfig, Preprocessor
+from logai.preprocess.preprocessor import PreprocessorConfig, Preprocessor
 from logai.utils import constants
 
 TEMP_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))), "temp")

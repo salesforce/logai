@@ -1,0 +1,1 @@
+{"timestamp": ["timestamp"], "span_id": ["span_id"], "body": ["logline", " HEX ", " ALPHANUM ", " IP ", " INT "], "labels": ["labels"]}

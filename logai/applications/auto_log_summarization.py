@@ -14,7 +14,7 @@ from logai.dataloader.data_loader import FileDataLoader
 from logai.dataloader.data_model import LogRecordObject
 from logai.dataloader.openset_data_loader import OpenSetDataLoader
 from logai.information_extraction.log_parser import LogParser
-from logai.preprocess.preprocess import Preprocessor
+from logai.preprocess.preprocessor import Preprocessor
 from logai.utils import constants
 
 

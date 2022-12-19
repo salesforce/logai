@@ -1,0 +1,234 @@
+
+
+
+workflow_config:  
+  label_filepath: "../../datasets/public/HDFS/anomaly_label.csv"
+  parse_logline:  
+  output_dir: "../../datasets/public/HDFS/output"
+  output_file_type: "csv"
+  training_type: 
+  deduplicate_test: True
+  test_data_frac_pos: 0.5
+  dataset_name: hdfs
+
+  data_loader_config:
+    filepath: "../../datasets/public/HDFS/HDFS_5k.log"
+    reader_args: 
+      log_format: "<Date> <Time> <Pid> <Level> <Component> <Content>"
+    log_type: "log"
+    dimensions:
+      body: ['Content']
+      timestamp: ['Date', 'Time']
+    datetime_format: '%y%m%d %H%M%S'
+    infer_datetime: True
+    
+
+  preprocessor_config:
+    custom_delimiters_regex:
+                [':', ',', '=', '\t']
+    custom_replace_list: [
+                ['(blk_-?\d+)', ' BLOCK '],
+                ['/?/*\d+\.\d+\.\d+\.\d+',  ' IP '],
+                ['(0x)[0-9a-zA-Z]+', ' HEX '],
+                ['\d+', ' INT ']
+                
+            ]
+    
+  open_set_partitioner_config:
+    logbert:
+      session_window: True
+      sliding_window: -1
+      logsequence_delim: "[SEP]"
+    forecast_nn:
+      session_window: False
+      sliding_window: 10
+      logsequence_delim: "[SEP]"
+
+  log_parser_config:
+    parsing_algorithm: "drain"
+    parsing_algo_params: 
+      sim_th: 0.5
+      depth: 5
+
+  log_vectorizer_config:
+    logbert:
+      algo_name: "logbert"
+      algo_param:
+        model_name: "bert-base-cased"
+        max_token_len: 384
+        custom_tokens: ["BLOCK", "IP", "HEX", "INT"]
+
+    forecast_nn_sequential:
+      algo_name: "forecast_nn"
+      algo_param:
+        feature_type: "sequential"
+        sep_token: "[SEP]"
+        max_token_len: 10
+        embedding_dim: 100
+
+    forecast_nn_semantics:
+      algo_name: "forecast_nn"
+      algo_param:
+        feature_type: "semantics"
+        sep_token: "[SEP]"
+        max_token_len: 100
+        embedding_dim: 300
+    
+  nn_anomaly_detection_config:
+      logbert_AD:
+        algo_name: "logbert"
+        algo_params:
+            model_name: "bert-base-cased"
+            learning_rate: 0.00001
+            mask_ngram: 8
+
+      lstm_sequential_unsupervised_parsed_AD:
+        algo_name: "lstm"
+        algo_params:
+            model_name: "lstm"
+            learning_rate: 0.000001
+
+      lstm_sequential_unsupervised_nonparsed_AD:
+        algo_name: "lstm"
+        algo_params:
+            model_name: "lstm"
+            learning_rate: 0.000001
+
+      lstm_sequential_supervised_parsed_AD:
+        algo_name: "lstm"
+        algo_params:
+            model_name: "lstm"
+            learning_rate: 0.0001
+
+      lstm_sequential_supervised_nonparsed_AD:
+        algo_name: "lstm"
+        algo_params:
+            model_name: "lstm"
+            learning_rate: 0.0001 
+
+      lstm_semantics_unsupervised_parsed_AD:
+        algo_name: "lstm"
+        algo_params:
+            model_name: "lstm"
+            learning_rate: 0.000001
+
+      lstm_semantics_unsupervised_nonparsed_AD:
+        algo_name: "lstm"
+        algo_params:
+            model_name: "lstm"
+            learning_rate: 0.00001
+      
+      lstm_semantics_supervised_parsed_AD:
+        algo_name: "lstm"
+        algo_params:
+            model_name: "lstm"
+            learning_rate: 0.0001
+
+      lstm_semantics_supervised_nonparsed_AD:
+        algo_name: "lstm"
+        algo_params:
+            model_name: "lstm"
+            learning_rate: 0.001
+
+      cnn_sequential_unsupervised_parsed_AD:
+        algo_name: "cnn"
+        algo_params:
+            model_name: "cnn"
+            learning_rate: 0.00001
+
+      cnn_sequential_unsupervised_nonparsed_AD:
+        algo_name: "cnn"
+        algo_params:
+            model_name: "cnn"
+            learning_rate: 0.000005
+
+      cnn_sequential_supervised_parsed_AD:
+        algo_name: "cnn"
+        algo_params:
+            model_name: "cnn"
+            learning_rate: 0.00001
+
+      cnn_sequential_supervised_nonparsed_AD:
+        algo_name: "cnn"
+        algo_params:
+            model_name: "cnn"
+            learning_rate: 0.00001 
+
+      cnn_semantics_unsupervised_parsed_AD:
+        algo_name: "cnn"
+        algo_params:
+            model_name: "cnn"
+            learning_rate: 0.000001
+
+      cnn_semantics_unsupervised_nonparsed_AD:
+        algo_name: "cnn"
+        algo_params:
+            model_name: "cnn"
+            learning_rate: 0.000001
+      
+      cnn_semantics_supervised_parsed_AD:
+        algo_name: "cnn"
+        algo_params:
+            model_name: "cnn"
+            learning_rate: 0.00001
+
+      cnn_semantics_supervised_nonparsed_AD:
+        algo_name: "cnn"
+        algo_params:
+            model_name: "cnn"
+            learning_rate: 0.000001
+
+      transformer_sequential_unsupervised_parsed_AD:
+        algo_name: "transformer"
+        algo_params:
+            model_name: "transformer"
+            learning_rate: 0.000001
+
+      transformer_sequential_unsupervised_nonparsed_AD:
+        algo_name: "transformer"
+        algo_params:
+            model_name: "transformer"
+            learning_rate: 0.000005
+
+      transformer_sequential_supervised_parsed_AD:
+        algo_name: "transformer"
+        algo_params:
+            model_name: "transformer"
+            learning_rate: 0.00001
+
+      transformer_sequential_supervised_nonparsed_AD:
+        algo_name: "transformer"
+        algo_params:
+            model_name: "transformer"
+            learning_rate: 0.00001 
+
+      transformer_semantics_unsupervised_parsed_AD:
+        algo_name: "transformer"
+        algo_params:
+            model_name: "transformer"
+            learning_rate: 0.00001
+
+      transformer_semantics_unsupervised_nonparsed_AD:
+        algo_name: "transformer"
+        algo_params:
+            model_name: "transformer"
+            learning_rate: 0.00001
+      
+      transformer_semantics_supervised_parsed_AD:
+        algo_name: "transformer"
+        algo_params:
+            model_name: "transformer"
+            learning_rate: 0.0005
+
+      transformer_semantics_supervised_nonparsed_AD:
+        algo_name: "transformer"
+        algo_params:
+            model_name: "transformer"
+            learning_rate: 0.001
+
+
+
+
+
+
+

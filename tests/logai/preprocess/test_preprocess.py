@@ -7,7 +7,7 @@
 #
 import pandas as pd
 
-from logai.preprocess.preprocess import Preprocessor, PreprocessorConfig
+from logai.preprocess.preprocessor import Preprocessor, PreprocessorConfig
 from tests.logai.test_utils.fixtures import logrecord_body
 
 
