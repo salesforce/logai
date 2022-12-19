@@ -10,7 +10,7 @@ import os
 import pandas as pd
 
 from logai.dataloader.openset_data_loader import OpenSetDataLoader, OpenSetDataLoaderConfig
-from logai.preprocess.partition import PartitionerConfig, Partitioner
+from logai.preprocess.partitioner import PartitionerConfig, Partitioner
 from logai.utils import constants
 
 TEST_DATA_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'test_data')

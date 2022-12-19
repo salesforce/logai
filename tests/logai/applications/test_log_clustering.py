@@ -16,7 +16,7 @@ from logai.dataloader.data_loader import DataLoaderConfig
 from logai.information_extraction.categorical_encoder import CategoricalEncoderConfig
 from logai.information_extraction.log_parser import LogParserConfig
 from logai.information_extraction.log_vectorizer import VectorizerConfig
-from logai.preprocess.preprocess import PreprocessorConfig
+from logai.preprocess.preprocessor import PreprocessorConfig
 
 TEST_LOG_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'test_data/HealthApp_2000.log')
 TEST_HDFS_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'test_data/HDFS/HDFS_5000.log')

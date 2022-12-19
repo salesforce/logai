@@ -21,7 +21,7 @@ from logai.dataloader.data_loader import FileDataLoader, DataLoaderConfig
 from logai.dataloader.data_model import LogRecordObject
 from logai.information_extraction.feature_extractor import FeatureExtractorConfig, FeatureExtractor
 from logai.information_extraction.log_parser import LogParser
-from logai.preprocess.preprocess import PreprocessorConfig, Preprocessor
+from logai.preprocess.preprocessor import PreprocessorConfig, Preprocessor
 from logai.utils import constants
 
 

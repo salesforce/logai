@@ -8,16 +8,18 @@
 from attr import dataclass
 
 from logai.analysis.anomaly_detector import AnomalyDetectionConfig
+from logai.analysis.nn_anomaly_detector import NNAnomalyDetectionConfig
 from logai.analysis.clustering import ClusteringConfig
 from logai.config_interfaces import Config
 from logai.dataloader.data_loader import DataLoaderConfig
-from logai.dataloader.openset_data_loader import OpenSetDataLoader, OpenSetDataLoaderConfig
+from logai.dataloader.openset_data_loader import OpenSetDataLoaderConfig
 from logai.information_extraction.categorical_encoder import CategoricalEncoderConfig
 from logai.information_extraction.feature_extractor import FeatureExtractorConfig
 from logai.information_extraction.log_parser import LogParserConfig
 from logai.information_extraction.log_vectorizer import VectorizerConfig
-from logai.preprocess.partition import PartitionerConfig
-from logai.preprocess.preprocess import PreprocessorConfig
+from logai.preprocess.partitioner import PartitionerConfig
+from logai.preprocess.openset_partitioner import OpenSetPartitionerConfig
+from logai.preprocess.preprocessor import PreprocessorConfig
 
 
 @dataclass
@@ -25,12 +27,15 @@ class WorkFlowConfig(Config):
     data_loader_config: object = None
     open_set_data_loader_config: object = None
     preprocessor_config: object = None
+
     log_parser_config: object = None
     log_vectorizer_config: object = None
     partitioner_config: object = None
+    open_set_partitioner_config: object = None
     categorical_encoder_config: object = None
     feature_extractor_config: object = None
     anomaly_detection_config: object = None
+    nn_anomaly_detection_config: object = None 
     clustering_config: object = None
     workflow_config: object = None
 
@@ -57,6 +62,11 @@ class WorkFlowConfig(Config):
             par_config.from_dict(self.partitioner_config)
             self.partitioner_config = par_config
 
+        if self.open_set_partitioner_config:
+            par_config = OpenSetPartitionerConfig()
+            par_config.from_dict(self.open_set_partitioner_config)
+            self.open_set_partitioner_config = par_config
+
         if self.log_parser_config:
             log_parser_config = LogParserConfig()
             log_parser_config.from_dict(self.log_parser_config)
@@ -81,6 +91,11 @@ class WorkFlowConfig(Config):
             anomaly_detection_config = AnomalyDetectionConfig()
             anomaly_detection_config.from_dict(self.anomaly_detection_config)
             self.anomaly_detection_config = anomaly_detection_config
+
+        if self.nn_anomaly_detection_config:
+            nn_anomaly_detection_config = NNAnomalyDetectionConfig()
+            nn_anomaly_detection_config.from_dict(self.nn_anomaly_detection_config)
+            self.nn_anomaly_detection_config = nn_anomaly_detection_config
 
         if self.clustering_config:
             clustering_config = ClusteringConfig()

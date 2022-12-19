@@ -1,0 +1,90 @@
+workflow_config:  
+  parse_logline:  
+  output_dir: "../../datasets/public/Thunderbird/output"
+  output_file_type: "csv"
+  training_type: 
+  deduplicate_test: True
+  test_data_frac_pos: 0.5
+  dataset_name: thunderbird
+
+  data_loader_config:
+    filepath: "../../datasets/public/Thunderbird/HDFS_5k.log"
+    reader_args: 
+      log_format: "<Label> <Id> <Date> <Admin> <Month> <Day> <Time> <AdminAddr> <Content>"
+    log_type: "log"
+    body: ['Content']
+      timestamp: ['Date', 'Time']
+      labels: ['Label'] 
+      span_id: ['Id']
+    datetime_format:  '%Y.%m.%d %H:%M:%S'
+    infer_datetime: True
+    
+
+  preprocessor_config:
+    custom_delimiters_regex:
+                [':', ',', '=', '\t']
+
+    custom_replace_list: [
+                ['(/[a-zA-Z0-9\-\_\./]*[\s]?)', ' FILE '],
+                ['\d+.\d+.\d+.\d+', ' IP '],
+                ['(0x)[0-9a-zA-Z]+', ' HEX '],
+                ['((?![A-Za-z]{8}|\d{8})[A-Za-z\d]{8})', ' ALPHANUM '],
+                ['\d+', ' INT ']
+                ['Warning: we failed to resolve data source name [\w\s]+', ' WARNING ']
+            ]
+    
+  open_set_partitioner_config:
+    logbert:
+      session_window: False
+      sliding_window: 1
+      logsequence_delim: "[SEP]"
+    forecast_nn:
+      session_window: False
+      sliding_window: 10
+      logsequence_delim: "[SEP]"
+
+  log_parser_config:
+    parsing_algorithm: "drain"
+    parsing_algo_params: 
+      sim_th: 0.5
+      depth: 5
+
+  log_vectorizer_config:
+    logbert:
+      algo_name: "logbert"
+      algo_param:
+        model_name: "bert-base-cased"
+        max_token_len: 120
+        custom_tokens: ["FILE", "IP", "HEX", "ALPHANUM", "WARNING", "INT"]
+
+    forecast_nn_sequential:
+      algo_name: "forecast_nn"
+      algo_param:
+        feature_type: "sequential"
+        sep_token: "[SEP]"
+        max_token_len: 10
+        embedding_dim: 100
+
+    forecast_nn_semantics:
+      algo_name: "forecast_nn"
+      algo_param:
+        feature_type: "semantics"
+        sep_token: "[SEP]"
+        max_token_len: 100
+        embedding_dim: 300
+    
+  nn_anomaly_detection_config:
+      logbert_AD:
+        algo_name: "logbert"
+        algo_params:
+            model_name: "bert-base-cased"
+            learning_rate: 0.00001
+            mask_ngram: 8
+
+      lstm_sequential_unsupervised_parsed_AD:
+        algo_name: "lstm"
+        algo_params:
+            model_name: "lstm"
+            learning_rate: 0.000001
+
+

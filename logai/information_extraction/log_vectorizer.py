@@ -7,7 +7,22 @@
 #
 import pandas as pd
 from attr import dataclass
-
+from logai.algorithms.vectorization_algo.semantic import (
+    Semantic,
+    SemanticVectorizerParams,
+)
+from logai.algorithms.vectorization_algo.sequential import (
+    Sequential,
+    SequentialVectorizerParams,
+)
+from logai.algorithms.vectorization_algo.logbert import (
+    LogBERT,
+    LogBERTVectorizerParams,
+)
+from logai.algorithms.vectorization_algo.forecast_nn import (
+    ForecastNN,
+    ForecastNNVectorizerParams,
+)
 from logai.algorithms.vectorization_algo.fasttext import FastText, FastTextParams
 from logai.algorithms.vectorization_algo.tfidf import TfIdf, TfIdfParams
 from logai.algorithms.vectorization_algo.word2vec import Word2Vec, Word2VecParams
@@ -22,7 +37,6 @@ class VectorizerConfig(Config):
 
     def from_dict(self, config_dict):
         super().from_dict(config_dict)
-
         if self.algo_name:
             if self.algo_name.lower() == "word2vec":
                 algo_param = Word2VecParams()
@@ -39,6 +53,25 @@ class VectorizerConfig(Config):
                 algo_param.from_dict(self.algo_param)
                 self.algo_param = algo_param
 
+            elif self.algo_name.lower() == "semantic":
+                algo_param = SemanticVectorizerParams()
+                algo_param.from_dict(self.algo_param)
+                self.algo_param = algo_param
+
+            elif self.algo_name.lower() == "sequential":
+                algo_param = SequentialVectorizerParams()
+                algo_param.from_dict(self.algo_param)
+                self.algo_param = algo_param
+
+            elif self.algo_name.lower() == "logbert":
+                algo_param = LogBERTVectorizerParams()
+                algo_param.from_dict(self.algo_param)
+                self.algo_param = algo_param
+
+            elif self.algo_name.lower() == "forecast_nn":
+                algo_param = ForecastNNVectorizerParams()
+                algo_param.from_dict(self.algo_param)
+                self.algo_param = algo_param
         return
 
 
@@ -59,6 +92,22 @@ class LogVectorizer:
         elif config.algo_name.lower() == "fasttext":
             self.vectorizer = FastText(
                 config.algo_param if config.algo_param else FastTextParams()
+            )
+        elif config.algo_name.lower() == "semantic":
+            self.vectorizer = Semantic(
+                config.algo_param if config.algo_param else SemanticVectorizerParams()
+            )
+        elif config.algo_name.lower() == "sequential":
+            self.vectorizer = Sequential(
+                config.algo_param if config.algo_param else SequentialVectorizerParams()
+            )
+        elif config.algo_name.lower() == "logbert":
+            self.vectorizer = LogBERT(
+                config.algo_param if config.algo_param else LogBERTVectorizerParams()
+            )
+        elif config.algo_name.lower() == "forecast_nn":
+            self.vectorizer = ForecastNN(
+                config.algo_param if config.algo_param else ForecastNNVectorizerParams()
             )
         else:
             raise RuntimeError("Vectorizer {} is not defined".format(config.algo_name))
