@@ -14,8 +14,6 @@ import re
 import string
 
 import spacy as spacy
-import en_core_web_sm
-from transformers import AutoTokenizer
 
 from logai.utils import constants
 
@@ -65,11 +63,3 @@ def _tokenize_replace_digits(logline):
 
     return " ".join(tokens)
 
-
-def _tokenize_replace_timestamps(logline):
-    pass
-
-
-def _tokenize_nlp(logline):
-    nlp = en_core_web_sm.load()
-    return nlp(logline)
