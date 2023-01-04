@@ -1,9 +1,9 @@
-from logai.config_interfaces import Config
 from logai.analysis.anomaly_detector import AnomalyDetector, AnomalyDetectionConfig
 from logai.utils import constants
 from sklearn.model_selection import train_test_split
 import pandas as pd
 import numpy as np
+
 
 class HetAnomalyDetectionConfig(AnomalyDetectionConfig):
     """
@@ -13,7 +13,7 @@ class HetAnomalyDetectionConfig(AnomalyDetectionConfig):
 
     def from_dict(self, config_dict):
         super.from_dict(config_dict)
-        return
+
 
 class HetAnomalyDetector(AnomalyDetector):
     """
@@ -83,5 +83,3 @@ class HetAnomalyDetector(AnomalyDetector):
         assert (res.index == counter_df.index).all(), "Res.index should be identical to counter_df.index"
         assert len(res) == len(counter_df.index), "length of res should be equal to length of counter_df"
         return res
-
-

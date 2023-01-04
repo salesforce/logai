@@ -8,11 +8,11 @@
 import numpy as np
 import pandas as pd
 from attr import dataclass
-
-from logai.algorithms.algo_interfaces import VectorizationAlgo
 from sklearn.feature_extraction.text import TfidfVectorizer
 
+from logai.algorithms.algo_interfaces import VectorizationAlgo
 from logai.config_interfaces import Config
+from logai.algorithms.factory import factory
 
 
 @dataclass
@@ -46,9 +46,8 @@ class TfIdfParams(Config):
     def from_dict(self, config_dict):
         super().from_dict(config_dict)
 
-        return
 
-
+@factory.register("vectorization", "tfidf", TfIdfParams)
 class TfIdf(VectorizationAlgo):
     """
     Wrapping TF-IDF algorithm from scikit-learn.
@@ -83,7 +82,6 @@ class TfIdf(VectorizationAlgo):
             smooth_idf=params.smooth_idf,
             sublinear_tf=params.sublinear_tf,
         )
-        return
 
     def fit(self, loglines: pd.Series):
         """
@@ -94,7 +92,6 @@ class TfIdf(VectorizationAlgo):
         self.model.fit(loglines)
         self.vocab = self.model.vocabulary_
         self.vocab_size = len(self.vocab)
-        return
 
     def transform(self, loglines: pd.Series) -> pd.Series:
         """

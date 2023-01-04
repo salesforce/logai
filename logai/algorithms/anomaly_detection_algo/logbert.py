@@ -2,9 +2,12 @@ from logai.algorithms.algo_interfaces import NNAnomalyDetectionAlgo
 from logai.algorithms.nn_model.logbert.configs import LogBERTConfig
 from logai.algorithms.nn_model.logbert.train import LogBERTTrain
 from logai.algorithms.nn_model.logbert.predict import LogBERTPredict
+from logai.algorithms.factory import factory
 from datasets import Dataset as HFDataset
 import pandas as pd 
 
+
+@factory.register("detection", "logbert", LogBERTConfig)
 class LogBERT(NNAnomalyDetectionAlgo):
     """Logbert model for anomaly detection of logs
 

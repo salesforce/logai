@@ -12,6 +12,7 @@ from sklearn.ensemble import IsolationForest
 
 from logai.algorithms.algo_interfaces import AnomalyDetectionAlgo
 from logai.config_interfaces import Config
+from logai.algorithms.factory import factory
 
 
 @dataclass
@@ -29,9 +30,8 @@ class IsolationForestParams(Config):
     def from_dict(self, config_dict):
         super().from_dict(config_dict)
 
-        return
 
-
+@factory.register("detection", "isolation_forest", IsolationForestParams)
 class IsolationForestDetector(AnomalyDetectionAlgo):
     def __init__(self, params: IsolationForestParams):
         self.model = IsolationForest(
@@ -45,7 +45,6 @@ class IsolationForestDetector(AnomalyDetectionAlgo):
             verbose=params.verbose,
             warm_start=params.verbose,
         )
-        return
 
     def fit(self, log_features: pd.DataFrame):
         """

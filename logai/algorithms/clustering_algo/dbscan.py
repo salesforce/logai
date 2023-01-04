@@ -11,6 +11,7 @@ from sklearn.cluster import DBSCAN
 
 from logai.algorithms.algo_interfaces import ClusteringAlgo
 from logai.config_interfaces import Config
+from logai.algorithms.factory import factory
 
 
 @dataclass
@@ -27,9 +28,8 @@ class DbScanParams(Config):
     def from_dict(self, config_dict):
         super().from_dict(config_dict)
 
-        return
 
-
+@factory.register("clustering", "dbscan", DbScanParams)
 class DbScanAlgo(ClusteringAlgo):
     """
     Implement DBSCAN for log clustering
@@ -46,7 +46,6 @@ class DbScanAlgo(ClusteringAlgo):
             p=params.p,
             n_jobs=params.n_jobs,
         )
-        return
 
     def fit(self, log_features: pd.DataFrame):
         """
@@ -55,7 +54,6 @@ class DbScanAlgo(ClusteringAlgo):
         :return:
         """
         self.model.fit(log_features)
-        return
 
     def predict(self, log_features: pd.DataFrame) -> pd.Series:
         """

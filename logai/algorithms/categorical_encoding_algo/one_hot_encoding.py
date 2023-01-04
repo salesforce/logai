@@ -25,8 +25,6 @@ class OneHotEncodingParams(Config):
     def from_dict(self, config_dict):
         super().from_dict(config_dict)
 
-        return
-
 
 class OneHotEncoding(CategoricalEncodingAlgo):
     def __init__(self, params: OneHotEncodingParams):

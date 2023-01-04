@@ -22,6 +22,8 @@ import re
 import pandas as pd
 import hashlib
 
+from logai.algorithms.factory import factory
+
 
 class Partition:
     """Wrap around the logs and the step number"""
@@ -57,6 +59,7 @@ class IPLoMParams(Config):
         super().from_dict(config_dict)
 
 
+@factory.register("parsing", "iplom", IPLoMParams)
 class IPLoM(ParsingAlgo):
     def __init__(self, params: IPLoMParams):
         self.para = params

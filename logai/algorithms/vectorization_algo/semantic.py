@@ -5,21 +5,21 @@
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 #
 #
-from lib2to3.pgen2.tokenize import tokenize
 import gensim
 import numpy as np
 import pandas as pd
 import string
-from attr import dataclass
 import pickle as pkl
 import os
+import gensim.downloader
+import logging
+from attr import dataclass
 from nltk.tokenize import word_tokenize
+
 from logai.algorithms.algo_interfaces import VectorizationAlgo
 from logai.config_interfaces import Config
 from logai.utils.functions import pad
-import gensim.downloader
-import re
-import logging
+from logai.algorithms.factory import factory
 
 
 @dataclass
@@ -39,6 +39,8 @@ class SemanticVectorizerParams(Config):
     def from_dict(self, config_dict):
         super().from_dict(config_dict)
 
+
+@factory.register("vectorization", "semantic", SemanticVectorizerParams)
 class Semantic(VectorizationAlgo):
     """
     Semantic vectorizer to convert loglines into token ids based on a embedding model and vocabulary 
@@ -68,7 +70,7 @@ class Semantic(VectorizationAlgo):
         self.train_embedding_model = False
 
         if os.path.exists(self.vocab_filename) and os.path.exists(
-            self.embed_mat_filename
+                self.embed_mat_filename
         ):
             self.vocab = pkl.load(open(self.vocab_filename, "rb"))
             self.embed_matrix = np.load(self.embed_mat_filename)
@@ -95,9 +97,9 @@ class Semantic(VectorizationAlgo):
              Each data instance should be a logline or sequence of loglines concatenated by separator token 
         """
         if (
-            self.params.model_save_dir
-            and os.path.exists(self.vocab_filename)
-            and os.path.exists(self.embed_mat_filename)
+                self.params.model_save_dir
+                and os.path.exists(self.vocab_filename)
+                and os.path.exists(self.embed_mat_filename)
         ):
             self.vocab = pkl.load(open(self.vocab_filename, "rb"))
             self.embed_matrix = np.load(self.embed_mat_filename)

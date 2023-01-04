@@ -19,6 +19,7 @@ from abc import ABC, abstractmethod
 
 from logai.algorithms.algo_interfaces import ParsingAlgo
 from logai.config_interfaces import Config
+from logai.algorithms.factory import factory
 
 
 @dataclass
@@ -104,6 +105,7 @@ class Node:
         self.cluster_ids: List[int] = []
 
 
+@factory.register("parsing", "drain", DrainParams)
 class Drain(ParsingAlgo):
     def __init__(self, params: DrainParams, profiler=NullProfiler()):
 
@@ -425,7 +427,6 @@ class Drain(ParsingAlgo):
             if not isinstance(l, str):
                 continue
             self.add_log_message(l)
-        return
 
     def parse(self, logline: pd.Series) -> pd.Series:
         self.fit(logline)

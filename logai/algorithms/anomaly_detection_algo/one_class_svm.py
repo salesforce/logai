@@ -11,6 +11,7 @@ from sklearn.svm import OneClassSVM
 
 from logai.algorithms.algo_interfaces import AnomalyDetectionAlgo
 from logai.config_interfaces import Config
+from logai.algorithms.factory import factory
 
 
 @dataclass
@@ -28,9 +29,8 @@ class OneClassSVMParams(Config):
     def from_dict(self, config_dict):
         super().from_dict(config_dict)
 
-        return
 
-
+@factory.register("detection", "one_class_svm", OneClassSVMParams)
 class OneClassSVMDetector(AnomalyDetectionAlgo):
     def __init__(self, params: OneClassSVMParams):
         """
@@ -48,7 +48,6 @@ class OneClassSVMDetector(AnomalyDetectionAlgo):
             cache_size=params.cache_size,
             verbose=params.verbose,
         )
-        return
 
     def fit(self, log_features: pd.DataFrame):
         """

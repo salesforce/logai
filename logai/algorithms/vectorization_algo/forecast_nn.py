@@ -1,28 +1,29 @@
-from attr import dataclass
-from logai.algorithms.algo_interfaces import VectorizationAlgo
-from .semantic import Semantic, SemanticVectorizerParams
-from .sequential import Sequential, SequentialVectorizerParams
-from logai.config_interfaces import Config
-import pandas as pd
-from logai.dataloader.data_model import LogRecordObject
-from logai.utils import constants
 import torch
 import os
 import numpy as np
 import pickle as pkl
+import pandas as pd
+from attr import dataclass
+
+from logai.algorithms.algo_interfaces import VectorizationAlgo
+from .semantic import Semantic, SemanticVectorizerParams
+from .sequential import Sequential, SequentialVectorizerParams
+from logai.config_interfaces import Config
+from logai.dataloader.data_model import LogRecordObject
+from logai.utils import constants
+from logai.algorithms.factory import factory
 
 
-class ForecastNNVectorizedDataset():
+class ForecastNNVectorizedDataset:
     """class for storing vectorized dataset for forecasting based neural models 
     """
 
     session_idx: str = "session_idx"
-    features: str  = "features"
+    features: str = "features"
     window_anomalies: str = "window_anomalies"
     window_labels: str = "window_labels"
 
-    def __init__(self, logline_features, labels, nextlogline_ids, span_ids
-    ):
+    def __init__(self, logline_features, labels, nextlogline_ids, span_ids):
         """initializing object for ForecastNNVectorizedDataset
 
         Args:
@@ -33,7 +34,7 @@ class ForecastNNVectorizedDataset():
         """
         self.dataset = []
         for data_i, label_i, next_i, index_i in zip(
-            logline_features, labels, nextlogline_ids, span_ids
+                logline_features, labels, nextlogline_ids, span_ids
         ):
             self.dataset.append(
                 {
@@ -45,7 +46,6 @@ class ForecastNNVectorizedDataset():
             )
 
 
-
 @dataclass
 class ForecastNNVectorizerParams(Config):
     """Config class for vectorizer for forecast based neural models for log representation learning
@@ -54,7 +54,7 @@ class ForecastNNVectorizerParams(Config):
         Config : config interface
     """
 
-    feature_type: str = None # supported types "semantics" and "sequential"
+    feature_type: str = None  # supported types "semantics" and "sequential"
     label_type: str = None
     sep_token: str = "[SEP]"
     max_token_len: int = None
@@ -71,8 +71,8 @@ class ForecastNNVectorizerParams(Config):
         super().from_dict(config_dict)
 
 
+@factory.register("vectorization", "forecast_nn", ForecastNNVectorizerParams)
 class ForecastNN(VectorizationAlgo):
-
     """Vectorizer Class for forecast based neural models for log representation learning
     """
 
@@ -130,7 +130,6 @@ class ForecastNN(VectorizationAlgo):
         )
         return unique_data_instances
 
-
     def fit(self, logrecord: LogRecordObject):
         """fit method to train vectorizer 
 
@@ -138,8 +137,8 @@ class ForecastNN(VectorizationAlgo):
             logrecord (LogRecordObject): logrecord object to train the vectorizer on
         """
         if self.sequential_vectorizer.vocab is None or (
-            self.config.feature_type == "semantics"
-            and self.semantic_vectorizer.vocab is None
+                self.config.feature_type == "semantics"
+                and self.semantic_vectorizer.vocab is None
         ):
             loglines = logrecord.body[
                 constants.LOGLINE_NAME
@@ -152,13 +151,11 @@ class ForecastNN(VectorizationAlgo):
         if self.sequential_vectorizer.vocab is None:
             self.sequential_vectorizer.fit(loglines)
         if (
-            self.config.feature_type == "semantics"
-            and self.semantic_vectorizer.vocab is None
+                self.config.feature_type == "semantics"
+                and self.semantic_vectorizer.vocab is None
         ):
             self.semantic_vectorizer.fit(loglines)
         self._dump_meta_data()
-
-
 
     def transform(self, logrecord: LogRecordObject):
         """transform method to run vectorizer on logrecord object
@@ -186,10 +183,9 @@ class ForecastNN(VectorizationAlgo):
             nextlogline_ids = None
         labels = logrecord.labels[constants.LABELS]
         span_ids = logrecord.span_id[constants.SPAN_ID]
-        samples = ForecastNNVectorizedDataset(logline_features=logline_features, 
-            labels=labels, nextlogline_ids=nextlogline_ids, span_ids=span_ids)
+        samples = ForecastNNVectorizedDataset(logline_features=logline_features,
+                                              labels=labels, nextlogline_ids=nextlogline_ids, span_ids=span_ids)
         return samples
-
 
     def _dump_meta_data(self):
         if not os.path.exists(self.config.vectorizer_metadata_filepath):
@@ -212,4 +208,3 @@ class ForecastNN(VectorizationAlgo):
             self.meta_data = pkl.load(
                 open(self.config.vectorizer_metadata_filepath, "rb")
             )
-

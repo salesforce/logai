@@ -27,8 +27,8 @@ class FeatureExtractorConfig(Config):
         for field in fields(self):
             # If there is a default and the value of the field is none we can assign a value
             if (
-                not isinstance(field.default, _MISSING_TYPE)
-                and getattr(self, field.name) is None
+                    not isinstance(field.default, _MISSING_TYPE)
+                    and getattr(self, field.name) is None
             ):
                 setattr(self, field.name, field.default)
 
@@ -80,10 +80,10 @@ class FeatureExtractor:
         return
 
     def convert_to_counter_vector(
-        self,
-        log_pattern: pd.Series = None,
-        attributes: pd.DataFrame = None,
-        timestamps: pd.Series = None,
+            self,
+            log_pattern: pd.Series = None,
+            attributes: pd.DataFrame = None,
+            timestamps: pd.Series = None,
     ) -> pd.DataFrame:
         """
         Convert logs to log counter vector.
@@ -105,10 +105,10 @@ class FeatureExtractor:
         return event_index_list
 
     def convert_to_feature_vector(
-        self,
-        log_vectors: pd.Series,
-        attributes: pd.DataFrame,
-        timestamps: pd.Series,
+            self,
+            log_vectors: pd.Series,
+            attributes: pd.DataFrame,
+            timestamps: pd.Series,
     ) -> pd.DataFrame:
         """
 
@@ -138,10 +138,10 @@ class FeatureExtractor:
         return event_index_list, block_list.loc[:, block_list.columns != "event_index"]
 
     def convert_to_sequence(
-        self,
-        log_pattern: pd.Series = None,
-        attributes: pd.DataFrame = None,
-        timestamps: pd.Series = None,
+            self,
+            log_pattern: pd.Series = None,
+            attributes: pd.DataFrame = None,
+            timestamps: pd.Series = None,
     ):
         # TODO: Converting sequence by sliding windows.
         # Partioning: length of sequence, step
@@ -188,10 +188,10 @@ class FeatureExtractor:
         return event_index_list, event_sequence
 
     def _get_input_df(
-        self,
-        logline: pd.Series or pd.DataFrame,
-        attributes: pd.DataFrame,
-        timestamps: pd.Series,
+            self,
+            logline: pd.Series or pd.DataFrame,
+            attributes: pd.DataFrame,
+            timestamps: pd.Series,
     ) -> pd.DataFrame:
         if timestamps is not None:
             timestamps = timestamps.rename(constants.LOG_TIMESTAMPS)
@@ -209,7 +209,6 @@ class FeatureExtractor:
         # print(event_index_list.columns)
 
         return event_index_list
-
 
     def _get_group_size(self, event_index_list) -> pd.Series:
 
