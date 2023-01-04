@@ -25,6 +25,7 @@ setup(
     name="logai",
     version="0.1.0",
     description="LogAI is unified framework for AI-based log analytics",
+    long_description_content_type="text/markdown",
     long_description=readme,
     author="Qian Cheng, Amrita Saha, Wenzhuo Yang, Chenghao Liu, Gerald Woo, Doyen Sahoo, Steven Hoi",
     author_email="qcheng@salesforce.com",

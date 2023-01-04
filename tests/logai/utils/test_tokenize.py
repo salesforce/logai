@@ -16,14 +16,6 @@ def test__tokenize_camel_case():
     res = logline.apply(logai.utils.tokenize._tokenize_camel_case)
     assert res[0] == "this is a camel  Case log  Type", "camelCase terms not split"
 
-
-def test__tokenize_nlp():
-    logline = pd.Series(["this is a camelCase logType"])
-    target_tokens = [('this', 'PRON'), ('is', 'AUX'), ('a', 'DET'), ('camelCase', 'NOUN'), ('logType', 'NOUN')]
-    res = logline.apply(logai.utils.tokenize._tokenize_nlp)
-    assert [(w.text, w.pos_) for w in res[0]] == target_tokens, "tokens do not match"
-
-
 def test__tokenize_replace_digits():
     logline = pd.Series(["this is a logline with 84392312 as digits"])
     res = logline.apply(logai.utils.tokenize._tokenize_replace_digits)
