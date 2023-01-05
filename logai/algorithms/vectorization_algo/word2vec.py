@@ -13,6 +13,7 @@ from attr import dataclass
 from nltk.tokenize import word_tokenize
 from logai.algorithms.algo_interfaces import VectorizationAlgo
 from logai.config_interfaces import Config
+from logai.algorithms.factory import factory
 
 
 @dataclass
@@ -28,9 +29,8 @@ class Word2VecParams(Config):
     def from_dict(self, config_dict):
         super().from_dict(config_dict)
 
-        return
 
-
+@factory.register("vectorization", "word2vec", Word2VecParams)
 class Word2Vec(VectorizationAlgo):
     """
     Wrap Word2Vec algorithm from gensim

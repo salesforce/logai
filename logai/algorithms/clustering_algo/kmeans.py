@@ -11,6 +11,7 @@ from sklearn.cluster import KMeans
 
 from logai.algorithms.algo_interfaces import ClusteringAlgo
 from logai.config_interfaces import Config
+from logai.algorithms.factory import factory
 
 
 @dataclass
@@ -28,9 +29,8 @@ class KMeansParams(Config):
     def from_dict(self, config_dict):
         super().from_dict(config_dict)
 
-        return
 
-
+@factory.register("clustering", "kmeans", KMeansParams)
 class KMeansAlgo(ClusteringAlgo):
     """
     Implement K-means for log clustering
@@ -48,7 +48,6 @@ class KMeansAlgo(ClusteringAlgo):
             copy_x=params.copy_x,
             algorithm=params.algorithm,
         )
-        return
 
     def fit(self, log_features: pd.DataFrame):
         """
@@ -57,7 +56,6 @@ class KMeansAlgo(ClusteringAlgo):
         :return:
         """
         self.model.fit(log_features)
-        return
 
     def predict(self, log_features: pd.DataFrame) -> pd.Series:
         """

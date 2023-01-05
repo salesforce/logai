@@ -11,6 +11,7 @@ from attr import dataclass
 
 from logai.algorithms.algo_interfaces import AnomalyDetectionAlgo
 from logai.config_interfaces import Config
+from logai.algorithms.factory import factory
 
 
 def compute_probs(data, n=10):
@@ -49,9 +50,8 @@ class DistributionDivergenceParams(Config):
     def from_dict(self, config_dict):
         super().from_dict(config_dict)
 
-        return
 
-
+@factory.register("detection", "distribution_divergence", DistributionDivergenceParams)
 class DistributionDivergence(AnomalyDetectionAlgo):
     def __init__(self, params: DistributionDivergenceParams):
         self.n_bins = params.n_bins

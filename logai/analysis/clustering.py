@@ -6,12 +6,11 @@
 #
 #
 import pandas as pd
+import logai.algorithms.clustering_algo
 from attr import dataclass
 
-from logai.algorithms.clustering_algo.birch import BirchParams, BirchAlgo
-from logai.algorithms.clustering_algo.dbscan import DbScanAlgo, DbScanParams
-from logai.algorithms.clustering_algo.kmeans import KMeansAlgo, KMeansParams
 from logai.config_interfaces import Config
+from logai.algorithms.factory import factory
 
 
 @dataclass
@@ -22,26 +21,8 @@ class ClusteringConfig(Config):
 
     def from_dict(self, config_dict):
         super().from_dict(config_dict)
-
-        if self.algo_name.lower() == "dbscan":
-            params = DbScanParams()
-            params.from_dict(self.algo_params)
-            self.algo_params = params
-
-        elif self.algo_name.lower() == "kmeans":
-            params = KMeansParams()
-            params.from_dict(self.algo_params)
-            self.algo_params = params
-
-        elif self.algo_name.lower() == "birch":
-            params = BirchParams()
-            params.from_dict(self.algo_params)
-            self.algo_params = params
-
-        else:
-            raise RuntimeError()
-
-        return
+        self.algo_params = factory.get_config(
+            "clustering", self.algo_name.lower(), self.algo_params)
 
 
 class Clustering:
@@ -51,27 +32,12 @@ class Clustering:
     """
 
     def __init__(self, config: ClusteringConfig):
-        if config.algo_name.lower() == "dbscan":
-            self.model = DbScanAlgo(
-                config.algo_params if config.algo_params else DbScanParams()
-            )
-        elif config.algo_name.lower() == "kmeans":
-            self.model = KMeansAlgo(
-                config.algo_params if config.algo_params else KMeansParams()
-            )
-        elif config.algo_name.lower() == "birch":
-            self.model = BirchAlgo(
-                config.algo_params if config.algo_params else BirchParams()
-            )
-        else:
-            raise RuntimeError(
-                "Clustering Algorithm {} is not defined".format(config.algo_name)
-            )
+        self.model = factory.get_algorithm(
+            "clustering", config.algo_name.lower(), config)
 
     def fit(self, log_features: pd.DataFrame):
         log_features.columns = log_features.columns.astype(str)
         self.model.fit(log_features)
-        return
 
     def predict(self, log_features: pd.DataFrame) -> pd.Series:
         log_features.columns = log_features.columns.astype(str)

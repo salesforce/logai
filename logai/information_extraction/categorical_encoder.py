@@ -42,8 +42,6 @@ class CategoricalEncoderConfig(Config):
             params.from_dict(self.params)
             self.params = params
 
-        return
-
 
 class CategoricalEncoder:
     """
@@ -70,7 +68,6 @@ class CategoricalEncoder:
             self.encoder = OrdinalEncoding(
                 config.params if config.params else OrdinalEncodingParams()
             )
-
         else:
             raise RuntimeError(
                 "Categorical Encoder {} is not defined".format(config.name)

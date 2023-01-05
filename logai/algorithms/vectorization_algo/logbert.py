@@ -1,7 +1,6 @@
-from logai.algorithms.algo_interfaces import VectorizationAlgo
-from logai.config_interfaces import Config
+import os
+import pandas as pd
 from attr import dataclass
-from logai.dataloader.data_model import LogRecordObject
 from tokenizers import (
     decoders,
     models,
@@ -12,11 +11,13 @@ from tokenizers import (
     Tokenizer,
 )
 from transformers import BertTokenizerFast, AutoTokenizer
-import os
-from attr import dataclass
-import pandas as pd
-from logai.utils import constants
 from datasets import Dataset as HFDataset
+
+from logai.algorithms.algo_interfaces import VectorizationAlgo
+from logai.config_interfaces import Config
+from logai.dataloader.data_model import LogRecordObject
+from logai.utils import constants
+from logai.algorithms.factory import factory
 
 
 @dataclass
@@ -42,6 +43,7 @@ class LogBERTVectorizerParams(Config):
         super().from_dict(config_dict)
 
 
+@factory.register("vectorization", "logbert", LogBERTVectorizerParams)
 class LogBERT(VectorizationAlgo):
     """Vectorizer class for logbert
 

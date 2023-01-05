@@ -12,6 +12,7 @@ from sklearn.cluster import Birch
 
 from logai.algorithms.algo_interfaces import ClusteringAlgo
 from logai.config_interfaces import Config
+from logai.algorithms.factory import factory
 
 
 @dataclass
@@ -22,9 +23,9 @@ class BirchParams(Config):
 
     def from_dict(self, config_dict):
         super().from_dict(config_dict)
-        return
 
 
+@factory.register("clustering", "birch", BirchParams)
 class BirchAlgo(ClusteringAlgo):
     """
     Implement BIRCH for log clustering.
@@ -36,7 +37,6 @@ class BirchAlgo(ClusteringAlgo):
             n_clusters=params.n_clusters,
             threshold=params.threshold,
         )
-        return
 
     def fit(self, log_features: pd.DataFrame):
         """
@@ -45,10 +45,7 @@ class BirchAlgo(ClusteringAlgo):
         :return:
         """
         log_features = np.ascontiguousarray(log_features)
-
-        # print(log_features.head(5))
         self.model.partial_fit(log_features)
-        return
 
     def predict(self, log_features: pd.DataFrame) -> pd.Series:
         """
@@ -60,4 +57,3 @@ class BirchAlgo(ClusteringAlgo):
 
         res = self.model.predict(log_features_carray)
         return pd.Series(res, index=log_features.index)
-

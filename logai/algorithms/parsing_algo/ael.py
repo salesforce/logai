@@ -10,19 +10,16 @@ This is wrapping the logpai/logparser implementation of AEL algorithm
 link: https://github.com/logpai/logparser/blob/master/logparser/AEL/AEL.py
 """
 
-import sys
 import re
-import os
 import hashlib
 import pandas as pd
-from datetime import datetime
 from collections import defaultdict
 from functools import reduce
-
 from attr import dataclass
 
 from logai.algorithms.algo_interfaces import ParsingAlgo
 from logai.config_interfaces import Config
+from logai.algorithms.factory import factory
 
 
 class Event:
@@ -48,6 +45,7 @@ class AELParams(Config):
         super().from_dict(config_dict)
 
 
+@factory.register("parsing", "ael", AELParams)
 class AEL(ParsingAlgo):
     def __init__(self, params: AELParams):
         self.rex = params.rex
@@ -160,10 +158,6 @@ class AEL(ParsingAlgo):
         return e1
 
     def has_diff(self, tokens1, tokens2):
-        # print(tokens1)
-        # print(tokens2)
-        # print("-----")
-
         diff = 0
         for idx in range(len(tokens1)):
             if tokens1[idx] != tokens2[idx]:

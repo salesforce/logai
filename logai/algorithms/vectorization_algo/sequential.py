@@ -1,10 +1,12 @@
-from logai.algorithms.algo_interfaces import VectorizationAlgo
-from logai.config_interfaces import Config
-from logai.utils.functions import pad
 import pandas as pd
 from attr import dataclass
 import pickle as pkl
 import os
+
+from logai.algorithms.algo_interfaces import VectorizationAlgo
+from logai.config_interfaces import Config
+from logai.utils.functions import pad
+from logai.algorithms.factory import factory
 
 
 @dataclass
@@ -24,6 +26,7 @@ class SequentialVectorizerParams(Config):
         super().from_dict(config_dict)
 
 
+@factory.register("vectorization", "sequential", SequentialVectorizerParams)
 class Sequential(VectorizationAlgo):
     """ Sequential Vectorizer to convert a sequence of loglines to sequence of log ids 
     """

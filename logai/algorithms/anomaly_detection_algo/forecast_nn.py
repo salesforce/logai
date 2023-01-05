@@ -7,6 +7,7 @@ from logai.algorithms.nn_model.forecast_nn.transformer import (
     Transformer,
     TransformerParams,
 )
+from logai.algorithms.factory import factory
 from torch.utils.data import DataLoader
 
 
@@ -64,6 +65,7 @@ class ForcastBasedNeuralAD(NNAnomalyDetectionAlgo):
         return result
 
 
+@factory.register("detection", "lstm", LSTMParams)
 class ForecastBasedLSTM(ForcastBasedNeuralAD):
     """Forecasting based lstm model for log anomaly detection
 
@@ -82,6 +84,7 @@ class ForecastBasedLSTM(ForcastBasedNeuralAD):
         self.model = LSTM(config=self.config)
 
 
+@factory.register("detection", "cnn", CNNParams)
 class ForecastBasedCNN(ForcastBasedNeuralAD):
     """Forecasting based cnn model for log anomaly detection
 
@@ -100,6 +103,7 @@ class ForecastBasedCNN(ForcastBasedNeuralAD):
         self.model = CNN(config=self.config)
 
 
+@factory.register("detection", "transformer", TransformerParams)
 class ForecastBasedTransformer(ForcastBasedNeuralAD):
     """Forecasting based transformer model for log anomaly detection
 

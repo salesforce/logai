@@ -16,6 +16,7 @@ from logai.utils import constants
 from merlion.models.anomaly.forecast_based.ets import ETSDetector as MerlionETSDetector, ETSDetectorConfig
 
 from logai.utils.functions import pd_to_timeseries
+from logai.algorithms.factory import factory
 
 
 @dataclass
@@ -36,9 +37,8 @@ class ETSDetectorParams(Config):
     def from_dict(self, config_dict):
         super().from_dict(config_dict)
 
-        return
 
-
+@factory.register("detection", "ets", ETSDetectorParams)
 class ETSDetector(AnomalyDetectionAlgo):
     """
     ETS Anomaly Detector
@@ -57,8 +57,6 @@ class ETSDetector(AnomalyDetectionAlgo):
         )
 
         self.model = MerlionETSDetector(ets_config)
-
-        return
 
     def fit(self, log_features: pd.DataFrame):
         """
@@ -119,6 +117,3 @@ class ETSDetector(AnomalyDetectionAlgo):
         for ts in log_feature[constants.LOG_TIMESTAMPS]:
             if not isinstance(ts, datetime):
                 raise ValueError("{} must be datetime".format(constants.LOG_TIMESTAMPS))
-
-        return
-

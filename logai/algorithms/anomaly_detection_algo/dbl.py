@@ -7,18 +7,17 @@
 #
 from datetime import datetime
 
-import numpy as np
 import pandas as pd
 from attr import dataclass
 from typing import Tuple, List
 
 from merlion.models.anomaly.dbl import DynamicBaseline, DynamicBaselineConfig
-from merlion.utils import TimeSeries
 
 from logai.algorithms.algo_interfaces import AnomalyDetectionAlgo
 from logai.config_interfaces import Config
 from logai.utils import constants
 from logai.utils.functions import pd_to_timeseries
+from logai.algorithms.factory import factory
 
 
 @dataclass
@@ -36,9 +35,8 @@ class DBLDetectorParams(Config):
     def from_dict(self, config_dict):
         super().from_dict(config_dict)
 
-        return
 
-
+@factory.register("detection", "dbl", DBLDetectorParams)
 class DBLDetector(AnomalyDetectionAlgo):
     def __init__(self, params: DBLDetectorParams):
         dbl_config = DynamicBaselineConfig(
@@ -51,7 +49,6 @@ class DBLDetector(AnomalyDetectionAlgo):
         self.model = DynamicBaseline(dbl_config)
         self.min_ts_length = 10
         self.threshold = params.threshold
-        return
 
     def fit(self, log_features: pd.DataFrame):
         """
@@ -63,7 +60,6 @@ class DBLDetector(AnomalyDetectionAlgo):
 
         time_series = pd_to_timeseries(log_features)
         self.model.train(time_series)
-        return
 
     def predict(self, log_features: pd.DataFrame):
         """
@@ -103,8 +99,3 @@ class DBLDetector(AnomalyDetectionAlgo):
         for ts in log_feature[constants.LOG_TIMESTAMPS]:
             if not isinstance(ts, datetime):
                 raise ValueError("{} must be datetime".format(constants.LOG_TIMESTAMPS))
-
-        return
-
-
-

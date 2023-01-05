@@ -13,11 +13,11 @@ from os.path import dirname, exists
 import pandas as pd
 from dataclasses import dataclass
 
-from logai.algorithms.parsing_algo.ael import AEL, AELParams
-from logai.algorithms.parsing_algo.drain import Drain, DrainParams
-from logai.algorithms.parsing_algo.iplom import IPLoM, IPLoMParams
+import logai.algorithms.parsing_algo
+from logai.algorithms.parsing_algo.drain import DrainParams
 from logai.config_interfaces import Config
 from logai.utils import constants
+from logai.algorithms.factory import factory
 
 
 @dataclass
@@ -47,40 +47,11 @@ class LogParser:
         Initialization of log parser.
         :param config: LogParserConfig: log parser configuration.
         """
-        self.parser = None
-        if config.parsing_algorithm.lower() == "drain":
-            try:
-                self.parser = Drain(
-                    config.parsing_algo_params
-                    if config.parsing_algo_params
-                    else DrainParams()
-                )
-            except Exception as e:
-                raise RuntimeError(e)
-
-        elif config.parsing_algorithm.lower() == "iplom":
-            try:
-                self.parser = IPLoM(
-                    config.parsing_algo_params
-                    if config.parsing_algo_params
-                    else IPLoMParams()
-                )
-            except Exception as e:
-                raise RuntimeError(e)
-        elif config.parsing_algorithm.lower() == "ael":
-            try:
-                self.parser = AEL(
-                    config.parsing_algo_params
-                    if config.parsing_algo_params
-                    else AELParams()
-                )
-            except Exception as e:
-                raise RuntimeError(e)
-
-        else:
-            raise RuntimeError(
-                "Parser {} is not defined".format(config.parsing_algorithm)
-            )
+        name = config.parsing_algorithm.lower()
+        config_class = factory.get_config_class("parsing", name)
+        algorithm_class = factory.get_algorithm_class("parsing", name)
+        self.parser = algorithm_class(
+            config.parsing_algo_params if config.parsing_algo_params else config_class())
 
     def fit(self, loglines: pd.Series):
         """
@@ -89,7 +60,6 @@ class LogParser:
         :return:
         """
         self.parser.fit(loglines)
-        return
 
     def parse(self, loglines: pd.Series) -> pd.DataFrame:
         """
@@ -108,7 +78,6 @@ class LogParser:
         parsed_result[constants.PARAMETER_LIST_NAME] = parsed_result.apply(
             self.get_parameter_list, axis=1
         )
-
         return parsed_result
 
     def fit_parse(self, loglines: pd.Series) -> pd.DataFrame:
@@ -144,8 +113,6 @@ class LogParser:
             pickle.dump(self.parser, f)
             f.close()
 
-        return
-
     def load(self, model_path):
         """
         Load existing parser models.
@@ -156,7 +123,6 @@ class LogParser:
         with open(model_path, "rb") as f:
             self.parser = pickle.load(f)
             f.close()
-        return
 
     @staticmethod
     def get_parameter_list(row):

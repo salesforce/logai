@@ -12,6 +12,7 @@ import numpy as np
 
 from logai.algorithms.algo_interfaces import AnomalyDetectionAlgo
 from logai.config_interfaces import Config
+from logai.algorithms.factory import factory
 
 
 @dataclass
@@ -29,9 +30,8 @@ class LOFParams(Config):
     def from_dict(self, config_dict):
         super().from_dict(config_dict)
 
-        return
 
-
+@factory.register("detection", "lof", LOFParams)
 class LOFDetector(AnomalyDetectionAlgo):
     def __init__(self, params: LOFParams):
         self.model = LocalOutlierFactor(
@@ -45,7 +45,6 @@ class LOFDetector(AnomalyDetectionAlgo):
             novelty=params.novelty,
             n_jobs=params.n_jobs,
         )
-        return
 
     def fit(self, log_features: pd.DataFrame):
         """
