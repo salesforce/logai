@@ -27,9 +27,6 @@ class LOFParams(Config):
     novelty: bool = True
     n_jobs: int = None
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-
 
 @factory.register("detection", "lof", LOFParams)
 class LOFDetector(AnomalyDetectionAlgo):

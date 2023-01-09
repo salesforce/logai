@@ -29,13 +29,12 @@ class LogParserConfig(Config):
     parsing_algo_params: object = None
     custom_config: object = None
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-        if self.parsing_algorithm and self.parsing_algo_params:
-            if self.parsing_algorithm.lower() == "drain":
-                params = DrainParams()
-                params.from_dict(self.parsing_algo_params)
-                self.parsing_algo_params = params
+    @classmethod
+    def from_dict(cls, config_dict):
+        config = super(LogParserConfig, cls).from_dict(config_dict)
+        config.parsing_algo_params = factory.get_config(
+            "parsing", config.parsing_algorithm.lower(), config.parsing_algo_params)
+        return config
 
 
 class LogParser:

@@ -6,24 +6,27 @@
 #
 #
 import abc
-from dataclasses import fields
+import attr
 
 
 class Config(abc.ABC):
-    @abc.abstractmethod
-    def from_dict(self, config_dict):
-        if not config_dict:
-            return
-        for field in self.__dict__:
+
+    @classmethod
+    def from_dict(cls, config_dict):
+        """
+        Loads a config from a config dict.
+
+        :param config_dict: The config parameters in a dict.
+        """
+        if config_dict is None:
+            config_dict = {}
+
+        config = cls()
+        for field in config.__dict__:
             # If there is a default and the value of the field is none we can assign a value
             if field in config_dict:
-                setattr(self, field, config_dict[field])
-
-        return
+                setattr(config, field, config_dict[field])
+        return config
 
     def as_dict(self):
-        d = {}
-        for field in fields(self.__class__):
-            val = getattr(self, field.name)
-            d[field.name] = val
-        return d
+        return attr.asdict(self)

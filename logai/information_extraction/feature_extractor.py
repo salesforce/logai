@@ -32,11 +32,6 @@ class FeatureExtractorConfig(Config):
             ):
                 setattr(self, field.name, field.default)
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-
-        return
-
 
 def _get_group_counter(attributes: pd.DataFrame, group_by_category: list) -> pd.Series:
     """

@@ -57,8 +57,7 @@ class UnstructuredLogAnomalyDetection:
         self.preprocessor = Preprocessor(preprocessor_config)
 
         parsing_algo_params = {"sim_th": 0.1, "extra_delimiters": []}
-        parser_config = LogParserConfig()
-        parser_config.from_dict(parsing_algo_params)
+        parser_config = LogParserConfig.from_dict(parsing_algo_params)
         self.parser = LogParser(parser_config)
 
         count_config = FeatureExtractorConfig(

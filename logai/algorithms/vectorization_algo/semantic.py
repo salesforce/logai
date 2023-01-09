@@ -36,9 +36,6 @@ class SemanticVectorizerParams(Config):
     embedding_type: str = "fasttext"
     model_save_dir: str = None
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-
 
 @factory.register("vectorization", "semantic", SemanticVectorizerParams)
 class Semantic(VectorizationAlgo):

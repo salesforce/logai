@@ -34,9 +34,6 @@ class ETSDetectorParams(Config):
     refit: bool = True
     kwargs: dict = {}
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-
 
 @factory.register("detection", "ets", ETSDetectorParams)
 class ETSDetector(AnomalyDetectionAlgo):

@@ -30,17 +30,14 @@ class CategoricalEncoderConfig(Config):
     name: str = "label_encoder"
     params: object = None
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-
-        if self.name.lower() == "one_hot_encoder":
-            params = OneHotEncodingParams()
-            params.from_dict(self.params)
-            self.params = params
-        elif self.name.lower() == "ordinal_encoder":
-            params = OrdinalEncodingParams()
-            params.from_dict(self.params)
-            self.params = params
+    @classmethod
+    def from_dict(cls, config_dict):
+        config = super(CategoricalEncoderConfig, cls).from_dict(config_dict)
+        if config.name.lower() == "one_hot_encoder":
+            config.params = OneHotEncodingParams.from_dict(config.params)
+        elif config.name.lower() == "ordinal_encoder":
+            config.params = OrdinalEncodingParams.from_dict(config.params)
+        return config
 
 
 class CategoricalEncoder:

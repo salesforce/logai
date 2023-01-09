@@ -41,9 +41,6 @@ class AELParams(Config):
     merge_percent: int = 1
     keep_para: bool = True
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-
 
 @factory.register("parsing", "ael", AELParams)
 class AEL(ParsingAlgo):

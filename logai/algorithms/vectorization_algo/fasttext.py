@@ -30,9 +30,6 @@ class FastTextParams(Config):
     epochs: int = 100
     max_token_len: int = 100
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-
 
 @factory.register("vectorization", "fasttext", FastTextParams)
 class FastText(VectorizationAlgo):

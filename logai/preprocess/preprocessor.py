@@ -20,9 +20,6 @@ class PreprocessorConfig(Config):
     custom_delimiters_regex: dict = None
     custom_replace_list: list = None
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-
 
 class Preprocessor:
     """

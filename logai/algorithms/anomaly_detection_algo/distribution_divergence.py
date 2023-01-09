@@ -47,9 +47,6 @@ class DistributionDivergenceParams(Config):
     n_bins: int = 100
     type: list = ["KL"]  # "KL", "JS", "KL,JS"
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-
 
 @factory.register("detection", "distribution_divergence", DistributionDivergenceParams)
 class DistributionDivergence(AnomalyDetectionAlgo):

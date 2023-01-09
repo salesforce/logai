@@ -26,9 +26,6 @@ class KMeansParams(Config):
     copy_x: bool = True
     algorithm: str = "auto"
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-
 
 @factory.register("clustering", "kmeans", KMeansParams)
 class KMeansAlgo(ClusteringAlgo):

@@ -67,9 +67,6 @@ class ForecastNNVectorizerParams(Config):
     sequentialvec_config: object = None
     semanticvec_config: object = None
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-
 
 @factory.register("vectorization", "forecast_nn", ForecastNNVectorizerParams)
 class ForecastNN(VectorizationAlgo):
@@ -85,7 +82,6 @@ class ForecastNN(VectorizationAlgo):
         """
         self.meta_data = {}
         self.config = config
-        sequentialvec_config = SequentialVectorizerParams()
         self.config.vectorizer_model_dirpath = os.path.join(
             self.config.output_dir, "embedding_model"
         )
@@ -96,7 +92,7 @@ class ForecastNN(VectorizationAlgo):
         if not os.path.exists(self.config.vectorizer_model_dirpath):
             os.makedirs(self.config.vectorizer_model_dirpath)
 
-        sequentialvec_config.from_dict(
+        sequentialvec_config = SequentialVectorizerParams.from_dict(
             {
                 "sep_token": self.config.sep_token,
                 "max_token_len": self.config.max_token_len,
@@ -106,7 +102,6 @@ class ForecastNN(VectorizationAlgo):
         self.sequential_vectorizer = Sequential(sequentialvec_config)
         self.semantic_vectorizer = None
         if self.config.feature_type == "semantics":
-            semanticvec_config = SemanticVectorizerParams()
             semanticvec_config_dict = {
                 "max_token_len": self.config.max_token_len,
                 "min_token_count": self.config.min_token_count,
@@ -114,7 +109,7 @@ class ForecastNN(VectorizationAlgo):
                 "embedding_dim": self.config.embedding_dim,
                 "model_save_dir": self.config.vectorizer_model_dirpath,
             }
-            semanticvec_config.from_dict(semanticvec_config_dict)
+            semanticvec_config = SemanticVectorizerParams.from_dict(semanticvec_config_dict)
             self.semantic_vectorizer = Semantic(semanticvec_config)
 
     def _process_logsequence(self, data_sequence):

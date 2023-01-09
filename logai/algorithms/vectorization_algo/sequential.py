@@ -22,9 +22,6 @@ class SequentialVectorizerParams(Config):
     model_save_dir: str = None
     max_token_len: int = None
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-
 
 @factory.register("vectorization", "sequential", SequentialVectorizerParams)
 class Sequential(VectorizationAlgo):

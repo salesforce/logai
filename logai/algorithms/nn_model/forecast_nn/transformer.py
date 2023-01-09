@@ -18,9 +18,6 @@ class TransformerParams(ForecastBasedNNParams):
     nhead: int = 4
     num_layers: int = 1
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-
 
 class Transformer(ForecastBasedNN):
     """Transformer based model for learning log representation through a self-supervised forecasting task over log sequences

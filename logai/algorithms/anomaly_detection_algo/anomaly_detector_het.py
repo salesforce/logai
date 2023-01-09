@@ -11,9 +11,6 @@ class HetAnomalyDetectionConfig(AnomalyDetectionConfig):
     """
     train_test_ratio: float = 0.3
 
-    def from_dict(self, config_dict):
-        super.from_dict(config_dict)
-
 
 class HetAnomalyDetector(AnomalyDetector):
     """

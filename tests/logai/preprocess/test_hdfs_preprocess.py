@@ -44,15 +44,12 @@ class TestHDFSPreprocessor:
             ],
         }
 
-        preprocessor_config = PreprocessorConfig()
-        preprocessor_config.from_dict(hdfs_preprocessor_config)
+        preprocessor_config = PreprocessorConfig.from_dict(hdfs_preprocessor_config)
         preprocessor = HDFSPreprocessor(preprocessor_config, label_file=TEST_LABEL_PATH)
 
         clean_logrecord = preprocessor.clean_log(self.logrecord)
-
         clean_logrecord.save_to_csv(TEST_OUTPUT_PATH)
 
         assert " BLOCK " in clean_logrecord.body
         assert " HEX " in clean_logrecord.body
         assert " IP " in clean_logrecord.body
-        

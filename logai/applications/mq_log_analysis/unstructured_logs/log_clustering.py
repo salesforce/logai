@@ -117,8 +117,7 @@ class LogClustering:
             preprocessed_loglines = clean_and_truncate(preprocessed_loglines)
 
             parsing_algo_params = {"sim_th": 0.1, "extra_delimiters": []}
-            parser_config = LogParserConfig()
-            parser_config.from_dict(parsing_algo_params)
+            parser_config = LogParserConfig.from_dict(parsing_algo_params)
             parser = LogParser(parser_config)
             parsed_result = parser.parse(preprocessed_loglines)
             parsed_result[constants.PARSED_LOGLINE_NAME] = (
@@ -272,8 +271,7 @@ class LogClusteringPerFunction:
         self.preprocessor = Preprocessor(preprocessor_config)
 
         parsing_algo_params = {"sim_th": 0.1, "extra_delimiters": []}
-        parser_config = LogParserConfig()
-        parser_config.from_dict(parsing_algo_params)
+        parser_config = LogParserConfig.from_dict(parsing_algo_params)
         self.parser = LogParser(parser_config)
 
         w2v_params = Word2VecParams()

@@ -26,9 +26,6 @@ class OneClassSVMParams(Config):
     cache_size: float = 200
     verbose: bool = False
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-
 
 @factory.register("detection", "one_class_svm", OneClassSVMParams)
 class OneClassSVMDetector(AnomalyDetectionAlgo):

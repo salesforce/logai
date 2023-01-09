@@ -19,10 +19,12 @@ class ClusteringConfig(Config):
     algo_params: object = None
     custom_params: object = None
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-        self.algo_params = factory.get_config(
-            "clustering", self.algo_name.lower(), self.algo_params)
+    @classmethod
+    def from_dict(cls, config_dict):
+        config = super(ClusteringConfig, cls).from_dict(config_dict)
+        config.algo_params = factory.get_config(
+            "clustering", config.algo_name.lower(), config.algo_params)
+        return config
 
 
 class Clustering:

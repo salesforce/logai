@@ -128,9 +128,9 @@ def click_run(
                 config.open_set_data_loader_config.dataset_name = log_type
                 config.log_parser_config.parsing_algorithm = parsing_algo
 
-                algorithm_params = log_pattern_demo.get_config_class(parsing_algo)()
-                algorithm_params.from_dict(params)
-                config.log_parser_config.parsing_algo_params = algorithm_params
+                config_class = log_pattern_demo.get_config_class(parsing_algo)
+                config.log_parser_config.parsing_algo_params = \
+                    config_class.from_dict(params)
 
                 log_pattern_demo.execute_auto_parsing(config)
                 return create_attribute_component(log_pattern_demo.get_attributes()[attributes]), \

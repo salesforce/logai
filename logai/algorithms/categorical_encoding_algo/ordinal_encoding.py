@@ -24,9 +24,6 @@ class OrdinalEncodingParams(Config):
     handle_unknown: str = "error"
     unknown_value: object = None
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-
 
 class OrdinalEncoding(CategoricalEncodingAlgo):
     """

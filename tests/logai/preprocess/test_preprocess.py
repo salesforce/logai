@@ -17,8 +17,7 @@ class TestPreprocessorConfig:
             "custom_delimiters_regex": [r"`+|\s+"]
         }
 
-        preprocess_config = PreprocessorConfig()
-        preprocess_config.from_dict(config_dict)
+        preprocess_config = PreprocessorConfig.from_dict(config_dict)
         assert preprocess_config.custom_delimiters_regex[0] == r"`+|\s+", "Config read failed"
 
 

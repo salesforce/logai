@@ -35,8 +35,7 @@ class TestDrainConfig:
             "extra_delimiters": [',']
         }
 
-        config = DrainParams()
-        config.from_dict(config_dict)
+        config = DrainParams.from_dict(config_dict)
         assert config.sim_th == approx(0.2), "sim_th is not 0.2"
         assert type(config.extra_delimiters) is tuple, "extra_delimiters is not tuple"
         assert "," in config.extra_delimiters, "extra_delimiters doesn't contain comma"

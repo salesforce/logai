@@ -136,17 +136,17 @@ def click_run(
                 config.feature_extractor_config.group_by_time = freq
                 config.log_parser_config.parsing_algorithm = parsing_algo
 
-                algorithm_params = LogPattern().get_config_class(parsing_algo)()
-                algorithm_params.from_dict(parsing_params)
-                config.log_parser_config.parsing_algo_params = algorithm_params
+                config_class = LogPattern().get_config_class(parsing_algo)
+                config.log_parser_config.parsing_algo_params = \
+                    config_class.from_dict(parsing_params)
 
                 config.log_vectorizer_config.algo_name = vectorization_algo
                 config.categorical_encoder_config.algo_name = categorical_encoder
                 config.anomaly_detection_config.algo_name = ad_algo
 
-                algorithm_params = log_anomaly_demo.get_config_class(ad_algo)()
-                algorithm_params.from_dict(ad_params)
-                config.anomaly_detection_config.algo_params = algorithm_params
+                config_class = log_anomaly_demo.get_config_class(ad_algo)
+                config.anomaly_detection_config.algo_params = \
+                    config_class.from_dict(ad_params)
 
                 log_anomaly_demo.execute_anomaly_detection(config)
 

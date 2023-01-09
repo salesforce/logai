@@ -21,9 +21,6 @@ class OpenSetPartitionerConfig(Config):
     session_window: bool = True
     logsequence_delim: str = "[SEP]"
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-
 
 class OpenSetPartitioner:
     def __init__(self, config: OpenSetPartitionerConfig):
@@ -37,8 +34,7 @@ class OpenSetPartitioner:
 
         
         if config.sliding_window > 0:
-            partitioner_config = PartitionerConfig()
-            partitioner_config.from_dict(
+            partitioner_config = PartitionerConfig.from_dict(
                 {
                     "sliding_window": config.sliding_window,
                     "sep_token": config.logsequence_delim,
@@ -49,8 +45,7 @@ class OpenSetPartitioner:
             )
             self.partitioner = Partitioner(partitioner_config)
         elif config.session_window:
-            fe_config = FeatureExtractorConfig()
-            fe_config.from_dict({
+            fe_config = FeatureExtractorConfig.from_dict({
                 "sliding_window": 20,
                 "steps": 20,
                 "group_by_category": [constants.SPAN_ID]
