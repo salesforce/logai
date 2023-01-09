@@ -114,16 +114,28 @@ class OpenSetADWorkflowConfig(WorkFlowConfig):
 
     Inherits:
         WorkFlowConfig: Config object for specifying workflow parameters
+
+    dataset_name: str = None # name of the public open dataset
+    label_filepath: str = None # path to the separate file (if any) containing the anomaly detection labels
+    output_dir: str = None # path to output directory where all intermediate and final outputs would be dumped
+    parse_logline: bool = False # whether to parse or not
+    training_type: str = None # should be either supervised or unsupervised
+    deduplicate_test: bool = False # whether to de-duplicate the instances in the test data, while maintaining a count of the number of each duplicated instance
+    test_data_frac_pos: float = 0.8 # fraction of the logs having positive class used for teest
+    test_data_frac_neg: float = 0.8 # fraction of the logs having negative class used for test
+    train_test_shuffle: bool = False # whether to use chronological ordering of the logs or to shuffle them when creating the train test splits
+
     """
 
-    dataset_name: str = None
-    label_filepath: str = None
-    output_dir: str = None
-    parse_logline: bool = False
-    training_type: str = None
-    deduplicate_test: bool = False
-    test_data_frac_pos: float = 0.88
-    test_data_frac_neg: float = 0.2
+    dataset_name: str = None # name of the public open dataset
+    label_filepath: str = None # path to the separate file (if any) containing the anomaly detection labels
+    output_dir: str = None # path to output directory where all intermediate and final outputs would be dumped
+    parse_logline: bool = False # whether to parse or not
+    training_type: str = None # should be either supervised or unsupervised
+    deduplicate_test: bool = False # whether to de-duplicate the instances in the test data, while maintaining a count of the number of each duplicated instance
+    test_data_frac_pos: float = 0.8 # fraction of the logs having positive class used for teest
+    test_data_frac_neg: float = 0.8 # fraction of the logs having negative class used for test
+    train_test_shuffle: bool = False # whether to use chronological ordering of the logs or to shuffle them when creating the train test splits
 
     def from_dict(self, config_dict):
         super().from_dict(config_dict)
@@ -395,6 +407,7 @@ class OpenSetADWorkflow:
                 training_type=self.config.training_type,
                 test_data_frac_neg_class=self.config.test_data_frac_neg,
                 test_data_frac_pos_class=self.config.test_data_frac_pos,
+                shuffle=self.config.train_test_shuffle
             )
             train_data.save_to_csv(train_filepath)
             dev_data.save_to_csv(dev_filepath)

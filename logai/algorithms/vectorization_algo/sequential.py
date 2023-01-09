@@ -16,6 +16,11 @@ class SequentialVectorizerParams(Config):
     Args:
        sep_token: separator token 
        model_save_dir: path to directory where models related to sequential vectorizer would be stored
+
+    sep_token: str = None # separator token used to separate log lines in an input log sequence
+    model_save_dir: str = None # path to directory where vectorizer models would be saved
+    max_token_len: int = None # maximum token length of input
+
     """
 
     sep_token: str = None

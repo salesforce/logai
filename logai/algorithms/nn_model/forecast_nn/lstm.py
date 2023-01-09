@@ -15,6 +15,12 @@ class LSTMParams(ForecastBasedNNParams):
 
     Inherits:
         ForecastBasedNNParams: base class for parameters of forecasting based neural log representation moels
+
+    num_directions: int = 2 # whether bidirectional or unidirectional (left to right) model
+    num_layers: int = 1 # number of hidden layers in the neural network
+    max_token_len: int = None # maximum token length of the input
+    use_attention: bool = False # whether to use attention or not
+
     """
 
     num_directions: int = 2

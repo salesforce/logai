@@ -25,7 +25,15 @@ from logai.algorithms.factory import factory
 @dataclass
 class SemanticVectorizerParams(Config):
     """
-    Configuration of Semantic vectorization of loglines using models like word2vc, glove and fastText
+    Configuration of Semantic vectorization of loglines (or sequence of log lines) using models like word2vc, glove and fastText
+    max_token_len: int = 10 # maximum token length of the input
+    min_token_count: int = 1 # minimum count of occurrences of a token in training data for it to be considered in the vocab
+    sep_token: str = "[SEP]" # separator token used to separate log lines in input log sequence
+    embedding_dim: int = 300 # embedding dimension of the learnt token embeddings
+    window: int = 3 # window size parameter for word2vec and fastText models
+    embedding_type: str = "fasttext" # type of embedding, currently supports glove, word2vec and fastText
+    model_save_dir: str = None # path to directory where vectorizer models would be saved
+
     """
 
     max_token_len: int = 10

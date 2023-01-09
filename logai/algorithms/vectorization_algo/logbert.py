@@ -26,6 +26,18 @@ class LogBERTVectorizerParams(Config):
 
     Inherits:
         Config : config interface
+
+    model_name: str = ""  # name of the model , using HuggingFace standardized naming
+    use_fast: bool = True # whether to use fast tokenization or not
+    truncation: bool = True # whether to truncate the input to max_token_len
+    max_token_len: int = 384 # maximum token length of input, if truncation is set to tru
+    max_vocab_size: int = 5000 # maximum size  of the vocabulary
+    custom_tokens = [] # list of custom tokens
+    train_batch_size: int = 1000 # batch size during training the vectorizer
+    output_dir: str = None # path to directory where the output would be saved
+    tokenizer_dirpath: str = None # path to the tokenizer where the vectorizer (logbert tokenizer) would be saved
+    num_proc: int = 4 # number of processes to be used when tokenizing
+
     """
 
     model_name: str = ""
