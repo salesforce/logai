@@ -1,3 +1,5 @@
+import pandas as pd
+
 from logai.dataloader.data_model import LogRecordObject
 from logai.utils import constants
 from sklearn.model_selection import train_test_split
