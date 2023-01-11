@@ -227,8 +227,7 @@ def main():
     with open(CONFIG_PATH, "r") as f:
         config_yaml = yaml.full_load(f)
         f.close()
-    config = WorkFlowConfig()
-    config.from_dict(config_yaml)
+    config = WorkFlowConfig.from_dict(config_yaml)
 
     # Load data and create log record object
     # Currently read from local file. We can form LogRecordObject from data stream instead.
