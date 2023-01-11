@@ -38,8 +38,7 @@ class TestBGLPreprocessor:
             ],
         }
 
-        preprocessor_config = PreprocessorConfig()
-        preprocessor_config.from_dict(bgl_preprocessor_config)
+        preprocessor_config = PreprocessorConfig.from_dict(bgl_preprocessor_config)
         preprocessor = BGLPreprocessor(preprocessor_config)
 
         clean_logrecord = preprocessor.clean_log(self.logrecord)

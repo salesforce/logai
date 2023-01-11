@@ -15,9 +15,7 @@ from logai.algorithms.factory import factory
 
 @dataclass
 class ARIMAParams(Config):
-
-    def from_dict(self, config_dict):
-        super.from_dict(config_dict)
+    pass
 
 
 @factory.register("detection", "arima", ARIMAParams)

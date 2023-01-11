@@ -32,8 +32,7 @@ class TestSerializeDeserialize:
             "datetime_format": "%Y-%m-%d-%H.%M.%S.%f",
         }
 
-        data_loader_config = DataLoaderConfig()
-        data_loader_config.from_dict(data_loader_config_dict)
+        data_loader_config = DataLoaderConfig.from_dict(data_loader_config_dict)
         self.data_loader = FileDataLoader(data_loader_config)
         self.logrecord = self.data_loader.load_data()
         self.logrecord.save_to_csv(output_filepath)
@@ -55,8 +54,7 @@ class TestSerializeDeserialize:
         }
 
         print("data_loader_config_dict ", data_loader_config_dict)
-        data_loader_config = DataLoaderConfig()
-        data_loader_config.from_dict(data_loader_config_dict)
+        data_loader_config = DataLoaderConfig.from_dict(data_loader_config_dict)
         self.data_loader = FileDataLoader(data_loader_config)
         self.logrecord = self.data_loader.load_data()
         self.logrecord.save_to_csv(output_filepath)

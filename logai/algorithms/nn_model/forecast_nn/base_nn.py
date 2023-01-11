@@ -38,9 +38,6 @@ class ForecastBasedNNParams(Config):
     batch_size: int = 1024
     learning_rate: int = 1e-4
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-
 
 class Embedder(nn.Module):
     """Learnable embedder for embedding loglines

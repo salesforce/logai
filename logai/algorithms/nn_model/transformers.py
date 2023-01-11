@@ -30,9 +30,6 @@ class TransformerAlgoConfig(Config):
     tokenizer_config: dict = {"name": "auto", "model": "bert-base-cased"}
     trainer_config: dict = {}
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-
 
 class LogDataset(torch.utils.data.Dataset):
     def __init__(self, encodings, labels):

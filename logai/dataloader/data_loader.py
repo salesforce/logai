@@ -30,9 +30,6 @@ class DataLoaderConfig(Config):
     datetime_format: str = "%Y-%M-%dT%H:%M:%SZ"  # Default the ISO 8601 format example 2022-05-26T21:29:09+00:00
     open_dataset: str = None
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-
 
 class FileDataLoader:
     """

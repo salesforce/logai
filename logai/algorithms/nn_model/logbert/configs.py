@@ -30,6 +30,3 @@ class LogBERTConfig(Config):
     resume_from_checkpoint: bool = True
     output_dir: str = None
     tokenizer_dirpath: str = None
-
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)

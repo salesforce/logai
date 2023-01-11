@@ -18,8 +18,7 @@ class ProphetParams(Config):
     """
     Prophet Anomaly Detector Params
     """
-    def from_dict(self, config_dict):
-        super.from_dict(config_dict)
+    pass
 
 
 @factory.register("detection", "prophet", ProphetParams)

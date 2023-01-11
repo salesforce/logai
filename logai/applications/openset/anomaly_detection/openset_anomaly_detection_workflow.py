@@ -225,8 +225,7 @@ class OpenSetADWorkflow:
     def load_deduper(self):
         """initialize dedup object
         """
-        fe_config = FeatureExtractorConfig()
-        fe_config.from_dict({
+        fe_config = FeatureExtractorConfig.from_dict({
             "group_by_category": [constants.SPAN_ID, constants.LOGLINE_NAME]
         })
         self.feature_extractor = FeatureExtractor(fe_config)

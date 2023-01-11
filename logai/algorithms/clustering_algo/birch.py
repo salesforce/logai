@@ -21,9 +21,6 @@ class BirchParams(Config):
     n_clusters: int = None
     threshold: float = 1.5
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-
 
 @factory.register("clustering", "birch", BirchParams)
 class BirchAlgo(ClusteringAlgo):

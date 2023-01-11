@@ -19,10 +19,12 @@ class AnomalyDetectionConfig(Config):
     algo_params: object = None
     custom_params: object = None
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-        self.algo_params = factory.get_config(
-            "detection", self.algo_name.lower(), self.algo_params)
+    @classmethod
+    def from_dict(cls, config_dict):
+        config = super(AnomalyDetectionConfig, cls).from_dict(config_dict)
+        config.algo_params = factory.get_config(
+            "detection", config.algo_name.lower(), config.algo_params)
+        return config
 
 
 class AnomalyDetector:

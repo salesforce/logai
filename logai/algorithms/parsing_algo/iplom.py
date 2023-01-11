@@ -55,9 +55,6 @@ class IPLoMParams(Config):
     upperBound: float = 0.9
     keep_para: bool = True
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-
 
 @factory.register("parsing", "iplom", IPLoMParams)
 class IPLoM(ParsingAlgo):

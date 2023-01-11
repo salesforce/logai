@@ -122,17 +122,17 @@ def click_run(
                 config.feature_extractor_config.group_by_category = attributes
                 config.log_parser_config.parsing_algorithm = parsing_algo
 
-                algorithm_params = LogPattern().get_config_class(parsing_algo)()
-                algorithm_params.from_dict(parsing_params)
-                config.log_parser_config.parsing_algo_params = algorithm_params
+                config_class = LogPattern().get_config_class(parsing_algo)
+                config.log_parser_config.parsing_algo_params = \
+                    config_class.from_dict(parsing_params)
 
                 config.log_vectorizer_config.algo_name = vectorization_algo
                 config.categorical_encoder_config.algo_name = categorical_encoder
                 config.clustering_config.algo_name = clustering_algo
 
-                algorithm_params = log_clustering.get_config_class(clustering_algo)()
-                algorithm_params.from_dict(clustering_params)
-                config.clustering_config.algo_params = algorithm_params
+                config_class = log_clustering.get_config_class(clustering_algo)
+                config.clustering_config.algo_params = \
+                    config_class.from_dict(clustering_params)
 
                 log_clustering.execute_clustering(config)
 

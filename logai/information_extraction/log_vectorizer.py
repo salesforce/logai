@@ -19,10 +19,12 @@ class VectorizerConfig(Config):
     algo_param: object = None
     custom_param: object = None
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-        self.algo_param = factory.get_config(
-            "vectorization", self.algo_name.lower(), self.algo_param)
+    @classmethod
+    def from_dict(cls, config_dict):
+        config = super(VectorizerConfig, cls).from_dict(config_dict)
+        config.algo_param = factory.get_config(
+            "vectorization", config.algo_name.lower(), config.algo_param)
+        return config
 
 
 class LogVectorizer:

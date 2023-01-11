@@ -25,9 +25,6 @@ class DbScanParams(Config):
     p: float = None
     n_jobs: int = None
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-
 
 @factory.register("clustering", "dbscan", DbScanParams)
 class DbScanAlgo(ClusteringAlgo):

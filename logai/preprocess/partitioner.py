@@ -16,11 +16,6 @@ class PartitionerConfig(Config):
     exclude_last_window: bool = False
     exclude_smaller_windows: bool = False
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-
-        return
-
 
 def concat_logs(windows, tokens):
     partitioned_loglines = []

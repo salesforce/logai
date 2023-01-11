@@ -31,10 +31,12 @@ class DrainParams(Config):
     extra_delimiters: tuple = ()
     param_str: str = "*"
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-        if self.extra_delimiters:
-            self.extra_delimiters = tuple(self.extra_delimiters)
+    @classmethod
+    def from_dict(cls, config_dict):
+        config = super(DrainParams, cls).from_dict(config_dict)
+        if config.extra_delimiters:
+            config.extra_delimiters = tuple(config.extra_delimiters)
+        return config
 
 
 class Profiler(ABC):

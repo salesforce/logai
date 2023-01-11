@@ -22,9 +22,6 @@ class LSTMParams(ForecastBasedNNParams):
     max_token_len: int = None
     use_attention: bool = False
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-
 
 class Attention(nn.Module):
     """Attention model for lstm based log representation learning

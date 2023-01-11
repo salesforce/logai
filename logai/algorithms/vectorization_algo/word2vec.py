@@ -26,9 +26,6 @@ class Word2VecParams(Config):
     vector_size: int = 3
     window: int = 3
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-
 
 @factory.register("vectorization", "word2vec", Word2VecParams)
 class Word2Vec(VectorizationAlgo):

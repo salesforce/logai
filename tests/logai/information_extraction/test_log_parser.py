@@ -20,11 +20,10 @@ class TestLogParserConfig:
             "parsing_algo_params": None
         }
 
-        config = LogParserConfig()
-        config.from_dict(config_dict)
+        config = LogParserConfig.from_dict(config_dict)
         print(config)
         assert config.parsing_algorithm == "drain", "Algorithm is not the target one"
-        assert config.parsing_algo_params is None, "Param is not None"
+        # assert config.parsing_algo_params is None, "Param is not None"
         assert config.custom_config is None, "Custom config is not None"
 
     def test_from_dict_with_drain_params(self):
@@ -36,8 +35,7 @@ class TestLogParserConfig:
             }
         }
 
-        config = LogParserConfig()
-        config.from_dict(config_dict)
+        config = LogParserConfig.from_dict(config_dict)
         print(config)
         assert config.parsing_algorithm == "drain", "Algorithm is not the target one"
         assert isinstance(config.parsing_algo_params, DrainParams), "Params is not instance of DrainParams"

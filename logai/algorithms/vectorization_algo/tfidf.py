@@ -43,9 +43,6 @@ class TfIdfParams(Config):
     smooth_idf: bool = True
     sublinear_tf: bool = False
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-
 
 @factory.register("vectorization", "tfidf", TfIdfParams)
 class TfIdf(VectorizationAlgo):

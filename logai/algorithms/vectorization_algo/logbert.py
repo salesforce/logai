@@ -39,9 +39,6 @@ class LogBERTVectorizerParams(Config):
     tokenizer_dirpath: str = None
     num_proc: int = 4
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-
 
 @factory.register("vectorization", "logbert", LogBERTVectorizerParams)
 class LogBERT(VectorizationAlgo):

@@ -20,9 +20,6 @@ class CNNParams(ForecastBasedNNParams):
 
     kernel_sizes: list = [2, 3, 4]
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-
 
 class CNN(ForecastBasedNN):
     """CNN based model for learning log representation through a self-supervised forecasting task over log sequences

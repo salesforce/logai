@@ -83,10 +83,7 @@ class AlgorithmFactory:
         :param config_dict: The config dictionary.
         """
         assert name in self._algorithms[task], f"Unknown algorithm {name}."
-        params = self._algorithms[task][name][0]()
-        if config_dict is not None:
-            params.from_dict(config_dict)
-        return params
+        return self._algorithms[task][name][0].from_dict(config_dict)
 
     def get_algorithm(self, task, name, config):
         """

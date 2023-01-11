@@ -22,9 +22,6 @@ class OneHotEncodingParams(Config):
     dtype: np.float64 = np.float64
     handle_unknown: str = "error"
 
-    def from_dict(self, config_dict):
-        super().from_dict(config_dict)
-
 
 class OneHotEncoding(CategoricalEncodingAlgo):
     def __init__(self, params: OneHotEncodingParams):
