@@ -11,8 +11,11 @@ from logai.algorithms.vectorization_algo.forecast_nn import ForecastNNVectorized
 class TransformerParams(ForecastBasedNNParams):
     """Config for transformer based log representation learning
 
-    Args:
-        ForecastBasedNNParams (_type_): _description_
+    Inherits:
+        ForecastBasedNNParams : base class for parameters of forecasting based neural log representation moels
+    nhead: int = 4 # number of attention heads
+    num_layers: int = 1  # number of hidden layers in the neural network
+
     """
 
     nhead: int = 4

@@ -15,7 +15,9 @@ class CNNParams(ForecastBasedNNParams):
     """Config for CNN based log representation learning
 
     Inherits:
-        ForecastBasedNNParams: Config class for storing parameters of forecast based neural models 
+        ForecastBasedNNParams: Config class for storing parameters of forecast based neural models
+
+    kernel_sizes: list = [2, 3, 4] # kernel size
     """
 
     kernel_sizes: list = [2, 3, 4]

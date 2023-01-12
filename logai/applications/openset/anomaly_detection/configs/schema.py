@@ -11,6 +11,7 @@ config_schema = Schema(
         "deduplicate_test": bool,
         Optional("test_data_frac_pos"): float,
         Optional("test_data_frac_neg"): float,
+        Optional("train_test_shuffle"): bool,
         "data_loader_config": {
             "filepath": str,
             "reader_args": {"log_format": str},
