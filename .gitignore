@@ -28,3 +28,9 @@ dist
 /tests/logai/test_data/temp/
 /tests/logai/test_data/BGL_AD/output/
 /tests/logai/test_data/HDFS_AD/output/
+/logai/.idea/
+/logai.egg-info/
+/logai/use_case_notebooks/datasets/
+.DS_Store
+/gui/.DS_Store
+
