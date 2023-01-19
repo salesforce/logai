@@ -34,15 +34,12 @@ class LogPattern(ParamInfoMixin):
 
     def json_to_config(self, json_config):
         config = json.loads(json_config)
-        workflow_config = WorkFlowConfig()
-        workflow_config.from_dict(config)
+        workflow_config = WorkFlowConfig.from_dict(config)
         return workflow_config
 
     def yaml_to_config(self, yaml_config):
         config = yaml.safe_load(yaml_config)
-
-        workflow_config = WorkFlowConfig()
-        workflow_config.from_dict(config)
+        workflow_config = WorkFlowConfig.from_dict(config)
         return workflow_config
 
     def execute_auto_parsing(self, config: WorkFlowConfig):

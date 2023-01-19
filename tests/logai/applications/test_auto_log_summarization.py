@@ -95,8 +95,7 @@ class TestAutoLogSummarization:
         """
         config = json.loads(json_config)
         print(config)
-        workflow_config = WorkFlowConfig()
-        workflow_config.from_dict(config)
+        workflow_config = WorkFlowConfig.from_dict(config)
         print(workflow_config)
         workflow_config.open_set_data_loader_config.filepath = TEST_HDFS_PATH
 

@@ -109,14 +109,11 @@ class LogAnomaly(ParamInfoMixin):
     # TODO: merge with PD and move to utils
     def json_to_config(self, json_config):
         config = json.loads(json_config)
-        workflow_config = WorkFlowConfig()
-        workflow_config.from_dict(config)
+        workflow_config = WorkFlowConfig.from_dict(config)
         return workflow_config
 
     # TODO: merge with PD and move to utils
     def yaml_to_config(self, yaml_config):
         config = yaml.safe_load(yaml_config)
-
-        workflow_config = WorkFlowConfig()
-        workflow_config.from_dict(config)
+        workflow_config = WorkFlowConfig.from_dict(config)
         return workflow_config

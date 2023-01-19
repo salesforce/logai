@@ -39,57 +39,56 @@ class WorkFlowConfig(Config):
     clustering_config: object = None
     workflow_config: object = None
 
-    def from_dict(self, config_dict):
-        if not config_dict:
-            return
-        for field in self.__dict__:
-            if field in config_dict:
-                setattr(self, field, config_dict[field])
+    @classmethod
+    def from_dict(cls, config_dict):
+        config = super(WorkFlowConfig, cls).from_dict(config_dict)
 
-        if self.data_loader_config:
-            self.data_loader_config = \
-                DataLoaderConfig.from_dict(self.data_loader_config)
+        if config.data_loader_config:
+            config.data_loader_config = \
+                DataLoaderConfig.from_dict(config.data_loader_config)
 
-        if self.open_set_data_loader_config:
-            self.open_set_data_loader_config = \
-                OpenSetDataLoaderConfig.from_dict(self.open_set_data_loader_config)
+        if config.open_set_data_loader_config:
+            config.open_set_data_loader_config = \
+                OpenSetDataLoaderConfig.from_dict(config.open_set_data_loader_config)
 
-        if self.preprocessor_config:
-            self.preprocessor_config = \
-                PreprocessorConfig.from_dict(self.preprocessor_config)
+        if config.preprocessor_config:
+            config.preprocessor_config = \
+                PreprocessorConfig.from_dict(config.preprocessor_config)
 
-        if self.partitioner_config:
-            self.partitioner_config = \
-                PartitionerConfig.from_dict(self.partitioner_config)
+        if config.partitioner_config:
+            config.partitioner_config = \
+                PartitionerConfig.from_dict(config.partitioner_config)
 
-        if self.open_set_partitioner_config:
-            self.open_set_partitioner_config = \
-                OpenSetPartitionerConfig.from_dict(self.open_set_partitioner_config)
+        if config.open_set_partitioner_config:
+            config.open_set_partitioner_config = \
+                OpenSetPartitionerConfig.from_dict(config.open_set_partitioner_config)
 
-        if self.log_parser_config:
-            self.log_parser_config = \
-                LogParserConfig.from_dict(self.log_parser_config)
+        if config.log_parser_config:
+            config.log_parser_config = \
+                LogParserConfig.from_dict(config.log_parser_config)
 
-        if self.log_vectorizer_config:
-            self.log_vectorizer_config = \
-                VectorizerConfig.from_dict(self.log_vectorizer_config)
+        if config.log_vectorizer_config:
+            config.log_vectorizer_config = \
+                VectorizerConfig.from_dict(config.log_vectorizer_config)
 
-        if self.feature_extractor_config:
-            self.feature_extractor_config = \
-                FeatureExtractorConfig.from_dict(self.feature_extractor_config)
+        if config.feature_extractor_config:
+            config.feature_extractor_config = \
+                FeatureExtractorConfig.from_dict(config.feature_extractor_config)
 
-        if self.categorical_encoder_config:
-            self.categorical_encoder_config = \
-                CategoricalEncoderConfig.from_dict(self.categorical_encoder_config)
+        if config.categorical_encoder_config:
+            config.categorical_encoder_config = \
+                CategoricalEncoderConfig.from_dict(config.categorical_encoder_config)
 
-        if self.anomaly_detection_config:
-            self.anomaly_detection_config = \
-                AnomalyDetectionConfig.from_dict(self.anomaly_detection_config)
+        if config.anomaly_detection_config:
+            config.anomaly_detection_config = \
+                AnomalyDetectionConfig.from_dict(config.anomaly_detection_config)
 
-        if self.nn_anomaly_detection_config:
-            self.nn_anomaly_detection_config = \
-                NNAnomalyDetectionConfig.from_dict(self.nn_anomaly_detection_config)
+        if config.nn_anomaly_detection_config:
+            config.nn_anomaly_detection_config = \
+                NNAnomalyDetectionConfig.from_dict(config.nn_anomaly_detection_config)
 
-        if self.clustering_config:
-            self.clustering_config = \
-                ClusteringConfig.from_dict(self.clustering_config)
+        if config.clustering_config:
+            config.clustering_config = \
+                ClusteringConfig.from_dict(config.clustering_config)
+
+        return config
