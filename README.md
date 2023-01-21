@@ -6,7 +6,10 @@ For full license text, see the LICENSE file in the repo root or https://opensour
 
 -->
 
-![logo](./img/logai_logo.jpg)
+<div>
+    <img src="./img/logai_logo.jpg" alt="logo" width="200"/>
+</div>
+
 
 [![tests](https://github.com/salesforce/logai/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/salesforce/logai/actions/workflows/tests.yml)
 
@@ -39,37 +42,17 @@ Below table compares LogAI with these projects on several aspects.
 | Huggingface integration (TBD) | :white_check_mark: | | | | | |  |
 | GUI for result visualization (TBD) | :white_check_mark: | :white_check_mark: | :white_check_mark: | | | | | 
 
-### Architecture
-
-Log-AI architecture includes several layers: Data layer, preprocessing layer, information extraction layer,
-analysis layer, visualization layer and evaluation layer. Components of these layers covers functionalities that
-widely used in current log analysis tasks. 
-
-![design](./img/LogAIDesign.png)
 
 ## How to Use
 
-#### Install dependencies:
+#### Install LogAI:
 
 ```shell
 git clone https://git.soma.salesforce.com/SalesforceResearch/logai.git
 cd logai
 python3 -m venv venv # create virtual environment
 source venv/bin/activate # activate virtual env
-pip install -r requirements.txt
-```
-
-#### Build wheels package:
-
-```shell
-python setup.py bdist_wheel
-```
-Then you can find the .whl package in `./dist/`.
-
-#### Install Log-AI from wheels:
-
-```shell
-pip install logai-{version}-py2.py3-none-any.whl
+pip install ./ # install LogAI from root directory
 ```
 
 #### Use GUI to explore LogAI
@@ -79,34 +62,4 @@ export PYTHONPATH='.'  # make sure to add current root to PYTHONPATH
 python3 gui/application.py # Run local plotly dash server.
 
 ```
-## How to Build Your Own LogAI application
-
-### Jupyter Notebooks
-Please refer to [Instruction in Use Case Notebooks](./use_case_notebooks/README.md) for more information about how to
-use LogAI modules to create E2E applications in Jupyter Notebook.
-
-
-## Miscs
-
-### Run Unit Tests
-
-```shell
-./run_unittests.sh 
-```
-
-### Update Liscence Header
-
-```shell
-python -m licenseheaders -t .copyright.tmpl -y "2022" -o "Salesforce.com, inc."
-
-```
-
-### Build Doc using sphinx
-
-```shell
-cd docs 
-make clean
-make html
-```
-
 
