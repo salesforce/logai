@@ -6,12 +6,20 @@ For full license text, see the LICENSE file in the repo root or https://opensour
 
 -->
 
-<div>
-    <img src="./img/logai_logo.jpg" alt="logo" width="200"/>
+<p align="center">
+    <br>
+    <img src="./img/logai_logo.jpg" width="400"/>
+    </br>
+</p>
+
+<div align="center">
+  <a href="https://github.com/salesforce/logai/actions/workflows/tests.yml">
+    <img alt="Latest Release" src="https://github.com/salesforce/logai/actions/workflows/tests.yml/badge.svg?branch=main" />
+  </a>
+  <a href="https://opensource.org/licenses/BSD-3-Clause">
+    <img alt="license" src="https://img.shields.io/badge/License-BSD_3--Clause-blue.svg"/>
+  </a>
 </div>
-
-
-[![tests](https://github.com/salesforce/logai/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/salesforce/logai/actions/workflows/tests.yml)
 
 # Log-AI: Log Analytics and Intelligence Library
 
