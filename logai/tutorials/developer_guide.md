@@ -21,7 +21,7 @@ python3 gui/application.py # Run local plotly dash server.
 ## How to Build Your Own LogAI application
 
 ### Jupyter Notebooks
-Please refer to [Instruction in Use Case Notebooks](./use_case_notebooks/README.md) for more information about how to
+Please refer to [Instruction in Use Case Notebooks](./tutorial/how_to_use.md) for more information about how to
 use LogAI modules to create E2E applications in Jupyter Notebook.
 
 

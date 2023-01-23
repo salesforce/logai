@@ -21,17 +21,47 @@ For full license text, see the LICENSE file in the repo root or https://opensour
   </a>
 </div>
 
-# Log-AI: Log Analytics and Intelligence Library
+# LogAI: A Python Toolkit for AI-based Log Analytics
 
-## What is LogAI
+## What is LogAI?
 
-LogAI is a library that provides machine learning (ML) based log analytics and intelligent tools. LogAI can be used to  solve a variety of log analysis related problems, such as log clustering log search, log based anomaly detection and log based failure prediction. LogAI is used in multiple scenarios in Salesforce core stack, and it can be easily expandable to external use scenarios. 
+LogAI is a one-stop python toolkit for AI-based log analysis. LogAI provides artificial intelligence (AI) and machine learning (ML) capabilities for log analysis. 
+LogAI can be used for a variety of tasks such as log summarization, log clustering and log anomaly detection. 
+LogAI adopts the same log data model as OpenTelemetry so the developed applications and models are eligible to logs from different log management platforms. 
+LogAI provides a unified model interface and integrates with popular time-series models, statistical learning models and deep learning models. 
+LogAI also provides an out-of-the-box GUI for users to conduct interactive analysis. With LogAI, we can also easily benchmark popular deep learning algorithms for log anomaly detection without putting in redundant effort to process the logs. 
 
-LogAI helps the user to easily perform popular log tasks:
-* Log Summarization
-* Log Clustering
-* Log anomaly Detection
-* ...
+## How to Use LogAI
+
+#### Install LogAI:
+
+```shell
+git clone https://git.soma.salesforce.com/SalesforceResearch/logai.git
+cd logai
+python3 -m venv venv # create virtual environment
+source venv/bin/activate # activate virtual env
+pip install ./ # install LogAI from root directory
+```
+
+### Build LogAI Application
+Please refer to [Build LogAI Application in Jupyter Notebook](./tutorials/jupyter_notebook/jupyter_tutorial.md) for more information about how to
+use LogAI modules to create E2E applications in Jupyter Notebook.
+
+### Use GUI to explore LogAI
+
+```shell
+export PYTHONPATH='.'  # make sure to add current root to PYTHONPATH
+python3 gui/application.py # Run local plotly dash server.
+```
+
+Then open the LogAI portal via http://localhost:8050/ or http://127.0.0.1:8050/ in your browser:
+
+![portal](img/log_summarization.png)
+
+### Run Anomaly Detection Benchmarking Using LogAI
+
+(TBA)
+
 
 ## LogAI compare to other open-source projects about AI-based log analytics
 
@@ -51,23 +81,5 @@ Below table compares LogAI with these projects on several aspects.
 | GUI for result visualization (TBD) | :white_check_mark: | :white_check_mark: | :white_check_mark: | | | | | 
 
 
-## How to Use
 
-#### Install LogAI:
-
-```shell
-git clone https://git.soma.salesforce.com/SalesforceResearch/logai.git
-cd logai
-python3 -m venv venv # create virtual environment
-source venv/bin/activate # activate virtual env
-pip install ./ # install LogAI from root directory
-```
-
-#### Use GUI to explore LogAI
-
-```shell
-export PYTHONPATH='.'  # make sure to add current root to PYTHONPATH
-python3 gui/application.py # Run local plotly dash server.
-
-```
 
