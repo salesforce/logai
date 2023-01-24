@@ -1,6 +1,8 @@
 # Sphinx documentation
-docs/build/*
-docs/source/_static/*
+/docs/build/
+/docs/source/_static/
+/docs/lib/
+/docs/bin/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -34,3 +36,6 @@ dist
 /.DS_Store
 /gui/.DS_Store
 /.idea
+
+
+docs/.DS_Store

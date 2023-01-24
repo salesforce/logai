@@ -12,8 +12,7 @@ Here we provide examples to use Jupyter notebook to do interactive log analysis 
 ### Create Log Record Object
 
 Log-AI defines `LogRecordObject` as the data model for log process. `LogRecordObject` data model follows [OpenTelemetry Log and Event Record Definition](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#log-and-event-record-definition). 
-In addition, an optional field `labels` is used to host labels for log analytics applications, such as log anomaly detection or log clustering. Check out 
-[demo notebook](./logai/tutorials/demo_components.ipynb) to run examples. 
+In addition, an optional field `labels` is used to host labels for log analytics applications, such as log anomaly detection or log clustering. 
 
 LogAI provides data loaders to consume logs from different sources. 
 * `FileDataLoader` implements methods to consume local log files, including character separated values file formats (`.csv` or `.tsv`) 
