@@ -96,7 +96,7 @@ use LogAI modules to create E2E applications in Jupyter Notebook.
 
 (TBA)
 
-## Documentation
+Please visit [LogAI Documentation]() for more detailed information.
 
 ## Technical Report and Citing LogAI
 

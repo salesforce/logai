@@ -175,7 +175,3 @@ anomaly_detector.fit(train)
 res = anomaly_detector.predict(test)
 
 ```
-
-### Result Visualization [TBA]
-
-### Result Evaluation [TBA]
