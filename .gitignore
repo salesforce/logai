@@ -1,6 +1,5 @@
 # Sphinx documentation
 /docs/build/
-/docs/source/_static/
 /docs/lib/
 /docs/bin/
 
