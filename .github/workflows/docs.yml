@@ -25,12 +25,11 @@ jobs:
       run: |
         sudo apt-get update -y
         sudo apt-get install pandoc --fix-missing
-        python -m pip install --upgrade pip setuptools wheel nbsphinx
+        python3 -m pip install --upgrade pip
+        python3 -m pip install setuptools wheel nbsphinx recommonmark sphinx_rtd_theme
     - name: Build Sphinx docs
       run: |
-        cd docs
-        make clean
-        make html
+        build_docs.sh
       timeout-minutes: 10
     - name: Deploy to gh-pages
       uses: peaceiris/actions-gh-pages@v3
