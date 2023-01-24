@@ -2,7 +2,7 @@ name: docs
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, github_page_action ]
   pull_request:
     branches: [ main ]
   release:
