@@ -8,7 +8,7 @@ Welcome to LogAI!
 ===============================================
 
 .. image:: _static/logai_logo.jpg
-   :width: 600
+   :width: 650
    :align: center
 
 
