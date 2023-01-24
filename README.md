@@ -29,7 +29,7 @@ For full license text, see the LICENSE file in the repo root or https://opensour
 1. [Documentation](#documentation)
 
 1. [Evaluation and Benchmarking](#evaluation-and-benchmarking)
-1. [Technical Report and Citing Merlion](#technical-report-and-citing-merlion)
+1. [Technical Report and Citing LogAI](#technical-report-and-citing-logai)
 
 ## Introduction
 
