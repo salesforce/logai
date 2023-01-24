@@ -6,21 +6,38 @@ For full license text, see the LICENSE file in the repo root or https://opensour
 
 -->
 
-![logo](./img/logai_logo.jpg)
+<p align="center">
+    <br>
+    <img src="./img/logai_logo.jpg" width="400"/>
+    </br>
+</p>
 
-[![tests](https://github.com/salesforce/logai/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/salesforce/logai/actions/workflows/tests.yml)
+<div align="center">
+  <a href="https://github.com/salesforce/logai/actions/workflows/tests.yml">
+    <img alt="Latest Release" src="https://github.com/salesforce/logai/actions/workflows/tests.yml/badge.svg?branch=main" />
+  </a>
+  <a href="https://opensource.org/licenses/BSD-3-Clause">
+    <img alt="license" src="https://img.shields.io/badge/License-BSD_3--Clause-blue.svg"/>
+  </a>
+</div>
 
-# Log-AI: Log Analytics and Intelligence Library
+# LogAI: A Python Toolkit for AI-based Log Analytics
 
-## What is LogAI
+## Table of Contents
+1. [Introduction](#introduction)
+1. [Installation](#installation)
+1. [Documentation](#documentation)
 
-LogAI is a library that provides machine learning (ML) based log analytics and intelligent tools. LogAI can be used to  solve a variety of log analysis related problems, such as log clustering log search, log based anomaly detection and log based failure prediction. LogAI is used in multiple scenarios in Salesforce core stack, and it can be easily expandable to external use scenarios. 
+1. [Evaluation and Benchmarking](#evaluation-and-benchmarking)
+1. [Technical Report and Citing Merlion](#technical-report-and-citing-merlion)
 
-LogAI helps the user to easily perform popular log tasks:
-* Log Summarization
-* Log Clustering
-* Log anomaly Detection
-* ...
+## Introduction
+
+LogAI is a one-stop python toolkit for AI-based log analysis. LogAI provides artificial intelligence (AI) and machine learning (ML) capabilities for log analysis. 
+LogAI can be used for a variety of tasks such as log summarization, log clustering and log anomaly detection. 
+LogAI adopts the same log data model as OpenTelemetry so the developed applications and models are eligible to logs from different log management platforms. 
+LogAI provides a unified model interface and integrates with popular time-series models, statistical learning models and deep learning models. 
+LogAI also provides an out-of-the-box GUI for users to conduct interactive analysis. With LogAI, we can also easily benchmark popular deep learning algorithms for log anomaly detection without putting in redundant effort to process the logs. 
 
 ## LogAI compare to other open-source projects about AI-based log analytics
 
@@ -37,76 +54,63 @@ Below table compares LogAI with these projects on several aspects.
 | Log anomaly detection - traditional ML | :white_check_mark: |  |  | | :white_check_mark: |  |  |  
 | Log anomaly detection - deep Learning | :white_check_mark: |  | | | :white_check_mark: | :white_check_mark: |  |  
 | Huggingface integration (TBD) | :white_check_mark: | | | | | |  |
-| GUI for result visualization (TBD) | :white_check_mark: | :white_check_mark: | :white_check_mark: | | | | | 
+| GUI for result visualization (TBD) | :white_check_mark: | :white_check_mark: | :white_check_mark: | | | | |
 
-### Architecture
+## Installation
 
-Log-AI architecture includes several layers: Data layer, preprocessing layer, information extraction layer,
-analysis layer, visualization layer and evaluation layer. Components of these layers covers functionalities that
-widely used in current log analysis tasks. 
+### Install LogAI core library
 
-![design](./img/LogAIDesign.png)
-
-## How to Use
-
-#### Install dependencies:
+You can install LogAI using `pip install` with the instruction below:
 
 ```shell
 git clone https://git.soma.salesforce.com/SalesforceResearch/logai.git
 cd logai
 python3 -m venv venv # create virtual environment
 source venv/bin/activate # activate virtual env
-pip install -r requirements.txt
+pip install ./ # install LogAI from root directory
 ```
 
-#### Build wheels package:
+### Use GUI to explore LogAI
 
-```shell
-python setup.py bdist_wheel
-```
-Then you can find the .whl package in `./dist/`.
-
-#### Install Log-AI from wheels:
-
-```shell
-pip install logai-{version}-py2.py3-none-any.whl
-```
-
-#### Use GUI to explore LogAI
+You can also start a local LogAI service and use the GUI portal to explore LogAI.
 
 ```shell
 export PYTHONPATH='.'  # make sure to add current root to PYTHONPATH
 python3 gui/application.py # Run local plotly dash server.
-
 ```
-## How to Build Your Own LogAI application
 
-### Jupyter Notebooks
-Please refer to [Instruction in Use Case Notebooks](./use_case_notebooks/README.md) for more information about how to
+Then open the LogAI portal via http://localhost:8050/ or http://127.0.0.1:8050/ in your browser:
+
+![portal](img/log_summarization.png)
+
+## Documentation
+
+### Build LogAI Application
+Please refer to [Build LogAI Application in Jupyter Notebook](./tutorials/jupyter_notebook/jupyter_tutorial.md) for more information about how to
 use LogAI modules to create E2E applications in Jupyter Notebook.
 
+### Run Anomaly Detection Benchmarking Using LogAI
 
-## Miscs
+(TBA)
 
-### Run Unit Tests
+## Documentation
 
-```shell
-./run_unittests.sh 
-```
+## Technical Report and Citing LogAI
 
-### Update Liscence Header
+You can find more details about LogAI in the [technical report]().
 
-```shell
-python -m licenseheaders -t .copyright.tmpl -y "2022" -o "Salesforce.com, inc."
+If you're using LogAI in your research or applications, please cite using this BibTeX:
 
 ```
-
-### Build Doc using sphinx
-
-```shell
-cd docs 
-make clean
-make html
+@article{logai2023,
+      title={LogAI: A Python Toolkit for AI-based Log Analytics},
+      author={Qian Cheng, Amrita Saha, Wenzhuo Yang, Chenghao Liu, Gerald Woo, Doyen Sahoo, Steven HOI},
+      year={2023},
+      eprint={?},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
+}
 ```
+
 
 

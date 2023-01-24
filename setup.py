@@ -18,7 +18,7 @@ with open("requirements.txt") as f:
 with open("README.md") as f:
     readme = f.read()
 
-with open("LICENSE") as f:
+with open("LICENSE.txt") as f:
     license = f.read()
 
 setup(
@@ -32,5 +32,5 @@ setup(
     python_requires=">=3.8.0",
     install_requires=REQUIRED,
     license=license,
-    packages=find_packages(exclude=("tests", "docs")),
+    packages=find_packages(exclude=("tests", "docs", "gui")),
 )

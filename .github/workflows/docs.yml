@@ -1,0 +1,40 @@
+name: docs
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  release:
+    types: [ published ]
+
+jobs:
+  docs:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    - name: Install dependencies
+      run: |
+        sudo apt-get update -y
+        sudo apt-get install pandoc --fix-missing
+        python3 -m pip install --upgrade pip
+        python3 -m pip install setuptools wheel nbsphinx recommonmark sphinx_rtd_theme
+    - name: Build Sphinx docs
+      run: |
+        docs/build_docs.sh
+      timeout-minutes: 10
+
+    - name: Deploy to gh-pages
+      uses: peaceiris/actions-gh-pages@v3
+      if: ${{ github.ref == 'refs/heads/main' || github.event_name == 'release' }}
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: docs/_build/html

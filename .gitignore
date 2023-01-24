@@ -1,6 +1,8 @@
 # Sphinx documentation
-docs/build/*
-docs/source/_static/*
+/docs/build/
+/docs/source/_static/
+/docs/lib/
+/docs/bin/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -14,10 +16,10 @@ dist
 /logai/.ipynb_checkpoints/
 /results/
 /logai/results/
-/logai/use_case_notebooks/.ipynb_checkpoints/
-/logai/use_case_notebooks/aclImdb/
-/logai/use_case_notebooks/results/
-/logai/use_case_notebooks/test_trainer/
+/logai/tutorials/.ipynb_checkpoints/
+/logai/tutorials/aclImdb/
+/logai/tutorials/results/
+/logai/tutorials/test_trainer/
 /logai/applications/log_bert/test_trainer/
 /logai/applications/log_pattern_discovery/results/
 /venv/
@@ -30,7 +32,11 @@ dist
 /tests/logai/test_data/HDFS_AD/output/
 /logai/.idea/
 /logai.egg-info/
-/logai/use_case_notebooks/datasets/
-.DS_Store
+/logai/tutorials/datasets/
+/.DS_Store
 /gui/.DS_Store
+/.idea
 
+
+docs/.DS_Store
+/docs/_build/
