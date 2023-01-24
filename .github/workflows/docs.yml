@@ -34,9 +34,8 @@ jobs:
 
     - name: Deploy to gh-pages
       uses: peaceiris/actions-gh-pages@v3
-      if: ${{ github.ref == 'refs/heads/main' || github.event_name == 'release' }}
+      # if: ${{ github.ref == 'refs/heads/main' || github.event_name == 'release' }}
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: docs/_build/html
         enable_jekyll: false
-        
