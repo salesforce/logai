@@ -29,7 +29,7 @@ jobs:
         python3 -m pip install setuptools wheel nbsphinx recommonmark sphinx_rtd_theme
     - name: Build Sphinx docs
       run: |
-        build_docs.sh
+        docs/build_docs.sh
       timeout-minutes: 10
     - name: Deploy to gh-pages
       uses: peaceiris/actions-gh-pages@v3
