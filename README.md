@@ -24,8 +24,6 @@ For full license text, see the LICENSE file in the repo root or https://opensour
   </a>
 </div>
 
-[![pages-build-deployment](https://github.com/salesforce/logai/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/salesforce/logai/actions/workflows/pages/pages-build-deployment)
-
 # LogAI: A Python Toolkit for AI-based Log Analytics
 
 ## Table of Contents

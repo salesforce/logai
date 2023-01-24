@@ -12,15 +12,6 @@ Welcome to LogAI!
    :align: center
 
 
-Table of Content
-===============================================
-
-.. toctree::
-   :maxdepth: 2
-
-   .
-
-
 Introduction
 ===============================================
 In this section we briefly introduce LogAI, a Python toolkit for AI-based Log Analytics
