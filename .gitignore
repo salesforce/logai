@@ -23,8 +23,6 @@ dist
 /logai/applications/log_pattern_discovery/results/
 /venv/
 /temp/
-/gui/demo/data/
-/gui/uploaded_files/
 /tests/logai/test_data/HDFS/HDFS.log
 /tests/logai/test_data/temp/
 /tests/logai/test_data/BGL_AD/output/
