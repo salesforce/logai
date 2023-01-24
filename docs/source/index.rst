@@ -7,7 +7,7 @@
 Welcome to LogAI!
 ===============================================
 
-.. image:: logai_logo.jpg
+.. image:: _static/logai_logo.jpg
    :width: 600
    :align: center
 
@@ -48,7 +48,7 @@ analysis layer. Each layer contains the components to process logs in a standard
 summarization, log clustering, unsupervised log anomaly detection, are created on top of the components of the four
 layers.
 
-.. image:: LogAIDesign.png
+.. image:: _static/LogAIDesign.png
   :width: 750
 
 LogAI GUI Portal
@@ -83,7 +83,7 @@ You can also start a local LogAI service and use the GUI portal to explore LogAI
 
 Then open the LogAI portal via :file:`http://localhost:8050/` or :file:`http://127.0.0.1:8050/` in your browser:
 
-.. image:: log_summarization.png
+.. image:: _static/log_summarization.png
    :width: 750
 
 

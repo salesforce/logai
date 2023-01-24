@@ -48,7 +48,7 @@ Use GUI to explore LogAI
 
 Then open the LogAI portal via :file:`http://localhost:8050/` or :file:`http://127.0.0.1:8050/` in your browser:
 
-.. image:: log_summarization.png
+.. image:: _static/log_summarization.png
    :width: 750
 
 

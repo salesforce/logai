@@ -39,3 +39,4 @@ dist
 
 
 docs/.DS_Store
+/docs/_build/
