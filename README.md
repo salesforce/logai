@@ -56,8 +56,8 @@ Below table compares LogAI with these projects on several aspects.
 | Log anomaly detection - time-series | :white_check_mark: | :white_check_mark:  | :white_check_mark:  | | | | | | 
 | Log anomaly detection - traditional ML | :white_check_mark: |  |  | | :white_check_mark: |  |  |  
 | Log anomaly detection - deep Learning | :white_check_mark: |  | | | :white_check_mark: | :white_check_mark: |  |  
-| Huggingface integration (TBD) | :white_check_mark: | | | | | |  |
-| GUI for result visualization (TBD) | :white_check_mark: | :white_check_mark: | :white_check_mark: | | | | |
+| Huggingface integration | :white_check_mark: | | | | | |  |
+| GUI for result visualization | :white_check_mark: | :white_check_mark: | :white_check_mark: | | | | |
 
 ## Installation
 
@@ -115,5 +115,10 @@ If you're using LogAI in your research or applications, please cite using this B
 }
 ```
 
+## Contact
+If you have any questions, comments or suggestions, 
+please do not hesitate to contact us at logai@salesforce.com. 
 
+## License
+[BSD 3-Clause License](LICENSE.txt)
 

@@ -4,27 +4,28 @@
 DIRNAME=$(cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 cd "${DIRNAME}/.."
 
-# # Get current git branch & stash unsaved changes
-#GIT_BRANCH=$(git branch --show-current)
-#if [ -z "${GIT_BRANCH}" ]; then
-#    GIT_BRANCH="main"
-#fi
-#git stash
+# Get current git branch & stash unsaved changes
+GIT_BRANCH=$(git branch --show-current)
+if [ -z "${GIT_BRANCH}" ]; then
+    GIT_BRANCH="main"
+fi
+git stash
 
 # Set up virtual environment
-pip3 install setuptools wheel virtualenv
+python3 -m pip install --upgrade pip setuptools wheel virtualenv
 if [ ! -d venv ]; then
   rm -f venv
   virtualenv venv
 fi
 source venv/bin/activate
+python3 -m pip install -r "${DIRNAME}/requirements.txt"
 
 # Clean up build directory and install Sphinx requirements
 sphinx-build -M clean "${DIRNAME}/source" "${DIRNAME}/_build"
 
 # Build API docs for current head
 export current_version="latest"
-pip3 install "${DIRNAME}"
+python3 -m pip install "${DIRNAME}/../"
 sphinx-build -b html "${DIRNAME}/source" "${DIRNAME}/_build/html/${current_version}" -W --keep-going
 rm -rf "${DIRNAME}/_build/html/${current_version}/.doctrees"
 
