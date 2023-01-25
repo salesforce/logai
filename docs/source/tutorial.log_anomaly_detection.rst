@@ -1,0 +1,1 @@
+.. include:: ../../tutorials/tutorial_log_anomaly_detection
