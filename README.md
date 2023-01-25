@@ -17,7 +17,7 @@ For full license text, see the LICENSE file in the repo root or https://opensour
     <img alt="Latest Release" src="https://github.com/salesforce/logai/actions/workflows/tests.yml/badge.svg?branch=main" />
   </a>
   <a href="https://github.com/salesforce/logai/actions/workflows/pages/pages-build-deployment">
-    <img alt="pages-build-deployment" src="https://github.com/salesforce/logai/actions/workflows/pages/pages-build-deployment/badge.svg?branch=main" />
+    <img alt="pages-build-deployment" src="https://github.com/salesforce/logai/actions/workflows/pages/pages-build-deployment/badge.svg" />
   </a>
   <a href="https://opensource.org/licenses/BSD-3-Clause">
     <img alt="license" src="https://img.shields.io/badge/License-BSD_3--Clause-blue.svg"/>
