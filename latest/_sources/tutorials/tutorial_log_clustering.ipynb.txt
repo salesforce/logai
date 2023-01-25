@@ -37,7 +37,7 @@
     "from logai.dataloader.openset_data_loader import OpenSetDataLoader, OpenSetDataLoaderConfig\n",
     "\n",
     "#File Configuration\n",
-    "filepath = \"{path to HDFS data}/HDFS_2000.log\" # modify to point to the HDFS_2000.log dataset.\n",
+    "filepath = \"../datasets/HDFS_2000.log\"\n",
     "\n",
     "dataset_name = \"HDFS\"\n",
     "data_loader = OpenSetDataLoader(\n",

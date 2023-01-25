@@ -108,11 +108,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#id1">Feature Extraction</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">Anomaly Detection</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#Check-the-corresponding-loglines">Check the corresponding loglines</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#Check-the-corresponding-attributes">Check the corresponding attributes</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Anomaly Detection</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial_log_clustering.html">Tutorial: Log Clustering using LogAI</a></li>
@@ -489,7 +485,7 @@ div.rendered_html tbody tr:hover {
 <span class="kn">from</span> <span class="nn">logai.dataloader.openset_data_loader</span> <span class="kn">import</span> <span class="n">OpenSetDataLoader</span><span class="p">,</span> <span class="n">OpenSetDataLoaderConfig</span>
 
 <span class="c1">#File Configuration</span>
-<span class="n">filepath</span> <span class="o">=</span> <span class="s2">&quot;{Path to HealthApp Data}/HealthApp_20000.log&quot;</span> <span class="c1"># modify to match the path of HealthApp_20000.log</span>
+<span class="n">filepath</span> <span class="o">=</span> <span class="s2">&quot;../datasets/HealthApp_20000.log&quot;</span> <span class="c1"># Point to the target HealthApp.log dataset</span>
 
 <span class="n">dataset_name</span> <span class="o">=</span> <span class="s2">&quot;HealthApp&quot;</span>
 <span class="n">data_loader</span> <span class="o">=</span> <span class="n">OpenSetDataLoader</span><span class="p">(</span>
@@ -512,7 +508,7 @@ div.rendered_html tbody tr:hover {
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">FileNotFoundError</span>                         Traceback (most recent call last)
 Cell <span class="ansi-green-fg">In[1], line 9</span>
-<span class="ansi-green-intense-fg ansi-bold">      6</span> filepath <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">{</span><span style="color: rgb(175,0,0)">Path to HealthApp Data}/HealthApp_20000.log</span><span style="color: rgb(175,0,0)">&#34;</span> <span style="color: rgb(95,135,135)"># modify to match the path of HealthApp_20000.log</span>
+<span class="ansi-green-intense-fg ansi-bold">      6</span> filepath <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">../datasets/HealthApp_20000.log</span><span style="color: rgb(175,0,0)">&#34;</span> <span style="color: rgb(95,135,135)"># Point to the target HealthApp.log dataset</span>
 <span class="ansi-green-intense-fg ansi-bold">      8</span> dataset_name <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">HealthApp</span><span style="color: rgb(175,0,0)">&#34;</span>
 <span class="ansi-green-fg">----&gt; 9</span> data_loader <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">OpenSetDataLoader</span><span class="ansi-yellow-bg">(</span>
 <span class="ansi-green-intense-fg ansi-bold">     10</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">OpenSetDataLoaderConfig</span><span class="ansi-yellow-bg">(</span>
@@ -977,8 +973,6 @@ Cell <span class="ansi-green-fg">In[10], line 3</span>
 <span class="ansi-red-fg">NameError</span>: name &#39;feature_vector&#39; is not defined
 </pre></div></div>
 </div>
-<section id="Check-the-corresponding-loglines">
-<h3>Check the corresponding loglines<a class="headerlink" href="#Check-the-corresponding-loglines" title="Permalink to this heading">¶</a></h3>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
@@ -1000,9 +994,6 @@ Cell <span class="ansi-green-fg">In[11], line 1</span>
 <span class="ansi-red-fg">NameError</span>: name &#39;loglines&#39; is not defined
 </pre></div></div>
 </div>
-</section>
-<section id="Check-the-corresponding-attributes">
-<h3>Check the corresponding attributes<a class="headerlink" href="#Check-the-corresponding-attributes" title="Permalink to this heading">¶</a></h3>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
@@ -1024,7 +1015,6 @@ Cell <span class="ansi-green-fg">In[12], line 1</span>
 <span class="ansi-red-fg">NameError</span>: name &#39;attributes&#39; is not defined
 </pre></div></div>
 </div>
-</section>
 </section>
 </section>
 
