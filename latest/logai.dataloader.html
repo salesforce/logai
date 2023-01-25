@@ -1,0 +1,562 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>logai.dataloader package &mdash; LogAI  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="logai.information_extraction package" href="logai.information_extraction.html" />
+    <link rel="prev" title="logai.applications package" href="logai.applications.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> LogAI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="develop.html">Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LogAI Core Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">logai</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="logai.html">logai package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="logai.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.html">logai.algorithms package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.analysis.html">logai.analysis package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.html">logai.applications package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">logai.dataloader package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.information_extraction.html">logai.information_extraction package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.preprocess.html">logai.preprocess package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.utils.html">logai.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="logai.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logai.html#module-logai.config_interfaces">logai.config_interfaces module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logai.html#module-logai">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">LogAI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">logai</a> &raquo;</li>
+        
+          <li><a href="logai.html">logai package</a> &raquo;</li>
+        
+      <li>logai.dataloader package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/logai.dataloader.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="logai-dataloader-package">
+<h1>logai.dataloader package<a class="headerlink" href="#logai-dataloader-package" title="Permalink to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="module-logai.dataloader.data_loader">
+<span id="logai-dataloader-data-loader-module"></span><h2>logai.dataloader.data_loader module<a class="headerlink" href="#module-logai.dataloader.data_loader" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="logai.dataloader.data_loader.DataLoaderConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.dataloader.data_loader.</span></span><span class="sig-name descname"><span class="pre">DataLoaderConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimensions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reader_args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infer_datetime</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datetime_format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'%Y-%M-%dT%H:%M:%SZ'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">open_dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.dataloader.data_loader.DataLoaderConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
+<p>The configuration class of data loader.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.dataloader.data_loader.DataLoaderConfig.datetime_format">
+<span class="sig-name descname"><span class="pre">datetime_format</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#logai.dataloader.data_loader.DataLoaderConfig.datetime_format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.dataloader.data_loader.DataLoaderConfig.dimensions">
+<span class="sig-name descname"><span class="pre">dimensions</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="headerlink" href="#logai.dataloader.data_loader.DataLoaderConfig.dimensions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.dataloader.data_loader.DataLoaderConfig.filepath">
+<span class="sig-name descname"><span class="pre">filepath</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#logai.dataloader.data_loader.DataLoaderConfig.filepath" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.dataloader.data_loader.DataLoaderConfig.infer_datetime">
+<span class="sig-name descname"><span class="pre">infer_datetime</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#logai.dataloader.data_loader.DataLoaderConfig.infer_datetime" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.dataloader.data_loader.DataLoaderConfig.log_type">
+<span class="sig-name descname"><span class="pre">log_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#logai.dataloader.data_loader.DataLoaderConfig.log_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.dataloader.data_loader.DataLoaderConfig.open_dataset">
+<span class="sig-name descname"><span class="pre">open_dataset</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#logai.dataloader.data_loader.DataLoaderConfig.open_dataset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.dataloader.data_loader.DataLoaderConfig.reader_args">
+<span class="sig-name descname"><span class="pre">reader_args</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="headerlink" href="#logai.dataloader.data_loader.DataLoaderConfig.reader_args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="logai.dataloader.data_loader.DefaultDataLoader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.dataloader.data_loader.</span></span><span class="sig-name descname"><span class="pre">DefaultDataLoader</span></span><a class="headerlink" href="#logai.dataloader.data_loader.DefaultDataLoader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="logai.dataloader.data_loader.FileDataLoader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.dataloader.data_loader.</span></span><span class="sig-name descname"><span class="pre">FileDataLoader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.dataloader.data_loader.DataLoaderConfig" title="logai.dataloader.data_loader.DataLoaderConfig"><span class="pre">DataLoaderConfig</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.dataloader.data_loader.FileDataLoader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Implementation of file data loader, reading log record objects from local files.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="logai.dataloader.data_loader.FileDataLoader.load_data">
+<span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#logai.dataloader.data_model.LogRecordObject" title="logai.dataloader.data_model.LogRecordObject"><span class="pre">LogRecordObject</span></a></span></span><a class="headerlink" href="#logai.dataloader.data_loader.FileDataLoader.load_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load log data with given configuration.
+Currently support file formats:
+- csv
+- tsv
+- other plain text format such as .log with proper parsing configurations
+:return: LogRecordObject: the logs read from log files and converted into LogRecordObject</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-logai.dataloader.data_loader_utils">
+<span id="logai-dataloader-data-loader-utils-module"></span><h2>logai.dataloader.data_loader_utils module<a class="headerlink" href="#module-logai.dataloader.data_loader_utils" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="logai.dataloader.data_loader_utils.generate_logformat_regex">
+<span class="sig-prename descclassname"><span class="pre">logai.dataloader.data_loader_utils.</span></span><span class="sig-name descname"><span class="pre">generate_logformat_regex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_format</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.dataloader.data_loader_utils.generate_logformat_regex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to generate regular expression to split log messages
+return: headers, regex</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="logai.dataloader.data_loader_utils.load_data">
+<span class="sig-prename descclassname"><span class="pre">logai.dataloader.data_loader_utils.</span></span><span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_format</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.dataloader.data_loader_utils.load_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load log from given file and format
+:param filename: files to read
+:param log_format: target log format
+:return:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="logai.dataloader.data_loader_utils.log_to_dataframe">
+<span class="sig-prename descclassname"><span class="pre">logai.dataloader.data_loader_utils.</span></span><span class="sig-name descname"><span class="pre">log_to_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headers</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.dataloader.data_loader_utils.log_to_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to transform log file to dataframe
+return: pd.Dataframe: log dataframe</p>
+</dd></dl>
+
+</section>
+<section id="module-logai.dataloader.data_model">
+<span id="logai-dataloader-data-model-module"></span><h2>logai.dataloader.data_model module<a class="headerlink" href="#module-logai.dataloader.data_model" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="logai.dataloader.data_model.LogRecordObject">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.dataloader.data_model.</span></span><span class="sig-name descname"><span class="pre">LogRecordObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timestamp:</span> <span class="pre">~pandas.core.frame.DataFrame</span> <span class="pre">=</span> <span class="pre">Empty</span> <span class="pre">DataFrame</span> <span class="pre">Columns:</span> <span class="pre">[]</span> <span class="pre">Index:</span> <span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes:</span> <span class="pre">~pandas.core.frame.DataFrame</span> <span class="pre">=</span> <span class="pre">Empty</span> <span class="pre">DataFrame</span> <span class="pre">Columns:</span> <span class="pre">[]</span> <span class="pre">Index:</span> <span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resource:</span> <span class="pre">~pandas.core.frame.DataFrame</span> <span class="pre">=</span> <span class="pre">Empty</span> <span class="pre">DataFrame</span> <span class="pre">Columns:</span> <span class="pre">[]</span> <span class="pre">Index:</span> <span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trace_id:</span> <span class="pre">~pandas.core.frame.DataFrame</span> <span class="pre">=</span> <span class="pre">Empty</span> <span class="pre">DataFrame</span> <span class="pre">Columns:</span> <span class="pre">[]</span> <span class="pre">Index:</span> <span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">span_id:</span> <span class="pre">~pandas.core.frame.DataFrame</span> <span class="pre">=</span> <span class="pre">Empty</span> <span class="pre">DataFrame</span> <span class="pre">Columns:</span> <span class="pre">[]</span> <span class="pre">Index:</span> <span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">severity_text:</span> <span class="pre">~pandas.core.frame.DataFrame</span> <span class="pre">=</span> <span class="pre">Empty</span> <span class="pre">DataFrame</span> <span class="pre">Columns:</span> <span class="pre">[]</span> <span class="pre">Index:</span> <span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">severity_number:</span> <span class="pre">~pandas.core.frame.DataFrame</span> <span class="pre">=</span> <span class="pre">Empty</span> <span class="pre">DataFrame</span> <span class="pre">Columns:</span> <span class="pre">[]</span> <span class="pre">Index:</span> <span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body:</span> <span class="pre">~pandas.core.frame.DataFrame</span> <span class="pre">=</span> <span class="pre">Empty</span> <span class="pre">DataFrame</span> <span class="pre">Columns:</span> <span class="pre">[]</span> <span class="pre">Index:</span> <span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels:</span> <span class="pre">~pandas.core.frame.DataFrame</span> <span class="pre">=</span> <span class="pre">Empty</span> <span class="pre">DataFrame</span> <span class="pre">Columns:</span> <span class="pre">[]</span> <span class="pre">Index:</span> <span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.dataloader.data_model.LogRecordObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Log record object data model.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.dataloader.data_model.LogRecordObject.attributes">
+<span class="sig-name descname"><span class="pre">attributes</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">DataFrame</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">Empty</span> <span class="pre">DataFrame</span> <span class="pre">Columns:</span> <span class="pre">[]</span> <span class="pre">Index:</span> <span class="pre">[]</span></em><a class="headerlink" href="#logai.dataloader.data_model.LogRecordObject.attributes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.dataloader.data_model.LogRecordObject.body">
+<span class="sig-name descname"><span class="pre">body</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">DataFrame</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">Empty</span> <span class="pre">DataFrame</span> <span class="pre">Columns:</span> <span class="pre">[]</span> <span class="pre">Index:</span> <span class="pre">[]</span></em><a class="headerlink" href="#logai.dataloader.data_model.LogRecordObject.body" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="logai.dataloader.data_model.LogRecordObject.dropna">
+<span class="sig-name descname"><span class="pre">dropna</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#logai.dataloader.data_model.LogRecordObject.dropna" title="Permalink to this definition">¶</a></dt>
+<dd><p>method to drop entries containing NaN or null values in the logrecord object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>modified logrecord object after removing entries with NaN or null values</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#logai.dataloader.data_model.LogRecordObject" title="logai.dataloader.data_model.LogRecordObject">LogRecordObject</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="logai.dataloader.data_model.LogRecordObject.filter_by_index">
+<span class="sig-name descname"><span class="pre">filter_by_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.dataloader.data_model.LogRecordObject.filter_by_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select a subset of a logrecord object by removing certain indices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>indices</strong> (<em>list</em>) – list of indices to remove</p></li>
+<li><p><strong>inplace</strong> (<em>bool</em><em>, </em><em>optional</em>) – performs operation inplace or not. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>resulting logrecord object created after removing the indices</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#logai.dataloader.data_model.LogRecordObject" title="logai.dataloader.data_model.LogRecordObject">LogRecordObject</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="logai.dataloader.data_model.LogRecordObject.from_dataframe">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meta_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.dataloader.data_model.LogRecordObject.from_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert pandas.DataFrame to log record object
+:param data: pd.DataFrame: log data in pandas dataframe
+:param meta_data: dict: a dictionary that maps data.columns to fields of LogRecordObject
+:return: LogRecordObject</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.dataloader.data_model.LogRecordObject.labels">
+<span class="sig-name descname"><span class="pre">labels</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">DataFrame</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">Empty</span> <span class="pre">DataFrame</span> <span class="pre">Columns:</span> <span class="pre">[]</span> <span class="pre">Index:</span> <span class="pre">[]</span></em><a class="headerlink" href="#logai.dataloader.data_model.LogRecordObject.labels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="logai.dataloader.data_model.LogRecordObject.load_from_csv">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_from_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.dataloader.data_model.LogRecordObject.load_from_csv" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.dataloader.data_model.LogRecordObject.resource">
+<span class="sig-name descname"><span class="pre">resource</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">DataFrame</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">Empty</span> <span class="pre">DataFrame</span> <span class="pre">Columns:</span> <span class="pre">[]</span> <span class="pre">Index:</span> <span class="pre">[]</span></em><a class="headerlink" href="#logai.dataloader.data_model.LogRecordObject.resource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="logai.dataloader.data_model.LogRecordObject.save_to_csv">
+<span class="sig-name descname"><span class="pre">save_to_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.dataloader.data_model.LogRecordObject.save_to_csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>save logrecord object to file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filepath</strong> (<em>str</em>) – absolute path to filename where the logrecord object would be saved</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – supports only file extensions (.csv, .json, and .pickle or .pkl)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="logai.dataloader.data_model.LogRecordObject.select_by_index">
+<span class="sig-name descname"><span class="pre">select_by_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.dataloader.data_model.LogRecordObject.select_by_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select a subset of a logrecord object based on selected indices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>indices</strong> (<em>list</em>) – list of indices to select</p></li>
+<li><p><strong>inplace</strong> (<em>bool</em><em>, </em><em>optional</em>) – performs operation inplace or not. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>resulting logrecord object created from the selected indices</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#logai.dataloader.data_model.LogRecordObject" title="logai.dataloader.data_model.LogRecordObject">LogRecordObject</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.dataloader.data_model.LogRecordObject.severity_number">
+<span class="sig-name descname"><span class="pre">severity_number</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">DataFrame</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">Empty</span> <span class="pre">DataFrame</span> <span class="pre">Columns:</span> <span class="pre">[]</span> <span class="pre">Index:</span> <span class="pre">[]</span></em><a class="headerlink" href="#logai.dataloader.data_model.LogRecordObject.severity_number" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.dataloader.data_model.LogRecordObject.severity_text">
+<span class="sig-name descname"><span class="pre">severity_text</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">DataFrame</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">Empty</span> <span class="pre">DataFrame</span> <span class="pre">Columns:</span> <span class="pre">[]</span> <span class="pre">Index:</span> <span class="pre">[]</span></em><a class="headerlink" href="#logai.dataloader.data_model.LogRecordObject.severity_text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.dataloader.data_model.LogRecordObject.span_id">
+<span class="sig-name descname"><span class="pre">span_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">DataFrame</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">Empty</span> <span class="pre">DataFrame</span> <span class="pre">Columns:</span> <span class="pre">[]</span> <span class="pre">Index:</span> <span class="pre">[]</span></em><a class="headerlink" href="#logai.dataloader.data_model.LogRecordObject.span_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.dataloader.data_model.LogRecordObject.timestamp">
+<span class="sig-name descname"><span class="pre">timestamp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">DataFrame</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">Empty</span> <span class="pre">DataFrame</span> <span class="pre">Columns:</span> <span class="pre">[]</span> <span class="pre">Index:</span> <span class="pre">[]</span></em><a class="headerlink" href="#logai.dataloader.data_model.LogRecordObject.timestamp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="logai.dataloader.data_model.LogRecordObject.to_dataframe">
+<span class="sig-name descname"><span class="pre">to_dataframe</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#logai.dataloader.data_model.LogRecordObject.to_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate pandas.DataFrame from LogRecordType
+:return:</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.dataloader.data_model.LogRecordObject.trace_id">
+<span class="sig-name descname"><span class="pre">trace_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">DataFrame</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">Empty</span> <span class="pre">DataFrame</span> <span class="pre">Columns:</span> <span class="pre">[]</span> <span class="pre">Index:</span> <span class="pre">[]</span></em><a class="headerlink" href="#logai.dataloader.data_model.LogRecordObject.trace_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-logai.dataloader.openset_data_loader">
+<span id="logai-dataloader-openset-data-loader-module"></span><h2>logai.dataloader.openset_data_loader module<a class="headerlink" href="#module-logai.dataloader.openset_data_loader" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="logai.dataloader.openset_data_loader.OpenSetDataLoader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.dataloader.openset_data_loader.</span></span><span class="sig-name descname"><span class="pre">OpenSetDataLoader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.dataloader.openset_data_loader.OpenSetDataLoaderConfig" title="logai.dataloader.openset_data_loader.OpenSetDataLoaderConfig"><span class="pre">OpenSetDataLoaderConfig</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.dataloader.openset_data_loader.OpenSetDataLoader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#logai.dataloader.data_loader.FileDataLoader" title="logai.dataloader.data_loader.FileDataLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">FileDataLoader</span></code></a></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="logai.dataloader.openset_data_loader.OpenSetDataLoader.dl_config">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dl_config</span></span><a class="headerlink" href="#logai.dataloader.openset_data_loader.OpenSetDataLoader.dl_config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="logai.dataloader.openset_data_loader.OpenSetDataLoader.load_data">
+<span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#logai.dataloader.openset_data_loader.OpenSetDataLoader.load_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load log data with given configuration.
+Currently support file formats:
+- csv
+- tsv
+- other plain text format such as .log with proper parsing configurations
+:return: LogRecordObject: the logs read from log files and converted into LogRecordObject</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="logai.dataloader.openset_data_loader.OpenSetDataLoaderConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.dataloader.openset_data_loader.</span></span><span class="sig-name descname"><span class="pre">OpenSetDataLoaderConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.dataloader.openset_data_loader.OpenSetDataLoaderConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.dataloader.openset_data_loader.OpenSetDataLoaderConfig.dataset_name">
+<span class="sig-name descname"><span class="pre">dataset_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#logai.dataloader.openset_data_loader.OpenSetDataLoaderConfig.dataset_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.dataloader.openset_data_loader.OpenSetDataLoaderConfig.filepath">
+<span class="sig-name descname"><span class="pre">filepath</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#logai.dataloader.openset_data_loader.OpenSetDataLoaderConfig.filepath" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="logai.dataloader.openset_data_loader.get_config">
+<span class="sig-prename descclassname"><span class="pre">logai.dataloader.openset_data_loader.</span></span><span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.dataloader.openset_data_loader.get_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the configuration of open log datasets to load data
+:param dataset_name: supported log dataset name from (“hdfs”, “bgl”, “HealthApp”)
+:param filepath: log file path
+:return: DataLoaderConfig: the configuration to load open log datasets</p>
+</dd></dl>
+
+</section>
+<section id="module-logai.dataloader">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-logai.dataloader" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="logai.information_extraction.html" class="btn btn-neutral float-right" title="logai.information_extraction package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="logai.applications.html" class="btn btn-neutral float-left" title="logai.applications package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2023, Salesforce.com, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

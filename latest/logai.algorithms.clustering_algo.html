@@ -1,0 +1,540 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>logai.algorithms.clustering_algo package &mdash; LogAI  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="logai.algorithms.nn_model package" href="logai.algorithms.nn_model.html" />
+    <link rel="prev" title="logai.algorithms.categorical_encoding_algo package" href="logai.algorithms.categorical_encoding_algo.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> LogAI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="develop.html">Developer Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LogAI Core Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">logai</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="logai.html">logai package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="logai.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="logai.algorithms.html">logai.algorithms package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.analysis.html">logai.analysis package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.html">logai.applications package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.dataloader.html">logai.dataloader package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.information_extraction.html">logai.information_extraction package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.preprocess.html">logai.preprocess package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.utils.html">logai.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="logai.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logai.html#module-logai.config_interfaces">logai.config_interfaces module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logai.html#module-logai">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">LogAI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">logai</a> &raquo;</li>
+        
+          <li><a href="logai.html">logai package</a> &raquo;</li>
+        
+          <li><a href="logai.algorithms.html">logai.algorithms package</a> &raquo;</li>
+        
+      <li>logai.algorithms.clustering_algo package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/logai.algorithms.clustering_algo.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="logai-algorithms-clustering-algo-package">
+<h1>logai.algorithms.clustering_algo package<a class="headerlink" href="#logai-algorithms-clustering-algo-package" title="Permalink to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="module-logai.algorithms.clustering_algo.birch">
+<span id="logai-algorithms-clustering-algo-birch-module"></span><h2>logai.algorithms.clustering_algo.birch module<a class="headerlink" href="#module-logai.algorithms.clustering_algo.birch" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.birch.BirchAlgo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.clustering_algo.birch.</span></span><span class="sig-name descname"><span class="pre">BirchAlgo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.algorithms.clustering_algo.birch.BirchParams" title="logai.algorithms.clustering_algo.birch.BirchParams"><span class="pre">BirchParams</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.clustering_algo.birch.BirchAlgo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="logai.algorithms.html#logai.algorithms.algo_interfaces.ClusteringAlgo" title="logai.algorithms.algo_interfaces.ClusteringAlgo"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClusteringAlgo</span></code></a></p>
+<p>Implement BIRCH for log clustering.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.birch.BirchAlgo.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.clustering_algo.birch.BirchAlgo.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Train BIRCH model
+:param log_features: pd.DataFrame: log features for training.
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.birch.BirchAlgo.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#logai.algorithms.clustering_algo.birch.BirchAlgo.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inference using trained BIRCH model
+:param log_features: log features for inference
+:return: pd.Series: series of log cluster labels</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.birch.BirchParams">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.clustering_algo.birch.</span></span><span class="sig-name descname"><span class="pre">BirchParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">branching_factor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_clusters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.clustering_algo.birch.BirchParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.birch.BirchParams.branching_factor">
+<span class="sig-name descname"><span class="pre">branching_factor</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#logai.algorithms.clustering_algo.birch.BirchParams.branching_factor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.birch.BirchParams.n_clusters">
+<span class="sig-name descname"><span class="pre">n_clusters</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#logai.algorithms.clustering_algo.birch.BirchParams.n_clusters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.birch.BirchParams.threshold">
+<span class="sig-name descname"><span class="pre">threshold</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#logai.algorithms.clustering_algo.birch.BirchParams.threshold" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-logai.algorithms.clustering_algo.dbscan">
+<span id="logai-algorithms-clustering-algo-dbscan-module"></span><h2>logai.algorithms.clustering_algo.dbscan module<a class="headerlink" href="#module-logai.algorithms.clustering_algo.dbscan" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.dbscan.DbScanAlgo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.clustering_algo.dbscan.</span></span><span class="sig-name descname"><span class="pre">DbScanAlgo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.algorithms.clustering_algo.dbscan.DbScanParams" title="logai.algorithms.clustering_algo.dbscan.DbScanParams"><span class="pre">DbScanParams</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.clustering_algo.dbscan.DbScanAlgo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="logai.algorithms.html#logai.algorithms.algo_interfaces.ClusteringAlgo" title="logai.algorithms.algo_interfaces.ClusteringAlgo"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClusteringAlgo</span></code></a></p>
+<p>Implement DBSCAN for log clustering</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.dbscan.DbScanAlgo.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.clustering_algo.dbscan.DbScanAlgo.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Train DBSCAN model
+:param log_features: log features as training data
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.dbscan.DbScanAlgo.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#logai.algorithms.clustering_algo.dbscan.DbScanAlgo.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inference using DBSCAN model
+:param log_features: log features for inference
+:return: pd.Series: series of cluster labels.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.dbscan.DbScanParams">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.clustering_algo.dbscan.</span></span><span class="sig-name descname"><span class="pre">DbScanParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_samples</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'euclidean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algorithm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leaf_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.clustering_algo.dbscan.DbScanParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.dbscan.DbScanParams.algorithm">
+<span class="sig-name descname"><span class="pre">algorithm</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#logai.algorithms.clustering_algo.dbscan.DbScanParams.algorithm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.dbscan.DbScanParams.eps">
+<span class="sig-name descname"><span class="pre">eps</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#logai.algorithms.clustering_algo.dbscan.DbScanParams.eps" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.dbscan.DbScanParams.leaf_size">
+<span class="sig-name descname"><span class="pre">leaf_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#logai.algorithms.clustering_algo.dbscan.DbScanParams.leaf_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.dbscan.DbScanParams.metric">
+<span class="sig-name descname"><span class="pre">metric</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#logai.algorithms.clustering_algo.dbscan.DbScanParams.metric" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.dbscan.DbScanParams.metric_params">
+<span class="sig-name descname"><span class="pre">metric_params</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">object</span></em><a class="headerlink" href="#logai.algorithms.clustering_algo.dbscan.DbScanParams.metric_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.dbscan.DbScanParams.min_samples">
+<span class="sig-name descname"><span class="pre">min_samples</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#logai.algorithms.clustering_algo.dbscan.DbScanParams.min_samples" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.dbscan.DbScanParams.n_jobs">
+<span class="sig-name descname"><span class="pre">n_jobs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#logai.algorithms.clustering_algo.dbscan.DbScanParams.n_jobs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.dbscan.DbScanParams.p">
+<span class="sig-name descname"><span class="pre">p</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#logai.algorithms.clustering_algo.dbscan.DbScanParams.p" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-logai.algorithms.clustering_algo.kmeans">
+<span id="logai-algorithms-clustering-algo-kmeans-module"></span><h2>logai.algorithms.clustering_algo.kmeans module<a class="headerlink" href="#module-logai.algorithms.clustering_algo.kmeans" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.kmeans.KMeansAlgo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.clustering_algo.kmeans.</span></span><span class="sig-name descname"><span class="pre">KMeansAlgo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.algorithms.clustering_algo.kmeans.KMeansParams" title="logai.algorithms.clustering_algo.kmeans.KMeansParams"><span class="pre">KMeansParams</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.clustering_algo.kmeans.KMeansAlgo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="logai.algorithms.html#logai.algorithms.algo_interfaces.ClusteringAlgo" title="logai.algorithms.algo_interfaces.ClusteringAlgo"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClusteringAlgo</span></code></a></p>
+<p>Implement K-means for log clustering</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.kmeans.KMeansAlgo.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.clustering_algo.kmeans.KMeansAlgo.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit K-means model.
+:param log_features: log features for training
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.kmeans.KMeansAlgo.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#logai.algorithms.clustering_algo.kmeans.KMeansAlgo.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inference using trained K-means model.
+:param log_features: log features for inference.
+:return: pd.Series: series of cluster labels.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.kmeans.KMeansParams">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.clustering_algo.kmeans.</span></span><span class="sig-name descname"><span class="pre">KMeansParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_clusters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'k-means++'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_init</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy_x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algorithm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'auto'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.clustering_algo.kmeans.KMeansParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.kmeans.KMeansParams.algorithm">
+<span class="sig-name descname"><span class="pre">algorithm</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#logai.algorithms.clustering_algo.kmeans.KMeansParams.algorithm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.kmeans.KMeansParams.copy_x">
+<span class="sig-name descname"><span class="pre">copy_x</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#logai.algorithms.clustering_algo.kmeans.KMeansParams.copy_x" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.kmeans.KMeansParams.init">
+<span class="sig-name descname"><span class="pre">init</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#logai.algorithms.clustering_algo.kmeans.KMeansParams.init" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.kmeans.KMeansParams.max_iter">
+<span class="sig-name descname"><span class="pre">max_iter</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#logai.algorithms.clustering_algo.kmeans.KMeansParams.max_iter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.kmeans.KMeansParams.n_clusters">
+<span class="sig-name descname"><span class="pre">n_clusters</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#logai.algorithms.clustering_algo.kmeans.KMeansParams.n_clusters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.kmeans.KMeansParams.n_init">
+<span class="sig-name descname"><span class="pre">n_init</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#logai.algorithms.clustering_algo.kmeans.KMeansParams.n_init" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.kmeans.KMeansParams.random_state">
+<span class="sig-name descname"><span class="pre">random_state</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#logai.algorithms.clustering_algo.kmeans.KMeansParams.random_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.kmeans.KMeansParams.tol">
+<span class="sig-name descname"><span class="pre">tol</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#logai.algorithms.clustering_algo.kmeans.KMeansParams.tol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.kmeans.KMeansParams.verbose">
+<span class="sig-name descname"><span class="pre">verbose</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#logai.algorithms.clustering_algo.kmeans.KMeansParams.verbose" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-logai.algorithms.clustering_algo">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-logai.algorithms.clustering_algo" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.BirchAlgo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.clustering_algo.</span></span><span class="sig-name descname"><span class="pre">BirchAlgo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.algorithms.clustering_algo.birch.BirchParams" title="logai.algorithms.clustering_algo.birch.BirchParams"><span class="pre">BirchParams</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.clustering_algo.BirchAlgo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="logai.algorithms.html#logai.algorithms.algo_interfaces.ClusteringAlgo" title="logai.algorithms.algo_interfaces.ClusteringAlgo"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClusteringAlgo</span></code></a></p>
+<p>Implement BIRCH for log clustering.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.BirchAlgo.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.clustering_algo.BirchAlgo.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Train BIRCH model
+:param log_features: pd.DataFrame: log features for training.
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.BirchAlgo.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#logai.algorithms.clustering_algo.BirchAlgo.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inference using trained BIRCH model
+:param log_features: log features for inference
+:return: pd.Series: series of log cluster labels</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.DbScanAlgo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.clustering_algo.</span></span><span class="sig-name descname"><span class="pre">DbScanAlgo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.algorithms.clustering_algo.dbscan.DbScanParams" title="logai.algorithms.clustering_algo.dbscan.DbScanParams"><span class="pre">DbScanParams</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.clustering_algo.DbScanAlgo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="logai.algorithms.html#logai.algorithms.algo_interfaces.ClusteringAlgo" title="logai.algorithms.algo_interfaces.ClusteringAlgo"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClusteringAlgo</span></code></a></p>
+<p>Implement DBSCAN for log clustering</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.DbScanAlgo.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.clustering_algo.DbScanAlgo.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Train DBSCAN model
+:param log_features: log features as training data
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.DbScanAlgo.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#logai.algorithms.clustering_algo.DbScanAlgo.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inference using DBSCAN model
+:param log_features: log features for inference
+:return: pd.Series: series of cluster labels.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.KMeansAlgo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.clustering_algo.</span></span><span class="sig-name descname"><span class="pre">KMeansAlgo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.algorithms.clustering_algo.kmeans.KMeansParams" title="logai.algorithms.clustering_algo.kmeans.KMeansParams"><span class="pre">KMeansParams</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.clustering_algo.KMeansAlgo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="logai.algorithms.html#logai.algorithms.algo_interfaces.ClusteringAlgo" title="logai.algorithms.algo_interfaces.ClusteringAlgo"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClusteringAlgo</span></code></a></p>
+<p>Implement K-means for log clustering</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.KMeansAlgo.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.clustering_algo.KMeansAlgo.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit K-means model.
+:param log_features: log features for training
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="logai.algorithms.clustering_algo.KMeansAlgo.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#logai.algorithms.clustering_algo.KMeansAlgo.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inference using trained K-means model.
+:param log_features: log features for inference.
+:return: pd.Series: series of cluster labels.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="logai.algorithms.nn_model.html" class="btn btn-neutral float-right" title="logai.algorithms.nn_model package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="logai.algorithms.categorical_encoding_algo.html" class="btn btn-neutral float-left" title="logai.algorithms.categorical_encoding_algo package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2023, Salesforce.com, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
