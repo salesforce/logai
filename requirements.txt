@@ -41,3 +41,4 @@ numba>=0.56.3
 schema>=0.7.5
 dash_bootstrap_components>=1.2.0
 scikit-learn>=1.2
+ipykernel>=6.19.4
