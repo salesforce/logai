@@ -89,7 +89,7 @@ Then open the LogAI portal via http://localhost:8050/ or http://127.0.0.1:8050/ 
 ## Documentation
 
 ### Build LogAI Application
-Please refer to [Build LogAI Application in Jupyter Notebook](./tutorials/jupyter_notebook/jupyter_tutorial.md) for more information about how to
+Please refer to [Build LogAI Application in Jupyter Notebook](examples/jupyter_notebook/jupyter_tutorial.md) for more information about how to
 use LogAI modules to create E2E applications in Jupyter Notebook.
 
 ### Run Anomaly Detection Benchmarking Using LogAI

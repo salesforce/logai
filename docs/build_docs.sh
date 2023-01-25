@@ -5,11 +5,11 @@ DIRNAME=$(cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 cd "${DIRNAME}/.."
 
 # Get current git branch & stash unsaved changes
-GIT_BRANCH=$(git branch --show-current)
-if [ -z "${GIT_BRANCH}" ]; then
-    GIT_BRANCH="main"
-fi
-git stash
+#GIT_BRANCH=$(git branch --show-current)
+#if [ -z "${GIT_BRANCH}" ]; then
+#    GIT_BRANCH="main"
+#fi
+#git stash
 
 # Set up virtual environment
 python3 -m pip install --upgrade pip setuptools wheel virtualenv

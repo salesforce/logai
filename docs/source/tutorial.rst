@@ -7,12 +7,12 @@ Tutorials
    :maxdepth: 2
    :caption: Tutorial: Build Log Anomaly Detection App
 
-    tutorial.log_anomaly_detection
+   tutorials/tutorial_log_anomaly_detection.ipynb
 
 .. toctree::
    :maxdepth: 2
    :caption: Tutorial: Build Log Clustering App
 
-   tutorial.log_clustering
+   tutorials/tutorial_log_clustering.ipynb
 
 
