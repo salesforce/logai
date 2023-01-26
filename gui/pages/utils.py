@@ -160,7 +160,8 @@ def create_file_setting_layout():
             id="file-setting-layout",
             children=[
                 html.Br(),
-                html.P('File Settings'),
+                html.B('File Settings'),
+                html.Hr(),
                 html.Label("Log Type"),
                 dcc.Dropdown(
                     id="log-type-select",
@@ -172,7 +173,7 @@ def create_file_setting_layout():
                         html.Div(id='custom-file-setting')
                     ])
                 ),
-                html.Label("Select Log File"),
+                html.Label("Log File"),
                 dcc.Dropdown(
                     id="file-select",
                     style={"width": "100%"}
@@ -193,6 +194,7 @@ def create_file_setting_layout():
                     value=0,
                     id='time-interval',
                 ),
+                html.Hr(),
             ],
             # style={
             #     "display": "inline-block",
