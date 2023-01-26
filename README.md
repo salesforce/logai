@@ -159,6 +159,7 @@ to improve usability of the portal. Any feedbacks and contributions are welcome 
 
 You can also use LogAI in more programtic ways. LogAI supports configuration files in `.json` or `.yaml`. 
 Below is a sample `log_anomaly_detection_config.json` configuration for anomaly detection application. 
+Make sure to set `filepath` to the target log dataset file path.
 
 ```json
 {
@@ -188,7 +189,7 @@ Below is a sample `log_anomaly_detection_config.json` configuration for anomaly 
       },
       "anomaly_detection_config": {
           "algo_name": "one_class_svm"
-      },
+      }
     }
 ```
 
