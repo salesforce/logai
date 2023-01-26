@@ -1,0 +1,69 @@
+workflow_config:  
+  label_filepath: "tests/logai/test_data/HDFS_AD/anomaly_label.csv"
+  parse_logline: True  
+  output_dir: "temp_output"
+  output_file_type: "csv"
+  training_type: "unsupervised"
+  deduplicate_test: True
+  test_data_frac_pos: 0.5
+  dataset_name: hdfs
+
+  data_loader_config:
+    filepath: "tests/logai/test_data/HDFS_AD/HDFS_5k.log"
+    reader_args: 
+      log_format: "<Date> <Time> <Pid> <Level> <Component> <Content>"
+    log_type: "log"
+    dimensions:
+      body: ['Content']
+      timestamp: ['Date', 'Time']
+    datetime_format: '%y%m%d %H%M%S'
+    infer_datetime: True
+    
+
+  preprocessor_config:
+    custom_delimiters_regex:
+                [':', ',', '=', '\t']
+    custom_replace_list: [
+                ['(blk_-?\d+)', ' BLOCK '],
+                ['/?/*\d+\.\d+\.\d+\.\d+',  ' IP '],
+                ['(0x)[0-9a-zA-Z]+', ' HEX '],
+                ['\d+', ' INT ']
+            ]
+    
+  log_parser_config:
+    parsing_algorithm: "drain"
+    parsing_algo_params: 
+      sim_th: 0.5
+      depth: 5
+
+  open_set_partitioner_config:
+    session_window: False
+    sliding_window: 10
+    logsequence_delim: "[SEP]"
+
+
+  log_vectorizer_config:
+    algo_name: "forecast_nn"
+    algo_param:
+      feature_type: "sequential"
+      sep_token: "[SEP]"
+      max_token_len: 10
+      embedding_dim: 100
+      output_dir: "temp_output/HDFS_5k_parsed_session_supervised_AD"
+      vectorizer_model_dirpath: "temp_output/HDFS_5k_parsed_session_supervised_AD/embedding_model"
+      vectorizer_metadata_filepath: "temp_output/HDFS_5k_parsed_session_supervised_AD/embedding_model/metadata.pkl"
+
+
+  nn_anomaly_detection_config:
+    algo_name: "lstm"
+    algo_params:
+        model_name: "lstm"
+        learning_rate: 0.0001
+        metadata_filepath: "temp_output/HDFS_5k_parsed_session_supervised_AD/embedding_model/metadata.pkl"
+        feature_type: "sequential"
+        label_type: "next_log"
+        eval_type: "session"
+        num_train_epochs: 10
+        batch_size: 4
+        output_dir: "temp_output/HDFS_5k_parsed_session_supervised_AD"
+

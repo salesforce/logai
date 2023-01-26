@@ -1,0 +1,66 @@
+workflow_config:  
+  label_filepath: "tests/logai/test_data/HDFS_AD/anomaly_label.csv"
+  parse_logline: False  
+  output_dir: "temp_output"
+  output_file_type: "csv"
+  training_type: "unsupervised"
+  deduplicate_test: True
+  test_data_frac_pos: 0.5
+  dataset_name: hdfs
+
+  data_loader_config:
+    filepath: "tests/logai/test_data/HDFS_AD/HDFS_5k.log"
+    reader_args: 
+      log_format: "<Date> <Time> <Pid> <Level> <Component> <Content>"
+    log_type: "log"
+    dimensions:
+      body: ['Content']
+      timestamp: ['Date', 'Time']
+    datetime_format: '%y%m%d %H%M%S'
+    infer_datetime: True
+    
+
+  preprocessor_config:
+    custom_delimiters_regex:
+                [':', ',', '=', '\t']
+    custom_replace_list: [
+                ['(blk_-?\d+)', ' BLOCK '],
+                ['/?/*\d+\.\d+\.\d+\.\d+',  ' IP '],
+                ['(0x)[0-9a-zA-Z]+', ' HEX '],
+                ['\d+', ' INT ']
+                
+            ]
+  
+  log_parser_config:
+    parsing_algorithm: "drain"
+    parsing_algo_params: 
+      sim_th: 0.5
+      depth: 5
+    
+  open_set_partitioner_config:
+    session_window: True
+    sliding_window: -1
+    logsequence_delim: "[SEP]"
+
+
+  log_vectorizer_config:
+    algo_name: "logbert"
+    algo_param:
+      model_name: "bert-base-cased"
+      max_token_len: 384
+      custom_tokens: ["BLOCK", "IP", "HEX", "INT"]
+      output_dir: "temp_output/HDFS_5k_parsed_session_supervised_AD"
+      tokenizer_dirname: "logbert_tokenizer"
+
+  nn_anomaly_detection_config:
+      algo_name: "logbert"
+      algo_params:
+          model_name: "bert-base-cased"
+          learning_rate: 0.0001
+          num_train_epochs: 10
+          per_device_train_batch_size: 4
+          save_steps: 50
+          mask_ngram: 8
+          tokenizer_dirpath: "temp_output/HDFS_5k_parsed_session_supervised_AD/bert-base-cased_tokenizer"
+          output_dir: "temp_output/HDFS_5k_parsed_session_supervised_AD"
+
