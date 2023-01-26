@@ -18,7 +18,7 @@ data_loader_config:
     attributes: ["Action", "ID"]
     body: ["Details"]
     timestamp: ["Timestamps"]
-  filepath: /Users/qcheng/workspace/gitsoma/logai/tests/gui/data/HealthApp_format_2000.csv
+  filepath: /logai/tests/gui/data/HealthApp_format_2000.csv
   infer_datetime: true
   log_type: 'csv'
   reader_args:

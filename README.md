@@ -153,6 +153,70 @@ to improve usability of the portal. Any feedbacks and contributions are welcome 
 
 ### Run Simple Time-series Anomaly Detection Application
 
+You can also use LogAI in more programtic ways. LogAI supports configuration files in `.json` or `.yaml`. 
+Below is a sample `log_anomaly_detection_config.json` configruation for anomaly detection application. 
+
+```json
+{
+      "open_set_data_loader_config": {
+        "dataset_name": "HDFS",
+        "filepath": ""
+      },
+      "preprocessor_config": {
+          "custom_delimiters_regex":[]
+      },
+      "log_parser_config": {
+        "parsing_algorithm": "drain",
+        "parsing_algo_params": {
+          "sim_th": 0.5,
+          "depth": 5
+        }
+      },
+      "feature_extractor_config": {
+          "group_by_category": ["Level"],
+          "group_by_time": "1s"
+      },
+      "log_vectorizer_config": {
+          "algo_name": "word2vec"
+      },
+      "categorical_encoder_config": {
+          "name": "label_encoder"
+      },
+      "anomaly_detection_config": {
+          "algo_name": "one_class_svm"
+      },
+    }
+```
+
+Then to run log anomaly detection. You can simple create below python script:
+
+```python
+import json
+
+from logai.applications.application_interfaces import WorkFlowConfig
+from logai.applications.log_anomaly_detection import LogAnomalyDetection
+
+# path to json configuration file
+json_config = "./log_anomaly_detection_config.json"
+
+# Create log anomaly detection application workflow configuration
+config = json.loads(json_config)
+workflow_config = WorkFlowConfig.from_dict(config) 
+
+# Create LogAnomalyDetection Application for given workflow_config
+app = LogAnomalyDetection(workflow_config)
+
+# Execute App
+app.execute()
+
+```
+
+Then you can check anomaly detection results by calling `app.anomaly_results`. 
+
+For full context of this example please check
+[Tutorial: Use Log Anomaly Detection Application](./examples/jupyter_notebook/log_anomaly_detection_example.ipynb).
+
+
 
 ### Run Deep-learning Anomaly Detection Benchmarking
 
