@@ -5,9 +5,9 @@ Tutorials
 
 .. toctree::
    :maxdepth: 2
-   :caption: Tutorial: Build LogAI Application in Jupyter Notebook
+   :caption: Tutorial: Use Log Anomaly Detection Application
 
-   tutorials/jupyter_tutorial.md
+   tutorials/log_anomaly_detection_example.md
 
 .. toctree::
    :maxdepth: 2
