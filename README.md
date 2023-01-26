@@ -27,12 +27,16 @@ For full license text, see the LICENSE file in the repo root or https://opensour
 # LogAI: A Python Toolkit for AI-based Log Analytics
 
 ## Table of Contents
-1. [Introduction](#introduction)
-1. [Installation](#installation)
-1. [Documentation](#documentation)
-
-1. [Evaluation and Benchmarking](#evaluation-and-benchmarking)
-1. [Technical Report and Citing LogAI](#technical-report-and-citing-logai)
+* [Introduction](#introduction)
+* [Installation](#installation)
+* [Documentation](#documentation)
+  * [Explore LogAI GUI Portal](#explore-logai-gui-portal)
+  * [Run Simple Time-series Anomaly Detection Application](#run-simple-time-series-anomaly-detection-application)
+  * [Build Customized LogAI Applications](#build-customized-logai-applications)
+  * [Deep-learning Anomaly Detection Benchmarking](#deep-learning-anomaly-detection-benchmarking)
+* [Technical Report and Citing LogAI](#technical-report-and-citing-logai)
+* [Contact](#contact)
+* [Liscense](#license)
 
 ## Introduction
 
@@ -85,7 +89,7 @@ pip install ./ # install LogAI from root directory
 
 Below we briefly introduce several ways to explore and use LogAI, including exploring LogAI GUI
 portal, benchmarking deep-learning based log anomaly detection using LogAI, and building your 
-own log analysis application with LogAI.
+own log analysis application with LogAI. Please visit [LogAI Documentation]() for more detailed documentation.
 
 ### Explore LogAI GUI Portal 
 
@@ -107,13 +111,13 @@ Log Summarization, Log Clustering and Anomaly Detection.
 
 **File Setting**. You can select the log type and log files to be processed. Now LogAI supports three 
 public datasets: HDFS, BGL and HealthApp. For each log type we included several sample log data. After
-log file selected, you can choose the attributes you want to be inolved in log processing. The selected 
+log file selected, you can choose the attributes you want to be involved in log processing. The selected 
 attributes will be treated as structured log attributes.
 
-**Algortihm Setting**. For different applications, the algorithms options may be different.
+**Algorithm Setting**. For different applications, the algorithms options may be different.
 For example, auto-log parsing algorithms are utilized for log summarization, but log clustering uses auto-parsing algorithms,
- vectorization algorithms, categorical encoding and clustering algorithms. You can select a
- algorithm and change the parameters in each algorithm section. After algortihm configuration, simply click "run" to
+ vectorization algorithms, categorical encoding and clustering algorithms. You can select an
+ algorithm and change the parameters in each algorithm section. After algorithm configuration, simply click "run" to
 run the application.
 
 #### Log Summarization
@@ -136,7 +140,7 @@ the raw logs in this cluster.
 #### Anomaly Detection
 
 Log anomaly detection App conduct log anomaly detection tasks. Similar to log clustering, log anomaly detection
-also needs to extract information from raw logs and generate reprentation of loglines. Depend on the type of anomaly detection,
+also needs to extract information from raw logs and generate representation of loglines. Depend on the type of anomaly detection,
 The representation can be different. 
 **Time-series anomaly detection**. If we use time-series algorithm like ETS, the raw logs will be converted
 into log counter vectors by given time interval. Then ETS is performed on the generated log counter vectors and detect
@@ -147,14 +151,14 @@ be converted into semantic vectors and feed the One-class SVM model. Then the mo
 
 ![log anomaly detection](img/logai_anomaly_detection.png)
 
-LogAI GUI protal is just an example to demo LogAI capabilities. We know this may not be the best way to visualize the 
+LogAI GUI portal is just an example to demo LogAI capabilities. We know this may not be the best way to visualize the 
 results and there might be bugs in how the results are displayed. We will keep working with the open source community
 to improve usability of the portal. Any feedbacks and contributions are welcome :blush:. 
 
 ### Run Simple Time-series Anomaly Detection Application
 
 You can also use LogAI in more programtic ways. LogAI supports configuration files in `.json` or `.yaml`. 
-Below is a sample `log_anomaly_detection_config.json` configruation for anomaly detection application. 
+Below is a sample `log_anomaly_detection_config.json` configuration for anomaly detection application. 
 
 ```json
 {
@@ -216,20 +220,14 @@ Then you can check anomaly detection results by calling `app.anomaly_results`.
 For full context of this example please check
 [Tutorial: Use Log Anomaly Detection Application](./examples/jupyter_notebook/log_anomaly_detection_example.ipynb).
 
-
-
-### Run Deep-learning Anomaly Detection Benchmarking
-
-(TBA)
-
-
-### Build LogAI Application
+### Build Customized LogAI Applications
 Please refer to [Build LogAI Application in Jupyter Notebook](examples/jupyter_notebook/jupyter_tutorial.md) for more information about how to
 use LogAI modules to create E2E applications in Jupyter Notebook.
 
 
-Please visit [LogAI Documentation]() for more detailed information.
+### Deep-learning Anomaly Detection Benchmarking
 
+(TBA)
 
 
 ## Technical Report and Citing LogAI
