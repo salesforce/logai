@@ -111,17 +111,52 @@ log file selected, you can choose the attributes you want to be inolved in log p
 attributes will be treated as structured log attributes.
 
 
-**Algortihm Setting**. Auto-log parsing algorithms are utilized for Log summarization. You can select a
-parsing algorithm and change the parameters in the Parsing Algorithm section.
+**Algortihm Setting**. For different applications, the algorithms options may be different.
+For example, auto-log parsing algorithms are utilized for log summarization, but log clustering uses auto-parsing algorithms,
+ vectorization algorithms, categorical encoding and clustering algorithms. You can select a
+ algorithm and change the parameters in each algorithm section. After algortihm configuration, simply click "run" to
+run the application.
 
 <p float="center">
     <img alt="logai_file_setting" src="img/logai_file_setting.png" width="250"/>
     <img alt="logai_parsing_algo" src="img/logai_parsing_algo.png" width="250"/>
+    <img alt="logai_clustering_algo" src="img/logai_clustering_algorithm.png" width="250"/>
 </p>
 
 #### Log Summarization
 
-By default you will see the Log Summarization page. In the file setting section, y
+Log summarization App summarize and group the raw logs by log patterns and attributes. You can click on 
+each log pattern and see what the pattern looks like and the dynamic values in each position. You can also 
+see the chart of occurrance trend of this pattern on the right side.
+
+![log summarization](img/logai_summarization_res.png)
+
+#### Log Clustering
+
+Log clustering App groups raw logs into clusters by calculating the semantic representation of each logline. 
+Then using clustering algorithms to generate log clusters. In this example, we choose k-mean where `k==8` to
+generate 8 clusters. The result is shown as a pie chart and you can click each portion of the pie chart to check
+the raw logs in this cluster.
+
+![log clustering](img/logai_clustering_res.png)
+
+#### Anomaly Detection
+
+Log anomaly detection App conduct log anomaly detection tasks. Similar to log clustering, log anomaly detection
+also needs to extract information from raw logs and generate reprentation of loglines. Depend on the type of anomaly detection,
+The representation can be different. 
+**Time-series anomaly detection**. If we use time-series algorithm like ETS, the raw logs will be converted
+into log counter vectors by given time interval. Then ETS is performed on the generated log counter vectors and detect
+anomalous timestamps on the counter vector time-series. 
+
+**Semantic anomaly detection**. If we use unsupervised outlier detection algorithms such as One-class SVM, the raw logs will 
+be converted into semantic vectors and feed the One-class SVM model. Then the model will detect anomalous loglines.
+
+![log anomaly detection](img/logai_anomaly_detection.png)
+
+LogAI GUI protal is just an example to demo LogAI capabilities. We know this may not be the best way to visualize the 
+results and there might be bugs in how the results are displayed. We will keep working with the open source community
+to improve usability of the portal. Any feedbacks and contributions are welcome :blush:. 
 
 ### Run Simple Time-series Anomaly Detection Application
 
