@@ -114,10 +114,10 @@ attributes will be treated as structured log attributes.
 **Algortihm Setting**. Auto-log parsing algorithms are utilized for Log summarization. You can select a
 parsing algorithm and change the parameters in the Parsing Algorithm section.
 
-<img alt="logai_file_setting" src="img/logai_file_setting.png" width="200"/>
-
-<img alt="logai_parsing_algo" src="img/logai_parsing_algo.png" width="200"/>
-
+<p float="center">
+    <img alt="logai_file_setting" src="img/logai_file_setting.png" width="250"/>
+    <img alt="logai_parsing_algo" src="img/logai_parsing_algo.png" width="250"/>
+</p>
 
 #### Log Summarization
 
