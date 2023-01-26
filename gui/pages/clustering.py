@@ -101,13 +101,15 @@ def create_display_layout():
         children=[
             html.B("Clustering Summary"),
             html.Hr(),
-            dbc.CardBody([
-                dcc.Loading(
-                    id="clstering-summary",
-                    children=[dbc.Row(dcc.Graph(id="cluster-hist"))],
-                    type='default'
-                )],
-                style={"marginTop": 0, "marginBottom": 0}
+            dbc.Card(
+                dbc.CardBody([
+                    dcc.Loading(
+                        id="clstering-summary",
+                        children=[dbc.Row(dcc.Graph(id="cluster-hist"))],
+                        type='default'
+                    )],
+                    style={"marginTop": 0, "marginBottom": 0}
+                )
             ),
             html.B("Loglines in Cluster"),
             html.Hr(),
