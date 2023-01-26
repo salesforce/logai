@@ -3,6 +3,10 @@
   :language: shell
   :class: highlight
 
+.. image:: _static/logai_logo.jpg
+   :width: 650
+   :align: center
+
 Tutorial: Log Anomaly Detection Using LogAI
 =========================================================
 
@@ -40,7 +44,7 @@ Preprocess
 
 In preprocessing step user can retrieve and replace any regex strings and clean the raw loglines. This
 can be very useful to improve information extraction of the unstructured part of logs,
- as well as generate more structured attributes with domain knowledge.
+as well as generate more structured attributes with domain knowledge.
 
 Here in the example, we use the below regex to retrieve IP addresses.
 

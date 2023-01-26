@@ -3,6 +3,10 @@
   :language: shell
   :class: highlight
 
+.. image:: _static/logai_logo.jpg
+   :width: 650
+   :align: center
+
 Explore LogAI GUI Portal
 ====================================
 
@@ -31,9 +35,9 @@ log file selected, you can choose the attributes you want to be involved in log 
 attributes will be treated as structured log attributes.
 
 **Algorithm Setting**. For different applications, the algorithms options may be different.
-For example, auto-log parsing algorithms are utilized for log summarization, but log clustering uses auto-parsing algorithms,
- vectorization algorithms, categorical encoding and clustering algorithms. You can select a
- algorithm and change the parameters in each algorithm section. After algorithm configuration, simply click "run" to
+For example, auto-log parsing algorithms are utilized for log summarization, but log clustering uses
+auto-parsing algorithms, vectorization algorithms, categorical encoding and clustering algorithms. You can select a
+algorithm and change the parameters in each algorithm section. After algorithm configuration, simply click :file:`run` to
 run the application.
 
 Log Summarization

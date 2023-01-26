@@ -3,7 +3,7 @@
   :class: highlight
 
 
-Developer Guide
+Developers' Guide
 ============================
 
 This guide if for people who want to contribute to LogAI codebase.

@@ -3,6 +3,10 @@
   :language: shell
   :class: highlight
 
+.. image:: _static/logai_logo.jpg
+   :width: 650
+   :align: center
+
 Tutorial: Log Clustering using LogAI
 =======================================================
 

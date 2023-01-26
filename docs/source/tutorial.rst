@@ -1,4 +1,7 @@
 
+.. image:: _static/logai_logo.jpg
+   :width: 650
+   :align: center
 
 Tutorials
 ======================================
