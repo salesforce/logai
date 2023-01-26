@@ -24,7 +24,7 @@ class ForecastBasedNNParams(Config):
     model_name: name of the model
     metadata_filepath: path to file containing meta data (pretrained token embeddings in case if semantic log representations are used in feature type)
     output_dir: path to output directory where the model would be dumped
-    feature_type: (should be "semantic" or "sequential")type of log feature representations used for the log-lines or log-sequences 
+    feature_type: (should be "semantics" or "sequential")type of log feature representations used for the log-lines or log-sequences 
     label_type: type of label (should be "anomaly" or "next_log") based on whether supervised or unsupervised (forcast based) model is being used
     eval_type:  (should be "session" or None) whether to aggregate and report the evaluation metrics at the level of sessions
         (based on the span_id in the log data) or at the level of each logline 
@@ -44,7 +44,7 @@ class ForecastBasedNNParams(Config):
     model_name: str = None
     metadata_filepath: str = None
     output_dir: str = None
-    feature_type: str = ""  # sequential, semantic
+    feature_type: str = ""  # sequential, semantics
     label_type: str = ""  # anomaly, next_log
     eval_type: str = "session"  # session, None
     topk: int = 10
