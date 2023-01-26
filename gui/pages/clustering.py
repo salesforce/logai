@@ -140,7 +140,7 @@ def create_clustering_layout():
                                     ]
                                 )
                             ),
-                            width=3
+                            width=4
                         ),
                         dbc.Col(
                             dbc.Card(
@@ -148,7 +148,8 @@ def create_clustering_layout():
                                     html.H4("Attributes"),
                                     html.Div(id="clustering-attribute-options"),
                                 ])
-                            )
+                            ),
+                            width=8
                         )
                     ]
                 ),

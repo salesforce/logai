@@ -194,6 +194,7 @@ def create_file_setting_layout():
                     value=0,
                     id='time-interval',
                 ),
+                html.Hr(),
             ],
             # style={
             #     "display": "inline-block",

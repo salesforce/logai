@@ -147,38 +147,33 @@ def create_anomaly_detection_layout():
                 ),
                 width=2
             ),
-            dbc.Col(
-                # Right column
-                html.Div(
-                    id="right-column",
-                    children=[
-                        dbc.Row(
-                            [
-                                dbc.Col(
-                                    dbc.Card(
-                                        dbc.CardBody(
-                                            [
-                                                html.H4("Summary"),
-                                                html.Div(id='anomaly-summary'),  # Add log AD summary
-                                            ]
-                                        )
-                                    ),
-                                    width=3
-                                ),
-                                dbc.Col(
-                                    dbc.Card(
-                                        dbc.CardBody([
-                                            html.H4("Attributes"),
-                                            html.Div(id="anomaly-attribute-options"),
-                                        ])
-                                    )
+            dbc.Col([
+                dbc.Row(
+                    [
+                        dbc.Col(
+                            dbc.Card(
+                                dbc.CardBody(
+                                    [
+                                        html.H4("Summary"),
+                                        html.Div(id='anomaly-summary'),  # Add log AD summary
+                                    ]
                                 )
-                            ]
+                            ),
+                            width=4
                         ),
-                        create_display_layout(),
-                    ],
+                        dbc.Col(
+                            dbc.Card(
+                                dbc.CardBody([
+                                    html.H4("Attributes"),
+                                    html.Div(id="anomaly-attribute-options"),
+                                ])
+                            ),
+                            width=8
+                        )
+                    ]
                 ),
-            )
+                create_display_layout(),
+            ])
         ],
     )
 
