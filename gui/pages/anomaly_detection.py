@@ -41,7 +41,7 @@ def create_ad_algo_setting_layout():
         id="algo-setting-layout",
         children=[
             html.Br(),
-            html.P("Parsing Algortihm"),
+            html.B("Parsing Algortihm"),
             dcc.Dropdown(
                 id='parsing-algo-select',
                 options=['DRAIN', 'IPLoM', 'AEL'],
@@ -51,7 +51,8 @@ def create_ad_algo_setting_layout():
                 id="ad-parsing-param-table",
                 children=[create_param_table()]
             ),
-            html.Label("Vectorization Algortihm"),
+            html.Br(),
+            html.B("Vectorization Algortihm"),
             dcc.Dropdown(
                 id='vectorization-algo-select',
                 options=[
@@ -61,7 +62,8 @@ def create_ad_algo_setting_layout():
                 ],
                 value='word2vec'
             ),
-            html.Label("Categorical Encoder"),
+            html.Br(),
+            html.B("Categorical Encoder"),
             dcc.Dropdown(
                 id='categorical-encoder-select',
                 options=[
@@ -71,7 +73,8 @@ def create_ad_algo_setting_layout():
                 ],
                 value='label_encoder'
             ),
-            html.Label("Anomaly Detection Algortihm"),
+            html.Br(),
+            html.B("Anomaly Detection Algortihm"),
             dcc.Dropdown(
                 id='ad-algo-select',
                 options=[

@@ -41,7 +41,7 @@ def create_summarization_algo_setting_layout():
         id="algo-setting-layout",
         children=[
             html.Br(),
-            html.P("Parsing Algortihm"),
+            html.B("Parsing Algortihm"),
             dcc.Dropdown(
                 id='parsing-algo-select',
                 options=['DRAIN', 'IPLoM', 'AEL'],
