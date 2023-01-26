@@ -3,7 +3,7 @@ workflow_config:
   parse_logline: True  
   output_dir: "temp_output"
   output_file_type: "csv"
-  training_type: "unsupervised"
+  training_type: "supervised"
   deduplicate_test: True
   test_data_frac_pos: 0.5
   dataset_name: hdfs
@@ -61,7 +61,7 @@ workflow_config:
         learning_rate: 0.0001
         metadata_filepath: "temp_output/HDFS_5k_parsed_sliding10_supervised_AD/embedding_model/metadata.pkl"
         feature_type: "sequential"
-        label_type: "next_log"
+        label_type: "anomaly"
         eval_type: "session"
         num_train_epochs: 10
         batch_size: 4
