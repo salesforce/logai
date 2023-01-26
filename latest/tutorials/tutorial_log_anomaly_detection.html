@@ -480,12 +480,12 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">from</span> <span class="nn">logai.dataloader.openset_data_loader</span> <span class="kn">import</span> <span class="n">OpenSetDataLoader</span><span class="p">,</span> <span class="n">OpenSetDataLoaderConfig</span>
 
 <span class="c1">#File Configuration</span>
-<span class="n">filepath</span> <span class="o">=</span> <span class="s2">&quot;../datasets/HealthApp_20000.log&quot;</span> <span class="c1"># Point to the target HealthApp.log dataset</span>
+<span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;..&quot;</span><span class="p">,</span> <span class="s2">&quot;datasets&quot;</span><span class="p">,</span> <span class="s2">&quot;HealthApp_2000.log&quot;</span><span class="p">)</span> <span class="c1"># Point to the target HealthApp.log dataset</span>
 
 <span class="n">dataset_name</span> <span class="o">=</span> <span class="s2">&quot;HealthApp&quot;</span>
 <span class="n">data_loader</span> <span class="o">=</span> <span class="n">OpenSetDataLoader</span><span class="p">(</span>
@@ -508,7 +508,7 @@ div.rendered_html tbody tr:hover {
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">FileNotFoundError</span>                         Traceback (most recent call last)
 Cell <span class="ansi-green-fg">In[1], line 9</span>
-<span class="ansi-green-intense-fg ansi-bold">      6</span> filepath <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">../datasets/HealthApp_20000.log</span><span style="color: rgb(175,0,0)">&#34;</span> <span style="color: rgb(95,135,135)"># Point to the target HealthApp.log dataset</span>
+<span class="ansi-green-intense-fg ansi-bold">      6</span> filepath <span style="color: rgb(98,98,98)">=</span> os<span style="color: rgb(98,98,98)">.</span>path<span style="color: rgb(98,98,98)">.</span>join(<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">..</span><span style="color: rgb(175,0,0)">&#34;</span>, <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">datasets</span><span style="color: rgb(175,0,0)">&#34;</span>, <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">HealthApp_2000.log</span><span style="color: rgb(175,0,0)">&#34;</span>) <span style="color: rgb(95,135,135)"># Point to the target HealthApp.log dataset</span>
 <span class="ansi-green-intense-fg ansi-bold">      8</span> dataset_name <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">HealthApp</span><span style="color: rgb(175,0,0)">&#34;</span>
 <span class="ansi-green-fg">----&gt; 9</span> data_loader <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">OpenSetDataLoader</span><span class="ansi-yellow-bg">(</span>
 <span class="ansi-green-intense-fg ansi-bold">     10</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">OpenSetDataLoaderConfig</span><span class="ansi-yellow-bg">(</span>
