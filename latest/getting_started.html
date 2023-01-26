@@ -8,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Welcome to LogAI Documentation! &mdash; LogAI  documentation</title>
+  <title>Getting Started &mdash; LogAI  documentation</title>
   
 
   
@@ -42,7 +42,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Introduction" href="intro.html" /> 
+    <link rel="next" title="Tutorials" href="tutorial.html" />
+    <link rel="prev" title="Introduction" href="intro.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -56,7 +57,7 @@
           
 
           
-            <a href="#" class="icon icon-home"> LogAI
+            <a href="index.html" class="icon icon-home"> LogAI
           
 
           
@@ -92,8 +93,12 @@
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setup-logai-gui-portal">Setup LogAI GUI Portal</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
@@ -121,7 +126,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">LogAI</a>
+          <a href="index.html">LogAI</a>
         
       </nav>
 
@@ -152,15 +157,15 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Welcome to LogAI Documentation!</li>
+      <li>Getting Started</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/getting_started.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -198,71 +203,28 @@
 }
 </style>
 <a class="reference internal image-reference" href="_images/logai_logo.jpg"><img alt="_images/logai_logo.jpg" class="align-center" src="_images/logai_logo.jpg" style="width: 650px;" /></a>
-<section id="welcome-to-logai-documentation">
-<h1>Welcome to LogAI Documentation!<a class="headerlink" href="#welcome-to-logai-documentation" title="Permalink to this heading">¶</a></h1>
-<p>This is LogAI documentation. LogAI is an open source toolkit for AI-based log analytics. You can
-check more information about <a class="reference external" href="https://github.com/salesforce/logai">LogAI on Github</a>.</p>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#logai-architecture">LogAI Architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#logai-core-library">LogAI Core Library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#logai-gui-portal">LogAI GUI Portal</a></li>
-</ul>
-</li>
-</ul>
+<section id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading">¶</a></h1>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h2>
+<p>You can install LogAI using <code class="code highlight shell docutils literal highlight-shell">pip<span class="w"> </span>install</code> with the instruction below:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://git.soma.salesforce.com/SalesforceResearch/logai.git
+<span class="nb">cd</span><span class="w"> </span>logai
+python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv<span class="w"> </span><span class="c1"># create virtual environment</span>
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate<span class="w"> </span><span class="c1"># activate virtual env</span>
+pip<span class="w"> </span>install<span class="w"> </span>./<span class="w"> </span><span class="c1"># install LogAI from root directory</span>
+</pre></div>
 </div>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="getting_started.html#installation">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="getting_started.html#setup-logai-gui-portal">Setup LogAI GUI Portal</a></li>
-</ul>
-</li>
-</ul>
+</section>
+<section id="setup-logai-gui-portal">
+<h2>Setup LogAI GUI Portal<a class="headerlink" href="#setup-logai-gui-portal" title="Permalink to this heading">¶</a></h2>
+<p>You can also start a local LogAI service and use the GUI portal to explore LogAI.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="w">  </span><span class="c1"># make sure to add current root to PYTHONPATH</span>
+python3<span class="w"> </span>gui/application.py<span class="w"> </span><span class="c1"># Run local plotly dash server.</span>
+</pre></div>
 </div>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorials</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.explore_logai_gui_portal.html">Explore LogAI GUI Portal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.run_simple_time-series_anomaly_detection_application.html">Run Simple Time-series Anomaly Detection Application</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.build_log_anomaly_detection_app.html">Tutorial: Log Anomaly Detection Using LogAI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.build_log_clustering_app.html">Tutorial: Log Clustering using LogAI</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Developers' Guide</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="develop.html">Developers’ Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="develop.html#install-dependencies">Install dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="develop.html#build-wheels-package">Build wheels package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="develop.html#install-log-ai-from-wheels">Install Log-AI from wheels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="develop.html#use-gui-to-explore-logai">Use GUI to explore LogAI</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">LogAI Core Modules</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">logai</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="logai.html">logai package</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<section id="indices-and-tables">
-<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading">¶</a></h2>
-<ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
-</ul>
+<p>Then open the LogAI portal via <code class="code highlight shell docutils literal highlight-shell">http://localhost:8050/</code> or <code class="code highlight shell docutils literal highlight-shell">http://127.0.0.1:8050/</code> in your browser:</p>
+<a class="reference internal image-reference" href="_images/logai_summarization_res.png"><img alt="_images/logai_summarization_res.png" src="_images/logai_summarization_res.png" style="width: 750px;" /></a>
 </section>
 </section>
 
@@ -272,7 +234,8 @@ check more information about <a class="reference external" href="https://github.
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="intro.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="tutorial.html" class="btn btn-neutral float-right" title="Tutorials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="intro.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
