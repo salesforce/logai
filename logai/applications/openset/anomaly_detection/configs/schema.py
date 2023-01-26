@@ -3,7 +3,7 @@ from schema import Or, Schema, Optional
 config_schema = Schema(
     {
         "dataset_name": str,
-        "label_filepath": str,
+        Optional("label_filepath"): str,
         "parse_logline": bool,
         "output_dir": str,
         "output_file_type": str,
@@ -20,8 +20,10 @@ config_schema = Schema(
                 "body": list,
                 "timestamp": list,
                 Optional("labels"): Or(list, None),
+                Optional("span_id"): list
             },
             "datetime_format": str,
+            "infer_datetime": bool
         },
         "preprocessor_config": {
             "custom_delimiters_regex": list,
@@ -39,26 +41,37 @@ config_schema = Schema(
         "log_vectorizer_config": {
             "algo_name": str,
             "algo_param": {
-                "feature_type": str,
-                "sep_token": str,
-                "max_token_len": int,
-                "embedding_dim": int,
-                "label_type": str,
+                Optional("model_name"): str,
+                Optional("feature_type"): str,
+                Optional("sep_token"): str,
+                Optional("max_token_len"): int,
+                Optional("embedding_dim"): int,
+                Optional("label_type"): str,
+                Optional("custom_tokens"): list, 
                 Optional("output_dir"): str,
-                Optional("tokenizer_dirpath"): str,
+                Optional("tokenizer_dirname"): str,
+                Optional("vectorizer_model_dirpath"): str, 
+                Optional("vectorizer_metadata_filepath"): str,
             },
         },
-        "anomaly_detection_config": {
+        "nn_anomaly_detection_config": {
             "algo_name": str,
             "algo_params": {
                 "model_name": str,
-                "learning_rate": float,
+                Optional("learning_rate"): float,
                 Optional("embedding_dim"): int,
                 Optional("feature_type"): str,
                 Optional("label_type"): str,
+                Optional("eval_type"): str,
+                Optional("batch_size"): int, 
+                Optional("per_device_train_batch_size"): int,
+                Optional("num_train_epochs"): int,
+                Optional("save_steps"): int,
+                Optional("mask_ngram"): int,
                 Optional("output_dir"): str,
-                Optional("model_name"): str,
                 Optional("tokenizer_dirpath"): str,
+                Optional("metadata_filepath"): str
+
             },
         },
     }
