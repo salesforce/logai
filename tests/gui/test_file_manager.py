@@ -23,12 +23,3 @@ class TestFileManager:
         print(self.file_manager.base_directory)
         pass
 
-    # def test_save(self):
-    #     name = "test.csv"
-    #
-    #     with open(TEST_FILE_DIR, "r") as fb:
-    #         content = fb.read()
-    #
-    #     self.file_manager.save_file(name, content)
-    #
-    #     pass
