@@ -110,18 +110,11 @@ public datasets: HDFS, BGL and HealthApp. For each log type we included several 
 log file selected, you can choose the attributes you want to be inolved in log processing. The selected 
 attributes will be treated as structured log attributes.
 
-
 **Algortihm Setting**. For different applications, the algorithms options may be different.
 For example, auto-log parsing algorithms are utilized for log summarization, but log clustering uses auto-parsing algorithms,
  vectorization algorithms, categorical encoding and clustering algorithms. You can select a
  algorithm and change the parameters in each algorithm section. After algortihm configuration, simply click "run" to
 run the application.
-
-<p float="center">
-    <img alt="logai_file_setting" src="img/logai_file_setting.png" width="250"/>
-    <img alt="logai_parsing_algo" src="img/logai_parsing_algo.png" width="250"/>
-    <img alt="logai_clustering_algo" src="img/logai_clustering_algorithm.png" width="250"/>
-</p>
 
 #### Log Summarization
 
