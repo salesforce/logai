@@ -20,12 +20,31 @@ class ForecastBasedNNParams(Config):
 
     Inherits:
         Config : Config interface
+
+    model_name: name of the model
+    metadata_filepath: path to file containing meta data (pretrained token embeddings in case if semantic log representations are used in feature type)
+    output_dir: path to output directory where the model would be dumped
+    feature_type: (should be "semantics" or "sequential")type of log feature representations used for the log-lines or log-sequences 
+    label_type: type of label (should be "anomaly" or "next_log") based on whether supervised or unsupervised (forcast based) model is being used
+    eval_type:  (should be "session" or None) whether to aggregate and report the evaluation metrics at the level of sessions
+        (based on the span_id in the log data) or at the level of each logline 
+    topk: the prediction at top-k to consider, when deciding whether an evaluation instance is an anomaly or not 
+    embedding_dim: dimension of the embedding space. Both for sequential and semantic type feature representation,
+        the input log feature representation is passed through an embedding layer which projects it to the embedding_dim 
+    hidden_size:  dimension of the hidden representations 
+    freeze: whether to freeze the embedding layer to use the pretrained embeddings or to further train it on the given task 
+    gpu: device number if gpu is used (otherwise -1 or None will use cpu)
+    patience: number of eval_steps, the model waits for performance on validation data to improve, before early stopping the training
+    num_train_epochs: number of training epochs 
+    batch_size: batch size 
+    learning_rate: learning rate 
+
     """
 
     model_name: str = None
     metadata_filepath: str = None
     output_dir: str = None
-    feature_type: str = ""  # sequential, semantic
+    feature_type: str = ""  # sequential, semantics
     label_type: str = ""  # anomaly, next_log
     eval_type: str = "session"  # session, None
     topk: int = 10
@@ -34,7 +53,7 @@ class ForecastBasedNNParams(Config):
     freeze: bool = False
     gpu: int = None
     patience: int = 5
-    epoches: int = 100
+    num_train_epochs: int = 100
     batch_size: int = 1024
     learning_rate: int = 1e-4
 
@@ -96,7 +115,7 @@ class ForecastBasedNN(nn.Module):
         self.eval_type = self.config.eval_type
         self.patience = self.config.patience
         self.time_tracker = {}
-        self.epoches = self.config.epoches
+        self.num_train_epochs = self.config.num_train_epochs
         self.learning_rate = self.config.learning_rate
 
         self.meta_data = read_file(self.config.metadata_filepath)
@@ -356,7 +375,7 @@ class ForecastBasedNN(nn.Module):
         best_loss = float("inf")
         best_results = None
         worse_count = 0
-        for epoch in range(1, self.epoches + 1):
+        for epoch in range(1, self.num_train_epochs + 1):
             epoch_time_start = time.time()
             model = self.train()
             optimizer = torch.optim.Adam(model.parameters(), lr=self.learning_rate)
@@ -380,7 +399,7 @@ class ForecastBasedNN(nn.Module):
             epoch_time_elapsed = time.time() - epoch_time_start
             logging.info(
                 "Epoch {}/{}, training loss: {} [{}s]".format(
-                    epoch, self.epoches, epoch_loss, epoch_time_elapsed
+                    epoch, self.num_train_epochs, epoch_loss, epoch_time_elapsed
                 )
             )
             self.time_tracker["train"] = epoch_time_elapsed

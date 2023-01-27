@@ -1,0 +1,68 @@
+workflow_config:  
+  parse_logline: False  
+  output_dir: "temp_output"
+  output_file_type: "csv"
+  training_type: "unsupervised"
+  deduplicate_test: True
+  test_data_frac_pos: 0.5
+  train_test_shuffle: True
+  dataset_name: hdfs
+
+  data_loader_config:
+    filepath: "../../datasets/BGL_AD/BGL_11k.log"
+    reader_args: 
+      log_format: "<Label> <Id> <Date> <Code1> <Time> <Code2> <Content>"
+    log_type: "log"
+    dimensions:
+      body: ['Content']
+      timestamp: ['Time']
+      labels: ['Label'] 
+      span_id: ['Id']
+    datetime_format:  '%Y-%m-%d-%H.%M.%S.%f'
+    infer_datetime: True
+    
+
+  preprocessor_config:
+    custom_delimiters_regex:
+                [':', ',', '=', '\t']
+    custom_replace_list: [
+                ['(0x)[0-9a-zA-Z]+', ' HEX '],
+                ['((?![A-Za-z]{8}|\d{8})[A-Za-z\d]{8})', ' ALPHANUM '],
+                ['\d+.\d+.\d+.\d+', ' IP '],
+                ['\d+', ' INT ']
+            ]
+
+  log_parser_config:
+    parsing_algorithm: "drain"
+    parsing_algo_params: 
+      sim_th: 0.5
+      depth: 5
+
+  open_set_partitioner_config:
+    session_window: True
+    sliding_window: -1
+    logsequence_delim: "[SEP]"
+
+
+  log_vectorizer_config:
+    algo_name: "logbert"
+    algo_param:
+      model_name: "bert-base-cased"
+      max_token_len: 120
+      custom_tokens: ["ALPHANUM", "IP", "HEX", "INT"]
+      output_dir: "temp_output/BGL_11k_parsed_session_supervised_AD"
+      tokenizer_dirname: "logbert_tokenizer"
+
+  nn_anomaly_detection_config:
+      algo_name: "logbert"
+      algo_params:
+          model_name: "bert-base-cased"
+          learning_rate: 0.0001
+          num_train_epochs: 10
+          per_device_train_batch_size: 4
+          max_token_len: 120
+          save_steps: 50
+          mask_ngram: 8
+          tokenizer_dirpath: "temp_output/BGL_11k_parsed_session_supervised_AD/bert-base-cased_tokenizer"
+          output_dir: "temp_output/BGL_11k_parsed_session_supervised_AD"
+
