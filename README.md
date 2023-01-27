@@ -157,6 +157,7 @@ to improve usability of the portal. Any feedbacks and contributions are welcome 
 ### Run Deep-learning Anomaly Detection Benchmarking
 
 Below is another sample `hdfs_log_anomaly_detection_unsupervised_lstm.yaml` yaml config file which provides the configs for each component of the log anomaly detection workflow on the public dataset HDFS using an unsupervised Deep-Learning based Anomaly Detector. 
+
 ```yaml
 workflow_config:  
   label_filepath: "tests/logai/test_data/HDFS_AD/anomaly_label.csv"
@@ -297,6 +298,7 @@ This kind of Anomaly Detection workflow for various Deep-Learning models and var
 
 ```python
 from logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow import OpenSetADWorkflow, get_openset_ad_config
+
 TEST_DATA_PATH = "test_data/HDFS_AD/HDFS_5k.log"
 TEST_LABEL_PATH = "test_data/HDFS_AD/anomaly_label.csv"
 TEST_OUTPUT_PATH = "test_data/HDFS_AD/output"
@@ -321,7 +323,7 @@ workflow = OpenSetADWorkflow(config)
 workflow.execute()
 ```
 
-For more details of this workflow and more such examples please check [nn_ad_benchmarking](.examples/jupyter_notebook/nn_ad_benchmarking)
+For more details of this workflow and more such examples please check the notebook tutorials in [nn_ad_benchmarking](.examples/jupyter_notebook/nn_ad_benchmarking)
 
 
 ### Build LogAI Application
