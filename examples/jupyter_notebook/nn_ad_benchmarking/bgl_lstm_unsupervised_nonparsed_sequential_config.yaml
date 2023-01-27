@@ -1,0 +1,71 @@
+workflow_config:  
+  parse_logline: False  
+  output_dir: "temp_output"
+  output_file_type: "csv"
+  training_type: "unsupervised"
+  deduplicate_test: True
+  test_data_frac_pos: 0.5
+  dataset_name: hdfs
+
+  data_loader_config:
+    filepath: "../../datasets/BGL_AD/BGL_11k.log"
+    reader_args: 
+      log_format: "<Label> <Id> <Date> <Code1> <Time> <Code2> <Content>"
+    log_type: "log"
+    dimensions:
+      body: ['Content']
+      timestamp: ['Time']
+      labels: ['Label'] 
+      span_id: ['Id']
+    datetime_format:  '%Y-%m-%d-%H.%M.%S.%f'
+    infer_datetime: True
+    
+
+  preprocessor_config:
+    custom_delimiters_regex:
+                [':', ',', '=', '\t']
+    custom_replace_list: [
+                ['(0x)[0-9a-zA-Z]+', ' HEX '],
+                ['((?![A-Za-z]{8}|\d{8})[A-Za-z\d]{8})', ' ALPHANUM '],
+                ['\d+.\d+.\d+.\d+', ' IP '],
+                ['\d+', ' INT ']
+            ]
+
+    
+  log_parser_config:
+    parsing_algorithm: "drain"
+    parsing_algo_params: 
+      sim_th: 0.5
+      depth: 5
+
+  open_set_partitioner_config:
+    session_window: False
+    sliding_window: 10
+    logsequence_delim: "[SEP]"
+
+
+  log_vectorizer_config:
+    algo_name: "forecast_nn"
+    algo_param:
+      feature_type: "sequential"
+      sep_token: "[SEP]"
+      max_token_len: 10
+      embedding_dim: 100
+      output_dir: "temp_output/BGL_11k_nonparsed_sliding10_unsupervised_AD"
+      vectorizer_model_dirpath: "temp_output/BGL_11k_nonparsed_sliding10_unsupervised_AD/embedding_model"
+      vectorizer_metadata_filepath: "temp_output/BGL_11k_nonparsed_sliding10_unsupervised_AD/embedding_model/metadata.pkl"
+
+
+  nn_anomaly_detection_config:
+    algo_name: "lstm"
+    algo_params:
+        model_name: "lstm"
+        learning_rate: 0.0001
+        metadata_filepath: "temp_output/BGL_11k_nonparsed_sliding10_unsupervised_AD/embedding_model/metadata.pkl"
+        feature_type: "sequential"
+        label_type: "next_log"
+        eval_type: "session"
+        num_train_epochs: 10
+        batch_size: 4
+        output_dir: "temp_output/BGL_11k_nonparsed_sliding10_unsupervised_AD"
+

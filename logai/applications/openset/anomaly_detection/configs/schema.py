@@ -60,6 +60,7 @@ config_schema = Schema(
                 "model_name": str,
                 Optional("learning_rate"): float,
                 Optional("embedding_dim"): int,
+                Optional("max_token_len"): int,
                 Optional("feature_type"): str,
                 Optional("label_type"): str,
                 Optional("eval_type"): str,

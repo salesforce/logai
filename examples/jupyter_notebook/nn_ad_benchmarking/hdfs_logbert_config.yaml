@@ -1,5 +1,5 @@
 workflow_config:  
-  label_filepath: "tests/logai/test_data/HDFS_AD/anomaly_label.csv"
+  label_filepath: "../../datasets/HDFS_AD/anomaly_label.csv"
   parse_logline: False  
   output_dir: "temp_output"
   output_file_type: "csv"
@@ -9,7 +9,7 @@ workflow_config:
   dataset_name: hdfs
 
   data_loader_config:
-    filepath: "tests/logai/test_data/HDFS_AD/HDFS_5k.log"
+    filepath: "../../datasets/HDFS_AD/HDFS_5k.log"
     reader_args: 
       log_format: "<Date> <Time> <Pid> <Level> <Component> <Content>"
     log_type: "log"
@@ -49,7 +49,7 @@ workflow_config:
       model_name: "bert-base-cased"
       max_token_len: 384
       custom_tokens: ["BLOCK", "IP", "HEX", "INT"]
-      output_dir: "temp_output/HDFS_5k_parsed_session_supervised_AD"
+      output_dir: "temp_output/HDFS_5k_parsed_session_unsupervised_AD"
       tokenizer_dirname: "logbert_tokenizer"
 
   nn_anomaly_detection_config:
@@ -61,6 +61,6 @@ workflow_config:
           per_device_train_batch_size: 4
           save_steps: 50
           mask_ngram: 8
-          tokenizer_dirpath: "temp_output/HDFS_5k_parsed_session_supervised_AD/bert-base-cased_tokenizer"
-          output_dir: "temp_output/HDFS_5k_parsed_session_supervised_AD"
+          tokenizer_dirpath: "temp_output/HDFS_5k_parsed_session_unsupervised_AD/bert-base-cased_tokenizer"
+          output_dir: "temp_output/HDFS_5k_parsed_session_unsupervised_AD"
 

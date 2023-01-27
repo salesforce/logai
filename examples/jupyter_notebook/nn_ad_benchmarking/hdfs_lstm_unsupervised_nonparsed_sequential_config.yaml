@@ -1,5 +1,5 @@
 workflow_config:  
-  label_filepath: "tests/logai/test_data/HDFS_AD/anomaly_label.csv"
+  label_filepath: "../../datasets/HDFS_AD/anomaly_label.csv"
   parse_logline: False  
   output_dir: "temp_output"
   output_file_type: "csv"
@@ -9,7 +9,7 @@ workflow_config:
   dataset_name: hdfs
 
   data_loader_config:
-    filepath: "tests/logai/test_data/HDFS_AD/HDFS_5k.log"
+    filepath: "../../datasets/HDFS_AD/HDFS_5k.log"
     reader_args: 
       log_format: "<Date> <Time> <Pid> <Level> <Component> <Content>"
     log_type: "log"
