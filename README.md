@@ -210,9 +210,9 @@ workflow_config:
       sep_token: "[SEP]"
       max_token_len: 10
       embedding_dim: 100
-      output_dir: "temp_output/HDFS_5k_parsed_sliding10_unsupervised_AD"
-      vectorizer_model_dirpath: "temp_output/HDFS_5k_parsed_sliding10_unsupervised_AD/embedding_model"
-      vectorizer_metadata_filepath: "temp_output/HDFS_5k_parsed_sliding10_unsupervised_AD/embedding_model/metadata.pkl"
+      output_dir: "temp_output"
+      vectorizer_model_dirpath: "temp_output/embedding_model"
+      vectorizer_metadata_filepath: "temp_output/embedding_model/metadata.pkl"
 
 
   nn_anomaly_detection_config:
@@ -220,13 +220,13 @@ workflow_config:
     algo_params:
         model_name: "lstm"
         learning_rate: 0.0001
-        metadata_filepath: "temp_output/HDFS_5k_parsed_sliding10_unsupervised_AD/embedding_model/metadata.pkl"
+        metadata_filepath: "temp_output/embedding_model/metadata.pkl"
         feature_type: "sequential"
         label_type: "next_log"
         eval_type: "session"
         num_train_epochs: 10
         batch_size: 4
-        output_dir: "temp_output/HDFS_5k_parsed_sliding10_unsupervised_AD"
+        output_dir: "temp_output"
 
 }
 ```
