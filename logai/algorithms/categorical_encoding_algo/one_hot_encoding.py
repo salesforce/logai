@@ -17,6 +17,7 @@ class OneHotEncodingParams(Config):
     """
     Configuration for One-Hot Encoding.
     """
+
     categories: str = "auto"
     drop: object = None
     dtype: np.float64 = np.float64

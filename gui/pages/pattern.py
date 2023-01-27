@@ -8,8 +8,12 @@
 import dash_bootstrap_components as dbc
 from dash import dcc, html
 
-from .utils import create_modal, create_description_card, \
-    create_file_setting_layout, create_param_table
+from .utils import (
+    create_modal,
+    create_description_card,
+    create_file_setting_layout,
+    create_param_table,
+)
 
 
 def create_control_card():
@@ -22,17 +26,16 @@ def create_control_card():
             html.Hr(),
             html.Div(
                 children=[html.Button(id="pattern-btn", children="Run", n_clicks=0)],
-                style={"textAlign": "center"}
+                style={"textAlign": "center"},
             ),
-
             create_modal(
                 modal_id="pattern_exception_modal",
                 header="An Exception Occurred",
                 content="An exception occurred. Please click OK to continue.",
                 content_id="pattern_exception_modal_content",
-                button_id="pattern_exception_modal_close"
-            )
-        ]
+                button_id="pattern_exception_modal_close",
+            ),
+        ],
     )
 
 
@@ -43,23 +46,18 @@ def create_summarization_algo_setting_layout():
             html.Br(),
             html.B("Parsing Algortihm"),
             dcc.Dropdown(
-                id='parsing-algo-select',
-                options=['DRAIN', 'IPLoM', 'AEL'],
-                value='DRAIN'
+                id="parsing-algo-select",
+                options=["DRAIN", "IPLoM", "AEL"],
+                value="DRAIN",
             ),
-            html.Div(
-                id="parsing-param-table",
-                children=[create_param_table()]
-            ),
+            html.Div(id="parsing-param-table", children=[create_param_table()]),
         ],
     )
 
 
 def create_summary_graph_layout():
     return html.Div(
-        dcc.Graph(
-            id='summary-scatter'
-        ),
+        dcc.Graph(id="summary-scatter"),
         # style={'width': '39%', 'display': 'inline-block', 'padding': '0 20'}
     )
 
@@ -67,7 +65,7 @@ def create_summary_graph_layout():
 def create_timeseries_grapy_layout():
     return html.Div(
         children=[
-            dcc.Graph(id='pattern-time-series'),
+            dcc.Graph(id="pattern-time-series"),
         ],
         # style={
         #     'display': 'inline-block',
@@ -88,11 +86,11 @@ def create_pattern_layout():
                         html.Div(
                             ["initial child"],
                             id="output-clientside",
-                            style={"display": "none"}
+                            style={"display": "none"},
                         ),
                     ]
                 ),
-                width=2
+                width=2,
             ),
             # Right column
             dbc.Col(
@@ -105,21 +103,25 @@ def create_pattern_layout():
                                         dbc.CardBody(
                                             [
                                                 html.H4("Summary"),
-                                                html.Div(id="log-summarization-summary")
+                                                html.Div(
+                                                    id="log-summarization-summary"
+                                                ),
                                             ]
                                         )
                                     ),
-                                    width=4
+                                    width=4,
                                 ),
                                 dbc.Col(
                                     dbc.Card(
-                                        dbc.CardBody([
-                                            html.H4("Attributes"),
-                                            html.Div(id="attribute-options"),
-                                        ])
+                                        dbc.CardBody(
+                                            [
+                                                html.H4("Attributes"),
+                                                html.Div(id="attribute-options"),
+                                            ]
+                                        )
                                     ),
-                                    width=8
-                                )
+                                    width=8,
+                                ),
                             ]
                         ),
                         html.B("Charts"),
@@ -138,7 +140,7 @@ def create_pattern_layout():
                                             ]
                                         )
                                     ),
-                                    width=4
+                                    width=4,
                                 ),
                                 dbc.Col(
                                     dbc.Card(
@@ -152,7 +154,7 @@ def create_pattern_layout():
                                             ]
                                         )
                                     ),
-                                    width=8
+                                    width=8,
                                 ),
                             ],
                         ),
@@ -166,19 +168,17 @@ def create_pattern_layout():
                                     )
                                 ],
                             ),
-                            id='pattern-log-card',
-
+                            id="pattern-log-card",
                         ),
                         html.B("Dynamic Values"),
                         html.Hr(),
                         dbc.Card(
                             dbc.CardBody(
                                 [
-
                                     dcc.Loading(
                                         id="loading-dynamic-values",
                                         children=[html.Div(id="log-dynamic-lists")],
-                                        type="default"
+                                        type="default",
                                     )
                                 ],
                             ),
@@ -187,21 +187,25 @@ def create_pattern_layout():
                         html.B("Log Lines"),
                         html.Hr(),
                         dbc.Card(
-                            dbc.CardBody([
-
-                                dcc.Loading(
-                                    id="loading-loglines",
-                                    children=[dbc.Row(dbc.Col(html.Div(id="select-loglines")))],
-                                    type="default"
-                                )]),
+                            dbc.CardBody(
+                                [
+                                    dcc.Loading(
+                                        id="loading-loglines",
+                                        children=[
+                                            dbc.Row(
+                                                dbc.Col(html.Div(id="select-loglines"))
+                                            )
+                                        ],
+                                        type="default",
+                                    )
+                                ]
+                            ),
                             id="result_table_card",
-                            style={
-                                'maxwidth': '900px'
-                            }
-                        )
+                            style={"maxwidth": "900px"},
+                        ),
                     ]
                 )
-            )
+            ),
         ]
     )
 

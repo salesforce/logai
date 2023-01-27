@@ -20,20 +20,17 @@ app = dash.Dash(
     __name__,
     external_stylesheets=[dbc.themes.BOOTSTRAP],
     meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}],
-    title='LogAI'
+    title="LogAI",
 )
 server = app.server
-app.config['suppress_callback_exceptions'] = True
+app.config["suppress_callback_exceptions"] = True
 
 app.layout = dbc.Container(
     [
         dcc.Location(id="url", refresh=False),
-        dbc.Container(
-            id="page-content",
-            fluid=True
-        )
+        dbc.Container(id="page-content", fluid=True),
     ],
-    fluid=True
+    fluid=True,
 )
 
 
@@ -41,39 +38,19 @@ app.layout = dbc.Container(
 def display_page(pathname):
     if pathname == "/logai/pattern":
         return dbc.Container(
-            [
-                dbc.Row(create_banner(app)),
-                pattern_page.layout
-            ],
-            fluid=True
+            [dbc.Row(create_banner(app)), pattern_page.layout], fluid=True
         )
-    elif pathname == '/logai/anomaly':
+    elif pathname == "/logai/anomaly":
         return dbc.Container(
-            [
-                dbc.Row(create_banner(app)),
-                anomaly_page.layout
-            ],
-            fluid=True
+            [dbc.Row(create_banner(app)), anomaly_page.layout], fluid=True
         )
-    elif pathname == '/logai/clustering':
+    elif pathname == "/logai/clustering":
         return dbc.Container(
-            [
-                dbc.Row(
-                    dbc.Col(create_banner(app))
-                ),
-                clustering_page.layout
-            ],
-            fluid=True
+            [dbc.Row(dbc.Col(create_banner(app))), clustering_page.layout], fluid=True
         )
     else:
         return dbc.Container(
-            [
-                dbc.Row(
-                    dbc.Col(create_banner(app))
-                ),
-                pattern_page.layout
-            ],
-            fluid=True
+            [dbc.Row(dbc.Col(create_banner(app))), pattern_page.layout], fluid=True
         )
 
 

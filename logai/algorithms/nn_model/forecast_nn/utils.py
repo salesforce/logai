@@ -28,8 +28,8 @@ def seed_everything(seed=1234):
     torch.manual_seed(seed)
 
 
-def set_device(gpu: int =None):
-    """set device (cpu or gpu). Use -1 to specify cpu. 
+def set_device(gpu: int = None):
+    """set device (cpu or gpu). Use -1 to specify cpu.
     If not manually set device would be automatically set to gpu
      if gpu is available otherwise cpu would be used
 

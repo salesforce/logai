@@ -11,8 +11,7 @@ import logging
 
 
 class LogBERTTrain:
-    """Class for training logBERT model to learn log representations
-    """
+    """Class for training logBERT model to learn log representations"""
 
     def __init__(self, config: LogBERTConfig):
 
@@ -34,8 +33,7 @@ class LogBERTTrain:
         self.custom_vocab = get_tokenizer_vocab(self.config.tokenizer_dirpath)
 
     def _initialize_trainer(self, model, train_dataset, dev_dataset):
-        """initializing huggingface trainer object for logbert 
-        """
+        """initializing huggingface trainer object for logbert"""
         training_args = TrainingArguments(
             self.model_dirpath,
             evaluation_strategy=self.config.evaluation_strategy,
@@ -65,7 +63,7 @@ class LogBERTTrain:
         )
 
     def get_model_checkpoint(self):
-        """Get the latest dumped checkpoint from the model directory path mentioned in logBERTConfig 
+        """Get the latest dumped checkpoint from the model directory path mentioned in logBERTConfig
 
         Returns:
             str: path to model checkpoint (or name of model in case of a pretrained model from hugging face)
@@ -88,7 +86,7 @@ class LogBERTTrain:
         return model_checkpoint
 
     def fit(self, train_dataset: HFDataset, dev_dataset: HFDataset):
-        """fit method for training logbert model 
+        """fit method for training logbert model
 
         Args:
             train_dataset (HFDataset): training dataset of type huggingface Dataset object
@@ -109,7 +107,6 @@ class LogBERTTrain:
         self.trainer.train()
 
     def evaluate(self):
-        """evaluate methof for evaluating logbert model on dev data using perplexity metric
-        """
+        """evaluate methof for evaluating logbert model on dev data using perplexity metric"""
         eval_results = self.trainer.evaluate()
         logging.info("Perplexity: {}".format(math.exp(eval_results["eval_loss"])))

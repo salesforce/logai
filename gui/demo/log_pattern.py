@@ -20,7 +20,7 @@ class LogPattern(ParamInfoMixin):
     algorithms = {
         "drain": ("logai.algorithms.parsing_algo.drain", "Drain", "DrainParams"),
         "ael": ("logai.algorithms.parsing_algo.ael", "AEL", "AELParams"),
-        "iplom": ("logai.algorithms.parsing_algo.iplom", "IPLoM", "IPLoMParams")
+        "iplom": ("logai.algorithms.parsing_algo.iplom", "IPLoM", "IPLoMParams"),
     }
 
     def __init__(self):
@@ -114,7 +114,10 @@ class LogPattern(ParamInfoMixin):
             dynamic_parameters = self.parsing_app.get_parameter_list(log_pattern)
         except Exception as e:
             raise RuntimeError(
-                "Failed to get dynamic paramters for log_pattern: {} with exception {}".format(log_pattern, e))
+                "Failed to get dynamic paramters for log_pattern: {} with exception {}".format(
+                    log_pattern, e
+                )
+            )
         return dynamic_parameters
 
     def get_log_lines(self, log_pattern):
@@ -124,7 +127,9 @@ class LogPattern(ParamInfoMixin):
         :return: pd.Series of loglines
         """
         df = self.result_table
-        res = df[df["parsed_logline"] == log_pattern].drop(['parameter_list', 'parsed_logline'], axis=1)
+        res = df[df["parsed_logline"] == log_pattern].drop(
+            ["parameter_list", "parsed_logline"], axis=1
+        )
 
         return res
 
@@ -143,13 +148,13 @@ class LogPattern(ParamInfoMixin):
                 for k, v in attr.items():
                     parsed_df = parsed_df[parsed_df[k] == v]
 
-        count_table = parsed_df['parsed_logline'].value_counts()
+        count_table = parsed_df["parsed_logline"].value_counts()
 
         scatter_df = pd.DataFrame(count_table)
 
-        scatter_df.columns = ['counts']
+        scatter_df.columns = ["counts"]
 
-        scatter_df['ratio'] = scatter_df['counts'] * 1.0 / sum(scatter_df['counts'])
-        scatter_df['order'] = np.array(range(scatter_df.shape[0]))
+        scatter_df["ratio"] = scatter_df["counts"] * 1.0 / sum(scatter_df["counts"])
+        scatter_df["order"] = np.array(range(scatter_df.shape[0]))
 
         return scatter_df

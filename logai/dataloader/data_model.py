@@ -165,10 +165,10 @@ class LogRecordObject:
         return target
 
     def dropna(self):
-        """method to drop entries containing NaN or null values in the logrecord object 
+        """method to drop entries containing NaN or null values in the logrecord object
 
         Returns:
-            LogRecordObject : modified logrecord object after removing entries with NaN or null values 
+            LogRecordObject : modified logrecord object after removing entries with NaN or null values
         """
         null_body = self.body.isnull()
         null_body = null_body[null_body[constants.LOGLINE_NAME] == True]

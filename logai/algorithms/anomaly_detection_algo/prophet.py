@@ -18,6 +18,7 @@ class ProphetParams(Config):
     """
     Prophet Anomaly Detector Params
     """
+
     pass
 
 
@@ -26,6 +27,7 @@ class ProphetDetector(AnomalyDetectionAlgo):
     """
     Prophet Anomaly Detector
     """
+
     def __init__(self):
         pass
 

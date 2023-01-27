@@ -16,17 +16,17 @@ def generate_logformat_regex(log_format):
     return: headers, regex
     """
     headers = []
-    splitters = re.split(r'(<[^<>]+>)', log_format)
-    regex = ''
+    splitters = re.split(r"(<[^<>]+>)", log_format)
+    regex = ""
     for k in range(len(splitters)):
         if k % 2 == 0:
-            splitter = re.sub(' +', '\\\s+', splitters[k])
+            splitter = re.sub(" +", "\\\s+", splitters[k])
             regex += splitter
         else:
-            header = splitters[k].strip('<').strip('>')
-            regex += '(?P<%s>.*?)' % header
+            header = splitters[k].strip("<").strip(">")
+            regex += "(?P<%s>.*?)" % header
             headers.append(header)
-    regex = re.compile('^' + regex + '$')
+    regex = re.compile("^" + regex + "$")
     return headers, regex
 
 
@@ -38,7 +38,7 @@ def log_to_dataframe(log_file, regex, headers):
     log_messages = []
     linecount = 0
     cnt = 0
-    with open(log_file, 'r', encoding="utf8", errors='ignore') as fin:
+    with open(log_file, "r", encoding="utf8", errors="ignore") as fin:
         for line in fin.readlines():
             cnt += 1
             try:

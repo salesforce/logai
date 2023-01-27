@@ -27,8 +27,8 @@ class FeatureExtractorConfig(Config):
         for field in fields(self):
             # If there is a default and the value of the field is none we can assign a value
             if (
-                    not isinstance(field.default, _MISSING_TYPE)
-                    and getattr(self, field.name) is None
+                not isinstance(field.default, _MISSING_TYPE)
+                and getattr(self, field.name) is None
             ):
                 setattr(self, field.name, field.default)
 
@@ -43,7 +43,10 @@ def _get_group_counter(attributes: pd.DataFrame, group_by_category: list) -> pd.
     """
     attributes["group_index"] = attributes.index
     group_counter_list = (
-        attributes.groupby(by=group_by_category).size().rename(constants.LOG_COUNTS).reset_index()
+        attributes.groupby(by=group_by_category)
+        .size()
+        .rename(constants.LOG_COUNTS)
+        .reset_index()
     )
     return group_counter_list
 
@@ -75,10 +78,10 @@ class FeatureExtractor:
         return
 
     def convert_to_counter_vector(
-            self,
-            log_pattern: pd.Series = None,
-            attributes: pd.DataFrame = None,
-            timestamps: pd.Series = None,
+        self,
+        log_pattern: pd.Series = None,
+        attributes: pd.DataFrame = None,
+        timestamps: pd.Series = None,
     ) -> pd.DataFrame:
         """
         Convert logs to log counter vector.
@@ -100,10 +103,10 @@ class FeatureExtractor:
         return event_index_list
 
     def convert_to_feature_vector(
-            self,
-            log_vectors: pd.Series,
-            attributes: pd.DataFrame,
-            timestamps: pd.Series,
+        self,
+        log_vectors: pd.Series,
+        attributes: pd.DataFrame,
+        timestamps: pd.Series,
     ) -> pd.DataFrame:
         """
 
@@ -133,10 +136,10 @@ class FeatureExtractor:
         return event_index_list, block_list.loc[:, block_list.columns != "event_index"]
 
     def convert_to_sequence(
-            self,
-            log_pattern: pd.Series = None,
-            attributes: pd.DataFrame = None,
-            timestamps: pd.Series = None,
+        self,
+        log_pattern: pd.Series = None,
+        attributes: pd.DataFrame = None,
+        timestamps: pd.Series = None,
     ):
         # TODO: Converting sequence by sliding windows.
         # Partioning: length of sequence, step
@@ -147,7 +150,11 @@ class FeatureExtractor:
 
         if self.config.sliding_window > 0:
             if self.config.steps <= 0:
-                raise RuntimeError("Step should be greater than zero. Step: {}".format(self.config.steps))
+                raise RuntimeError(
+                    "Step should be greater than zero. Step: {}".format(
+                        self.config.steps
+                    )
+                )
             window = self.config.sliding_window
             step = self.config.steps
             raw_index_list = gb.agg(list).reset_index()
@@ -155,38 +162,46 @@ class FeatureExtractor:
 
             event_index_list = pd.DataFrame(columns=colnames)
             for ind, row in raw_index_list.iterrows():
-                indices = row['event_index']
+                indices = row["event_index"]
                 loglines = row[log_pattern.name]
                 if len(indices) < self.config.sliding_window:
                     event_index_list = event_index_list.append(row)
                 else:
-                    event_indices = np.lib.stride_tricks.sliding_window_view(indices, window)[::step, :].tolist()
-                    log_seq = np.lib.stride_tricks.sliding_window_view(loglines, window)[::step, :].tolist()
+                    event_indices = np.lib.stride_tricks.sliding_window_view(
+                        indices, window
+                    )[::step, :].tolist()
+                    log_seq = np.lib.stride_tricks.sliding_window_view(
+                        loglines, window
+                    )[::step, :].tolist()
                     # when timestamps not a groupby factor, we need to partition timestamps.
                     if (not timestamps.empty) and (not self.config.group_by_time):
                         ts = row[constants.LOG_TIMESTAMPS]
-                        event_ts = np.lib.stride_tricks.sliding_window_view(ts, window)[::step, :].tolist()
+                        event_ts = np.lib.stride_tricks.sliding_window_view(ts, window)[
+                            ::step, :
+                        ].tolist()
                     for i in range(len(event_indices)):
-                        row['event_index'] = event_indices[i]
+                        row["event_index"] = event_indices[i]
                         row[log_pattern.name] = log_seq[i]
                         if (not timestamps.empty) and (not self.config.group_by_time):
                             row[constants.LOG_TIMESTAMPS] = event_ts[i]
                         event_index_list = event_index_list.append(row)
-            event_sequence = event_index_list[log_pattern.name].apply(lambda x: " ".join(x))
+            event_sequence = event_index_list[log_pattern.name].apply(
+                lambda x: " ".join(x)
+            )
 
         else:
             event_index_list = gb.agg(list).reset_index()
-            event_sequence = event_index_list['event_index'].apply(
+            event_sequence = event_index_list["event_index"].apply(
                 lambda x: " ".join([str(log_pattern[c]) for c in x])
             )
 
         return event_index_list, event_sequence
 
     def _get_input_df(
-            self,
-            logline: pd.Series or pd.DataFrame,
-            attributes: pd.DataFrame,
-            timestamps: pd.Series,
+        self,
+        logline: pd.Series or pd.DataFrame,
+        attributes: pd.DataFrame,
+        timestamps: pd.Series,
     ) -> pd.DataFrame:
         if timestamps is not None:
             timestamps = timestamps.rename(constants.LOG_TIMESTAMPS)

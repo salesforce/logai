@@ -19,6 +19,7 @@ class OrdinalEncodingParams(Config):
     """
     Configuration of OrdinalEncoding.
     """
+
     categories: str = "auto"
     dtype: np.float64 = np.float64
     handle_unknown: str = "error"
@@ -29,6 +30,7 @@ class OrdinalEncoding(CategoricalEncodingAlgo):
     """
     Implementation of ordinal encoder.
     """
+
     def __init__(self, params: OrdinalEncodingParams):
         self.model = OrdinalEncoder(
             categories=params.categories,

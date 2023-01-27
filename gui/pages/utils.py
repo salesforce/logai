@@ -10,17 +10,17 @@ import dash_bootstrap_components as dbc
 from dash import dcc, html, dash_table
 
 STYLE = {
-    'json-output': {
-        'overflow-y': 'scroll',
-        'height': 'calc(90% - 25px)',
-        'border': 'thin lightgrey solid'
+    "json-output": {
+        "overflow-y": "scroll",
+        "height": "calc(90% - 25px)",
+        "border": "thin lightgrey solid",
     },
-    'tab': {'height': 'calc(98vh - 80px)'},
-    'log-output': {
-        'overflow-y': 'scroll',
-        'height': 'calc(90% - 25px)',
-        'border': 'thin lightgrey solid',
-        'white-space': 'pre-wrap'
+    "tab": {"height": "calc(98vh - 80px)"},
+    "log-output": {
+        "overflow-y": "scroll",
+        "height": "calc(90% - 25px)",
+        "border": "thin lightgrey solid",
+        "white-space": "pre-wrap",
     },
 }
 TABLE_HEADER_COLOR = "lightskyblue"
@@ -46,9 +46,10 @@ def create_banner(app):
     return html.Div(
         id="banner",
         className="banner",
-        children=[html.Img(src=app.get_asset_url("logai_logo.jpg")),
-                  html.Plaintext("  Powered by Salesforce AI Research")
-                  ],
+        children=[
+            html.Img(src=app.get_asset_url("logai_logo.jpg")),
+            html.Plaintext("  Powered by Salesforce AI Research"),
+        ],
     )
 
 
@@ -58,10 +59,7 @@ def create_description_card():
         children=[
             html.H4("AI-based Log Analysis"),
             html.Div([create_menu()]),
-            html.Div(
-                id="intro",
-                children="  "
-            ),
+            html.Div(id="intro", children="  "),
         ],
     )
 
@@ -74,10 +72,7 @@ def create_menu():
                     "Log Summarization",
                     href="/logai/pattern",
                     className="tab first",
-                    style={
-                        'font-weight': 'bold',
-                        'text-decoration': 'underline'
-                    }
+                    style={"font-weight": "bold", "text-decoration": "underline"},
                 )
             ),
             dbc.Row(
@@ -85,10 +80,7 @@ def create_menu():
                     "Log Clustering",
                     href="/logai/clustering",
                     className="tab third",
-                    style={
-                        'font-weight': 'bold',
-                        'text-decoration': 'underline'
-                    }
+                    style={"font-weight": "bold", "text-decoration": "underline"},
                 )
             ),
             dbc.Row(
@@ -96,10 +88,7 @@ def create_menu():
                     "Anomaly Detection",
                     href="/logai/anomaly",
                     className="tab second",
-                    style={
-                        'font-weight': 'bold',
-                        'text-decoration': 'underline'
-                    }
+                    style={"font-weight": "bold", "text-decoration": "underline"},
                 )
             ),
         ],
@@ -130,15 +119,13 @@ def create_modal(modal_id, header, content, content_id, button_id):
 
 def create_upload_file_layout():
     return html.Div(
-        id='upload-file-layout',
+        id="upload-file-layout",
         children=[
             html.Br(),
             html.P("Upload Log File"),
             dcc.Upload(
                 id="upload-data",
-                children=html.Div(
-                    ["Drag and Drop or Select a File"]
-                ),
+                children=html.Div(["Drag and Drop or Select a File"]),
                 style={
                     # "width": "300px",
                     "height": "50px",
@@ -150,68 +137,62 @@ def create_upload_file_layout():
                     "margin": "10px",
                 },
                 multiple=True,
-            )
-        ]
+            ),
+        ],
     )
 
 
 def create_file_setting_layout():
     return html.Div(
-            id="file-setting-layout",
-            children=[
-                html.Br(),
-                html.B('File Settings'),
-                html.Hr(),
-                html.Label("Log Type"),
-                dcc.Dropdown(
-                    id="log-type-select",
-                    options=['HDFS', 'BGL', 'HealthApp', 'Custom'],
-                    value='HDFS'
-                ),
-                dbc.Row(
-                    dbc.Col([
-                        html.Div(id='custom-file-setting')
-                    ])
-                ),
-                html.Label("Log File"),
-                dcc.Dropdown(
-                    id="file-select",
-                    style={"width": "100%"}
-                ),
-                html.Label("Attributes"),
-                dcc.Dropdown(id='attribute-name-options', multi=True),
-                html.Label("Time Interval"),
-
-                dcc.Slider(
-                    0, 3,
-                    step=None,
-                    marks={
-                        0: "1s",
-                        1: "1min",
-                        2: "1h",
-                        3: "1d"
-                    },
-                    value=0,
-                    id='time-interval',
-                ),
-                html.Hr(),
-            ],
-            # style={
-            #     "display": "inline-block",
-            #     "width": "300px",
-            # }
-        )
+        id="file-setting-layout",
+        children=[
+            html.Br(),
+            html.B("File Settings"),
+            html.Hr(),
+            html.Label("Log Type"),
+            dcc.Dropdown(
+                id="log-type-select",
+                options=["HDFS", "BGL", "HealthApp", "Custom"],
+                value="HDFS",
+            ),
+            dbc.Row(dbc.Col([html.Div(id="custom-file-setting")])),
+            html.Label("Log File"),
+            dcc.Dropdown(id="file-select", style={"width": "100%"}),
+            html.Label("Attributes"),
+            dcc.Dropdown(id="attribute-name-options", multi=True),
+            html.Label("Time Interval"),
+            dcc.Slider(
+                0,
+                3,
+                step=None,
+                marks={0: "1s", 1: "1min", 2: "1h", 3: "1d"},
+                value=0,
+                id="time-interval",
+            ),
+            html.Hr(),
+        ],
+        # style={
+        #     "display": "inline-block",
+        #     "width": "300px",
+        # }
+    )
 
 
 def create_param_table(params=None, height=100):
     if params is None or len(params) == 0:
         data = [{"Parameter": "", "Value": ""}]
     else:
-        data = [{"Parameter": key, "Value": str(value["default"])} for key, value in params.items()]
+        data = [
+            {"Parameter": key, "Value": str(value["default"])}
+            for key, value in params.items()
+        ]
 
     table = dash_table.DataTable(
         data=data,
-        columns=[{"id": "Parameter", "name": "Parameter"}, {"id": "Value", "name": "Value"}],
+        columns=[
+            {"id": "Parameter", "name": "Parameter"},
+            {"id": "Value", "name": "Value"},
+        ],
         editable=True,
         style_header_conditional=[{"textAlign": "center"}],
         style_cell_conditional=[{"textAlign": "center"}],

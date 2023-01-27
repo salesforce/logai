@@ -9,7 +9,7 @@ from logai.dataloader.data_model import LogRecordObject
 
 class HDFSPreprocessor(OpenSetPreprocessor):
     """
-    Custom Preprocessor for open log dataset HDFS 
+    Custom Preprocessor for open log dataset HDFS
 
     Inherits:
         OpenSetPreprocessor: log preprocessor class for open log datasets
@@ -21,7 +21,7 @@ class HDFSPreprocessor(OpenSetPreprocessor):
         self.label_file = label_file
 
     def _get_labels(self, logrecord: LogRecordObject):
-        """get anomaly detection labels of loglines 
+        """get anomaly detection labels of loglines
 
         Args:
             logrecord (LogRecordObject):  logrecord object containing hdfs data
@@ -43,7 +43,7 @@ class HDFSPreprocessor(OpenSetPreprocessor):
         """get ids of loglines
 
         Args:
-            logrecord (LogRecordObject): logrecord object containing hdfs data 
+            logrecord (LogRecordObject): logrecord object containing hdfs data
 
         Returns:
             pd.Series: containing the ids of the loglines

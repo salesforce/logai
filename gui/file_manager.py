@@ -12,11 +12,11 @@ from urllib.parse import quote as urlquote
 
 
 class FileManager:
-
     def __init__(self, directory=None):
         if directory is None:
             self.directory = os.path.join(
-                os.path.dirname(os.path.abspath(__file__)), "uploaded_files")
+                os.path.dirname(os.path.abspath(__file__)), "uploaded_files"
+            )
         else:
             self.directory = directory
         if not os.path.exists(self.directory):

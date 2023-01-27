@@ -11,10 +11,10 @@ from logai.algorithms.factory import factory
 
 @dataclass
 class SequentialVectorizerParams(Config):
-    """Config for Sequential Vectorizer which converts a sequence of loglines to sequence of log ids 
+    """Config for Sequential Vectorizer which converts a sequence of loglines to sequence of log ids
 
     Args:
-       sep_token: separator token 
+       sep_token: separator token
        model_save_dir: path to directory where models related to sequential vectorizer would be stored
 
     sep_token: str = None # separator token used to separate log lines in an input log sequence
@@ -30,8 +30,7 @@ class SequentialVectorizerParams(Config):
 
 @factory.register("vectorization", "sequential", SequentialVectorizerParams)
 class Sequential(VectorizationAlgo):
-    """ Sequential Vectorizer to convert a sequence of loglines to sequence of log ids 
-    """
+    """Sequential Vectorizer to convert a sequence of loglines to sequence of log ids"""
 
     def __init__(self, params: SequentialVectorizerParams):
         """Initializer for Sequential Vectorizer
@@ -57,9 +56,9 @@ class Sequential(VectorizationAlgo):
         """Fit method for training the sequential vectorizer
 
         Args:
-            loglines (pd.Series):  pandas Series object containing the dataset on 
-             which semantic vectorizer is trained (and the vocab is built). 
-             Each data instance should be a logline or sequence of loglines concatenated by separator token 
+            loglines (pd.Series):  pandas Series object containing the dataset on
+             which semantic vectorizer is trained (and the vocab is built).
+             Each data instance should be a logline or sequence of loglines concatenated by separator token
         """
         model_file = None
         if self.params.model_save_dir:
@@ -85,11 +84,11 @@ class Sequential(VectorizationAlgo):
         """Transform method for applying sequential vectorizer to loglines
 
         Args:
-            loglines (pd.Series): pandas Series containing the data to be vectorized. 
-            Each data instance should be a logline or sequence of loglines concatenated by separator token 
+            loglines (pd.Series): pandas Series containing the data to be vectorized.
+            Each data instance should be a logline or sequence of loglines concatenated by separator token
 
         Returns:
-            pd.Series: vectorized loglines 
+            pd.Series: vectorized loglines
         """
         indices = loglines.index
         if self.params.sep_token is not None:

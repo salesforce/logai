@@ -94,6 +94,6 @@ class DistributionDivergence(AnomalyDetectionAlgo):
                 dist_divergence_scores = (dist_divergence_scores, js)
             else:
                 dist_divergence_scores = js
-        res = pd.DataFrame(pd.Series(dist_divergence_scores).rename('anom_score'))
-        res['trainval'] = False
+        res = pd.DataFrame(pd.Series(dist_divergence_scores).rename("anom_score"))
+        res["trainval"] = False
         return dist_divergence_scores

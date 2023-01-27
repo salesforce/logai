@@ -67,6 +67,6 @@ def get_mask_id(tokenizer):
         tokenizer (AutoTokenizer): tokenizer object
 
     Returns:
-        int: id of mask token 
+        int: id of mask token
     """
     return tokenizer.convert_tokens_to_ids("[MASK]")

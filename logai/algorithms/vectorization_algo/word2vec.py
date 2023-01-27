@@ -21,6 +21,7 @@ class Word2VecParams(Config):
     """
     Configuration of Word2Vec vectorization
     """
+
     max_token_len: int = 100
     min_count: int = 1
     vector_size: int = 3

@@ -35,7 +35,7 @@ class LogBERTConfig(Config):
 
     pretrain_from_scratch: bool = True
     model_name: str = "bert-base-cased"
-    model_dirname: str = None 
+    model_dirname: str = None
     mlm_probability: float = 0.15
     mask_ngram: int = 1
     max_token_len: int = 384

@@ -12,11 +12,11 @@ from collections import OrderedDict
 
 
 class ParamInfoMixin:
-
     def get_config_class(self, algorithm):
-        assert algorithm.lower() in self.algorithms, \
-            f"Unknown algorithm {algorithm}. Please select from " \
+        assert algorithm.lower() in self.algorithms, (
+            f"Unknown algorithm {algorithm}. Please select from "
             f"{list(self.algorithms.keys())}."
+        )
 
         module_info = self.algorithms[algorithm.lower()]
         module = importlib.import_module(module_info[0])
@@ -30,10 +30,14 @@ class ParamInfoMixin:
         param_info = OrderedDict()
         valid_types = [int, float, str, bool, list, tuple, dict]
         if not hasattr(config_class, "__attrs_attrs__"):
-            members = inspect.getmembers(config_class, lambda a: not inspect.isroutine(a))
-            members = [m for m in members if not m[0].startswith('_')]
+            members = inspect.getmembers(
+                config_class, lambda a: not inspect.isroutine(a)
+            )
+            members = [m for m in members if not m[0].startswith("_")]
         else:
-            members = [(attr.name, attr.default) for attr in config_class.__attrs_attrs__]
+            members = [
+                (attr.name, attr.default) for attr in config_class.__attrs_attrs__
+            ]
 
         for name, value in members:
             if name.lower() == "verbose":
@@ -56,7 +60,10 @@ class ParamInfoMixin:
             elif value_type in [int, float, str]:
                 kwargs[name] = value_type(value)
             elif value_type == bool:
-                assert value.lower() in ["true", "false"], f"The value of {name} should be either True or False."
+                assert value.lower() in [
+                    "true",
+                    "false",
+                ], f"The value of {name} should be either True or False."
                 kwargs[name] = value.lower() == "true"
             elif info["type"] in [list, tuple, dict]:
                 value = value.replace(" ", "").replace("\t", "")

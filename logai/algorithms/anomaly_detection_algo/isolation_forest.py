@@ -52,7 +52,7 @@ class IsolationForestDetector(AnomalyDetectionAlgo):
         self.model.fit(log_features)
         train_scores = self.model.score_samples(log_features)
         train_scores = pd.DataFrame(train_scores, index=log_features.index)
-        train_scores['trainval'] = True
+        train_scores["trainval"] = True
         return train_scores
 
     def predict(self, log_features: pd.DataFrame) -> pd.Series:
@@ -62,7 +62,9 @@ class IsolationForestDetector(AnomalyDetectionAlgo):
         :return: pandas.DataFrame
         """
         test_scores = self.model.predict(log_features)
-        test_scores = pd.DataFrame(pd.Series(test_scores, index=log_features.index, name='anom_score'))
+        test_scores = pd.DataFrame(
+            pd.Series(test_scores, index=log_features.index, name="anom_score")
+        )
 
-        test_scores['trainval'] = False
+        test_scores["trainval"] = False
         return test_scores

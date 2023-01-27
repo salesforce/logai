@@ -12,7 +12,7 @@ from attr import dataclass
 
 @dataclass
 class OpenSetPartitionerConfig(Config):
-    """Config for Partitioner for open log datasets 
+    """Config for Partitioner for open log datasets
     Inherits:
         Config : config interface
     """
@@ -28,11 +28,10 @@ class OpenSetPartitioner:
 
         Args:
             config (OpenSetPartitionerConfig): config object specifying
-             parameters of log partititoning for open log datasets  
+             parameters of log partititoning for open log datasets
         """
         self.config = config
 
-        
         if config.sliding_window > 0:
             partitioner_config = PartitionerConfig.from_dict(
                 {
@@ -45,23 +44,20 @@ class OpenSetPartitioner:
             )
             self.partitioner = Partitioner(partitioner_config)
         elif config.session_window:
-            fe_config = FeatureExtractorConfig.from_dict({
-                "sliding_window": 20,
-                "steps": 20,
-                "group_by_category": [constants.SPAN_ID]
-            })
+            fe_config = FeatureExtractorConfig.from_dict(
+                {
+                    "sliding_window": 20,
+                    "steps": 20,
+                    "group_by_category": [constants.SPAN_ID],
+                }
+            )
             self.feature_extractor = FeatureExtractor(fe_config)
-        
-        
-
 
     def _get_group_sliding_window(
         self, logrecord_df, logline_col_name=constants.LOGLINE_NAME
     ):
         logrecord_df[logline_col_name] = logrecord_df[logline_col_name].astype(str)
         return self.partitioner.group_sliding_window(logrecord_df, logline_col_name)
-
-
 
     def _get_sliding_window_label(self, log_data):
         partitioned_data = self._get_group_sliding_window(
@@ -78,22 +74,15 @@ class OpenSetPartitioner:
         ).astype(int)
         return partitioned_labels
 
-
-
-
     def _get_next_data_succeeding_sliding_window(self, data, sliding_windows, field):
         data_groupbyid = {
             k: list(v) for k, v in data.groupby(by=[constants.SPAN_ID])[field]
         }
         nextdata = []
-        for id, groupdata in sliding_windows.groupby(by=[constants.SPAN_ID])[
-            field
-        ]:
+        for id, groupdata in sliding_windows.groupby(by=[constants.SPAN_ID])[field]:
             nextdata.extend(data_groupbyid[id][-len(groupdata) :])
         nextdata = pd.Series(nextdata).astype(data[field].dtype)
         return nextdata
-
-
 
     def generate_sliding_window(self, logrecord):
         """method to generate sliding window based log sequences from a logrecord object
@@ -122,8 +111,6 @@ class OpenSetPartitioner:
         logrecord.span_id = pd.DataFrame({constants.SPAN_ID: partitioned_ids})
         return logrecord
 
-
-
     def generate_session_window(self, logrecord):
         """method to generate session window based log sequences from a logrecord object given some ids at the logline level
 
@@ -137,7 +124,7 @@ class OpenSetPartitioner:
         partitioned_data = self.feature_extractor.convert_to_counter_vector(
             log_pattern=logrecord.body[constants.LOGLINE_NAME],
             attributes=logrecord.span_id.join(logrecord.labels),
-            timestamps=logrecord.timestamp[constants.LOG_TIMESTAMPS]
+            timestamps=logrecord.timestamp[constants.LOG_TIMESTAMPS],
         )
         partitioned_loglines = partitioned_data[constants.LOGLINE_NAME].apply(
             lambda x: self.config.logsequence_delim.join(x)
@@ -150,8 +137,6 @@ class OpenSetPartitioner:
         logrecord.labels = pd.DataFrame({constants.LABELS: partitioned_labels})
         logrecord.span_id = pd.DataFrame({constants.SPAN_ID: partitioned_ids})
         return logrecord
-
-
 
     def partition(self, logrecord):
         """Wrapper function for applying partitioning on a logrecord object based on the Config parameters

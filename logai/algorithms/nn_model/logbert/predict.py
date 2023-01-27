@@ -20,8 +20,7 @@ from .tokenizer_utils import (
 
 
 class LogBERTPredict:
-    """Class for running inference on logBERT model for unsupervised log anomaly detection
-    """
+    """Class for running inference on logBERT model for unsupervised log anomaly detection"""
 
     def __init__(self, config: LogBERTConfig):
         """Initializing logBERTPredict class
@@ -105,8 +104,7 @@ class LogBERTPredict:
         return examples
 
     def load_model(self):
-        """Loading logbert model from the model dir path as specified in the logBERTConfig config 
-        """
+        """Loading logbert model from the model dir path as specified in the logBERTConfig config"""
         checkpoint_dir = "checkpoint-" + str(
             max(
                 [
@@ -145,17 +143,15 @@ class LogBERTPredict:
         if not self.model:
             self.load_model()
 
-        test_labels = {
-            k: v for k, v in enumerate(list(test_dataset[constants.LABELS]))
-        }
+        test_labels = {k: v for k, v in enumerate(list(test_dataset[constants.LABELS]))}
 
         if constants.LOG_COUNTS in test_dataset:
             test_counts = {
                 k: v for k, v in enumerate(list(test_dataset[constants.LOG_COUNTS]))
             }
         else:
-            test_counts = None 
-            
+            test_counts = None
+
         mlm_dataset_test = test_dataset.map(
             self._generate_masked_input,
             with_indices=True,
@@ -208,6 +204,8 @@ class LogBERTPredict:
             )
 
             if i % 2 == 0 and test_labels is not None:
-                compute_metrics(eval_metrics_per_instance_series, test_labels, test_counts)
+                compute_metrics(
+                    eval_metrics_per_instance_series, test_labels, test_counts
+                )
 
         return eval_metrics_per_instance_series

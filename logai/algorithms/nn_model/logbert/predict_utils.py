@@ -51,9 +51,9 @@ class Predictor(Trainer):
 
     def compute_loss(self, model, inputs, return_outputs=False):
         """
-            How the loss is computed by Trainer. By default, all models return the loss in the first element.
-            Subclass and override for custom behavior.
-            """
+        How the loss is computed by Trainer. By default, all models return the loss in the first element.
+        Subclass and override for custom behavior.
+        """
 
         """print ('Input: ', tokenizer.decode(inputs['input_ids'].cpu().data.numpy().tolist()[0]))
             i = inputs['labels'].cpu().data.numpy().tolist()[0]
@@ -127,7 +127,9 @@ class PredictionLabelSmoother(LabelSmoother):
         log_probs.masked_fill_(padding_mask, 0.0)
 
         predictive_prob = probs.max(dim=-1)[0]
-        predictive_prob_top6 = torch.topk(predictive_prob, k=6, dim=1, largest=False)[0].squeeze(dim=-1)
+        predictive_prob_top6 = torch.topk(predictive_prob, k=6, dim=1, largest=False)[
+            0
+        ].squeeze(dim=-1)
         predictive_logprob = log_probs.min(dim=-1)[0]
         predictive_logprob_top6 = torch.topk(predictive_logprob, k=6, dim=1)[0].squeeze(
             dim=-1

@@ -11,7 +11,7 @@ from attr import dataclass
 
 @dataclass
 class LSTMParams(ForecastBasedNNParams):
-    """Config for lstm based log representation learning 
+    """Config for lstm based log representation learning
 
     Inherits:
         ForecastBasedNNParams: base class for parameters of forecasting based neural log representation moels
@@ -30,8 +30,7 @@ class LSTMParams(ForecastBasedNNParams):
 
 
 class Attention(nn.Module):
-    """Attention model for lstm based log representation learning
-    """
+    """Attention model for lstm based log representation learning"""
 
     def __init__(self, input_size, max_seq_len):
         """intiializing attention module
@@ -112,10 +111,10 @@ class LSTM(ForecastBasedNN):
         )
 
     def forward(self, input_dict):
-        """forward method for 
+        """forward method for
 
         Args:
-            input_dict (dict): dict containing the session_idx, features, window_anomalies 
+            input_dict (dict): dict containing the session_idx, features, window_anomalies
                 and window_labels as in ForecastNNVectorizedDataset object
 
         Returns:

@@ -62,4 +62,3 @@ def _tokenize_replace_digits(logline):
             tokens.append(t)
 
     return " ".join(tokens)
-

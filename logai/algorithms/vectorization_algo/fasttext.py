@@ -21,6 +21,7 @@ class FastTextParams(Config):
     """
     Configuration for FastText vectorizer.
     """
+
     vector_size: int = 100
     window: int = 100
     min_count: int = 1

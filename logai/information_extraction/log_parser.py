@@ -25,6 +25,7 @@ class LogParserConfig(Config):
     """
     Log Parser configuration
     """
+
     parsing_algorithm: str = "drain"
     parsing_algo_params: object = None
     custom_config: object = None
@@ -33,7 +34,8 @@ class LogParserConfig(Config):
     def from_dict(cls, config_dict):
         config = super(LogParserConfig, cls).from_dict(config_dict)
         config.parsing_algo_params = factory.get_config(
-            "parsing", config.parsing_algorithm.lower(), config.parsing_algo_params)
+            "parsing", config.parsing_algorithm.lower(), config.parsing_algo_params
+        )
         return config
 
 
@@ -41,6 +43,7 @@ class LogParser:
     """
     Implementation of log parser for free-form text loglines.
     """
+
     def __init__(self, config: object):
         """
         Initialization of log parser.
@@ -50,7 +53,8 @@ class LogParser:
         config_class = factory.get_config_class("parsing", name)
         algorithm_class = factory.get_algorithm_class("parsing", name)
         self.parser = algorithm_class(
-            config.parsing_algo_params if config.parsing_algo_params else config_class())
+            config.parsing_algo_params if config.parsing_algo_params else config_class()
+        )
 
     def fit(self, loglines: pd.Series):
         """

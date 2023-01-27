@@ -23,7 +23,8 @@ class AnomalyDetectionConfig(Config):
     def from_dict(cls, config_dict):
         config = super(AnomalyDetectionConfig, cls).from_dict(config_dict)
         config.algo_params = factory.get_config(
-            "detection", config.algo_name.lower(), config.algo_params)
+            "detection", config.algo_name.lower(), config.algo_params
+        )
         return config
 
 
@@ -34,7 +35,8 @@ class AnomalyDetector:
         :param config: AnomalyDetectionConfig
         """
         self.anomaly_detector = factory.get_algorithm(
-            "detection", config.algo_name.lower(), config)
+            "detection", config.algo_name.lower(), config
+        )
 
     def fit(self, log_features: pd.DataFrame):
         """

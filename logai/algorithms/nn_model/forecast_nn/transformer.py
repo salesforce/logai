@@ -49,7 +49,7 @@ class Transformer(ForecastBasedNN):
         """forward method of transformer based model
 
         Args:
-            input_dict (dict): dict containing the session_idx, features, window_anomalies 
+            input_dict (dict): dict containing the session_idx, features, window_anomalies
                 and window_labels as in ForecastNNVectorizedDataset object
 
         Returns:

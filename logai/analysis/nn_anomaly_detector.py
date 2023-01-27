@@ -20,12 +20,13 @@ class NNAnomalyDetector:
         :param config: AnomalyDetectionConfig
         """
         self.anomaly_detector = factory.get_algorithm(
-            "detection", config.algo_name.lower(), config)
+            "detection", config.algo_name.lower(), config
+        )
 
     def fit(
-            self,
-            train_data: ForecastNNVectorizedDataset or HFDataset,
-            dev_data: ForecastNNVectorizedDataset or HFDataset
+        self,
+        train_data: ForecastNNVectorizedDataset or HFDataset,
+        dev_data: ForecastNNVectorizedDataset or HFDataset,
     ):
         """
         Trains an anomaly detection given the training and validation datasets.

@@ -15,24 +15,36 @@ from .utils import ParamInfoMixin
 
 class LogAnomaly(ParamInfoMixin):
     algorithms = {
-        "one_class_svm":
-            ("logai.algorithms.anomaly_detection_algo.one_class_svm",
-             "OneClassSVMDetector", "OneClassSVMParams"),
-        "isolation_forest":
-            ("logai.algorithms.anomaly_detection_algo.isolation_forest",
-             "IsolationForestDetector", "IsolationForestParams"),
-        "lof":
-            ("logai.algorithms.anomaly_detection_algo.local_outlier_factor",
-             "LOFDetector", "LOFParams"),
-        "distribution_divergence":
-            ("logai.algorithms.anomaly_detection_algo.distribution_divergence",
-             "DistributionDivergence", "DistributionDivergenceParams"),
-        "dbl":
-            ("logai.algorithms.anomaly_detection_algo.dbl",
-             "DBLDetector", "DBLDetectorParams"),
-        "ets":
-            ("logai.algorithms.anomaly_detection_algo.ets",
-             "ETSDetector", "ETSDetectorParams"),
+        "one_class_svm": (
+            "logai.algorithms.anomaly_detection_algo.one_class_svm",
+            "OneClassSVMDetector",
+            "OneClassSVMParams",
+        ),
+        "isolation_forest": (
+            "logai.algorithms.anomaly_detection_algo.isolation_forest",
+            "IsolationForestDetector",
+            "IsolationForestParams",
+        ),
+        "lof": (
+            "logai.algorithms.anomaly_detection_algo.local_outlier_factor",
+            "LOFDetector",
+            "LOFParams",
+        ),
+        "distribution_divergence": (
+            "logai.algorithms.anomaly_detection_algo.distribution_divergence",
+            "DistributionDivergence",
+            "DistributionDivergenceParams",
+        ),
+        "dbl": (
+            "logai.algorithms.anomaly_detection_algo.dbl",
+            "DBLDetector",
+            "DBLDetectorParams",
+        ),
+        "ets": (
+            "logai.algorithms.anomaly_detection_algo.ets",
+            "ETSDetector",
+            "ETSDetectorParams",
+        ),
     }
 
     def __init__(self):
@@ -87,7 +99,7 @@ class LogAnomaly(ParamInfoMixin):
     def get_anomalies(self, attributes=[]):
 
         df = self.get_results(attributes)
-        df = df[df['is_anomaly']]
+        df = df[df["is_anomaly"]]
         return df
 
     def get_results(self, attributes=[]):

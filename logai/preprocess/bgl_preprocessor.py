@@ -32,7 +32,7 @@ class BGLPreprocessor(OpenSetPreprocessor):
             logrecord (LogRecordObject):  logrecord object containing the BGL data
 
         Returns:
-            pd.Series: containing the ids of the loglines 
+            pd.Series: containing the ids of the loglines
         """
         time_unit_in_secs = 60  # 21600.0 # 6 hours
         ids = logrecord.span_id[constants.SPAN_ID].astype(int)
@@ -47,6 +47,6 @@ class BGLPreprocessor(OpenSetPreprocessor):
             logrecord (LogRecordObject): logrecord object containing the BGL data
 
         Returns:
-            pd.Series: containing the labels of the loglines 
+            pd.Series: containing the labels of the loglines
         """
         return logrecord.labels[constants.LABELS].apply(lambda x: int(x != "-"))

@@ -35,7 +35,7 @@ class WorkFlowConfig(Config):
     categorical_encoder_config: object = None
     feature_extractor_config: object = None
     anomaly_detection_config: object = None
-    nn_anomaly_detection_config: object = None 
+    nn_anomaly_detection_config: object = None
     clustering_config: object = None
     workflow_config: object = None
 
@@ -44,51 +44,63 @@ class WorkFlowConfig(Config):
         config = super(WorkFlowConfig, cls).from_dict(config_dict)
 
         if config.data_loader_config:
-            config.data_loader_config = \
-                DataLoaderConfig.from_dict(config.data_loader_config)
+            config.data_loader_config = DataLoaderConfig.from_dict(
+                config.data_loader_config
+            )
 
         if config.open_set_data_loader_config:
-            config.open_set_data_loader_config = \
-                OpenSetDataLoaderConfig.from_dict(config.open_set_data_loader_config)
+            config.open_set_data_loader_config = OpenSetDataLoaderConfig.from_dict(
+                config.open_set_data_loader_config
+            )
 
         if config.preprocessor_config:
-            config.preprocessor_config = \
-                PreprocessorConfig.from_dict(config.preprocessor_config)
+            config.preprocessor_config = PreprocessorConfig.from_dict(
+                config.preprocessor_config
+            )
 
         if config.partitioner_config:
-            config.partitioner_config = \
-                PartitionerConfig.from_dict(config.partitioner_config)
+            config.partitioner_config = PartitionerConfig.from_dict(
+                config.partitioner_config
+            )
 
         if config.open_set_partitioner_config:
-            config.open_set_partitioner_config = \
-                OpenSetPartitionerConfig.from_dict(config.open_set_partitioner_config)
+            config.open_set_partitioner_config = OpenSetPartitionerConfig.from_dict(
+                config.open_set_partitioner_config
+            )
 
         if config.log_parser_config:
-            config.log_parser_config = \
-                LogParserConfig.from_dict(config.log_parser_config)
+            config.log_parser_config = LogParserConfig.from_dict(
+                config.log_parser_config
+            )
 
         if config.log_vectorizer_config:
-            config.log_vectorizer_config = \
-                VectorizerConfig.from_dict(config.log_vectorizer_config)
+            config.log_vectorizer_config = VectorizerConfig.from_dict(
+                config.log_vectorizer_config
+            )
 
         if config.feature_extractor_config:
-            config.feature_extractor_config = \
-                FeatureExtractorConfig.from_dict(config.feature_extractor_config)
+            config.feature_extractor_config = FeatureExtractorConfig.from_dict(
+                config.feature_extractor_config
+            )
 
         if config.categorical_encoder_config:
-            config.categorical_encoder_config = \
-                CategoricalEncoderConfig.from_dict(config.categorical_encoder_config)
+            config.categorical_encoder_config = CategoricalEncoderConfig.from_dict(
+                config.categorical_encoder_config
+            )
 
         if config.anomaly_detection_config:
-            config.anomaly_detection_config = \
-                AnomalyDetectionConfig.from_dict(config.anomaly_detection_config)
+            config.anomaly_detection_config = AnomalyDetectionConfig.from_dict(
+                config.anomaly_detection_config
+            )
 
         if config.nn_anomaly_detection_config:
-            config.nn_anomaly_detection_config = \
-                NNAnomalyDetectionConfig.from_dict(config.nn_anomaly_detection_config)
+            config.nn_anomaly_detection_config = NNAnomalyDetectionConfig.from_dict(
+                config.nn_anomaly_detection_config
+            )
 
         if config.clustering_config:
-            config.clustering_config = \
-                ClusteringConfig.from_dict(config.clustering_config)
+            config.clustering_config = ClusteringConfig.from_dict(
+                config.clustering_config
+            )
 
         return config

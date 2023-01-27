@@ -20,5 +20,5 @@ __all__ = [
     "Semantic",
     "Sequential",
     "TfIdf",
-    "Word2Vec"
+    "Word2Vec",
 ]

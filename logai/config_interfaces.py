@@ -10,7 +10,6 @@ import attr
 
 
 class Config(abc.ABC):
-
     @classmethod
     def from_dict(cls, config_dict):
         """

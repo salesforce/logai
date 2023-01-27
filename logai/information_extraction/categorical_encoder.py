@@ -27,6 +27,7 @@ class CategoricalEncoderConfig(Config):
     """
     Categorical encoding configurations
     """
+
     name: str = "label_encoder"
     params: object = None
 
@@ -44,6 +45,7 @@ class CategoricalEncoder:
     """
     Implementation of categorical encoder
     """
+
     def __init__(self, config: CategoricalEncoderConfig):
         """
         Initialize categorical encoder.

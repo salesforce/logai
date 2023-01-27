@@ -19,7 +19,7 @@ def __plot_roc(x, y, label, y_name, x_name, fig_name):
     Args:
         x (np.array): array of x values
         y (np.array): array of y values
-        label (np.array): array of label values 
+        label (np.array): array of label values
         y_name (str): y axis label
         x_name (str): x axis label
         fig_name (str): figure name
@@ -76,22 +76,22 @@ def compute_metrics(eval_metrics_per_instance_series, test_labels, test_counts=N
         test_counts (dict): counts of each instance index
 
     Raises:
-        Exception: IndexError if the indices of eval_metrics_per_instance_series do not match with indices of test_labels 
+        Exception: IndexError if the indices of eval_metrics_per_instance_series do not match with indices of test_labels
 
     Returns:
-        list of tuples: list of tuples containing labels and scores computed for each index 
+        list of tuples: list of tuples containing labels and scores computed for each index
         y: list of anomaly label for each instance
-        loss_mean: list of mean loss (over all masked non-padded tokens) for each instance 
-        loss_max: list of max loss (over all masked non-padded tokens) for each instance 
+        loss_mean: list of mean loss (over all masked non-padded tokens) for each instance
+        loss_max: list of max loss (over all masked non-padded tokens) for each instance
         loss_top6_mean: list of mean loss (averaged over top-k masked non-padded tokens) for each instance, k = 6 (following LanoBERT paper https://arxiv.org/pdf/2111.09564.pdf)
-        scores_top6_max_prob: for each instance, we take the max prob. score obtained and average over the top-k masked (non-padded) token prediction, k = 6 
-        scores_top6_min_logprob: for each instance, we take the min logprob score obtained and average over the top-k masked (non-padded) token prediction, k = 6 
-        scores_top6_max_entropy: for each instance we take the max entropy score obtained and average over the top-k masked (non-padded) token prediction, k = 6 
-        
+        scores_top6_max_prob: for each instance, we take the max prob. score obtained and average over the top-k masked (non-padded) token prediction, k = 6
+        scores_top6_min_logprob: for each instance, we take the min logprob score obtained and average over the top-k masked (non-padded) token prediction, k = 6
+        scores_top6_max_entropy: for each instance we take the max entropy score obtained and average over the top-k masked (non-padded) token prediction, k = 6
+
     """
-    eval_metrics_per_instance_series["indices"] = eval_metrics_per_instance_series["indices"].astype(
-        int
-    )
+    eval_metrics_per_instance_series["indices"] = eval_metrics_per_instance_series[
+        "indices"
+    ].astype(int)
     y = []
     loss_mean = []
     loss_max = []
@@ -188,27 +188,63 @@ def __compute_auc_roc(
 
     Args:
         y (list): list of anomaly labels for each instances
-        loss_mean (list): list of mean loss (over all masked non-padded tokens) for each instance 
-        loss_max (list): list of max loss (over all masked non-padded tokens) for each instance 
+        loss_mean (list): list of mean loss (over all masked non-padded tokens) for each instance
+        loss_max (list): list of max loss (over all masked non-padded tokens) for each instance
         loss_top6_mean (list): list of mean loss (averaged over top-k masked non-padded tokens) for each instance, k = 6 (following LanoBERT paper https://arxiv.org/pdf/2111.09564.pdf)
-        scores_top6_max_prob (list): for each instance, we take the max prob. score obtained and average over the top-k masked (non-padded) token prediction, k = 6 
-        scores_top6_min_logprob (list): for each instance, we take the min logprob score obtained and average over the top-k masked (non-padded) token prediction, k = 6 
-        scores_top6_max_entropy (list): for each instance we take the max entropy score obtained and average over the top-k masked (non-padded) token prediction, k = 6 
+        scores_top6_max_prob (list): for each instance, we take the max prob. score obtained and average over the top-k masked (non-padded) token prediction, k = 6
+        scores_top6_min_logprob (list): for each instance, we take the min logprob score obtained and average over the top-k masked (non-padded) token prediction, k = 6
+        scores_top6_max_entropy (list): for each instance we take the max entropy score obtained and average over the top-k masked (non-padded) token prediction, k = 6
         plot_graph (bool, optional): whether to plot roc graph. Defaults to False.
         plot_histogram (bool, optional): whether to plot scores histogram. Defaults to False.
     """
 
-    __compute_auc_roc_for_metric(y=y, metric=loss_mean, metric_name_str="loss_mean", plot_graph=plot_graph, plot_histogram=plot_histogram)
-    __compute_auc_roc_for_metric(y=y, metric=loss_max, metric_name_str="loss_max", plot_graph=plot_graph, plot_histogram=plot_histogram)
-    __compute_auc_roc_for_metric(y=y, metric=loss_top6_mean, metric_name_str="loss_top6_mean", plot_graph=plot_graph, plot_histogram=plot_histogram)
-    __compute_auc_roc_for_metric(y=y, metric=scores_top6_max_prob, metric_name_str="scores_top6_max_prob", plot_graph=plot_graph, plot_histogram=plot_histogram)  # Note that avg scores printed for this metric would be 1 - actual probability 
-    __compute_auc_roc_for_metric(y=y, metric=scores_top6_min_logprob, metric_name_str="scores_top6_min_logprob", plot_graph=plot_graph, plot_histogram=plot_histogram)
-    __compute_auc_roc_for_metric(y=y, metric=scores_top6_max_entropy, metric_name_str="scores_top6_max_entropy", plot_graph=plot_graph, plot_histogram=plot_histogram)
+    __compute_auc_roc_for_metric(
+        y=y,
+        metric=loss_mean,
+        metric_name_str="loss_mean",
+        plot_graph=plot_graph,
+        plot_histogram=plot_histogram,
+    )
+    __compute_auc_roc_for_metric(
+        y=y,
+        metric=loss_max,
+        metric_name_str="loss_max",
+        plot_graph=plot_graph,
+        plot_histogram=plot_histogram,
+    )
+    __compute_auc_roc_for_metric(
+        y=y,
+        metric=loss_top6_mean,
+        metric_name_str="loss_top6_mean",
+        plot_graph=plot_graph,
+        plot_histogram=plot_histogram,
+    )
+    __compute_auc_roc_for_metric(
+        y=y,
+        metric=scores_top6_max_prob,
+        metric_name_str="scores_top6_max_prob",
+        plot_graph=plot_graph,
+        plot_histogram=plot_histogram,
+    )  # Note that avg scores printed for this metric would be 1 - actual probability
+    __compute_auc_roc_for_metric(
+        y=y,
+        metric=scores_top6_min_logprob,
+        metric_name_str="scores_top6_min_logprob",
+        plot_graph=plot_graph,
+        plot_histogram=plot_histogram,
+    )
+    __compute_auc_roc_for_metric(
+        y=y,
+        metric=scores_top6_max_entropy,
+        metric_name_str="scores_top6_max_entropy",
+        plot_graph=plot_graph,
+        plot_histogram=plot_histogram,
+    )
 
 
-
-def __compute_auc_roc_for_metric(y, metric, metric_name_str, plot_graph=False,
-    plot_histogram=False):
+def __compute_auc_roc_for_metric(
+    y, metric, metric_name_str, plot_graph=False, plot_histogram=False
+):
     """computing AUROC for each metric
 
     Args:
@@ -219,12 +255,8 @@ def __compute_auc_roc_for_metric(y, metric, metric_name_str, plot_graph=False,
         plot_histogram (bool, optional): Whether to plot histogram of metric scores. Defaults to False.
     """
 
-    metric_pos = np.array(
-        [metric[i] for i in range(len(metric)) if y[i] == 1]
-    )
-    metric_neg = np.array(
-        [metric[i] for i in range(len(metric)) if y[i] == 0]
-    )
+    metric_pos = np.array([metric[i] for i in range(len(metric)) if y[i] == 1])
+    metric_neg = np.array([metric[i] for i in range(len(metric)) if y[i] == 0])
 
     if metric_pos.shape[0] > 0:
         logging.info(
@@ -256,6 +288,7 @@ def __compute_auc_roc_for_metric(y, metric, metric_name_str, plot_graph=False,
             "AUC=" + str(auc_mean),
             "tpr_mean",
             "fpr_mean",
-            metric_name_str+"_auc.png")
+            metric_name_str + "_auc.png",
+        )
     if plot_histogram:
-        __plot_scores_kde(metric_pos, metric_neg, metric_name_str+"_hist.pdf")
+        __plot_scores_kde(metric_pos, metric_neg, metric_name_str + "_hist.pdf")
