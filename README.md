@@ -396,7 +396,8 @@ workflow = OpenSetADWorkflow(config)
 workflow.execute()
 ```
 
-For more details of this workflow and more such examples please check the notebook tutorials in [nn_ad_benchmarking](examples/jupyter_notebook/nn_ad_benchmarking)
+For more details of this workflow and more such examples please check the notebook 
+tutorials in [nn_ad_benchmarking](examples/jupyter_notebook/nn_ad_benchmarking).
 
 
 ## Technical Report and Citing LogAI
