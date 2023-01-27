@@ -77,14 +77,6 @@ class TestLogAnomaly:
 
         df = processor.get_results(attr)
 
-        # ts_df = df[['timestamp', 'is_anomaly']].groupby(
-        #     pd.Grouper(key='timestamp', freq='1s', offset=0, label='right'))\
-        #     .apply(lambda x: pd.Series((x.shape[0], x[x['is_anomaly']].shape[0])))
-        #
-        # ts_df.columns = ['counts', 'anomaly_counts']
-        #
-        # ts_df = ts_df.reset_index()
-
         print(df.head(5))
         return
 

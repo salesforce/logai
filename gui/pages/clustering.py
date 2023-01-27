@@ -41,7 +41,7 @@ def create_clustering_algo_setting_layout():
         id="algo-setting-layout",
         children=[
             html.Br(),
-            html.P("Parsing Algortihm"),
+            html.B("Parsing Algortihm"),
             dcc.Dropdown(
                 id='parsing-algo-select',
                 options=['DRAIN', 'IPLoM', 'AEL'],
@@ -51,7 +51,8 @@ def create_clustering_algo_setting_layout():
                 id="clustering-parsing-param-table",
                 children=[create_param_table()]
             ),
-            html.Label("Vectorization Algortihm"),
+            html.Br(),
+            html.B("Vectorization Algortihm"),
             dcc.Dropdown(
                 id='vectorization-algo-select',
                 options=[
@@ -61,7 +62,8 @@ def create_clustering_algo_setting_layout():
                 ],
                 value='word2vec'
             ),
-            html.Label("Categorical Encoder"),
+            html.Br(),
+            html.B("Categorical Encoder"),
             dcc.Dropdown(
                 id='categorical-encoder-select',
                 options=[
@@ -71,7 +73,8 @@ def create_clustering_algo_setting_layout():
                 ],
                 value='label_encoder'
             ),
-            html.Label("Clustering Algortihm"),
+            html.Br(),
+            html.B("Clustering Algortihm"),
             dcc.Dropdown(
                 id='clustering-algo-select',
                 options=[
@@ -98,13 +101,15 @@ def create_display_layout():
         children=[
             html.B("Clustering Summary"),
             html.Hr(),
-            dbc.CardBody([
-                dcc.Loading(
-                    id="clstering-summary",
-                    children=[dbc.Row(dcc.Graph(id="cluster-hist"))],
-                    type='default'
-                )],
-                style={"marginTop": 0, "marginBottom": 0}
+            dbc.Card(
+                dbc.CardBody([
+                    dcc.Loading(
+                        id="clstering-summary",
+                        children=[dbc.Row(dcc.Graph(id="cluster-hist"))],
+                        type='default'
+                    )],
+                    style={"marginTop": 0, "marginBottom": 0}
+                )
             ),
             html.B("Loglines in Cluster"),
             html.Hr(),
@@ -137,7 +142,7 @@ def create_clustering_layout():
                                     ]
                                 )
                             ),
-                            width=3
+                            width=4
                         ),
                         dbc.Col(
                             dbc.Card(
@@ -145,7 +150,8 @@ def create_clustering_layout():
                                     html.H4("Attributes"),
                                     html.Div(id="clustering-attribute-options"),
                                 ])
-                            )
+                            ),
+                            width=8
                         )
                     ]
                 ),
