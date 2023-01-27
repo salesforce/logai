@@ -24,7 +24,7 @@ For full license text, see the LICENSE file in the repo root or https://opensour
   </a>
 </div>
 
-# LogAI: A Python Toolkit for AI-based Log Analytics
+# LogAI: A Toolkit for AI-based Log Analysis
 
 ## Table of Contents
 * [Introduction](#introduction)
@@ -45,9 +45,9 @@ critical observability data for developers to understand system behavior, monito
 The volume of logs are huge for complex distributed systems, such as cloud, search engine, social media, etc. Log analytics, 
 are tools for developers to process huge volume of raw logs and generate insights, in order to better handle system 
 operations. While artificial intelligence (AI) and machine learning (ML) technologies are proven to be capable to improve 
-productivity in a lot of domains, recently more and more AI tools are integrated in log analytics solutions, in both 
+productivity in a lot of domains, recently more and more AI tools are integrated in log analysis solutions, in both 
 commercial and opensource software. However, there is still no sufficient toolkit that can handle multiple AI-based 
-log analysis tasks in uniform way. We introduce LogAI, an one-stop toolkit for AI-based log analytics. 
+log analysis tasks in uniform way. We introduce LogAI, an one-stop toolkit for AI-based log analysis. 
 LogAI provides AI and ML capabilities for log analysis. LogAI can be used for a variety of tasks such as log summarization, 
 log clustering and log anomaly detection. LogAI adopts the same log data model as OpenTelemetry so the developed applications 
 and models are eligible to logs from different log management platforms. LogAI provides a unified model interface and 
@@ -56,9 +56,9 @@ an out-of-the-box GUI for users to conduct interactive analysis. With LogAI, we 
 learning algorithms for log anomaly detection without putting in redundant effort to process the logs. LogAI can be used 
 for different purposes from academic research to industrial prototyping. 
 
-## Compare LogAI with other AI-based log analytics Tools
+## Compare LogAI with other AI-based Log Analysis Tools
  
-Below table compares LogAI with several existing AI-based log analytics Tools, include both commercial log management platforms
+Below table compares LogAI with several existing AI-based log analysis Tools, include both commercial log management platforms
 like NewRelic and DataDog, or popular log analysis open source tools on Github. 
 
 | Coverage  | LogAI | NewRelic Log Monitoring | DataDog Log Explorer | logparser | loglizer | deep-loglizer | log3C | 
@@ -239,7 +239,7 @@ If you're using LogAI in your research or applications, please cite using this B
 
 ```
 @article{logai2023,
-      title={LogAI: A Python Toolkit for AI-based Log Analytics},
+      title={LogAI: A Toolkit for AI-based Log Analysis},
       author={Qian Cheng, Amrita Saha, Wenzhuo Yang, Chenghao Liu, Gerald Woo, Doyen Sahoo, Steven HOI},
       year={2023},
       eprint={?},
