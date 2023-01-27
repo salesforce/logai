@@ -5,6 +5,7 @@ workflow_config:
   training_type: "unsupervised"
   deduplicate_test: True
   test_data_frac_pos: 0.5
+  train_test_shuffle: True
   dataset_name: hdfs
 
   data_loader_config:
