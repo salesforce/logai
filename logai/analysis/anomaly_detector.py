@@ -38,16 +38,17 @@ class AnomalyDetector:
 
     def fit(self, log_features: pd.DataFrame):
         """
-        Fit model
-        :param log_features:
-        :return:
+        Trains an anomaly detection given the training dataset.
+
+        :param log_features: The training dataset.
         """
         return self.anomaly_detector.fit(log_features)
 
     def predict(self, log_features: pd.DataFrame) -> pd.DataFrame:
         """
-        Predict for input
-        :param log_features:
-        :return:
+        Predicts anomalies given the test dataset.
+
+        :param log_features: The test dataset.
+        :return: A pandas dataframe containing the prediction results.
         """
         return self.anomaly_detector.predict(log_features)

@@ -5,26 +5,12 @@
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 #
 #
-from attr import dataclass
 from datasets import Dataset as HFDataset
-
 from logai.algorithms.vectorization_algo.forecast_nn import ForecastNNVectorizedDataset
-from logai.config_interfaces import Config
+from logai.analysis.anomaly_detector import AnomalyDetectionConfig
 from logai.algorithms.factory import factory
 
-
-@dataclass
-class NNAnomalyDetectionConfig(Config):
-    algo_name: str = "logbert"
-    algo_params: object = None
-    custom_params: object = None
-
-    @classmethod
-    def from_dict(cls, config_dict):
-        config = super(NNAnomalyDetectionConfig, cls).from_dict(config_dict)
-        config.algo_params = factory.get_config(
-            "detection", config.algo_name.lower(), config.algo_params)
-        return config
+NNAnomalyDetectionConfig = AnomalyDetectionConfig
 
 
 class NNAnomalyDetector:
@@ -42,16 +28,18 @@ class NNAnomalyDetector:
             dev_data: ForecastNNVectorizedDataset or HFDataset
     ):
         """
-        Fit model
-        :param train_data:
-        :return:
+        Trains an anomaly detection given the training and validation datasets.
+
+        :param train_data: The training dataset.
+        :pram dev_data: The validation dataset
         """
         return self.anomaly_detector.fit(train_data, dev_data)
 
     def predict(self, test_data: ForecastNNVectorizedDataset or HFDataset):
         """
-        Predict for input
-        :param test_data:
-        :return:
+        Predicts anomalies given the test dataset.
+
+        :param test_data: The test dataset.
+        :return: A pandas dataframe containing the prediction results.
         """
         return self.anomaly_detector.predict(test_data)
