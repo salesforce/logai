@@ -1,3 +1,10 @@
+#
+# Copyright (c) 2023 Salesforce.com, inc.
+# All rights reserved.
+# SPDX-License-Identifier: BSD-3-Clause
+# For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+#
+#
 from logai.algorithms.algo_interfaces import NNAnomalyDetectionAlgo
 from logai.algorithms.nn_model.logbert.configs import LogBERTConfig
 from logai.algorithms.nn_model.logbert.train import LogBERTTrain
