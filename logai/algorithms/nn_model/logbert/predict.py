@@ -1,6 +1,5 @@
 from transformers import BertForMaskedLM, DataCollatorWithPadding
 from datasets import Dataset as HFDataset
-import os
 import numpy as np
 import pandas as pd
 from .eval_metric_utils import compute_metrics
@@ -8,7 +7,6 @@ from .predict_utils import Predictor, PredictionLabelSmoother
 from transformers import TrainingArguments
 import logging
 import os
-import torch
 from .configs import LogBERTConfig
 from logai.utils import constants
 from .tokenizer_utils import (

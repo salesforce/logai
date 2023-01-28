@@ -2,13 +2,9 @@ from logai.utils import constants
 from attr import dataclass
 from logai.dataloader.data_loader import FileDataLoader
 from logai.dataloader.data_model import LogRecordObject
-import pandas as pd
-from logai.utils.file_utils import *
 from logai.utils.dataset_utils import split_train_dev_test_for_anomaly_detection
 from logai.information_extraction.log_parser import LogParser
 from logai.preprocess.openset_partitioner import OpenSetPartitioner
-import json
-import pathlib
 from logai.applications.application_interfaces import WorkFlowConfig
 from logai.utils.file_utils import *
 from logai.preprocess.hdfs_preprocessor import HDFSPreprocessor
@@ -17,10 +13,8 @@ from logai.preprocess.thunderbird_preprocessor import ThunderbirdPreprocessor
 from logai.analysis.nn_anomaly_detector import NNAnomalyDetector
 from logai.information_extraction.log_vectorizer import LogVectorizer
 from .configs.schema import config_schema
-import json
 import logging
-from schema import Schema, SchemaError
-from collections import Counter
+from schema import SchemaError
 
 from logai.information_extraction.feature_extractor import (
     FeatureExtractor,
@@ -121,10 +115,12 @@ class OpenSetADWorkflowConfig(WorkFlowConfig):
     output_dir: str = None # path to output directory where all intermediate and final outputs would be dumped
     parse_logline: bool = False # whether to parse or not
     training_type: str = None # should be either supervised or unsupervised
-    deduplicate_test: bool = False # whether to de-duplicate the instances in the test data, while maintaining a count of the number of each duplicated instance
+    deduplicate_test: bool = False # whether to de-duplicate the instances in the test data, while maintaining a count
+        of the number of each duplicated instance
     test_data_frac_pos: float = 0.8 # fraction of the logs having positive class used for teest
     test_data_frac_neg: float = 0.8 # fraction of the logs having negative class used for test
-    train_test_shuffle: bool = False # whether to use chronological ordering of the logs or to shuffle them when creating the train test splits
+    train_test_shuffle: bool = False # whether to use chronological ordering of the logs or to shuffle them when
+        creating the train test splits
 
     """
 
@@ -133,14 +129,16 @@ class OpenSetADWorkflowConfig(WorkFlowConfig):
     output_dir: str = None  # path to output directory where all intermediate and final outputs would be dumped
     parse_logline: bool = False  # whether to parse or not
     training_type: str = None  # should be either supervised or unsupervised
-    deduplicate_test: bool = False  # whether to de-duplicate the instances in the test data, while maintaining a count of the number of each duplicated instance
+    deduplicate_test: bool = False  # whether to de-duplicate the instances in the test data, while maintaining
+                                    # a count of the number of each duplicated instance
     test_data_frac_pos: float = (
         0.8  # fraction of the logs having positive class used for teest
     )
     test_data_frac_neg: float = (
         0.8  # fraction of the logs having negative class used for test
     )
-    train_test_shuffle: bool = False  # whether to use chronological ordering of the logs or to shuffle them when creating the train test splits
+    train_test_shuffle: bool = False  # whether to use chronological ordering of the logs or
+                                      # to shuffle them when creating the train test splits
 
 
 class OpenSetADWorkflow:
@@ -343,7 +341,8 @@ class OpenSetADWorkflow:
         return logrecord
 
     def generate_train_dev_test_data(self, logrecord: LogRecordObject):
-        """splitting open log datasets into train dev and test splits according to the parameters specified in the config object
+        """splitting open log datasets into train dev and test splits according to the parameters
+        specified in the config object
 
         Args:
             logrecord (LogRecordObject): logrecord object to be split into train, dev and test
@@ -468,7 +467,8 @@ class OpenSetADWorkflow:
 
         Args:
             logrecord (LogRecordObject): logrecord containing data to be vectorized
-            output_filename (str, optional): path to output file where the vectorized log data would be dumped. Defaults to None.
+            output_filename (str, optional): path to output file where the vectorized log data would be dumped.
+            Defaults to None.
 
         Returns:
             vectorized_output : vectorized data

@@ -19,9 +19,11 @@ def split_train_dev_test_for_anomaly_detection(
             training_type (str): 'supervised' or 'unsupervised'
             test_data_frac_neg_class (float): fraction of the negative class to be . Defaults to None.
             test_data_frac_pos_class (float, optional): when supervised mode is selected, fraction of the positive class
-             data to be used for test data. (fraction for dev data is fixed). For unsupervised mode this value is fixed to 1.0
+             data to be used for test data. (fraction for dev data is fixed).
+             For unsupervised mode this value is fixed to 1.0
             shuffle (bool, optional): whether to shuffle the log data when splitting into train and test. If False,
-             then it uses the chronological ordering, where the first (chronologically first) split will constitute train data,
+             then it uses the chronological ordering,
+             where the first (chronologically first) split will constitute train data,
              second one development data and third one as test data. Defaults to False.
     Returns:
         logrecord_train: logrecord object containing train data

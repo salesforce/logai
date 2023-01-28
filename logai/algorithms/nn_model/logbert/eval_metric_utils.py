@@ -76,17 +76,22 @@ def compute_metrics(eval_metrics_per_instance_series, test_labels, test_counts=N
         test_counts (dict): counts of each instance index
 
     Raises:
-        Exception: IndexError if the indices of eval_metrics_per_instance_series do not match with indices of test_labels
+        Exception: IndexError if the indices of eval_metrics_per_instance_series do not match with
+            indices of test_labels
 
     Returns:
         list of tuples: list of tuples containing labels and scores computed for each index
         y: list of anomaly label for each instance
         loss_mean: list of mean loss (over all masked non-padded tokens) for each instance
         loss_max: list of max loss (over all masked non-padded tokens) for each instance
-        loss_top6_mean: list of mean loss (averaged over top-k masked non-padded tokens) for each instance, k = 6 (following LanoBERT paper https://arxiv.org/pdf/2111.09564.pdf)
-        scores_top6_max_prob: for each instance, we take the max prob. score obtained and average over the top-k masked (non-padded) token prediction, k = 6
-        scores_top6_min_logprob: for each instance, we take the min logprob score obtained and average over the top-k masked (non-padded) token prediction, k = 6
-        scores_top6_max_entropy: for each instance we take the max entropy score obtained and average over the top-k masked (non-padded) token prediction, k = 6
+        loss_top6_mean: list of mean loss (averaged over top-k masked non-padded tokens) for each instance, k = 6
+            (following LanoBERT paper https://arxiv.org/pdf/2111.09564.pdf)
+        scores_top6_max_prob: for each instance, we take the max prob. score obtained and average over the top-k masked
+            (non-padded) token prediction, k = 6
+        scores_top6_min_logprob: for each instance, we take the min logprob score obtained and average over the
+            top-k masked (non-padded) token prediction, k = 6
+        scores_top6_max_entropy: for each instance we take the max entropy score obtained and average over the top-k
+            masked (non-padded) token prediction, k = 6
 
     """
     eval_metrics_per_instance_series["indices"] = eval_metrics_per_instance_series[
@@ -190,10 +195,14 @@ def __compute_auc_roc(
         y (list): list of anomaly labels for each instances
         loss_mean (list): list of mean loss (over all masked non-padded tokens) for each instance
         loss_max (list): list of max loss (over all masked non-padded tokens) for each instance
-        loss_top6_mean (list): list of mean loss (averaged over top-k masked non-padded tokens) for each instance, k = 6 (following LanoBERT paper https://arxiv.org/pdf/2111.09564.pdf)
-        scores_top6_max_prob (list): for each instance, we take the max prob. score obtained and average over the top-k masked (non-padded) token prediction, k = 6
-        scores_top6_min_logprob (list): for each instance, we take the min logprob score obtained and average over the top-k masked (non-padded) token prediction, k = 6
-        scores_top6_max_entropy (list): for each instance we take the max entropy score obtained and average over the top-k masked (non-padded) token prediction, k = 6
+        loss_top6_mean (list): list of mean loss (averaged over top-k masked non-padded tokens) for each instance,
+        k = 6 (following LanoBERT paper https://arxiv.org/pdf/2111.09564.pdf)
+        scores_top6_max_prob (list): for each instance, we take the max prob. score obtained and average over the
+        top-k masked (non-padded) token prediction, k = 6
+        scores_top6_min_logprob (list): for each instance, we take the min logprob score obtained and average over the
+        top-k masked (non-padded) token prediction, k = 6
+        scores_top6_max_entropy (list): for each instance we take the max entropy score obtained and average over the
+        top-k masked (non-padded) token prediction, k = 6
         plot_graph (bool, optional): whether to plot roc graph. Defaults to False.
         plot_histogram (bool, optional): whether to plot scores histogram. Defaults to False.
     """

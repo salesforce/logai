@@ -13,8 +13,6 @@ import itertools
 import re
 import string
 
-import spacy as spacy
-
 from logai.utils import constants
 
 

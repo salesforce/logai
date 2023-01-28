@@ -125,7 +125,8 @@ class ForecastBasedTransformer(ForcastBasedNeuralAD):
         """initializing ForecastBasedTransformer object
 
         Args:
-            config (TransformerParams): config object containing parameters for Transformer based anomaly detection model
+            config (TransformerParams): config object containing parameters for
+                                        Transformer based anomaly detection model.
         """
         super().__init__(config)
         self.config = config

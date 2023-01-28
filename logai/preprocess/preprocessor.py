@@ -7,12 +7,10 @@
 #
 import numpy as np
 import pandas as pd
-from attr import dataclass, fields
-from dataclasses import _MISSING_TYPE
+from attr import dataclass
 
 from logai.config_interfaces import Config
 from logai.dataloader.data_model import LogRecordObject
-from logai.utils.tokenize import tokenize
 
 
 @dataclass

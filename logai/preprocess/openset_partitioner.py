@@ -112,7 +112,8 @@ class OpenSetPartitioner:
         return logrecord
 
     def generate_session_window(self, logrecord):
-        """method to generate session window based log sequences from a logrecord object given some ids at the logline level
+        """method to generate session window based log sequences from a logrecord object given some
+        ids at the logline level
 
         Args:
             logrecord (LogRecordObject): logrecord object to be partitioned into session windows

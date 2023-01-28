@@ -2,8 +2,6 @@ from logai.preprocess.openset_preprocessor import OpenSetPreprocessor
 from logai.dataloader.data_model import LogRecordObject
 from logai.preprocess.preprocessor import PreprocessorConfig
 import pandas as pd
-import os
-import yaml
 from logai.utils import constants
 
 

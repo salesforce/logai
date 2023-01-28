@@ -444,7 +444,8 @@ class IPLoM(ParsingAlgo):
                 self.output.append(logL[-2:] + logL[:-2])
 
     """
-    For 1-M and M-1 mappings, you need to decide whether M side are constants or variables. This method is to decide which side to split
+    For 1-M and M-1 mappings, you need to decide whether M side are constants or variables. 
+    This method is to decide which side to split
 
     cardOfS           : The number of unique values in this set
     Lines_that_match_S: The number of lines that have these values

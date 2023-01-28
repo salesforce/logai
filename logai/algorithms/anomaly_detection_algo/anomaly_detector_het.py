@@ -31,7 +31,8 @@ class HetAnomalyDetector(AnomalyDetector):
     def preprocess(self, counter_df: pd.DataFrame):
         """
         split raw log feature dataframe by unique attribute ID
-        :param counter_df: log feature dataframe must contain at least two columns ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
+        :param counter_df: log feature dataframe must contain at least two columns
+            ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
         The rest of columns combinations are treated as log attribute ID
         :return:
         """
@@ -46,7 +47,8 @@ class HetAnomalyDetector(AnomalyDetector):
     def fit_predict(self, log_feature: pd.DataFrame):
         """
         Train and predict anomaly scores
-        :param log_features: log feature dataframe must contain at least two columns ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
+        :param log_features: log feature dataframe must contain at least two columns
+            ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
         The rest of columns combinations are treated as log attribute ID
         :return: pandas.Dataframe
         """

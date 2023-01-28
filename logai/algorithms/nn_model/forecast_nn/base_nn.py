@@ -23,19 +23,24 @@ class ForecastBasedNNParams(Config):
         Config : Config interface
 
     model_name: name of the model
-    metadata_filepath: path to file containing meta data (pretrained token embeddings in case if semantic log representations are used in feature type)
+    metadata_filepath: path to file containing meta data (pretrained token embeddings in case if semantic log
+        representations are used in feature type)
     output_dir: path to output directory where the model would be dumped
-    feature_type: (should be "semantics" or "sequential")type of log feature representations used for the log-lines or log-sequences
-    label_type: type of label (should be "anomaly" or "next_log") based on whether supervised or unsupervised (forcast based) model is being used
-    eval_type:  (should be "session" or None) whether to aggregate and report the evaluation metrics at the level of sessions
-        (based on the span_id in the log data) or at the level of each logline
+    feature_type: (should be "semantics" or "sequential")type of log feature representations used for the log-lines or
+        log-sequences
+    label_type: type of label (should be "anomaly" or "next_log") based on whether supervised or unsupervised
+        (forcast based) model is being used
+    eval_type:  (should be "session" or None) whether to aggregate and report the evaluation metrics at the level of
+        sessions (based on the span_id in the log data) or at the level of each logline
     topk: the prediction at top-k to consider, when deciding whether an evaluation instance is an anomaly or not
     embedding_dim: dimension of the embedding space. Both for sequential and semantic type feature representation,
         the input log feature representation is passed through an embedding layer which projects it to the embedding_dim
     hidden_size:  dimension of the hidden representations
-    freeze: whether to freeze the embedding layer to use the pretrained embeddings or to further train it on the given task
+    freeze: whether to freeze the embedding layer to use the pretrained embeddings or to further train it on the
+        given task
     gpu: device number if gpu is used (otherwise -1 or None will use cpu)
-    patience: number of eval_steps, the model waits for performance on validation data to improve, before early stopping the training
+    patience: number of eval_steps, the model waits for performance on validation data to improve, before early
+        stopping the training
     num_train_epochs: number of training epochs
     batch_size: batch size
     learning_rate: learning rate
@@ -148,7 +153,8 @@ class ForecastBasedNN(nn.Module):
 
         Args:
             test_loader (Dataloader): dataloader (torch.utils.data.DataLoader) for test (or development) dataset
-            dtype (str, optional): can be of type "test" or "dev" based on which the predict method is called for. Defaults to "test".
+            dtype (str, optional): can be of type "test" or "dev" based on which the predict method is called for.
+            Defaults to "test".
 
         Returns:
             dict : dict object containing the overall evaluation metrics for test (or dev) data

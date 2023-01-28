@@ -23,7 +23,8 @@ class TransformerParams(ForecastBasedNNParams):
 
 
 class Transformer(ForecastBasedNN):
-    """Transformer based model for learning log representation through a self-supervised forecasting task over log sequences
+    """Transformer based model for learning log representation through a self-supervised forecasting task over
+    log sequences
 
     Inherits:
         ForecastBasedNN : base class for forecast based neural log representation learning
