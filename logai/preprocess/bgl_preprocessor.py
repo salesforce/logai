@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2022 Salesforce.com, inc.
+# Copyright (c) 2023 Salesforce.com, inc.
 # All rights reserved.
 # SPDX-License-Identifier: BSD-3-Clause
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -8,8 +8,6 @@
 from logai.preprocess.openset_preprocessor import OpenSetPreprocessor
 from logai.preprocess.preprocessor import PreprocessorConfig
 import pandas as pd
-import os
-import yaml
 from logai.utils import constants
 from logai.dataloader.data_model import LogRecordObject
 
@@ -32,7 +30,7 @@ class BGLPreprocessor(OpenSetPreprocessor):
             logrecord (LogRecordObject):  logrecord object containing the BGL data
 
         Returns:
-            pd.Series: containing the ids of the loglines 
+            pd.Series: containing the ids of the loglines
         """
         time_unit_in_secs = 60  # 21600.0 # 6 hours
         ids = logrecord.span_id[constants.SPAN_ID].astype(int)
@@ -47,6 +45,6 @@ class BGLPreprocessor(OpenSetPreprocessor):
             logrecord (LogRecordObject): logrecord object containing the BGL data
 
         Returns:
-            pd.Series: containing the labels of the loglines 
+            pd.Series: containing the labels of the loglines
         """
         return logrecord.labels[constants.LABELS].apply(lambda x: int(x != "-"))

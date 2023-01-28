@@ -1,3 +1,10 @@
+#
+# Copyright (c) 2023 Salesforce.com, inc.
+# All rights reserved.
+# SPDX-License-Identifier: BSD-3-Clause
+# For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+#
+#
 from logai.algorithms.algo_interfaces import NNAnomalyDetectionAlgo
 from logai.algorithms.nn_model.forecast_nn.base_nn import ForecastBasedNNParams
 from logai.algorithms.vectorization_algo.forecast_nn import ForecastNNVectorizedDataset
@@ -12,7 +19,7 @@ from torch.utils.data import DataLoader
 
 
 class ForcastBasedNeuralAD(NNAnomalyDetectionAlgo):
-    """Forcasting based neural anomaly detection models taken from the deep-loglizer paper 
+    """Forcasting based neural anomaly detection models taken from the deep-loglizer paper
             (https://arxiv.org/pdf/2107.05908.pdf)
 
     Inherits:
@@ -23,12 +30,16 @@ class ForcastBasedNeuralAD(NNAnomalyDetectionAlgo):
         """initialization of base class for forecasting based neurla anomaly detection models
 
         Args:
-            config (ForecastBasedNNParams): parameters of general forecasting based neural anomaly detection models  
+            config (ForecastBasedNNParams): parameters of general forecasting based neural anomaly detection models
         """
         self.model = None
         self.config = config
 
-    def fit(self, train_data: ForecastNNVectorizedDataset, dev_data: ForecastNNVectorizedDataset):
+    def fit(
+        self,
+        train_data: ForecastNNVectorizedDataset,
+        dev_data: ForecastNNVectorizedDataset,
+    ):
         """fit method to train forecasting based neural anomaly detection models
 
         Args:
@@ -44,22 +55,28 @@ class ForcastBasedNeuralAD(NNAnomalyDetectionAlgo):
             pin_memory=True,
         )
         dataloader_dev = DataLoader(
-            dev_data.dataset, batch_size=self.config.batch_size, shuffle=False, pin_memory=True
+            dev_data.dataset,
+            batch_size=self.config.batch_size,
+            shuffle=False,
+            pin_memory=True,
         )
         self.model.fit(train_loader=dataloader_train, dev_loader=dataloader_dev)
 
     def predict(self, test_data: ForecastNNVectorizedDataset):
-        """predict method to run inference of forecasting based neural anomaly detection model on test dataset 
+        """predict method to run inference of forecasting based neural anomaly detection model on test dataset
 
         Args:
-            test_data (ForecastNNVectorizedDataset): test dataset of type ForecastNNVectorizedDataset 
+            test_data (ForecastNNVectorizedDataset): test dataset of type ForecastNNVectorizedDataset
                 (consisting of session_idx, features, window_anomalies and window_labels)
 
         Returns:
-            dict: dict containing overall evaluation results 
+            dict: dict containing overall evaluation results
         """
         dataloader_test = DataLoader(
-            test_data.dataset, batch_size=self.config.batch_size, shuffle=False, pin_memory=True
+            test_data.dataset,
+            batch_size=self.config.batch_size,
+            shuffle=False,
+            pin_memory=True,
         )
         result = self.model.predict(test_loader=dataloader_test)
         return result
@@ -77,7 +94,7 @@ class ForecastBasedLSTM(ForcastBasedNeuralAD):
         """initializing ForecastBasedLSTM object
 
         Args:
-            config (LSTMParams): config object containing parameters for LSTM based anomaly detection model 
+            config (LSTMParams): config object containing parameters for LSTM based anomaly detection model
         """
         super().__init__(config)
         self.config = config
@@ -93,7 +110,7 @@ class ForecastBasedCNN(ForcastBasedNeuralAD):
     """
 
     def __init__(self, config: CNNParams):
-        """initializing ForecastBasedCNN object 
+        """initializing ForecastBasedCNN object
 
         Args:
             config (CNNParams): config object containing parameters for CNN based anomaly detection model
@@ -112,10 +129,11 @@ class ForecastBasedTransformer(ForcastBasedNeuralAD):
     """
 
     def __init__(self, config: TransformerParams):
-        """initializing ForecastBasedTransformer object 
+        """initializing ForecastBasedTransformer object
 
         Args:
-            config (TransformerParams): config object containing parameters for Transformer based anomaly detection model
+            config (TransformerParams): config object containing parameters for
+                                        Transformer based anomaly detection model.
         """
         super().__init__(config)
         self.config = config

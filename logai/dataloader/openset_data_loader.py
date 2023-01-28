@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2022 Salesforce.com, inc.
+# Copyright (c) 2023 Salesforce.com, inc.
 # All rights reserved.
 # SPDX-License-Identifier: BSD-3-Clause
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -21,7 +21,11 @@ def get_config(dataset_name, filepath):
     :param filepath: log file path
     :return: DataLoaderConfig: the configuration to load open log datasets
     """
-    config_path = os.path.join(os.path.dirname(__file__), "openset_configs", "{}.json".format(dataset_name.lower()))
+    config_path = os.path.join(
+        os.path.dirname(__file__),
+        "openset_configs",
+        "{}.json".format(dataset_name.lower()),
+    )
     with open(config_path, "r") as f:
         config = DataLoaderConfig.from_dict(json.load(f))
     config.filepath = filepath
@@ -46,5 +50,3 @@ class OpenSetDataLoader(FileDataLoader):
     @property
     def dl_config(self):
         return self._dl_config
-
-

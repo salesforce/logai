@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2022 Salesforce.com, inc.
+# Copyright (c) 2023 Salesforce.com, inc.
 # All rights reserved.
 # SPDX-License-Identifier: BSD-3-Clause
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -19,6 +19,7 @@ class OrdinalEncodingParams(Config):
     """
     Configuration of OrdinalEncoding.
     """
+
     categories: str = "auto"
     dtype: np.float64 = np.float64
     handle_unknown: str = "error"
@@ -29,6 +30,7 @@ class OrdinalEncoding(CategoricalEncodingAlgo):
     """
     Implementation of ordinal encoder.
     """
+
     def __init__(self, params: OrdinalEncodingParams):
         self.model = OrdinalEncoder(
             categories=params.categories,

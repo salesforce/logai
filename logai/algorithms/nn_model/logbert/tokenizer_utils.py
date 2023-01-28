@@ -1,3 +1,10 @@
+#
+# Copyright (c) 2023 Salesforce.com, inc.
+# All rights reserved.
+# SPDX-License-Identifier: BSD-3-Clause
+# For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+#
+#
 from transformers import AutoTokenizer
 import os
 
@@ -67,6 +74,6 @@ def get_mask_id(tokenizer):
         tokenizer (AutoTokenizer): tokenizer object
 
     Returns:
-        int: id of mask token 
+        int: id of mask token
     """
     return tokenizer.convert_tokens_to_ids("[MASK]")

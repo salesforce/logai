@@ -1,3 +1,10 @@
+#
+# Copyright (c) 2023 Salesforce.com, inc.
+# All rights reserved.
+# SPDX-License-Identifier: BSD-3-Clause
+# For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+#
+#
 import torch
 import torch.nn.functional as F
 from torch import nn
@@ -42,9 +49,9 @@ class CNN(ForecastBasedNN):
         num_labels = self.meta_data["num_labels"]
         self.hidden_size = self.config.hidden_size
 
-        #if isinstance(self.config.kernel_sizes, str):
+        # if isinstance(self.config.kernel_sizes, str):
         #    self.config.kernel_sizes = list(map(int, self.config.kernel_sizes.split()))
-        
+
         self.convs = nn.ModuleList(
             [
                 nn.Conv2d(1, self.hidden_size, (K, self.config.embedding_dim))
@@ -61,7 +68,7 @@ class CNN(ForecastBasedNN):
         """forward method for cnn model
 
         Args:
-            input_dict (dict): dict containing the session_idx, features, window_anomalies 
+            input_dict (dict): dict containing the session_idx, features, window_anomalies
                 and window_labels as in ForecastNNVectorizedDataset object
 
         Returns:

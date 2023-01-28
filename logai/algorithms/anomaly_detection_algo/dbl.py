@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2022 Salesforce.com, inc.
+# Copyright (c) 2023 Salesforce.com, inc.
 # All rights reserved.
 # SPDX-License-Identifier: BSD-3-Clause
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -25,6 +25,7 @@ class DBLDetectorParams(Config):
     """
     Dynamic Baseline Parameters
     """
+
     threshold: float = 0.0
     fixed_period: Tuple[str, str] = None
     train_window: str = None
@@ -70,7 +71,7 @@ class DBLDetector(AnomalyDetectionAlgo):
         time_series = pd_to_timeseries(log_features)
         test_pred = self.model.get_anomaly_label(time_series)
         anom_score = test_pred.to_pd()
-        anom_score['trainval'] = False
+        anom_score["trainval"] = False
         anom_score.index = index
         return anom_score
 
@@ -82,16 +83,20 @@ class DBLDetector(AnomalyDetectionAlgo):
             if c not in [constants.LOG_TIMESTAMPS, constants.LOG_COUNTS]:
                 raise ValueError(
                     "log feature dataframe must only contain two columns ['{}': datetime, '{}': int]".format(
-                        constants.LOG_TIMESTAMPS,
-                        constants.LOG_COUNTS
-                    ) + "Current columns: {}".format(columns)
+                        constants.LOG_TIMESTAMPS, constants.LOG_COUNTS
+                    )
+                    + "Current columns: {}".format(columns)
                 )
 
         if constants.LOG_TIMESTAMPS not in columns:
-            raise ValueError("dataframe must contain {} column".format(constants.LOG_TIMESTAMPS))
+            raise ValueError(
+                "dataframe must contain {} column".format(constants.LOG_TIMESTAMPS)
+            )
 
         if constants.LOG_COUNTS not in columns:
-            raise ValueError("dataframe must contain {} column".format(constants.LOG_COUNTS))
+            raise ValueError(
+                "dataframe must contain {} column".format(constants.LOG_COUNTS)
+            )
 
         for ts in log_feature[constants.LOG_TIMESTAMPS]:
             if not isinstance(ts, datetime):

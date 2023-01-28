@@ -1,15 +1,20 @@
+#
+# Copyright (c) 2023 Salesforce.com, inc.
+# All rights reserved.
+# SPDX-License-Identifier: BSD-3-Clause
+# For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+#
+#
 from logai.preprocess.openset_preprocessor import OpenSetPreprocessor
 from logai.preprocess.preprocessor import PreprocessorConfig
 import pandas as pd
-import os
-import yaml
 from logai.utils import constants
 from logai.dataloader.data_model import LogRecordObject
 
 
 class HDFSPreprocessor(OpenSetPreprocessor):
     """
-    Custom Preprocessor for open log dataset HDFS 
+    Custom Preprocessor for open log dataset HDFS
 
     Inherits:
         OpenSetPreprocessor: log preprocessor class for open log datasets
@@ -21,7 +26,7 @@ class HDFSPreprocessor(OpenSetPreprocessor):
         self.label_file = label_file
 
     def _get_labels(self, logrecord: LogRecordObject):
-        """get anomaly detection labels of loglines 
+        """get anomaly detection labels of loglines
 
         Args:
             logrecord (LogRecordObject):  logrecord object containing hdfs data
@@ -43,7 +48,7 @@ class HDFSPreprocessor(OpenSetPreprocessor):
         """get ids of loglines
 
         Args:
-            logrecord (LogRecordObject): logrecord object containing hdfs data 
+            logrecord (LogRecordObject): logrecord object containing hdfs data
 
         Returns:
             pd.Series: containing the ids of the loglines

@@ -1,3 +1,10 @@
+#
+# Copyright (c) 2023 Salesforce.com, inc.
+# All rights reserved.
+# SPDX-License-Identifier: BSD-3-Clause
+# For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+#
+#
 from torch import nn
 from logai.algorithms.nn_model.forecast_nn.base_nn import (
     ForecastBasedNN,
@@ -23,7 +30,8 @@ class TransformerParams(ForecastBasedNNParams):
 
 
 class Transformer(ForecastBasedNN):
-    """Transformer based model for learning log representation through a self-supervised forecasting task over log sequences
+    """Transformer based model for learning log representation through a self-supervised forecasting task over
+    log sequences
 
     Inherits:
         ForecastBasedNN : base class for forecast based neural log representation learning
@@ -49,7 +57,7 @@ class Transformer(ForecastBasedNN):
         """forward method of transformer based model
 
         Args:
-            input_dict (dict): dict containing the session_idx, features, window_anomalies 
+            input_dict (dict): dict containing the session_idx, features, window_anomalies
                 and window_labels as in ForecastNNVectorizedDataset object
 
         Returns:

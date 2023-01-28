@@ -1,3 +1,10 @@
+#
+# Copyright (c) 2023 Salesforce.com, inc.
+# All rights reserved.
+# SPDX-License-Identifier: BSD-3-Clause
+# For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+#
+#
 import os
 import time
 import torch
@@ -14,6 +21,7 @@ from attr import dataclass
 from logai.algorithms.vectorization_algo.forecast_nn import ForecastNNVectorizedDataset
 from torch.utils.data import DataLoader
 
+
 @dataclass
 class ForecastBasedNNParams(Config):
     """Config for neural representation learning for logs using forecasting based self-supervised tasks
@@ -22,22 +30,27 @@ class ForecastBasedNNParams(Config):
         Config : Config interface
 
     model_name: name of the model
-    metadata_filepath: path to file containing meta data (pretrained token embeddings in case if semantic log representations are used in feature type)
+    metadata_filepath: path to file containing meta data (pretrained token embeddings in case if semantic log
+        representations are used in feature type)
     output_dir: path to output directory where the model would be dumped
-    feature_type: (should be "semantics" or "sequential")type of log feature representations used for the log-lines or log-sequences 
-    label_type: type of label (should be "anomaly" or "next_log") based on whether supervised or unsupervised (forcast based) model is being used
-    eval_type:  (should be "session" or None) whether to aggregate and report the evaluation metrics at the level of sessions
-        (based on the span_id in the log data) or at the level of each logline 
-    topk: the prediction at top-k to consider, when deciding whether an evaluation instance is an anomaly or not 
+    feature_type: (should be "semantics" or "sequential")type of log feature representations used for the log-lines or
+        log-sequences
+    label_type: type of label (should be "anomaly" or "next_log") based on whether supervised or unsupervised
+        (forcast based) model is being used
+    eval_type:  (should be "session" or None) whether to aggregate and report the evaluation metrics at the level of
+        sessions (based on the span_id in the log data) or at the level of each logline
+    topk: the prediction at top-k to consider, when deciding whether an evaluation instance is an anomaly or not
     embedding_dim: dimension of the embedding space. Both for sequential and semantic type feature representation,
-        the input log feature representation is passed through an embedding layer which projects it to the embedding_dim 
-    hidden_size:  dimension of the hidden representations 
-    freeze: whether to freeze the embedding layer to use the pretrained embeddings or to further train it on the given task 
+        the input log feature representation is passed through an embedding layer which projects it to the embedding_dim
+    hidden_size:  dimension of the hidden representations
+    freeze: whether to freeze the embedding layer to use the pretrained embeddings or to further train it on the
+        given task
     gpu: device number if gpu is used (otherwise -1 or None will use cpu)
-    patience: number of eval_steps, the model waits for performance on validation data to improve, before early stopping the training
-    num_train_epochs: number of training epochs 
-    batch_size: batch size 
-    learning_rate: learning rate 
+    patience: number of eval_steps, the model waits for performance on validation data to improve, before early
+        stopping the training
+    num_train_epochs: number of training epochs
+    batch_size: batch size
+    learning_rate: learning rate
 
     """
 
@@ -64,7 +77,13 @@ class Embedder(nn.Module):
     Inherits:    torch nn.Module
     """
 
-    def __init__(self, vocab_size:int, embedding_dim:int, pretrain_matrix:np.array = None, freeze:bool =False):
+    def __init__(
+        self,
+        vocab_size: int,
+        embedding_dim: int,
+        pretrain_matrix: np.array = None,
+        freeze: bool = False,
+    ):
         """initializing embedder class
 
         Args:
@@ -93,9 +112,9 @@ class Embedder(nn.Module):
 
 
 class ForecastBasedNN(nn.Module):
-    """Model for learning log representations through a forecasting based self-supervised task 
+    """Model for learning log representations through a forecasting based self-supervised task
 
-    Inherits: nn.Module 
+    Inherits: nn.Module
     """
 
     def __init__(self, config: ForecastBasedNNParams):
@@ -103,7 +122,7 @@ class ForecastBasedNN(nn.Module):
 
         Args:
             config (ForecastBasedNNParams): config class for parameters of forecasting based
-             neural log representation models 
+             neural log representation models
         """
 
         super(ForecastBasedNN, self).__init__()
@@ -136,12 +155,13 @@ class ForecastBasedNN(nn.Module):
                 f"Unrecognized feature type, except sequentials or semantics, got {self.feature_type}"
             )
 
-    def predict(self, test_loader: DataLoader, dtype:str="test"):
+    def predict(self, test_loader: DataLoader, dtype: str = "test"):
         """predict method on test data
 
         Args:
             test_loader (Dataloader): dataloader (torch.utils.data.DataLoader) for test (or development) dataset
-            dtype (str, optional): can be of type "test" or "dev" based on which the predict method is called for. Defaults to "test".
+            dtype (str, optional): can be of type "test" or "dev" based on which the predict method is called for.
+            Defaults to "test".
 
         Returns:
             dict : dict object containing the overall evaluation metrics for test (or dev) data
@@ -153,8 +173,7 @@ class ForecastBasedNN(nn.Module):
         elif self.label_type == "anomaly":
             return self.__predict_anomaly(test_loader, dtype=dtype)
 
-
-    def __predict_anomaly(self, test_loader: DataLoader, dtype:str="test"):
+    def __predict_anomaly(self, test_loader: DataLoader, dtype: str = "test"):
 
         model = self.eval()  # set to evaluation mode
         with torch.no_grad():
@@ -177,10 +196,14 @@ class ForecastBasedNN(nn.Module):
                     return_dict = model.forward(self.__input2device(batch_input))
                     y_prob, y_pred = return_dict["y_pred"].max(dim=1)
                     store_dict[ForecastNNVectorizedDataset.session_idx].extend(
-                        tensor2flatten_arr(batch_input[ForecastNNVectorizedDataset.session_idx])
+                        tensor2flatten_arr(
+                            batch_input[ForecastNNVectorizedDataset.session_idx]
+                        )
                     )
                     store_dict[ForecastNNVectorizedDataset.window_anomalies].extend(
-                        tensor2flatten_arr(batch_input[ForecastNNVectorizedDataset.window_anomalies])
+                        tensor2flatten_arr(
+                            batch_input[ForecastNNVectorizedDataset.window_anomalies]
+                        )
                     )
                     store_dict["window_preds"].extend(tensor2flatten_arr(y_pred))
                 infer_end = time.time()
@@ -190,27 +213,42 @@ class ForecastBasedNN(nn.Module):
                 self.time_tracker["test"] = infer_end - infer_start
 
                 store_df = pd.DataFrame(store_dict)
-                use_cols = [ForecastNNVectorizedDataset.session_idx, ForecastNNVectorizedDataset.window_anomalies, "window_preds"]
+                use_cols = [
+                    ForecastNNVectorizedDataset.session_idx,
+                    ForecastNNVectorizedDataset.window_anomalies,
+                    "window_preds",
+                ]
                 session_df = (
-                    store_df[use_cols].groupby(ForecastNNVectorizedDataset.session_idx, as_index=False).sum()
+                    store_df[use_cols]
+                    .groupby(ForecastNNVectorizedDataset.session_idx, as_index=False)
+                    .sum()
                 )
                 pred = (session_df[f"window_preds"] > 0).astype(int)
-                y = (session_df[ForecastNNVectorizedDataset.window_anomalies] > 0).astype(int)
+                y = (
+                    session_df[ForecastNNVectorizedDataset.window_anomalies] > 0
+                ).astype(int)
 
-                assert len(store_dict["window_preds"]) == len(test_loader.dataset), "Length of predictions {} does not match length of test dataset {}".format(len(store_dict["window_preds"]), len(test_loader.dataset))
+                assert len(store_dict["window_preds"]) == len(
+                    test_loader.dataset
+                ), "Length of predictions {} does not match length of test dataset {}".format(
+                    len(store_dict["window_preds"]), len(test_loader.dataset)
+                )
                 eval_results = {
                     "f1": f1_score(y, pred),
                     "rc": recall_score(y, pred),
                     "pc": precision_score(y, pred),
                     "acc": accuracy_score(y, pred),
-                    "pred": pred, 
-                    "true": y
+                    "pred": pred,
+                    "true": y,
                 }
-                logging.info("Best result: f1: {} rc: {} pc: {}".format(eval_results['f1'], eval_results['rc'], eval_results['pc']))
+                logging.info(
+                    "Best result: f1: {} rc: {} pc: {}".format(
+                        eval_results["f1"], eval_results["rc"], eval_results["pc"]
+                    )
+                )
                 return eval_results
 
-
-    def __predict_next_log(self, test_loader: DataLoader, dtype:str="test"):
+    def __predict_next_log(self, test_loader: DataLoader, dtype: str = "test"):
         model = self.eval()  # set to evaluation mode
         with torch.no_grad():
             y_pred = []
@@ -256,23 +294,35 @@ class ForecastBasedNN(nn.Module):
                     y_pred = return_dict["y_pred"]
                     y_prob_topk, y_pred_topk = torch.topk(y_pred, self.topk)  # b x topk
                     store_dict[ForecastNNVectorizedDataset.session_idx].extend(
-                        tensor2flatten_arr(batch_input[ForecastNNVectorizedDataset.session_idx])
+                        tensor2flatten_arr(
+                            batch_input[ForecastNNVectorizedDataset.session_idx]
+                        )
                     )
                     store_dict[ForecastNNVectorizedDataset.window_anomalies].extend(
-                        tensor2flatten_arr(batch_input[ForecastNNVectorizedDataset.window_anomalies])
+                        tensor2flatten_arr(
+                            batch_input[ForecastNNVectorizedDataset.window_anomalies]
+                        )
                     )
                     store_dict[ForecastNNVectorizedDataset.window_labels].extend(
-                        tensor2flatten_arr(batch_input[ForecastNNVectorizedDataset.window_labels])
+                        tensor2flatten_arr(
+                            batch_input[ForecastNNVectorizedDataset.window_labels]
+                        )
                     )
-                    store_dict["x"].extend(batch_input[ForecastNNVectorizedDataset.features].data.cpu().numpy())
+                    store_dict["x"].extend(
+                        batch_input[ForecastNNVectorizedDataset.features]
+                        .data.cpu()
+                        .numpy()
+                    )
                     store_dict["y_pred_topk"].extend(y_pred_topk.data.cpu().numpy())
                     store_dict["y_prob_topk"].extend(y_prob_topk.data.cpu().numpy())
                 infer_end = time.time()
-                logging.info(
-                    "Finish inference. [{}s]".format(infer_end - infer_start)
-                )
+                logging.info("Finish inference. [{}s]".format(infer_end - infer_start))
 
-                assert len(store_dict["x"]) == len(test_loader.dataset), "Length of predictions {} does not match length of test dataset {}".format(len(store_dict["x"]), len(test_loader.dataset))
+                assert len(store_dict["x"]) == len(
+                    test_loader.dataset
+                ), "Length of predictions {} does not match length of test dataset {}".format(
+                    len(store_dict["x"]), len(test_loader.dataset)
+                )
                 self.time_tracker["test"] = infer_end - infer_start
                 store_df = pd.DataFrame(store_dict)
                 best_result = None
@@ -288,54 +338,72 @@ class ForecastBasedNN(nn.Module):
                         not_hit = np.logical_and(
                             not_hit,
                             np.array(
-                                (topkdf[col] != store_df[ForecastNNVectorizedDataset.window_labels]).astype(int)
+                                (
+                                    topkdf[col]
+                                    != store_df[
+                                        ForecastNNVectorizedDataset.window_labels
+                                    ]
+                                ).astype(int)
                             ),
                         )
                     else:
                         not_hit = np.array(
-                            (topkdf[col] != store_df[ForecastNNVectorizedDataset.window_labels]).astype(int)
+                            (
+                                topkdf[col]
+                                != store_df[ForecastNNVectorizedDataset.window_labels]
+                            ).astype(int)
                         )
                     store_df["window_pred_anomaly_{}".format(topk)] = not_hit
 
                 logging.info("Finish generating store_df.")
 
                 if self.eval_type == "session":
-                    use_cols = [ForecastNNVectorizedDataset.session_idx, ForecastNNVectorizedDataset.window_anomalies] + [
+                    use_cols = [
+                        ForecastNNVectorizedDataset.session_idx,
+                        ForecastNNVectorizedDataset.window_anomalies,
+                    ] + [
                         f"window_pred_anomaly_{topk}"
                         for topk in range(1, self.topk + 1)
                     ]
                     session_df = (
-                        store_df[use_cols].groupby(ForecastNNVectorizedDataset.session_idx, as_index=False).sum()
+                        store_df[use_cols]
+                        .groupby(
+                            ForecastNNVectorizedDataset.session_idx, as_index=False
+                        )
+                        .sum()
                     )
                 else:
                     session_df = store_df
 
                 for topk in range(1, self.topk + 1):
                     pred = (session_df[f"window_pred_anomaly_{topk}"] > 0).astype(int)
-                    y = (session_df[ForecastNNVectorizedDataset.window_anomalies] > 0).astype(int)
+                    y = (
+                        session_df[ForecastNNVectorizedDataset.window_anomalies] > 0
+                    ).astype(int)
                     eval_results = {
                         "f1": f1_score(y, pred),
                         "rc": recall_score(y, pred),
                         "pc": precision_score(y, pred),
-                        "pred": pred, 
-                        "true": y
+                        "pred": pred,
+                        "true": y,
                     }
                     if eval_results["f1"] >= best_f1:
                         best_result = eval_results
                         best_f1 = eval_results["f1"]
                 count_end = time.time()
+                logging.info("Finish counting [{}s]".format(count_end - count_start))
                 logging.info(
-                    "Finish counting [{}s]".format(count_end - count_start)
+                    "Best result: f1: {} rc: {} pc: {}".format(
+                        best_result["f1"], best_result["rc"], best_result["pc"]
+                    )
                 )
-                logging.info("Best result: f1: {} rc: {} pc: {}".format(best_result['f1'], best_result['rc'], best_result['pc']))
                 return best_result
 
-    def __input2device(self, batch_input:dict):
+    def __input2device(self, batch_input: dict):
         return {k: v.to(self.device) for k, v in batch_input.items()}
 
     def save_model(self):
-        """saving model to file as specified in config
-        """
+        """saving model to file as specified in config"""
         logging.info("Saving model to {}".format(self.model_save_file))
         try:
             torch.save(
@@ -346,7 +414,7 @@ class ForecastBasedNN(nn.Module):
         except Exception as e:
             torch.save(self.state_dict(), self.model_save_file)
 
-    def load_model(self, model_save_file:str=""):
+    def load_model(self, model_save_file: str = ""):
         """loading model from file
 
         Args:
@@ -355,13 +423,13 @@ class ForecastBasedNN(nn.Module):
         logging.info("Loading model from {}".format(self.model_save_file))
         self.load_state_dict(torch.load(model_save_file, map_location=self.device))
 
-    def fit(self, train_loader:DataLoader, dev_loader:DataLoader = None):
+    def fit(self, train_loader: DataLoader, dev_loader: DataLoader = None):
         """Fit method for training model
 
         Args:
-            train_loader (DataLoader): dataloader (torch.utils.data.DataLoader) for the train dataset 
+            train_loader (DataLoader): dataloader (torch.utils.data.DataLoader) for the train dataset
             dev_loader (DataLoader, optional): dataloader (torch.utils.data.DataLoader) for the train dataset.
-                Defaults to None, for which no evaluation is run 
+                Defaults to None, for which no evaluation is run
 
         Returns:
             dict : dict containing the best loss on dev dataset

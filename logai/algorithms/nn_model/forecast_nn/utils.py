@@ -1,3 +1,10 @@
+#
+# Copyright (c) 2023 Salesforce.com, inc.
+# All rights reserved.
+# SPDX-License-Identifier: BSD-3-Clause
+# For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+#
+#
 import torch
 import random
 import os
@@ -28,8 +35,8 @@ def seed_everything(seed=1234):
     torch.manual_seed(seed)
 
 
-def set_device(gpu: int =None):
-    """set device (cpu or gpu). Use -1 to specify cpu. 
+def set_device(gpu: int = None):
+    """set device (cpu or gpu). Use -1 to specify cpu.
     If not manually set device would be automatically set to gpu
      if gpu is available otherwise cpu would be used
 

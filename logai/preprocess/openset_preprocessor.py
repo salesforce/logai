@@ -1,3 +1,10 @@
+#
+# Copyright (c) 2023 Salesforce.com, inc.
+# All rights reserved.
+# SPDX-License-Identifier: BSD-3-Clause
+# For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+#
+#
 from .preprocessor import Preprocessor, PreprocessorConfig
 import pandas as pd
 import re
@@ -13,20 +20,14 @@ class OpenSetPreprocessor(Preprocessor):
     def _get_ids(self, logrecord: LogRecordObject) -> pd.Series:
         return None
 
-
-
     def _get_labels(self, logrecord: LogRecordObject) -> pd.Series:
         return None
-
-
 
     def _format_ids(self, data_id: pd.Series):
         if type(list(data_id)[0]) == str:
             id_to_serial_id_map = {k: i for i, k in enumerate(set(data_id))}
             data_id = data_id.apply(lambda x: id_to_serial_id_map[x])
         return data_id
-
-
 
     def clean_log(self, logrecord: LogRecordObject) -> LogRecordObject:
         """preprocessing cleaning of logrecord object creating from open log datasets
@@ -58,7 +59,5 @@ class OpenSetPreprocessor(Preprocessor):
         preprocessed_ids = self._format_ids(preprocessed_ids)
 
         logrecord.span_id = pd.DataFrame({constants.SPAN_ID: preprocessed_ids})
-        logrecord.labels = pd.DataFrame(
-            {constants.LABELS: self._get_labels(logrecord)}
-        )
+        logrecord.labels = pd.DataFrame({constants.LABELS: self._get_labels(logrecord)})
         return logrecord

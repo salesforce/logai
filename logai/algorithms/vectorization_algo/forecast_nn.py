@@ -1,3 +1,10 @@
+#
+# Copyright (c) 2023 Salesforce.com, inc.
+# All rights reserved.
+# SPDX-License-Identifier: BSD-3-Clause
+# For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+#
+#
 import torch
 import os
 import numpy as np
@@ -15,8 +22,7 @@ from logai.algorithms.factory import factory
 
 
 class ForecastNNVectorizedDataset:
-    """class for storing vectorized dataset for forecasting based neural models 
-    """
+    """class for storing vectorized dataset for forecasting based neural models"""
 
     session_idx: str = "session_idx"
     features: str = "features"
@@ -27,14 +33,14 @@ class ForecastNNVectorizedDataset:
         """initializing object for ForecastNNVectorizedDataset
 
         Args:
-            logline_features (np.array): list of vectorized log-sequences 
-            labels (list or pd.Series or np.array): list of labels (anomalous or non-anomalous) for each log sequence. 
+            logline_features (np.array): list of vectorized log-sequences
+            labels (list or pd.Series or np.array): list of labels (anomalous or non-anomalous) for each log sequence.
             nextlogline_ids (list or pd.Series or np.array): list of ids of next loglines, for each log sequence
-            span_ids (list or pd.Series or np.array): list of ids of log sequences. 
+            span_ids (list or pd.Series or np.array): list of ids of log sequences.
         """
         self.dataset = []
         for data_i, label_i, next_i, index_i in zip(
-                logline_features, labels, nextlogline_ids, span_ids
+            logline_features, labels, nextlogline_ids, span_ids
         ):
             self.dataset.append(
                 {
@@ -54,14 +60,18 @@ class ForecastNNVectorizerParams(Config):
         Config : config interface
 
     feature_type: str = None # type of log feature representation where the supported types "semantics" and "sequential"
-    label_type: str = None # type of label, anomaly or next_log, which corresponds to the supervised and the forecasting  based unsupervised setting
+    label_type: str = None # type of label, anomaly or next_log, which corresponds to the supervised and the forecasting
+        based unsupervised setting
     sep_token: str = "[SEP]" # separator token used when constructing the log sequences during log grouping/partitioning
     max_token_len: int = None # maximum token length of the input
-    min_token_count: int = None # minimum number of occurrences of a token in the training data, for it to be considered in the vocab
+    min_token_count: int = None # minimum number of occurrences of a token in the training data, for it to be considered
+        in the vocab
     embedding_dim: int = None # embedding dimension of the tokens
-    output_dir: str = "" # path to output directory where the vectorizer model directory and metadata file would be created
-    vectorizer_metadata_filepath: str = "" # path to file where the vectorizer metadata would be saved. This would be read by the anomaly
-     detection model and should be set in the metadata_filepath of the forecast_nn based anomaly detector
+    output_dir: str = "" # path to output directory where the vectorizer model directory and metadata file would be
+        created
+    vectorizer_metadata_filepath: str = "" # path to file where the vectorizer metadata would be saved. This would be
+        read by the anomaly detection model and should be set in the metadata_filepath of the forecast_nn based
+        anomaly detector
     vectorizer_model_dirpath: str = "" # path to directory containing the vectorizer model
 
     """
@@ -82,15 +92,14 @@ class ForecastNNVectorizerParams(Config):
 
 @factory.register("vectorization", "forecast_nn", ForecastNNVectorizerParams)
 class ForecastNN(VectorizationAlgo):
-    """Vectorizer Class for forecast based neural models for log representation learning
-    """
+    """Vectorizer Class for forecast based neural models for log representation learning"""
 
     def __init__(self, config: ForecastNNVectorizerParams):
         """initializing vectorizer object for forecast based neural model
 
         Args:
             config (ForecastNNVectorizerParams): config object specifying parameters
-             of forecast based neural log repersentation learning model 
+             of forecast based neural log repersentation learning model
         """
         self.meta_data = {}
         self.config = config
@@ -121,7 +130,9 @@ class ForecastNN(VectorizationAlgo):
                 "embedding_dim": self.config.embedding_dim,
                 "model_save_dir": self.config.vectorizer_model_dirpath,
             }
-            semanticvec_config = SemanticVectorizerParams.from_dict(semanticvec_config_dict)
+            semanticvec_config = SemanticVectorizerParams.from_dict(
+                semanticvec_config_dict
+            )
             self.semantic_vectorizer = Semantic(semanticvec_config)
 
     def _process_logsequence(self, data_sequence):
@@ -138,14 +149,14 @@ class ForecastNN(VectorizationAlgo):
         return unique_data_instances
 
     def fit(self, logrecord: LogRecordObject):
-        """fit method to train vectorizer 
+        """fit method to train vectorizer
 
         Args:
             logrecord (LogRecordObject): logrecord object to train the vectorizer on
         """
         if self.sequential_vectorizer.vocab is None or (
-                self.config.feature_type == "semantics"
-                and self.semantic_vectorizer.vocab is None
+            self.config.feature_type == "semantics"
+            and self.semantic_vectorizer.vocab is None
         ):
             loglines = logrecord.body[
                 constants.LOGLINE_NAME
@@ -158,8 +169,8 @@ class ForecastNN(VectorizationAlgo):
         if self.sequential_vectorizer.vocab is None:
             self.sequential_vectorizer.fit(loglines)
         if (
-                self.config.feature_type == "semantics"
-                and self.semantic_vectorizer.vocab is None
+            self.config.feature_type == "semantics"
+            and self.semantic_vectorizer.vocab is None
         ):
             self.semantic_vectorizer.fit(loglines)
         self._dump_meta_data()
@@ -190,8 +201,12 @@ class ForecastNN(VectorizationAlgo):
             nextlogline_ids = None
         labels = logrecord.labels[constants.LABELS]
         span_ids = logrecord.span_id[constants.SPAN_ID]
-        samples = ForecastNNVectorizedDataset(logline_features=logline_features,
-                                              labels=labels, nextlogline_ids=nextlogline_ids, span_ids=span_ids)
+        samples = ForecastNNVectorizedDataset(
+            logline_features=logline_features,
+            labels=labels,
+            nextlogline_ids=nextlogline_ids,
+            span_ids=span_ids,
+        )
         return samples
 
     def _dump_meta_data(self):

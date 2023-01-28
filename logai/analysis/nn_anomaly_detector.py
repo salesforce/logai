@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2022 Salesforce.com, inc.
+# Copyright (c) 2023 Salesforce.com, inc.
 # All rights reserved.
 # SPDX-License-Identifier: BSD-3-Clause
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -20,12 +20,13 @@ class NNAnomalyDetector:
         :param config: AnomalyDetectionConfig
         """
         self.anomaly_detector = factory.get_algorithm(
-            "detection", config.algo_name.lower(), config)
+            "detection", config.algo_name.lower(), config
+        )
 
     def fit(
-            self,
-            train_data: ForecastNNVectorizedDataset or HFDataset,
-            dev_data: ForecastNNVectorizedDataset or HFDataset
+        self,
+        train_data: ForecastNNVectorizedDataset or HFDataset,
+        dev_data: ForecastNNVectorizedDataset or HFDataset,
     ):
         """
         Trains an anomaly detection given the training and validation datasets.

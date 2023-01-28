@@ -1,3 +1,10 @@
+#
+# Copyright (c) 2023 Salesforce.com, inc.
+# All rights reserved.
+# SPDX-License-Identifier: BSD-3-Clause
+# For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+#
+#
 import os
 import pathlib
 import json
@@ -10,7 +17,7 @@ def file_exists(path: str):
     """util function to check if file exists
 
     Args:
-        path (str): path to file 
+        path (str): path to file
 
     Returns:
         bool: if file exists or not
@@ -19,13 +26,13 @@ def file_exists(path: str):
 
 
 def read_file(filepath: str):
-    """reading yaml, json, csv or pickle files 
+    """reading yaml, json, csv or pickle files
 
     Args:
-        filepath (str): path to file 
+        filepath (str): path to file
 
     Returns:
-        object : data object containing file contents 
+        object : data object containing file contents
     """
     file_type = pathlib.Path(filepath).suffix
     if file_type == ".yaml":

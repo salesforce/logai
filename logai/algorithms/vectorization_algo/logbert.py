@@ -1,3 +1,10 @@
+#
+# Copyright (c) 2023 Salesforce.com, inc.
+# All rights reserved.
+# SPDX-License-Identifier: BSD-3-Clause
+# For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+#
+#
 import os
 import pandas as pd
 from attr import dataclass
@@ -22,7 +29,7 @@ from logai.algorithms.factory import factory
 
 @dataclass
 class LogBERTVectorizerParams(Config):
-    """Config class for logBERT Vectorizer 
+    """Config class for logBERT Vectorizer
 
     Inherits:
         Config : config interface
@@ -57,7 +64,7 @@ class LogBERT(VectorizationAlgo):
     """Vectorizer class for logbert
 
     Inherits:
-        VectorizationAlgo: abstract vectorization algo class 
+        VectorizationAlgo: abstract vectorization algo class
     """
 
     def __init__(self, config: LogBERTVectorizerParams):
@@ -76,7 +83,7 @@ class LogBERT(VectorizationAlgo):
             self.special_tokens.extend(self.config.custom_tokens)
 
         tokenizer_dirname = self.config.model_name + "_tokenizer"
-        if self.config.tokenizer_dirpath=="" or self.config.tokenizer_dirpath is None:
+        if self.config.tokenizer_dirpath == "" or self.config.tokenizer_dirpath is None:
             self.config.tokenizer_dirpath = os.path.join(
                 self.config.output_dir, tokenizer_dirname
             )
@@ -104,7 +111,7 @@ class LogBERT(VectorizationAlgo):
             )
 
     def fit(self, logrecord: LogRecordObject):
-        """fit method for training vectorizer for logbert. 
+        """fit method for training vectorizer for logbert.
 
         Args:
             logrecord (LogRecordObject): logrecord object containing the training
@@ -135,7 +142,10 @@ class LogBERT(VectorizationAlgo):
         self.tokenizer.post_processor = processors.TemplateProcessing(
             single=f"[CLS]:0 $A:0 [SEP]:0",
             pair=f"[CLS]:0 $A:0 [SEP]:0 $B:1 [SEP]:1",
-            special_tokens=[("[CLS]", cls_token_id), ("[SEP]", sep_token_id),],
+            special_tokens=[
+                ("[CLS]", cls_token_id),
+                ("[SEP]", sep_token_id),
+            ],
         )
 
         self.tokenizer.decoder = decoders.WordPiece(prefix="##")
@@ -171,7 +181,7 @@ class LogBERT(VectorizationAlgo):
              to be vectorized
 
         Returns:
-            HFDataset: HuggingFace dataset object 
+            HFDataset: HuggingFace dataset object
         """
         cleaned_logrecord = self._clean_dataset(logrecord)
         dataset = self._get_hf_dataset(cleaned_logrecord)
@@ -182,7 +192,6 @@ class LogBERT(VectorizationAlgo):
             remove_columns=[constants.LOGLINE_NAME],
         )
         return tokenized_dataset
-
 
     def _get_all_special_tokens(self):
         special_tokens = self.special_tokens
@@ -196,14 +205,14 @@ class LogBERT(VectorizationAlgo):
                 {
                     constants.LOGLINE_NAME: logrecord.body[constants.LOGLINE_NAME],
                     constants.LABELS: logrecord.labels[constants.LABELS],
-                    constants.LOG_COUNTS: logrecord.attributes[constants.LOG_COUNTS]
+                    constants.LOG_COUNTS: logrecord.attributes[constants.LOG_COUNTS],
                 }
             )
         else:
             loglines_df = pd.DataFrame(
                 {
                     constants.LOGLINE_NAME: logrecord.body[constants.LOGLINE_NAME],
-                    constants.LABELS: logrecord.labels[constants.LABELS]
+                    constants.LABELS: logrecord.labels[constants.LABELS],
                 }
             )
         hf_data = HFDataset.from_pandas(loglines_df)

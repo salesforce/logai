@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2022 Salesforce.com, inc.
+# Copyright (c) 2023 Salesforce.com, inc.
 # All rights reserved.
 # SPDX-License-Identifier: BSD-3-Clause
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -55,7 +55,7 @@ class OneClassSVMDetector(AnomalyDetectionAlgo):
         self.model.fit(log_features)
         train_scores = self.model.score_samples(log_features)
         train_scores = pd.DataFrame(train_scores, index=log_features.index)
-        train_scores['trainval'] = True
+        train_scores["trainval"] = True
         return train_scores
 
     def predict(self, log_features: pd.DataFrame) -> pd.Series:
@@ -65,6 +65,8 @@ class OneClassSVMDetector(AnomalyDetectionAlgo):
         :return:
         """
         test_scores = self.model.predict(log_features)
-        test_scores = pd.DataFrame(pd.Series(test_scores, index=log_features.index, name='anom_score'))
-        test_scores['trainval'] = False
+        test_scores = pd.DataFrame(
+            pd.Series(test_scores, index=log_features.index, name="anom_score")
+        )
+        test_scores["trainval"] = False
         return test_scores

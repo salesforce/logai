@@ -1,7 +1,13 @@
+#
+# Copyright (c) 2023 Salesforce.com, inc.
+# All rights reserved.
+# SPDX-License-Identifier: BSD-3-Clause
+# For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+#
+#
 import pandas as pd
 
 from attr import dataclass
-from numba import jit
 
 from logai.config_interfaces import Config
 from logai.utils import constants
@@ -92,7 +98,7 @@ class Partitioner:
         if not self._valid_columns(logrecord_df.columns):
             raise ValueError("Make sure logrecord has the columns to group by.")
 
-        if not logline_col_name in logrecord_df.columns:
+        if logline_col_name not in logrecord_df.columns:
             raise ValueError(
                 "Logline column {} cannot be found in logrecord_df.columns".format(
                     logline_col_name

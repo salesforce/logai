@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2022 Salesforce.com, inc.
+# Copyright (c) 2023 Salesforce.com, inc.
 # All rights reserved.
 # SPDX-License-Identifier: BSD-3-Clause
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -7,12 +7,10 @@
 #
 import numpy as np
 import pandas as pd
-from attr import dataclass, fields
-from dataclasses import _MISSING_TYPE
+from attr import dataclass
 
 from logai.config_interfaces import Config
 from logai.dataloader.data_model import LogRecordObject
-from logai.utils.tokenize import tokenize
 
 
 @dataclass

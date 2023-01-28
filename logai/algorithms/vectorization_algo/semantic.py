@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2022 Salesforce.com, inc.
+# Copyright (c) 2023 Salesforce.com, inc.
 # All rights reserved.
 # SPDX-License-Identifier: BSD-3-Clause
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -25,9 +25,11 @@ from logai.algorithms.factory import factory
 @dataclass
 class SemanticVectorizerParams(Config):
     """
-    Configuration of Semantic vectorization of loglines (or sequence of log lines) using models like word2vc, glove and fastText
+    Configuration of Semantic vectorization of loglines (or sequence of log lines) using models like word2vc,
+        glove and fastText
     max_token_len: int = 10 # maximum token length of the input
-    min_token_count: int = 1 # minimum count of occurrences of a token in training data for it to be considered in the vocab
+    min_token_count: int = 1 # minimum count of occurrences of a token in training data for it to be considered in the
+        vocab
     sep_token: str = "[SEP]" # separator token used to separate log lines in input log sequence
     embedding_dim: int = 300 # embedding dimension of the learnt token embeddings
     window: int = 3 # window size parameter for word2vec and fastText models
@@ -48,13 +50,13 @@ class SemanticVectorizerParams(Config):
 @factory.register("vectorization", "semantic", SemanticVectorizerParams)
 class Semantic(VectorizationAlgo):
     """
-    Semantic vectorizer to convert loglines into token ids based on a embedding model and vocabulary 
-    (like word2vec, glove and fastText). It supports either pretrained models and pretrained vocabulary 
-    or training word embedding models like Word2Vec or FastText on the given training data 
+    Semantic vectorizer to convert loglines into token ids based on a embedding model and vocabulary
+    (like word2vec, glove and fastText). It supports either pretrained models and pretrained vocabulary
+    or training word embedding models like Word2Vec or FastText on the given training data
     """
 
     def __init__(self, params: SemanticVectorizerParams):
-        """intializing semantic vectorizer 
+        """intializing semantic vectorizer
 
         Args:
             params (SemanticVectorizerParams): config object for semantic vectorizer
@@ -75,7 +77,7 @@ class Semantic(VectorizationAlgo):
         self.train_embedding_model = False
 
         if os.path.exists(self.vocab_filename) and os.path.exists(
-                self.embed_mat_filename
+            self.embed_mat_filename
         ):
             self.vocab = pkl.load(open(self.vocab_filename, "rb"))
             self.embed_matrix = np.load(self.embed_mat_filename)
@@ -97,14 +99,14 @@ class Semantic(VectorizationAlgo):
         """Fit method to train semantic vectorizer
 
         Args:
-            loglines (pd.Series): pandas Series object containing the dataset on 
-             which semantic vectorizer is trained (and the vocab is built). 
-             Each data instance should be a logline or sequence of loglines concatenated by separator token 
+            loglines (pd.Series): pandas Series object containing the dataset on
+             which semantic vectorizer is trained (and the vocab is built).
+             Each data instance should be a logline or sequence of loglines concatenated by separator token
         """
         if (
-                self.params.model_save_dir
-                and os.path.exists(self.vocab_filename)
-                and os.path.exists(self.embed_mat_filename)
+            self.params.model_save_dir
+            and os.path.exists(self.vocab_filename)
+            and os.path.exists(self.embed_mat_filename)
         ):
             self.vocab = pkl.load(open(self.vocab_filename, "rb"))
             self.embed_matrix = np.load(self.embed_mat_filename)
@@ -203,8 +205,8 @@ class Semantic(VectorizationAlgo):
         """Transform method to run semantic vectorizer on loglines
 
         Args:
-            loglines (pd.Series): pandas Series containing the data to be vectorized 
-            Each data instance should be a logline or sequence of loglines concatenated by separator token 
+            loglines (pd.Series): pandas Series containing the data to be vectorized
+            Each data instance should be a logline or sequence of loglines concatenated by separator token
 
         Returns:
             pd.Series: vectorized log data

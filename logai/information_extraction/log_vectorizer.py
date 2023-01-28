@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2022 Salesforce.com, inc.
+# Copyright (c) 2023 Salesforce.com, inc.
 # All rights reserved.
 # SPDX-License-Identifier: BSD-3-Clause
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -8,7 +8,6 @@
 import pandas as pd
 from attr import dataclass
 
-import logai.algorithms.vectorization_algo
 from logai.config_interfaces import Config
 from logai.algorithms.factory import factory
 
@@ -23,7 +22,8 @@ class VectorizerConfig(Config):
     def from_dict(cls, config_dict):
         config = super(VectorizerConfig, cls).from_dict(config_dict)
         config.algo_param = factory.get_config(
-            "vectorization", config.algo_name.lower(), config.algo_param)
+            "vectorization", config.algo_name.lower(), config.algo_param
+        )
         return config
 
 
@@ -37,7 +37,8 @@ class LogVectorizer:
         config_class = factory.get_config_class("vectorization", name)
         algorithm_class = factory.get_algorithm_class("vectorization", name)
         self.vectorizer = algorithm_class(
-            config.algo_param if config.algo_param else config_class())
+            config.algo_param if config.algo_param else config_class()
+        )
 
     def fit(self, loglines: pd.Series):
         self.vectorizer.fit(loglines)

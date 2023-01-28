@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2022 Salesforce.com, inc.
+# Copyright (c) 2023 Salesforce.com, inc.
 # All rights reserved.
 # SPDX-License-Identifier: BSD-3-Clause
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -11,11 +11,12 @@ class AlgorithmFactory:
     """
     The singleton factory class for all the supported algorithms.
     """
+
     _algorithms = {
         "detection": {},
         "parsing": {},
         "clustering": {},
-        "vectorization": {}
+        "vectorization": {},
     }
 
     def __new__(cls):
@@ -32,13 +33,16 @@ class AlgorithmFactory:
         :param name: The algorithm name(s).
         :param config_class: The configuration class.
         """
+
         def wrap(algo_class):
-            assert task in cls._algorithms, \
-                f"Unknown task {task}, please choose from {cls._algorithms.keys()}."
+            assert (
+                task in cls._algorithms
+            ), f"Unknown task {task}, please choose from {cls._algorithms.keys()}."
             names = [name] if isinstance(name, str) else name
             for algo_name in names:
-                assert algo_name not in cls._algorithms[task], \
-                    f"Algorithm {algo_name} has been already registered."
+                assert (
+                    algo_name not in cls._algorithms[task]
+                ), f"Algorithm {algo_name} has been already registered."
                 cls._algorithms[task][algo_name] = (config_class, algo_class)
             return algo_class
 
@@ -96,8 +100,9 @@ class AlgorithmFactory:
         assert name in self._algorithms[task], f"Unknown algorithm {name}."
         config_class, algorithm_class = self._algorithms[task][name]
         if config and config.algo_params:
-            assert isinstance(config.algo_params, config_class), \
-                f"`config` must be an instance of {config_class.__name__}."
+            assert isinstance(
+                config.algo_params, config_class
+            ), f"`config` must be an instance of {config_class.__name__}."
         algorithm = algorithm_class(
             config.algo_params if config and config.algo_params else config_class()
         )

@@ -1,12 +1,11 @@
 #
-# Copyright (c) 2022 Salesforce.com, inc.
+# Copyright (c) 2023 Salesforce.com, inc.
 # All rights reserved.
 # SPDX-License-Identifier: BSD-3-Clause
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 #
 #
 import pandas as pd
-import logai.algorithms.clustering_algo
 from attr import dataclass
 
 from logai.config_interfaces import Config
@@ -23,7 +22,8 @@ class ClusteringConfig(Config):
     def from_dict(cls, config_dict):
         config = super(ClusteringConfig, cls).from_dict(config_dict)
         config.algo_params = factory.get_config(
-            "clustering", config.algo_name.lower(), config.algo_params)
+            "clustering", config.algo_name.lower(), config.algo_params
+        )
         return config
 
 
@@ -35,7 +35,8 @@ class Clustering:
 
     def __init__(self, config: ClusteringConfig):
         self.model = factory.get_algorithm(
-            "clustering", config.algo_name.lower(), config)
+            "clustering", config.algo_name.lower(), config
+        )
 
     def fit(self, log_features: pd.DataFrame):
         log_features.columns = log_features.columns.astype(str)

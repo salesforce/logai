@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2022 Salesforce.com, inc.
+# Copyright (c) 2023 Salesforce.com, inc.
 # All rights reserved.
 # SPDX-License-Identifier: BSD-3-Clause
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -12,7 +12,7 @@ Link: https://github.com/IBM/Drain3/blob/master/drain3/drain.py
 from typing import List, Dict
 
 import pandas as pd
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from cachetools import LRUCache, Cache
 
 from abc import ABC, abstractmethod
@@ -425,14 +425,14 @@ class Drain(ParsingAlgo):
         return self.clusters_counter
 
     def fit(self, logline: pd.Series):
-        for l in logline:
-            if not isinstance(l, str):
+        for line in logline:
+            if not isinstance(line, str):
                 continue
-            self.add_log_message(l)
+            self.add_log_message(line)
 
     def parse(self, logline: pd.Series) -> pd.Series:
         self.fit(logline)
         parsed_logline = []
-        for l in logline:
-            parsed_logline.append(" ".join(self.match(l).log_template_tokens))
+        for line in logline:
+            parsed_logline.append(" ".join(self.match(line).log_template_tokens))
         return pd.Series(parsed_logline, index=logline.index)

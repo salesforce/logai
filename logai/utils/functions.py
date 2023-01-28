@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2022 Salesforce.com, inc.
+# Copyright (c) 2023 Salesforce.com, inc.
 # All rights reserved.
 # SPDX-License-Identifier: BSD-3-Clause
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -16,8 +16,7 @@ from merlion.utils import TimeSeries
 from logai.utils import constants
 
 
-
-def pad(x, max_len: np.array, padding_value:int =0):
+def pad(x, max_len: np.array, padding_value: int = 0):
     """Method to trim or pad any 1-d numpy array to a given max length with the given padding value
 
     Args:
@@ -26,7 +25,7 @@ def pad(x, max_len: np.array, padding_value:int =0):
         padding_value (int, optional): padding value. Defaults to 0.
 
     Returns:
-        np.array: padded/trimmed numpy array 
+        np.array: padded/trimmed numpy array
     """
     flattened_vector = x
     fill_size = max_len - len(flattened_vector)
@@ -82,7 +81,8 @@ def get_parameter_list(row):
 def pd_to_timeseries(log_features: pd.Series):
     """
     Covert pandas.DataFrame to merlion.TimeSeries for log counter vectors
-    :param log_features: log feature dataframe must only contain two columns ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
+    :param log_features: log feature dataframe must only contain two columns
+        ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
     :return: merlion.TimeSeries type.
     """
     ts_df = log_features[constants.LOG_COUNTS]

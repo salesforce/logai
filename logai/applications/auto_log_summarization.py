@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2022 Salesforce.com, inc.
+# Copyright (c) 2023 Salesforce.com, inc.
 # All rights reserved.
 # SPDX-License-Identifier: BSD-3-Clause
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -24,6 +24,7 @@ class AutoLogSummarization:
     How to use, the design of this analysis app should follow the general workflow of
     automated log parsing. The workflow should be able to control solely by `WorkFlowConfig`
     """
+
     def __init__(self, config: WorkFlowConfig):
         """
 
@@ -55,16 +56,24 @@ class AutoLogSummarization:
         :param log_pattern: str: input log pattern
         :return: pd.DataFrame: parameter list with Values, valuecounts and position
         """
-        para_list = pd.DataFrame(None, columns=['position', 'value_counts', 'values'])
+        para_list = pd.DataFrame(None, columns=["position", "value_counts", "values"])
         if self._parsing_results.empty or not log_pattern:
             return para_list
 
         res = self._parsing_results
-        parameters = res.loc[res[constants.PARSED_LOGLINE_NAME] == log_pattern][constants.PARAMETER_LIST_NAME]
+        parameters = res.loc[res[constants.PARSED_LOGLINE_NAME] == log_pattern][
+            constants.PARAMETER_LIST_NAME
+        ]
 
-        para_list['values'] = pd.Series(pd.DataFrame(parameters.tolist()).T.values.tolist())
-        para_list['position'] = ["POSITION_{}".format(v) for v in para_list.index.values]
-        para_list['value_counts'] = [len(list(filter(None, v))) for v in para_list['values']]
+        para_list["values"] = pd.Series(
+            pd.DataFrame(parameters.tolist()).T.values.tolist()
+        )
+        para_list["position"] = [
+            "POSITION_{}".format(v) for v in para_list.index.values
+        ]
+        para_list["value_counts"] = [
+            len(list(filter(None, v))) for v in para_list["values"]
+        ]
         return para_list
 
     def recognize_parameter_entity(self, para_list):
@@ -94,7 +103,9 @@ class AutoLogSummarization:
         log_pattern = None
         para_list = None
         if not self._parsing_results.empty:
-            res = self._parsing_results.loc[self._parsing_results[constants.LOGLINE_NAME] == logline]
+            res = self._parsing_results.loc[
+                self._parsing_results[constants.LOGLINE_NAME] == logline
+            ]
             log_patterns = res[constants.PARSED_LOGLINE_NAME]
             if len(log_patterns) == 0:
                 return None
@@ -129,7 +140,9 @@ class AutoLogSummarization:
 
         parser = LogParser(self.config.log_parser_config)
         parsed_results = parser.parse(preprocessed_loglines.dropna())
-        self._parsing_results = parsed_results[[constants.PARSED_LOGLINE_NAME, constants.PARAMETER_LIST_NAME]]
+        self._parsing_results = parsed_results[
+            [constants.PARSED_LOGLINE_NAME, constants.PARAMETER_LIST_NAME]
+        ]
 
         self._parsing_results = self._parsing_results.join(logrecord.body)
 
@@ -149,7 +162,9 @@ class AutoLogSummarization:
             dataloader = FileDataLoader(self.config.data_loader_config)
             logrecord = dataloader.load_data()
         else:
-            raise ValueError("data_loader_config or open_set_data_loader_config is needed to load data.")
+            raise ValueError(
+                "data_loader_config or open_set_data_loader_config is needed to load data."
+            )
         return logrecord
 
     def _preprocess(self, logrecord: LogRecordObject):
@@ -160,10 +175,3 @@ class AutoLogSummarization:
         preprocessed_loglines, _ = preprocessor.clean_log(logline)
 
         return preprocessed_loglines
-
-
-
-
-
-
-

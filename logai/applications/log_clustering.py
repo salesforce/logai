@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2022 Salesforce.com, inc.
+# Copyright (c) 2023 Salesforce.com, inc.
 # All rights reserved.
 # SPDX-License-Identifier: BSD-3-Clause
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -60,7 +60,9 @@ class LogClustering:
 
     @property
     def logline_with_clusters(self):
-        event_cluster_df = pd.concat((self.clusters, self.loglines, self.attributes, self.timestamps), axis=1)
+        event_cluster_df = pd.concat(
+            (self.clusters, self.loglines, self.attributes, self.timestamps), axis=1
+        )
         return event_cluster_df
 
     def execute(self):
@@ -100,7 +102,9 @@ class LogClustering:
 
         padded_log_vectors = log_vectors.apply(pad, max_len=self.MAX_LEN)
 
-        feature_for_clustering = pd.DataFrame([vec for vec in padded_log_vectors], index=padded_log_vectors.index)
+        feature_for_clustering = pd.DataFrame(
+            [vec for vec in padded_log_vectors], index=padded_log_vectors.index
+        )
 
         feature_for_clustering = feature_for_clustering.join(attributes)
 
@@ -108,7 +112,11 @@ class LogClustering:
 
         log_clustering.fit(feature_for_clustering)
 
-        self._clusters = log_clustering.predict(feature_for_clustering).astype(str).rename('cluster_id')
+        self._clusters = (
+            log_clustering.predict(feature_for_clustering)
+            .astype(str)
+            .rename("cluster_id")
+        )
         self._index = self._clusters.index
 
         return
@@ -121,5 +129,7 @@ class LogClustering:
             dataloader = FileDataLoader(self.config.data_loader_config)
             logrecord = dataloader.load_data()
         else:
-            raise ValueError("data_loader_config or open_set_data_loader_config is needed to load data.")
+            raise ValueError(
+                "data_loader_config or open_set_data_loader_config is needed to load data."
+            )
         return logrecord

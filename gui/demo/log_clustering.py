@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2022 Salesforce.com, inc.
+# Copyright (c) 2023 Salesforce.com, inc.
 # All rights reserved.
 # SPDX-License-Identifier: BSD-3-Clause
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -16,8 +16,16 @@ from .utils import ParamInfoMixin
 class Clustering(ParamInfoMixin):
     algorithms = {
         "birch": ("logai.algorithms.clustering_algo.birch", "BirchAlgo", "BirchParams"),
-        "dbscan": ("logai.algorithms.clustering_algo.dbscan", "DbScanAlgo", "DbScanParams"),
-        "kmeans": ("logai.algorithms.clustering_algo.kmeans", "KMeansAlgo", "KMeansParams")
+        "dbscan": (
+            "logai.algorithms.clustering_algo.dbscan",
+            "DbScanAlgo",
+            "DbScanParams",
+        ),
+        "kmeans": (
+            "logai.algorithms.clustering_algo.kmeans",
+            "KMeansAlgo",
+            "KMeansParams",
+        ),
     }
 
     def __init__(self):
@@ -88,10 +96,9 @@ class Clustering(ParamInfoMixin):
 
     def get_loglines(self, cluster_id):
         df = self.app.logline_with_clusters
-        loglines = df.loc[df['cluster_id'].astype(str) == cluster_id]
+        loglines = df.loc[df["cluster_id"].astype(str) == cluster_id]
         return loglines
 
     @property
     def result_table(self):
         return self.app.logline_with_clusters
-

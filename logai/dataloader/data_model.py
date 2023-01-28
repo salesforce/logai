@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2022 Salesforce.com, inc.
+# Copyright (c) 2023 Salesforce.com, inc.
 # All rights reserved.
 # SPDX-License-Identifier: BSD-3-Clause
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -9,7 +9,6 @@ import numpy as np
 import pandas as pd
 from dataclasses import dataclass, field
 import pathlib
-import copy
 import json
 from logai.utils import constants
 import logging
@@ -165,10 +164,10 @@ class LogRecordObject:
         return target
 
     def dropna(self):
-        """method to drop entries containing NaN or null values in the logrecord object 
+        """method to drop entries containing NaN or null values in the logrecord object
 
         Returns:
-            LogRecordObject : modified logrecord object after removing entries with NaN or null values 
+            LogRecordObject : modified logrecord object after removing entries with NaN or null values
         """
         null_body = self.body.isnull()
         null_body = null_body[null_body[constants.LOGLINE_NAME] == True]

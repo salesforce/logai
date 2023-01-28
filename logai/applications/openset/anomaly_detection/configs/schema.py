@@ -1,3 +1,10 @@
+#
+# Copyright (c) 2023 Salesforce.com, inc.
+# All rights reserved.
+# SPDX-License-Identifier: BSD-3-Clause
+# For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+#
+#
 from schema import Or, Schema, Optional
 
 config_schema = Schema(
@@ -20,10 +27,10 @@ config_schema = Schema(
                 "body": list,
                 "timestamp": list,
                 Optional("labels"): Or(list, None),
-                Optional("span_id"): list
+                Optional("span_id"): list,
             },
             "datetime_format": str,
-            "infer_datetime": bool
+            "infer_datetime": bool,
         },
         "preprocessor_config": {
             "custom_delimiters_regex": list,
@@ -47,10 +54,10 @@ config_schema = Schema(
                 Optional("max_token_len"): int,
                 Optional("embedding_dim"): int,
                 Optional("label_type"): str,
-                Optional("custom_tokens"): list, 
+                Optional("custom_tokens"): list,
                 Optional("output_dir"): str,
                 Optional("tokenizer_dirname"): str,
-                Optional("vectorizer_model_dirpath"): str, 
+                Optional("vectorizer_model_dirpath"): str,
                 Optional("vectorizer_metadata_filepath"): str,
             },
         },
@@ -64,15 +71,14 @@ config_schema = Schema(
                 Optional("feature_type"): str,
                 Optional("label_type"): str,
                 Optional("eval_type"): str,
-                Optional("batch_size"): int, 
+                Optional("batch_size"): int,
                 Optional("per_device_train_batch_size"): int,
                 Optional("num_train_epochs"): int,
                 Optional("save_steps"): int,
                 Optional("mask_ngram"): int,
                 Optional("output_dir"): str,
                 Optional("tokenizer_dirpath"): str,
-                Optional("metadata_filepath"): str
-
+                Optional("metadata_filepath"): str,
             },
         },
     }
