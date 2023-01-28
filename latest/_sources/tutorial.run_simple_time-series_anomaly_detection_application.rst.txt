@@ -3,6 +3,10 @@
   :language: shell
   :class: highlight
 
+.. image:: _static/logai_logo.jpg
+   :width: 650
+   :align: center
+
 Run Simple Time-series Anomaly Detection Application
 ==================================================================
 

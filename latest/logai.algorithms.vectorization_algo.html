@@ -385,16 +385,26 @@
 </dd>
 </dl>
 <p>feature_type: str = None # type of log feature representation where the supported types “semantics” and “sequential”
-label_type: str = None # type of label, anomaly or next_log, which corresponds to the supervised and the forecasting  based unsupervised setting
-sep_token: str = “[SEP]” # separator token used when constructing the log sequences during log grouping/partitioning
-max_token_len: int = None # maximum token length of the input
-min_token_count: int = None # minimum number of occurrences of a token in the training data, for it to be considered in the vocab
-embedding_dim: int = None # embedding dimension of the tokens
-output_dir: str = “” # path to output directory where the vectorizer model directory and metadata file would be created
-vectorizer_metadata_filepath: str = “” # path to file where the vectorizer metadata would be saved. This would be read by the anomaly</p>
+label_type: str = None # type of label, anomaly or next_log, which corresponds to the supervised and the forecasting</p>
 <blockquote>
-<div><p>detection model and should be set in the metadata_filepath of the forecast_nn based anomaly detector</p>
+<div><p>based unsupervised setting</p>
 </div></blockquote>
+<p>sep_token: str = “[SEP]” # separator token used when constructing the log sequences during log grouping/partitioning
+max_token_len: int = None # maximum token length of the input
+min_token_count: int = None # minimum number of occurrences of a token in the training data, for it to be considered</p>
+<blockquote>
+<div><p>in the vocab</p>
+</div></blockquote>
+<p>embedding_dim: int = None # embedding dimension of the tokens
+output_dir: str = “” # path to output directory where the vectorizer model directory and metadata file would be</p>
+<blockquote>
+<div><p>created</p>
+</div></blockquote>
+<dl class="simple">
+<dt>vectorizer_metadata_filepath: str = “” # path to file where the vectorizer metadata would be saved. This would be</dt><dd><p>read by the anomaly detection model and should be set in the metadata_filepath of the forecast_nn based
+anomaly detector</p>
+</dd>
+</dl>
 <p>vectorizer_model_dirpath: str = “” # path to directory containing the vectorizer model</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizerParams.embedding_dim">
@@ -624,10 +634,16 @@ Each data instance should be a logline or sequence of loglines concatenated by s
 <dt class="sig sig-object py" id="logai.algorithms.vectorization_algo.semantic.SemanticVectorizerParams">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.vectorization_algo.semantic.</span></span><span class="sig-name descname"><span class="pre">SemanticVectorizerParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_token_len</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_token_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'[SEP]'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'fasttext'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_save_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.vectorization_algo.semantic.SemanticVectorizerParams" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
-<p>Configuration of Semantic vectorization of loglines (or sequence of log lines) using models like word2vc, glove and fastText
-max_token_len: int = 10 # maximum token length of the input
-min_token_count: int = 1 # minimum count of occurrences of a token in training data for it to be considered in the vocab
-sep_token: str = “[SEP]” # separator token used to separate log lines in input log sequence
+<dl class="simple">
+<dt>Configuration of Semantic vectorization of loglines (or sequence of log lines) using models like word2vc,</dt><dd><p>glove and fastText</p>
+</dd>
+</dl>
+<p>max_token_len: int = 10 # maximum token length of the input
+min_token_count: int = 1 # minimum count of occurrences of a token in training data for it to be considered in the</p>
+<blockquote>
+<div><p>vocab</p>
+</div></blockquote>
+<p>sep_token: str = “[SEP]” # separator token used to separate log lines in input log sequence
 embedding_dim: int = 300 # embedding dimension of the learnt token embeddings
 window: int = 3 # window size parameter for word2vec and fastText models
 embedding_type: str = “fasttext” # type of embedding, currently supports glove, word2vec and fastText
