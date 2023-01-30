@@ -38,7 +38,7 @@ class DistributionDivergenceParams(Config):
     Args:
         n_bins: number of bins to use to discretize the continuous distribution into a discrete distribution
         type: list of types of distribution divergences. The allowed types are Kullback–Leibler ("KL"), Jensen–Shannon
-             ("JS"). It also allows a comma separated list of metrics like ("KL,JS" or "JS,KL"). 
+        ("JS"). It also allows a comma separated list of metrics like ("KL,JS" or "JS,KL"). 
     """
     n_bins: int = 100
     type: list = ["KL"]  # "KL", "JS", "KL,JS"
@@ -46,10 +46,9 @@ class DistributionDivergenceParams(Config):
 
 @factory.register("detection", "distribution_divergence", DistributionDivergenceParams)
 class DistributionDivergence(AnomalyDetectionAlgo):
-    """Class for Distribution Divergene based Anomaly Detection. It takes log features (pandas DataFrame) as input and 
-
-    Inherits:
-        AnomalyDetectionAlgo : Anomaly D
+    """Class for Distribution Divergene based Anomaly Detection. Both during training and testing, it takes log features 
+    as input and construct a parametric distribution over them. For the test data, it reports the distribution divergence
+    with the training data as the anomaly score
     """
     def __init__(self, params: DistributionDivergenceParams):
         self.n_bins = params.n_bins
@@ -69,7 +68,7 @@ class DistributionDivergence(AnomalyDetectionAlgo):
 
     def predict(self, log_features: pd.DataFrame) -> list:
         """Predict method of distribution divergence based anomaly detector. It computes the distribution divergence
-             between the training distribution and the test distribution provided in predict method
+        between the training distribution and the test distribution provided in predict method
 
         Args:
             log_features (pd.DataFrame): test distribution as pandas DataFrame object

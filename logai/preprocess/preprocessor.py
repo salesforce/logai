@@ -19,7 +19,7 @@ class PreprocessorConfig(Config):
 
     custom_delimiters_regex: dictionary of delimiter regex patterns in raw log data 
     custom_replace_list: list of tuples of custom replace patterns in raw log data.
-        Each Tuple should be of form ('regex-pattern-to-replace', 'replaced-pattern')
+    Each Tuple should be of form ('regex-pattern-to-replace', 'replaced-pattern')
     """
     custom_delimiters_regex: dict = None
     custom_replace_list: list = None

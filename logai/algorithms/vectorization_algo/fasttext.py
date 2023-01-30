@@ -37,7 +37,7 @@ class FastTextParams(Config):
 class FastText(VectorizationAlgo):
     """
     This is a wrapper for FastText algorithm from gensim library. For details see
-     https://radimrehurek.com/gensim/models/fasttext.html
+    https://radimrehurek.com/gensim/models/fasttext.html
     """
 
     def __init__(self, params: FastTextParams):

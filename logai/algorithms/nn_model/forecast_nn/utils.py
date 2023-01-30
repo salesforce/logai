@@ -38,7 +38,7 @@ def seed_everything(seed=1234):
 def set_device(gpu: int = None):
     """set device (cpu or gpu). Use -1 to specify cpu.
     If not manually set device would be automatically set to gpu
-     if gpu is available otherwise cpu would be used
+    if gpu is available otherwise cpu would be used
 
     Args:
         gpu (int, optional): device number of gpu (use -1 for cpu).

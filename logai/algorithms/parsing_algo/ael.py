@@ -63,8 +63,8 @@ class AEL(ParsingAlgo):
 
     def fit(self, loglines: pd.DataFrame):
         """Fit method to train log parser on given log data.
-         Since AEL Log Parser does not require any training, this method is empty
-        TODO: check if AEL supports fit and store models
+        Since AEL Log Parser does not require any training, this method is empty
+        
         :param loglines:
         :return:
         """
@@ -164,11 +164,11 @@ class AEL(ParsingAlgo):
         """Method to merge two events 
 
         Args:
-            e1 (Event): first event to merge (merged in-place)
-            e2 (Event): second event to merge
+            e1: first event to merge (merged in-place)
+            e2: second event to merge
 
         Returns:
-            Event: merged event 
+            merged event 
         """
         for pos in range(len(e1.EventToken)):
             if e1.EventToken[pos] != e2.EventToken[pos]:

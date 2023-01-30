@@ -20,8 +20,6 @@ from attr import dataclass
 @dataclass
 class OpenSetPartitionerConfig(Config):
     """Config for Partitioner for open log datasets
-    Inherits:
-        Config : config interface
     """
 
     sliding_window: int = 0
@@ -35,7 +33,7 @@ class OpenSetPartitioner:
 
         Args:
             config (OpenSetPartitionerConfig): config object specifying
-             parameters of log partititoning for open log datasets
+            parameters of log partititoning for open log datasets
         """
         self.config = config
 

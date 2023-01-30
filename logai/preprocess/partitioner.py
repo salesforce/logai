@@ -19,13 +19,13 @@ class PartitionerConfig(Config):
 
     group_by_category: list of fields to group log data by 
     group_by_time:  string-type argument to specify grouping by time, supported types 
-        https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases
+    https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases
     sliding_window: sliding window length if partitioning loglines into sliding windows, 
     sep_token: separator token string to be used as delimiter, when grouping log data 
     exclude_last_window: boolean (default false) whether to exclude the last window when doing
-     sliding window based grouping of log data
+    sliding window based grouping of log data
     exclude_smaller_windows: boolean (default false) whether to exclude windows of length smaller
-     than the given `sliding_window` argument.
+    than the given `sliding_window` argument.
     """
     group_by_category: list = None
     group_by_time: str = None

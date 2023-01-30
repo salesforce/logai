@@ -18,7 +18,7 @@ from logai.algorithms.factory import factory
 @dataclass
 class BirchParams(Config):
     """Parameters for Birch Clustering Algo. For more details on the parameters, see 
-        https://scikit-learn.org/stable/modules/generated/sklearn.cluster.Birch.html
+    https://scikit-learn.org/stable/modules/generated/sklearn.cluster.Birch.html
     """
     branching_factor: int = 50
     n_clusters: int = None

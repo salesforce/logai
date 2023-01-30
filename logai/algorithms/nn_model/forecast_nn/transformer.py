@@ -20,6 +20,7 @@ class TransformerParams(ForecastBasedNNParams):
 
     Inherits:
         ForecastBasedNNParams : base class for parameters of forecasting based neural log representation moels
+        
     nhead: int = 4 # number of attention heads
     num_layers: int = 1  # number of hidden layers in the neural network
 

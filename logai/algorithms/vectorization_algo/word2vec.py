@@ -33,7 +33,7 @@ class Word2VecParams(Config):
 class Word2Vec(VectorizationAlgo):
     """
     Word2Vec algorithm for converting raw log data into word2vec vectors. This is a wrapper class for the Word2Vec
-     model from gensim library https://radimrehurek.com/gensim/models/word2vec.html
+    model from gensim library https://radimrehurek.com/gensim/models/word2vec.html
     """
 
     def __init__(self, params: Word2VecParams):

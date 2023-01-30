@@ -122,7 +122,7 @@ class LSTM(ForecastBasedNN):
 
         Args:
             input_dict (dict): dict containing the session_idx, features, window_anomalies
-                and window_labels as in ForecastNNVectorizedDataset object
+            and window_labels as in ForecastNNVectorizedDataset object
 
         Returns:
             dict: dict containing loss and prediction tensor

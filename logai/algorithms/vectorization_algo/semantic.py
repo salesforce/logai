@@ -26,10 +26,10 @@ from logai.algorithms.factory import factory
 class SemanticVectorizerParams(Config):
     """
     Configuration of Semantic vectorization of loglines (or sequence of log lines) using models like word2vc,
-        glove and fastText
+    glove and fastText
     max_token_len: int = 10 # maximum token length of the input
     min_token_count: int = 1 # minimum count of occurrences of a token in training data for it to be considered in the
-        vocab
+    vocab
     sep_token: str = "[SEP]" # separator token used to separate log lines in input log sequence
     embedding_dim: int = 300 # embedding dimension of the learnt token embeddings
     window: int = 3 # window size parameter for word2vec and fastText models
@@ -100,8 +100,8 @@ class Semantic(VectorizationAlgo):
 
         Args:
             loglines (pd.Series): pandas Series object containing the dataset on
-             which semantic vectorizer is trained (and the vocab is built).
-             Each data instance should be a logline or sequence of loglines concatenated by separator token
+            which semantic vectorizer is trained (and the vocab is built).
+            Each data instance should be a logline or sequence of loglines concatenated by separator token
         """
         if (
             self.params.model_save_dir

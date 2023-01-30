@@ -48,6 +48,6 @@ class LogBERT(NNAnomalyDetectionAlgo):
 
         Returns:
             pd.DataFrame: pandas dataframe object containing the evaluation results
-             for each type of metric
+            for each type of metric
         """
         return self.logbert_predict.predict(test_data)

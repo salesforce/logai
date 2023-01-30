@@ -117,24 +117,23 @@ class FeatureExtractor:
     ) -> pd.DataFrame:
         """
         Converting log data into feature vector, by combining the log vectors (can be output
-         of LogVectorizer) with other numerical or categorical attributes of the logs,
-          after grouping based on the FeatureExtractorConfig  
+        of LogVectorizer) with other numerical or categorical attributes of the logs,
+        after grouping based on the FeatureExtractorConfig  
 
         Args:
             log_vectors (pd.Series): Numeric features of the logs (for e.g. the vectorized form
-                of the log data obtained as output of LogVectorizer)
+            of the log data obtained as output of LogVectorizer)
             attributes (pd.DataFrame): Categorical or numerical attributes for grouping,
-                or numerical attributes serve as additional features
+            or numerical attributes serve as additional features
             timestamps (pd.Series): pd.Series object containing the timestamp data of the loglines 
 
 
         Return:
-         (pd.DataFrame): event_index_list: modified log data (pd.DataFrame) consisting of the converted
-         feature vector form of the input log data after applying the log grouping. It contains an 
-         "event_index" field which maintains the sequence of log event ids where these ids correspond to the 
-          original input dataframe's indices.  
-
-        block_list: pd.DataFrame
+            (pd.DataFrame): event_index_list: modified log data (pd.DataFrame) consisting of the converted
+            feature vector form of the input log data after applying the log grouping. It contains an 
+            "event_index" field which maintains the sequence of log event ids where these ids correspond to the 
+            original input dataframe's indices.  
+            block_list: pd.DataFrame
         """
         # if log_vectors.empty:
         #     raise TypeError("Log vector must be not NULL to generate feature vector")
@@ -165,17 +164,17 @@ class FeatureExtractor:
 
         Args:
             log_pattern (pd.Series, optional): pd.Series object that encapsulates the entire arbitrary unstructured part of the log data (for example, 
-                can be the unstructured part of the raw log data or the output of the output of the log parser). Defaults to None.
+            can be the unstructured part of the raw log data or the output of the output of the log parser). Defaults to None.
             attributes (pd.DataFrame, optional): structured part (attributes) of the raw log data. Defaults to None.
             timestamps (pd.Series, optional): timestamps data corresponding to the log lines. Defaults to None.
 
         Returns:
             (pd.DataFrame): event_index_list: modified log data consisting of the sequence form of the structured and unstructured input 
-                data (i.e. log_pattern and attributes arguments) after running sliding window. For the unstructured part, the returned DataFrame
-                 contains an "event_index" field which maintains the sequence of log event ids where these ids correspond to the 
-                 original input dataframe's indices. 
+            data (i.e. log_pattern and attributes arguments) after running sliding window. For the unstructured part, the returned DataFrame
+            contains an "event_index" field which maintains the sequence of log event ids where these ids correspond to the 
+            original input dataframe's indices. 
             (pd.Series): event_sequence: Contains the concatenating form of the unstructured input data (i.e. log_pattern argument),
-             after concatenating the unstructured data for each sliding window 
+            after concatenating the unstructured data for each sliding window 
         """
         # TODO: Converting sequence by sliding windows.
         # Partioning: length of sequence, step

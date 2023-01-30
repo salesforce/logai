@@ -38,11 +38,10 @@ class DBLDetectorParams(Config):
 @factory.register("detection", "dbl", DBLDetectorParams)
 class DBLDetector(AnomalyDetectionAlgo):
     """Dynamic baseline based time series anomaly detection. This is a wrapper class for the Dynamic Baseline
-     anomaly detection model from Merlion library 
-     https://opensource.salesforce.com/Merlion/v1.3.1/merlion.models.anomaly.html#module-merlion.models.anomaly.dbl
-
+    anomaly detection model from Merlion library 
+    https://opensource.salesforce.com/Merlion/v1.3.1/merlion.models.anomaly.html#module-merlion.models.anomaly.dbl
     Current implementation only supports anomaly detection on the constants.LOGLINE_COUNTS class (which maintains
-         frequency counts of the log events )
+    frequency counts of the log events )
     """
     def __init__(self, params: DBLDetectorParams):
         dbl_config = DynamicBaselineConfig(
@@ -60,7 +59,7 @@ class DBLDetector(AnomalyDetectionAlgo):
         """
         Train method of the Dynamic Baseline model 
         :param log_features: log feature dataframe must only contain two columns
-             ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
+        ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
         :return:
         """
         self._is_valid_ts_df(log_features)

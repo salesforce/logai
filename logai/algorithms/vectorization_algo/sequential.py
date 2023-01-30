@@ -21,12 +21,9 @@ class SequentialVectorizerParams(Config):
     """Config for Sequential Vectorizer which converts a sequence of loglines to sequence of log ids
 
     Args:
-       sep_token: separator token
+       sep_token: separator token used to separate log lines in an input log sequence
        model_save_dir: path to directory where models related to sequential vectorizer would be stored
-
-    sep_token: str = None # separator token used to separate log lines in an input log sequence
-    model_save_dir: str = None # path to directory where vectorizer models would be saved
-    max_token_len: int = None # maximum token length of input
+       max_token_len: maximum token length of input
 
     """
 
@@ -64,8 +61,8 @@ class Sequential(VectorizationAlgo):
 
         Args:
             loglines (pd.Series):  pandas Series object containing the dataset on
-             which semantic vectorizer is trained (and the vocab is built).
-             Each data instance should be a logline or sequence of loglines concatenated by separator token
+            which semantic vectorizer is trained (and the vocab is built).
+            Each data instance should be a logline or sequence of loglines concatenated by separator token
         """
         model_file = None
         if self.params.model_save_dir:

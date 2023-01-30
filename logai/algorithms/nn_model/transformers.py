@@ -52,13 +52,10 @@ class LogDataset(torch.utils.data.Dataset):
 class TransformerAlgo:
     """HuggingFace Transformer based Pretrained Language model (e.g. "bert-base-cased"), 
     with a sequence classifier head for any supervised log classification task.
-
     For e.g. log anomaly detection is one type of log classfication task where the labels
-     are Normal (Label 0) or Anomalous (Label 1)
-
-    Currently it supports only binary classification, to change this `num_labels`
-     of AutoModelForSequenceClassification has to be changed accordingly along
-      with the prediction logic in predict method
+    are Normal (Label 0) or Anomalous (Label 1). Currently it supports only binary 
+    classification, to change this `num_labels` of AutoModelForSequenceClassification 
+    has to be changed accordingly along with the prediction logic in predict method
     """
     def __init__(self, config: TransformerAlgoConfig):
         self.config = config
@@ -82,8 +79,7 @@ class TransformerAlgo:
 
     def train(self, train_logs: pd.Series, train_labels: pd.Series):
         """train method for Transformer based pretrained language model with
-         a sequence classification head for supervised log classification task. 
-
+        a sequence classification head for supervised log classification task. 
         Internally this method also splits the available training logs into train and dev data 
 
         Args:
