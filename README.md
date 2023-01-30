@@ -24,37 +24,38 @@ For full license text, see the LICENSE file in the repo root or https://opensour
   </a>
 </div>
 
-# LogAI: A Toolkit for AI-based Log Analysis
+# LogAI: A Library for AI-based Log Analytics and Intelligence
 
 ## Table of Contents
 * [Introduction](#introduction)
 * [Installation](#installation)
-* [Documentation](#documentation)
+* [Getting Started](#getting-started)
   * [Explore LogAI GUI Portal](#explore-logai-gui-portal)
   * [Run Simple Time-series Anomaly Detection Application](#run-simple-time-series-anomaly-detection-application)
   * [Build Customized LogAI Applications](#build-customized-logai-applications)
   * [Deep-learning Anomaly Detection Benchmarking](#deep-learning-anomaly-detection-benchmarking)
+* [Documentation](#documentation)
 * [Technical Report and Citing LogAI](#technical-report-and-citing-logai)
 * [Contact](#contact)
 * [Liscense](#license)
 
 ## Introduction
 
-Logs are the machine generated text messages of a computer program. In modern computer systems, logs are one of the most 
-critical observability data for developers to understand system behavior, monitor system health and resolve issues. 
-The volume of logs are huge for complex distributed systems, such as cloud, search engine, social media, etc. Log analytics, 
-are tools for developers to process huge volume of raw logs and generate insights, in order to better handle system 
-operations. While artificial intelligence (AI) and machine learning (ML) technologies are proven to be capable to improve 
-productivity in a lot of domains, recently more and more AI tools are integrated in log analysis solutions, in both 
-commercial and opensource software. However, there is still no sufficient toolkit that can handle multiple AI-based 
-log analysis tasks in uniform way. We introduce LogAI, an one-stop toolkit for AI-based log analysis. 
-LogAI provides AI and ML capabilities for log analysis. LogAI can be used for a variety of tasks such as log summarization, 
-log clustering and log anomaly detection. LogAI adopts the same log data model as OpenTelemetry so the developed applications 
-and models are eligible to logs from different log management platforms. LogAI provides a unified model interface and 
-integrates with popular time-series models, statistical learning models and deep learning models. LogAI also provides 
-an out-of-the-box GUI for users to conduct interactive analysis. With LogAI, we can also easily benchmark popular deep 
-learning algorithms for log anomaly detection without putting in redundant effort to process the logs. LogAI can be used 
-for different purposes from academic research to industrial prototyping. 
+Software and System logs record runtime information about processes executing within a system. 
+These logs have become the most critical and ubiquitous forms of observability data that help developers 
+understand system behavior, monitor system health and resolve issues. However, the volume of logs generated can be 
+humongous (of the order of petabytes per day) especially for complex distributed systems, such as cloud, 
+search engine, social media, etc. This has propelled a lot of research on developing AI-based log based analytics and 
+intelligence solutions that can process huge volume of raw logs and generate insights. In order to enable 
+users to perform multiple types of AI-based log analysis tasks in a uniform manner, 
+we introduce LogAI, a one-stop open source library for log analytics and intelligence. 
+LogAI supports tasks such as log summarization, log clustering and log anomaly detection. 
+It adopts the OpenTelemetry data model, to enable compatibility with different log management platforms. 
+LogAI provides an unified model interface and provides popular time-series, statistical learning and deep 
+learning models. Alongside this, LogAI also provides an out-of-the-box GUI for users to conduct interactive 
+analysis. With LogAI, we can also easily benchmark popular deep learning algorithms for log anomaly detection 
+without putting in redundant effort to process the logs. We have opensourced LogAI to cater to a wide range of 
+applications benefiting both academic research and industrial prototyping.
 
 ## Compare LogAI with other AI-based Log Analysis Tools
  
@@ -85,11 +86,11 @@ source venv/bin/activate # activate virtual env
 pip install ./ # install LogAI from root directory
 ```
 
-## Documentation
+## Getting Started
 
 Below we briefly introduce several ways to explore and use LogAI, including exploring LogAI GUI
 portal, benchmarking deep-learning based log anomaly detection using LogAI, and building your 
-own log analysis application with LogAI. Please visit [LogAI Documentation]() for more detailed documentation.
+own log analysis application with LogAI.
 
 ### Explore LogAI GUI Portal 
 
@@ -223,169 +224,188 @@ For full context of this example please check
 [Tutorial: Use Log Anomaly Detection Application](./examples/jupyter_notebook/log_anomaly_detection_example.ipynb).
 
 ### Build Customized LogAI Applications
-Please refer to [Build LogAI Application in Jupyter Notebook](examples/jupyter_notebook/jupyter_tutorial.md) for more information about how to
+You can build your own customized log analysis applications using LogAI. 
+Please refer to [Build LogAI Application in Jupyter Notebook](examples/jupyter_notebook/jupyter_tutorial.md) 
+for more information about how to
 use LogAI modules to create E2E applications in Jupyter Notebook.
-
 
 ### Deep-learning Anomaly Detection Benchmarking
 
-Below is another sample `hdfs_log_anomaly_detection_unsupervised_lstm.yaml` yaml config file which provides the configs for each component of the log anomaly detection workflow on the public dataset HDFS using an unsupervised Deep-Learning based Anomaly Detector. 
+LogAI can be used to benchmark deep-learning anomaly detection results. 
+A [tutorial](examples/jupyter_notebook/nn_ad_benchmarking/tutorial_lstm_deep_ad_hdfs.md) is provided for 
+Anomaly Detection Benchmarking using LSTM anomaly detector for HDFS Dataset. More examples of deep-learning anomaly 
+detection benchmarking on different datasets and algorithms can be found in 
+[Deep Anomaly Detection Benchmarking Examples](examples/jupyter_notebook/nn_ad_benchmarking). 
 
-```yaml
-{
-workflow_config:  
-  label_filepath: "tests/logai/test_data/HDFS_AD/anomaly_label.csv"
-  output_dir: "temp_output"
-  training_type: "unsupervised"
-  parse_logline: True
-  dataset_name: hdfs
+Below table is the comparison between 
+different supervised and unsupervised deep learning anomaly detection
+models in LogAI and [Deep-Loglizer](https://github.com/logpai/deep-loglizer) library, using F1-Score as the 
+performance metric. The dashed (-) cells indicate that there are no reported numbers in the Deep-Loglizer 
+paper corresponding to those configurations.
 
-  data_loader_config:
-    filepath: "tests/logai/test_data/HDFS_AD/HDFS_5k.log"
-    reader_args: 
-      log_format: "<Date> <Time> <Pid> <Level> <Component> <Content>"
-    log_type: "log"
-    dimensions:
-      body: ['Content']
-      timestamp: ['Date', 'Time']
-    datetime_format: '%y%m%d %H%M%S'
-    infer_datetime: True
-    
-  preprocessor_config:
-    custom_delimiters_regex:
-                [':', ',', '=', '\t']
-    custom_replace_list: [
-                ['(blk_-?\d+)', ' BLOCK '],
-                ['/?/*\d+\.\d+\.\d+\.\d+',  ' IP '],
-                ['(0x)[0-9a-zA-Z]+', ' HEX '],
-                ['\d+', ' INT ']
-            ]
-    
-  log_parser_config:
-    parsing_algorithm: "drain"
+<table>
+    <thead>
+        <tr>
+            <th rowspan=2>Model</th>
+            <th rowspan=2>Details</th>
+            <th rowspan=2>Supervision</th>
+            <th rowspan=2>Log Parsing</th>
+            <th rowspan=2>Log Representation</th>
+            <th colspan=2>HDFS</th>
+            <th colspan=2>BGL</th>
+        </tr>
+        <tr>
+            <th>LogAI</th>
+            <th>Deep Loglizer</th>
+            <th>LogAI</th>
+            <th>Deep Loglizer</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan=4>LSTM</td>
+            <td rowspan=2>Undirectional, No Attention</td>
+            <td rowspan=2>Unsupervised</td>
+            <td>:heavy_check_mark:</td>
+            <td>sequential</td>
+            <td>0.981</td>
+            <td>0.944</td>
+            <td>0.938</td>
+            <td>0.961</td>
+        </tr>
+        <tr>
+            <td>:heavy_multiplication_x:</td>
+            <td>semantic</td>
+            <td>0.981</td>
+            <td>0.945</td>
+            <td>0.924</td>
+            <td>0.967</td>
+        </tr>
+        <tr>
+            <td rowspan=2>Bidirectional, with Attention</td>
+            <td rowspan=2>Supervisedn</td>
+            <td>:heavy_check_mark:</td>
+            <td>sequntial</td>
+            <td>0.979</td>
+            <td>-</td>
+            <td>0.925</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>:heavy_multiplication_x:</td>
+            <td>semantic</td>
+            <td>0.981</td>
+            <td>-</td>
+            <td>0.924</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td rowspan=4>CNN</td>
+            <td rowspan=4>2-D Convolution with 1-D Max Pooling</td>
+            <td rowspan=2>Unsupervised</td>
+            <td>:heavy_check_mark:</td>
+            <td>sequential</td>
+            <td>0.981</td>
+            <td>-</td>
+            <td>0.929</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>:heavy_multiplication_x:</td>
+            <td>sequential</td>
+            <td>0.981</td>
+            <td>-</td>
+            <td>0.922</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td rowspan=2>Supervised</td>
+            <td>::heavy_check_mark::</td>
+            <td>sequential</td>
+            <td>0.943</td>
+            <td>0.97</td>
+            <td>0.983</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>:heavy_multiplication_x:</td>
+            <td>sequential</td>
+            <td>0.946</td>
+            <td>-</td>
+            <td>0.99</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td rowspan=8>Transformer</td>
+            <td rowspan=8>Multihead single-layer self-attention model, trained from scratch</td>
+            <td rowspan=4>Unsupervised</td>
+            <td rowspan=2>:heavy_check_mark:</td>
+            <td>sequential</td>
+            <td>0.971</td>
+            <td>0.905</td>
+            <td>0.933</td>
+            <td>0.956</td>
+        </tr>
+        <tr>
+            <td>semantic</td>
+            <td>0.978</td>
+            <td>925</td>
+            <td>0.921</td>
+            <td>0.957</td>
+        </tr>
+        <tr>
+            <td rowspan=2>:heavy_multiplication_x:</td>
+            <td>sequential</td>
+            <td>0.98</td>
+            <td>-</td>
+            <td>0.92</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>semantic</td>
+            <td>0.975</td>
+            <td>-</td>
+            <td>0.917</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td rowspan=4>Supervised</td>
+            <td rowspan=2>::heavy_check_mark::</td>
+            <td>sequential</td>
+            <td>0.934</td>
+            <td>-</td>
+            <td>0.986</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>semantic</td>
+            <td>0.784</td>
+            <td>-</td>
+            <td>0.963</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td rowspan=2>:heavy_multiplication_x:</td>
+            <td>sequential</td>
+            <td>0.945</td>
+            <td>-</td>
+            <td>0.994</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>semantic</td>
+            <td>0.915</td>
+            <td>-</td>
+            <td>0.977</td>
+            <td>-</td>
+        </tr>
+    </tbody>
+</table>
 
-  open_set_partitioner_config:
-    session_window: False
-    sliding_window: 10
 
+## Documentation
 
-  log_vectorizer_config:
-    algo_name: "forecast_nn"
-    algo_param:
-      feature_type: "sequential"
-      max_token_len: 10
-      embedding_dim: 100
-      output_dir: "temp_output"
-
-
-  nn_anomaly_detection_config:
-    algo_name: "lstm"
-    algo_params:
-        model_name: "lstm"
-        metadata_filepath: "temp_output/embedding_model/metadata.pkl"
-        feature_type: "sequential"
-        label_type: "next_log"
-        num_train_epochs: 10
-        batch_size: 4
-        output_dir: "temp_output"
-
-}
-```
-
-Then to run the end to end log anomaly detection on the HDFS dataset using LSTM Anomaly Detector (a sequence-based deep-learning model), you can use a python script like below: 
-
-```python
-import os 
-from logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow import OpenSetADWorkflowConfig
-from logai.utils.file_utils import read_file
-from logai.utils.dataset_utils import split_train_dev_test_for_anomaly_detection
-from logai.dataloader.data_loader import FileDataLoader
-from logai.preprocess.hdfs_preprocessor import HDFSPreprocessor
-from logai.information_extraction.log_parser import LogParser
-from logai.preprocess.openset_partitioner import OpenSetPartitioner
-from logai.analysis.nn_anomaly_detector import NNAnomalyDetector
-from logai.information_extraction.log_vectorizer import LogVectorizer
-from logai.utils import constants
-
-# Loading workflow config from yaml file 
-config_path = "hdfs_log_anomaly_detection_unsupervised_lstm.yaml" # above config yaml file
-config_parsed = read_file(config_path)
-config_dict = config_parsed["workflow_config"]
-validate_config_dict(config_dict)
-config = OpenSetADWorkflowConfig.from_dict(config_dict)
-
-# Loading raw log data as LogRecordObject 
-dataloader = FileDataLoader(config.data_loader_config)
-logrecord = dataloader.load_data()
-
-# Preprocessing raw log data using dataset(HDFS) specific Preprocessor
-preprocessor = HDFSPreprocessor(config.preprocessor_config, config.label_filepath)           
-logrecord = preprocessor.clean_log(logrecord)
-
-# Parsing the preprocessed log data using Log Parser
-parser = LogParser(config.log_parser_config)
-parsed_result = parser.parse(logrecord.body[constants.LOGLINE_NAME])
-logrecord.body[constants.LOGLINE_NAME] = parsed_result[constants.PARSED_LOGLINE_NAME]
-
-# Partitioning the log data into sliding window partitions, to get log sequences
-partitioner = OpenSetPartitioner(config.open_set_partitioner_config)
-logrecord = partitioner.partition(logrecord)
-
-# Splitting the log data (LogRecordObject) into train, dev and test data (LogRecordObjects)
-(train_data, dev_data, test_data) = split_train_dev_test_for_anomaly_detection(
-                logrecord,training_type=config.training_type,
-                test_data_frac_neg_class=config.test_data_frac_neg,
-                test_data_frac_pos_class=config.test_data_frac_pos,
-                shuffle=config.train_test_shuffle
-            )
-
-# Vectorizing the log data i.e. transforming the raw log data into vectors 
-vectorizer = LogVectorizer(config.log_vectorizer_config)
-vectorizer.fit(train_data)
-train_features = vectorizer.transform(train_data)
-dev_features = vectorizer.transform(dev_data)
-test_features = vectorizer.transform(test_data)
-
-
-# Training the neural anomaly detector model on the training log data 
-anomaly_detector = NNAnomalyDetector(config=config.nn_anomaly_detection_config)
-anomaly_detector.fit(train_features, dev_features)
-
-# Running inference on the test log data to predict whether a log sequence is anomalous or not 
-predict_results = anomaly_detector.predict(test_features)
-print (predict_results)            
-```
-This kind of Anomaly Detection workflow for various Deep-Learning models and various experimental settings have also been automated in `logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflow` class which can be easily invoked like the below example
-
-```python
-from logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow import OpenSetADWorkflow, get_openset_ad_config
-
-TEST_DATA_PATH = "tests/logai/test_data/HDFS_AD/HDFS_5k.log"
-TEST_LABEL_PATH = "tests/logai/test_data/HDFS_AD/anomaly_label.csv"
-TEST_OUTPUT_PATH = "tests/logai/test_data/HDFS_AD/output"
-
-kwargs = {
-      "config_filename": "hdfs",
-      "anomaly_detection_type": "lstm_sequential_unsupervised_parsed_AD",
-      "vectorizer_type": "forecast_nn_sequential" ,
-      "parse_logline": True ,
-      "training_type": "unsupervised"
-}
-
-config = get_openset_ad_config(**kwargs)   
-
-config.data_loader_config.filepath = TEST_DATA_PATH
-config.label_filepath = TEST_LABEL_PATH
-config.output_dir = TEST_OUTPUT_PATH
-if not os.path.exists(config.output_dir):
-    os.makedirs(config.output_dir)
-
-workflow = OpenSetADWorkflow(config)
-workflow.execute()
-```
-
-For more details of this workflow and more such examples please check the notebook 
-tutorials in [nn_ad_benchmarking](examples/jupyter_notebook/nn_ad_benchmarking).
+For more detail about LogAI library and advanced use cases, please visit [LogAI Documentation]().
 
 
 ## Technical Report and Citing LogAI
@@ -407,7 +427,7 @@ If you're using LogAI in your research or applications, please cite using this B
 
 ## Contact
 If you have any questions, comments or suggestions, 
-please do not hesitate to contact us at logai@salesforce.com. 
+please do not hesitate to contact us at [logai@salesforce.com](logai@salesforce.com). 
 
 ## License
 [BSD 3-Clause License](LICENSE.txt)
