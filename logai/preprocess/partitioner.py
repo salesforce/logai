@@ -15,6 +15,18 @@ from logai.utils import constants
 
 @dataclass
 class PartitionerConfig(Config):
+    """Config class for Partitioner 
+
+    group_by_category: list of fields to group log data by 
+    group_by_time:  string-type argument to specify grouping by time, supported types 
+        https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases
+    sliding_window: sliding window length if partitioning loglines into sliding windows, 
+    sep_token: separator token string to be used as delimiter, when grouping log data 
+    exclude_last_window: boolean (default false) whether to exclude the last window when doing
+     sliding window based grouping of log data
+    exclude_smaller_windows: boolean (default false) whether to exclude windows of length smaller
+     than the given `sliding_window` argument.
+    """
     group_by_category: list = None
     group_by_time: str = None
     sliding_window: int = 0
@@ -90,10 +102,11 @@ class Partitioner:
         self, logrecord_df: pd.DataFrame, logline_col_name=constants.LOGLINE_NAME
     ):
         """
+        Group log record by sliding window based on the sliding window length, and returns the 
+        resulting pandas DataFrame object 
 
-
-        :param logrecord:
-        :return:
+        :param logrecord_df: pandas DataFrame object on which grouping is to be applied
+        :return: pd.DataFrame object after sliding window based grouping
         """
         if not self._valid_columns(logrecord_df.columns):
             raise ValueError("Make sure logrecord has the columns to group by.")
@@ -194,7 +207,4 @@ class Partitioner:
                 filter(lambda x: len(x) >= self.config.sliding_window, windows)
             )
         windows = list(map(lambda x: self.config.sep_token.join(x), windows))
-        """partitioned_loglines = []
-        for window in windows:
-            partitioned_loglines.append(self.config.sep_token.join(window))"""
         return windows

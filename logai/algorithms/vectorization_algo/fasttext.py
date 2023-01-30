@@ -19,7 +19,8 @@ from logai.algorithms.factory import factory
 @dataclass
 class FastTextParams(Config):
     """
-    Configuration for FastText vectorizer.
+    Configuration for FastText vectorizer. For more details on the parameters see
+    https://radimrehurek.com/gensim/models/fasttext.html
     """
 
     vector_size: int = 100
@@ -35,7 +36,8 @@ class FastTextParams(Config):
 @factory.register("vectorization", "fasttext", FastTextParams)
 class FastText(VectorizationAlgo):
     """
-    Wrap FastText algorithm from gensim
+    This is a wrapper for FastText algorithm from gensim library. For details see
+     https://radimrehurek.com/gensim/models/fasttext.html
     """
 
     def __init__(self, params: FastTextParams):

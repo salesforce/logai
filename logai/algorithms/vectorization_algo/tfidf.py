@@ -18,7 +18,8 @@ from logai.algorithms.factory import factory
 @dataclass
 class TfIdfParams(Config):
     """
-    Configuration of TF-IDF vectorizer.
+    Configuration of TF-IDF vectorizer. For more details of parameters see 
+    https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html
     """
 
     input: str = "content"
@@ -47,7 +48,8 @@ class TfIdfParams(Config):
 @factory.register("vectorization", "tfidf", TfIdfParams)
 class TfIdf(VectorizationAlgo):
     """
-    Wrapping TF-IDF algorithm from scikit-learn.
+    TfIdf based vectorizer for log data. This is a wrapper class of the TF-IDF Vectorizer algorithm from scikit-learn.
+    https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html
     """
 
     def __init__(self, params: TfIdfParams, **kwargs):

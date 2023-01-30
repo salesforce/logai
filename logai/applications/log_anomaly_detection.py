@@ -27,6 +27,8 @@ from logai.utils import constants, evaluate
 
 
 class LogAnomalyDetection:
+    """This is a workflow for log anomaly detection. 
+    """
     def __init__(self, config: WorkFlowConfig):
         self.config = config
         self._timestamps = pd.DataFrame()
@@ -126,12 +128,6 @@ class LogAnomalyDetection:
             attributes=self.attributes,
         )
 
-        # logrecord_for_ad = LogRecordObject(
-        #     body=pd.DataFrame(parsed_loglines.rename(constants.LOGLINE_NAME)),
-        #     attributes=self._attributes,
-        #     timestamp=self._timestamps
-        # )
-
         if self.config.anomaly_detection_config.algo_name in constants.COUNTER_AD_ALGO:
             self._counter_df["attribute"] = self._counter_df.drop(
                 [constants.LOG_COUNTS, constants.LOG_TIMESTAMPS, constants.EVENT_INDEX],
@@ -164,10 +160,6 @@ class LogAnomalyDetection:
                     res = res.append(anom_score["anom_score"])
             self._ad_results = pd.DataFrame(res.rename("result"))
             self._index_group = self._counter_df[[constants.EVENT_INDEX]]
-
-            # anomaly_result = self._counter_anomaly_detection(logrecord_for_ad)
-            #
-            # self._group_anomalies = anomaly_result
 
         else:
             # Vectorization
@@ -258,84 +250,3 @@ class LogAnomalyDetection:
         parsed_loglines = parsed_results[constants.PARSED_LOGLINE_NAME]
 
         return parsed_loglines
-
-    #
-    # # TODO: implement a more efficient counter based anomaly detection module, not based on FeatureExtractor
-    # def _counter_anomaly_detection(self, logrecord):
-    #     logrecord_df = logrecord.to_dataframe()
-    #
-    #     res = pd.DataFrame()
-    #     partitioner_config = self.config.partitioner_config
-    #
-    #     partitioner = Partitioner(partitioner_config)
-    #
-    #     counter_df = partitioner.group_counter(logrecord_df)
-    #
-    #     ts = counter_df[[constants.LOG_TIMESTAMPS, constants.LOG_COUNTS]]
-    #
-    #     cat_df = counter_df.drop([constants.LOG_TIMESTAMPS, constants.LOG_COUNTS], axis=1)
-    #
-    #     ts['category'] = ["|".join(r) for r in cat_df.values.astype(str).tolist()]
-    #
-    #     pred_res = pd.Series()
-    #
-    #     for cat, data in ts.groupby('category'):
-    #         if data.shape[0] < constants.MIN_TS_LENGTH:
-    #             # log.warn("Not enough data to conduct anomaly detection")
-    #             continue
-    #
-    #         train, test = train_test_split(
-    #             data.drop(['category'], axis=1),
-    #             shuffle=False,
-    #             train_size=0.3
-    #         )
-    #
-    #         anomaly_detector = AnomalyDetector(self.config.anomaly_detection_config)
-    #
-    #         anomaly_detector.fit(train)
-    #
-    #         pred = anomaly_detector.predict(test)
-    #         pred_res = pred_res.append(pred)
-    #
-    #         is_anomaly = pd.Series([True if score != 0 else False for score in pred_res], index=pred_res.index)
-    #         is_anomaly.name = "is_anomaly"
-    #
-    #     res = counter_df.join(is_anomaly)
-    #     res['is_anomaly'] = [False if not item else True for item in res['is_anomaly']]
-    #
-    #     return res
-
-    # def _sematic_feature_anomaly_detection(self, logrecord, feature_extractor):
-    #
-    #     # Vectorization
-    #     vectorizor = LogVectorizer(self.config.log_vectorizer_config)
-    #
-    #     # TODO: can optimize fit by select only the unique log patterns
-    #     # TODO: move padding from Featurizer to Vectorizor
-    #     vectorizor.fit(logrecord.body[constants.LOGLINE_NAME])
-    #
-    #     # Log vector is a pandas.Series
-    #     log_vectors = vectorizor.transform(logrecord.body[constants.LOGLINE_NAME])
-    #
-    #     # Categorical Encoding
-    #     encoder = CategoricalEncoder(self.config.categorical_encoder_config)
-    #
-    #     attributes = encoder.fit_transform(logrecord.attributes)
-    #     attributes.columns = logrecord.attributes.columns
-    #
-    #     # Get Feature Set
-    #     index_group, feature_df = feature_extractor.convert_to_feature_vector(
-    #         timestamps=logrecord.timestamp[constants.LOG_TIMESTAMPS],
-    #         log_vectors=log_vectors,
-    #         attributes=attributes,
-    #     )
-    #
-    #     feature_df = self._feature_df
-    #     feature_for_anomaly_detection = feature_df.loc[:, ~feature_df.columns.isin([constants.LOG_TIMESTAMPS])]
-    #     anomaly_detector = AnomalyDetector(self.config.anomaly_detection_config)
-    #
-    #     anomaly_detector.fit(feature_for_anomaly_detection)
-    #     self._ad_results = pd.DataFrame(anomaly_detector.predict(feature_for_anomaly_detection).rename('result'))
-    #
-    #
-    #

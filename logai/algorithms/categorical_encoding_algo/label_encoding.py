@@ -12,6 +12,9 @@ from logai.algorithms.algo_interfaces import CategoricalEncodingAlgo
 
 
 class LabelEncoding(CategoricalEncodingAlgo):
+    """This is a wrapper class for LabelEncoder from scikit-learn library. For more details see 
+    https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html
+    """
     def __init__(self):
         """
         Init label encoder

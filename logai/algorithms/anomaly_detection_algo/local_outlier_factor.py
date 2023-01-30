@@ -17,6 +17,9 @@ from logai.algorithms.factory import factory
 
 @dataclass
 class LOFParams(Config):
+    """Parameters of Locality Outlier Factors based Anomaly Detector 
+    For more explanations of the parameters see https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.LocalOutlierFactor.html
+    """
     n_neighbors: int = 20
     algorithm: str = "auto"
     leaf_size: int = 30
@@ -30,6 +33,9 @@ class LOFParams(Config):
 
 @factory.register("detection", "lof", LOFParams)
 class LOFDetector(AnomalyDetectionAlgo):
+    """Locality Outlier Factor based Anomaly Detector. This is a wrapper method for the LOF based Detector in scikit-learn library 
+    See https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.LocalOutlierFactor.html for more details
+    """
     def __init__(self, params: LOFParams):
         self.model = LocalOutlierFactor(
             n_neighbors=params.n_neighbors,

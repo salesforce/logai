@@ -16,6 +16,9 @@ from logai.algorithms.factory import factory
 
 @dataclass
 class KMeansParams(Config):
+    """Parameters of the KMeans Clustering algorithm. For more details on the parameters see 
+    https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
+    """
     n_clusters: int = 8
     init: str = "k-means++"
     n_init: int = 10
@@ -30,7 +33,8 @@ class KMeansParams(Config):
 @factory.register("clustering", "kmeans", KMeansParams)
 class KMeansAlgo(ClusteringAlgo):
     """
-    Implement K-means for log clustering
+    K-means algorithm for log clustering. This is a wrapper class for K-Means clustering method from scikit-learn library. 
+    https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
     """
 
     def __init__(self, params: KMeansParams):

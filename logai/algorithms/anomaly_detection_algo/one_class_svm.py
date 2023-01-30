@@ -16,6 +16,9 @@ from logai.algorithms.factory import factory
 
 @dataclass
 class OneClassSVMParams(Config):
+    """Parameters for OneClass SVM based Anomaly Detector. For more explanations about the parameters see
+     https://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html
+    """
     kernel: str = "linear"
     degree: int = 3
     gamma: str = "auto"
@@ -31,6 +34,8 @@ class OneClassSVMParams(Config):
 class OneClassSVMDetector(AnomalyDetectionAlgo):
     def __init__(self, params: OneClassSVMParams):
         """
+        OneClass SVM based Anomaly Detector. This is a wrapper class for the OneClassSVM model from scikit-learn library. For more details see 
+        https://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html
 
         :param params: OneClassSVMParams: parameters to control one class SVM models
         """
@@ -48,8 +53,8 @@ class OneClassSVMDetector(AnomalyDetectionAlgo):
 
     def fit(self, log_features: pd.DataFrame):
         """
-
-        :param log_features:
+        Fit method to train the OneClassSVM on log data
+        :param log_features: training log features as pandas DataFrame object
         :return:
         """
         self.model.fit(log_features)
@@ -60,9 +65,9 @@ class OneClassSVMDetector(AnomalyDetectionAlgo):
 
     def predict(self, log_features: pd.DataFrame) -> pd.Series:
         """
-
-        :param log_features:
-        :return:
+        Predict method to detect anomalies using OneClassSVM model on test log data 
+        :param log_features: test log features data as pandas DataFrame object
+        :return: pandas Series of anomaly scores 
         """
         test_scores = self.model.predict(log_features)
         test_scores = pd.DataFrame(

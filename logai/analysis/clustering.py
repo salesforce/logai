@@ -14,6 +14,8 @@ from logai.algorithms.factory import factory
 
 @dataclass
 class ClusteringConfig(Config):
+    """Config class for Clustering algorithms
+    """
     algo_name: str = "dbscan"
     algo_params: object = None
     custom_params: object = None
@@ -39,9 +41,22 @@ class Clustering:
         )
 
     def fit(self, log_features: pd.DataFrame):
+        """fit method of Clustering algorithm, to train on the given log features data 
+
+        Args:
+            log_features (pd.DataFrame): training log features data 
+        """
         log_features.columns = log_features.columns.astype(str)
         self.model.fit(log_features)
 
     def predict(self, log_features: pd.DataFrame) -> pd.Series:
+        """predict method of Clustering algorithm, to run inference on given test log features
+
+        Args:
+            log_features (pd.DataFrame): test log features data 
+
+        Returns:
+            pd.Series: cluster output (label) 
+        """
         log_features.columns = log_features.columns.astype(str)
         return self.model.predict(log_features)

@@ -25,7 +25,8 @@ from logai.algorithms.factory import factory
 @dataclass
 class ETSDetectorParams(Config):
     """
-    ETS Anomaly Detector Parameters
+    ETS Anomaly Detector Parameters. For more details of ETS parameters see 
+    https://opensource.salesforce.com/Merlion/v1.0.2/merlion.models.forecast.html#module-merlion.models.forecast.ets
     """
 
     max_forecast_steps: int = None
@@ -42,7 +43,10 @@ class ETSDetectorParams(Config):
 @factory.register("detection", "ets", ETSDetectorParams)
 class ETSDetector(AnomalyDetectionAlgo):
     """
-    ETS Anomaly Detector
+    ETS Anomaly Detector. This is a wrapper for the ETS based Anomaly Detector from Merlion library 
+    https://opensource.salesforce.com/Merlion/v1.0.2/merlion.models.forecast.html#module-merlion.models.forecast.ets
+
+    This current version only supports anomaly detection of the constants.LOGLINE_COUNTS (i.e. frequency count of log events)
     """
 
     def __init__(self, params: ETSDetectorParams):
@@ -62,7 +66,7 @@ class ETSDetector(AnomalyDetectionAlgo):
 
     def fit(self, log_features: pd.DataFrame):
         """
-        Train
+        Fit method to train ETS Anomaly Detector
         :param log_features: log feature dataframe must only contain two columns
             ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
         :return: train_scores: anomaly scores dataframe

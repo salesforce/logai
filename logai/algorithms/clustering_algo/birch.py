@@ -17,6 +17,9 @@ from logai.algorithms.factory import factory
 
 @dataclass
 class BirchParams(Config):
+    """Parameters for Birch Clustering Algo. For more details on the parameters, see 
+        https://scikit-learn.org/stable/modules/generated/sklearn.cluster.Birch.html
+    """
     branching_factor: int = 50
     n_clusters: int = None
     threshold: float = 1.5
@@ -25,7 +28,8 @@ class BirchParams(Config):
 @factory.register("clustering", "birch", BirchParams)
 class BirchAlgo(ClusteringAlgo):
     """
-    Implement BIRCH for log clustering.
+    BIRCH algorithm for log clustering. This is a wrapper class for the Birch Clustering algorithm in scikit-learn 
+    https://scikit-learn.org/stable/modules/generated/sklearn.cluster.Birch.html
     """
 
     def __init__(self, params: BirchParams):
