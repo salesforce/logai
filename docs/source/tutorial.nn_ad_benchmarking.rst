@@ -84,8 +84,6 @@ Deep-Learning based Anomaly Detector.
             batch_size: 4
             output_dir: "temp_output"
 
-    }
-
 Then to run the end to end log anomaly detection on the HDFS dataset using LSTM Anomaly Detector (a sequence-based deep-learning model), you can simply create the below python script:
 
 .. code-block:: python
