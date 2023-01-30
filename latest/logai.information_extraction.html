@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme.css" type="text/css" />
 
   
   
@@ -300,11 +301,19 @@ Generate feature sets:
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.information_extraction.feature_extractor.FeatureExtractor.convert_to_counter_vector">
 <span class="sig-name descname"><span class="pre">convert_to_counter_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#logai.information_extraction.feature_extractor.FeatureExtractor.convert_to_counter_vector" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convert logs to log counter vector.
-:param log_pattern: pd.Series: logline or log pattern from previous process
-:param attributes: pd.Dataframe: log attributes
-:param timestamps: pd.Series: timestamps
-:return: Log Event Counter Table</p>
+<dd><p>Convert logs to log counter vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>log_pattern</strong> – pd.Series: logline or log pattern from previous process</p></li>
+<li><p><strong>attributes</strong> – pd.Dataframe: log attributes</p></li>
+<li><p><strong>timestamps</strong> – pd.Series: timestamps</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Log Event Counter Table</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -314,13 +323,15 @@ Generate feature sets:
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>log_vectors</strong> – Numeric features</p></li>
-<li><p><strong>attributes</strong> – Categorical or numerical attributes for grouping,</p></li>
+<li><p><strong>attributes</strong> – Categorical or numerical attributes for grouping,
+or numetrical attributes serve as additional features</p></li>
+<li><p><strong>timestamps</strong> – </p></li>
 </ul>
 </dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
+</dd>
 </dl>
-<p>or numetrical attributes serve as additional features
-:param timestamps:
-:return:</p>
 </dd></dl>
 
 <dl class="py method">

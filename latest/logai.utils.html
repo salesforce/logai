@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme.css" type="text/css" />
 
   
   
@@ -269,37 +270,32 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="logai.utils.dataset_utils.split_train_dev_test_for_anomaly_detection">
 <span class="sig-prename descclassname"><span class="pre">logai.utils.dataset_utils.</span></span><span class="sig-name descname"><span class="pre">split_train_dev_test_for_anomaly_detection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logrecord</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_data_frac_neg_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_data_frac_pos_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.utils.dataset_utils.split_train_dev_test_for_anomaly_detection" title="Permalink to this definition">¶</a></dt>
-<dd><dl>
-<dt>Util method to split a logrecord object into train dev and test splits, where the splitting</dt><dd><blockquote>
-<div><p>and the fractions are based on the SPAN_ID field of the logrecord.</p>
-</div></blockquote>
-<dl>
-<dt>Args:</dt><dd><p>logrecord (LogRecordObject): input logrecord object to be split into train, dev and test splits
-training_type (str): ‘supervised’ or ‘unsupervised’
-test_data_frac_neg_class (float): fraction of the negative class to be . Defaults to None.
-test_data_frac_pos_class (float, optional): when supervised mode is selected, fraction of the positive class</p>
-<blockquote>
-<div><p>data to be used for test data. (fraction for dev data is fixed).
-For unsupervised mode this value is fixed to 1.0</p>
-</div></blockquote>
-<dl class="simple">
-<dt>shuffle (bool, optional): whether to shuffle the log data when splitting into train and test. If False,</dt><dd><p>then it uses the chronological ordering,
-where the first (chronologically first) split will constitute train data,
-second one development data and third one as test data. Defaults to False.</p>
-</dd>
-</dl>
-</dd>
-</dl>
+<dd><dl class="simple">
+<dt>Util method to split a logrecord object into train dev and test splits, where the splitting</dt><dd><p>and the fractions are based on the SPAN_ID field of the logrecord.</p>
 </dd>
 </dl>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>logrecord object containing train data
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>logrecord</strong> (<a class="reference internal" href="logai.dataloader.html#logai.dataloader.data_model.LogRecordObject" title="logai.dataloader.data_model.LogRecordObject"><em>LogRecordObject</em></a>) – input logrecord object to be split into train, dev and test splits</p></li>
+<li><p><strong>training_type</strong> (<em>str</em>) – ‘supervised’ or ‘unsupervised’</p></li>
+<li><p><strong>test_data_frac_neg_class</strong> (<em>float</em>) – fraction of the negative class to be . Defaults to None.</p></li>
+<li><p><strong>test_data_frac_pos_class</strong> (<em>float</em><em>, </em><em>optional</em>) – when supervised mode is selected, fraction of the positive class
+data to be used for test data. (fraction for dev data is fixed).
+For unsupervised mode this value is fixed to 1.0</p></li>
+<li><p><strong>shuffle</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether to shuffle the log data when splitting into train and test. If False,
+then it uses the chronological ordering,
+where the first (chronologically first) split will constitute train data,
+second one development data and third one as test data. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>logrecord object containing train data
 logrecord_dev: logrecord object containing dev data
 logrecord_test: logrecord object containing test data</p>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>logrecord_train</p>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>logrecord_train</p>
 </dd>
 </dl>
 </dd></dl>
@@ -386,14 +382,14 @@ logrecord_test: logrecord object containing test data</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="logai.utils.functions.pd_to_timeseries">
 <span class="sig-prename descclassname"><span class="pre">logai.utils.functions.</span></span><span class="sig-name descname"><span class="pre">pd_to_timeseries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.utils.functions.pd_to_timeseries" title="Permalink to this definition">¶</a></dt>
-<dd><p>Covert pandas.DataFrame to merlion.TimeSeries for log counter vectors
-:param log_features: log feature dataframe must only contain two columns</p>
-<blockquote>
-<div><p>[‘timestamp’: datetime, constants.LOGLINE_COUNTS: int].</p>
-</div></blockquote>
+<dd><p>Covert pandas.DataFrame to merlion.TimeSeries for log counter vectors</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>merlion.TimeSeries type.</p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>log_features</strong> – log feature dataframe must only contain two columns
+[‘timestamp’: datetime, constants.LOGLINE_COUNTS: int].</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>merlion.TimeSeries type.</p>
 </dd>
 </dl>
 </dd></dl>

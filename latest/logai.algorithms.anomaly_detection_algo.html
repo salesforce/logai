@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme.css" type="text/css" />
 
   
   
@@ -250,25 +251,33 @@ each attribute, we build its specific anomaly detector if the data satisfies the
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.anomaly_detector_het.HetAnomalyDetector.fit_predict">
 <span class="sig-name descname"><span class="pre">fit_predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_feature</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.anomaly_detector_het.HetAnomalyDetector.fit_predict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Train and predict anomaly scores
-:param log_features: log feature dataframe must contain at least two columns</p>
-<blockquote>
-<div><p>[‘timestamp’: datetime, constants.LOGLINE_COUNTS: int].</p>
-</div></blockquote>
-<p>The rest of columns combinations are treated as log attribute ID
-:return: pandas.Dataframe</p>
+<dd><p>Train and predict anomaly scores</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>log_features</strong> – log feature dataframe must contain at least two columns
+[‘timestamp’: datetime, constants.LOGLINE_COUNTS: int].
+The rest of columns combinations are treated as log attribute ID</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>pandas.Dataframe</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.anomaly_detector_het.HetAnomalyDetector.preprocess">
 <span class="sig-name descname"><span class="pre">preprocess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">counter_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.anomaly_detector_het.HetAnomalyDetector.preprocess" title="Permalink to this definition">¶</a></dt>
-<dd><p>split raw log feature dataframe by unique attribute ID
-:param counter_df: log feature dataframe must contain at least two columns</p>
-<blockquote>
-<div><p>[‘timestamp’: datetime, constants.LOGLINE_COUNTS: int].</p>
-</div></blockquote>
-<p>The rest of columns combinations are treated as log attribute ID
-:return:</p>
+<dd><p>Split raw log feature dataframe by unique attribute ID</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>counter_df</strong> – log feature dataframe must contain at least two columns
+[‘timestamp’: datetime, constants.LOGLINE_COUNTS: int].
+The rest of columns combinations are treated as log attribute ID</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -308,17 +317,29 @@ each attribute, we build its specific anomaly detector if the data satisfies the
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.dbl.DBLDetector.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.dbl.DBLDetector.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Train
-:param log_features: log feature dataframe must only contain two columns [‘timestamp’: datetime, ‘counts’: int].
-:return:</p>
+<dd><p>Train a DBL anomaly detector</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>log_features</strong> – log feature dataframe must only contain two columns [‘timestamp’: datetime, ‘counts’: int].</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.dbl.DBLDetector.predict">
 <span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.dbl.DBLDetector.predict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Predict anomaly scores for log_feature[“timestamp”, constants.LOGLINE_COUNTS]
-:param log_features: log feature dataframe must contain two columns [‘timestamp’: datetime, ‘counts’: int].
-:return: pd.Series(): index:log_features.index. value: anomaly score to indicate if anomaly or not.</p>
+<dd><p>Predict anomaly scores for log_feature[“timestamp”, constants.LOGLINE_COUNTS]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>log_features</strong> – log feature dataframe must contain two columns [‘timestamp’: datetime, ‘counts’: int].</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>pd.Series(): index:log_features.index. value: anomaly score to indicate if anomaly or not.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -436,14 +457,14 @@ each attribute, we build its specific anomaly detector if the data satisfies the
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.ets.ETSDetector.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.ets.ETSDetector.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Train
-:param log_features: log feature dataframe must only contain two columns</p>
-<blockquote>
-<div><p>[‘timestamp’: datetime, constants.LOGLINE_COUNTS: int].</p>
-</div></blockquote>
+<dd><p>Train an ETS anomaly detector</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>train_scores: anomaly scores dataframe
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>log_features</strong> – log feature dataframe must only contain two columns
+[‘timestamp’: datetime, constants.LOGLINE_COUNTS: int].</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>train_scores: anomaly scores dataframe
 [‘index’:log_features.index, ‘timestamps’: datetime, ‘anom_score’: scores, ‘trainval’:
 whether it is training set.</p>
 </dd>
@@ -453,14 +474,14 @@ whether it is training set.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.ets.ETSDetector.predict">
 <span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.ets.ETSDetector.predict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Predict anomaly scores for log_feature[“timestamp”, constants.LOGLINE_COUNTS]
-:param log_features: log feature dataframe must only contain two columns</p>
-<blockquote>
-<div><p>[‘timestamp’: datetime, constants.LOGLINE_COUNTS: int].</p>
-</div></blockquote>
+<dd><p>Predict anomaly scores for log_feature[“timestamp”, constants.LOGLINE_COUNTS]</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>test_scores: anomaly scores dataframe
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>log_features</strong> – log feature dataframe must only contain two columns
+[‘timestamp’: datetime, constants.LOGLINE_COUNTS: int].</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>test_scores: anomaly scores dataframe
 [‘index’:log_features.index, ‘timestamps’: datetime, ‘anom_score’: scores, ‘trainval’:
 whether it is training set.</p>
 </dd>
@@ -944,17 +965,29 @@ whether it is training set.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.DBLDetector.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.DBLDetector.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Train
-:param log_features: log feature dataframe must only contain two columns [‘timestamp’: datetime, ‘counts’: int].
-:return:</p>
+<dd><p>Train a DBL anomaly detector</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>log_features</strong> – log feature dataframe must only contain two columns [‘timestamp’: datetime, ‘counts’: int].</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.DBLDetector.predict">
 <span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.DBLDetector.predict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Predict anomaly scores for log_feature[“timestamp”, constants.LOGLINE_COUNTS]
-:param log_features: log feature dataframe must contain two columns [‘timestamp’: datetime, ‘counts’: int].
-:return: pd.Series(): index:log_features.index. value: anomaly score to indicate if anomaly or not.</p>
+<dd><p>Predict anomaly scores for log_feature[“timestamp”, constants.LOGLINE_COUNTS]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>log_features</strong> – log feature dataframe must contain two columns [‘timestamp’: datetime, ‘counts’: int].</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>pd.Series(): index:log_features.index. value: anomaly score to indicate if anomaly or not.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -988,14 +1021,14 @@ whether it is training set.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.ETSDetector.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.ETSDetector.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Train
-:param log_features: log feature dataframe must only contain two columns</p>
-<blockquote>
-<div><p>[‘timestamp’: datetime, constants.LOGLINE_COUNTS: int].</p>
-</div></blockquote>
+<dd><p>Train an ETS anomaly detector</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>train_scores: anomaly scores dataframe
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>log_features</strong> – log feature dataframe must only contain two columns
+[‘timestamp’: datetime, constants.LOGLINE_COUNTS: int].</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>train_scores: anomaly scores dataframe
 [‘index’:log_features.index, ‘timestamps’: datetime, ‘anom_score’: scores, ‘trainval’:
 whether it is training set.</p>
 </dd>
@@ -1005,14 +1038,14 @@ whether it is training set.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.ETSDetector.predict">
 <span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.ETSDetector.predict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Predict anomaly scores for log_feature[“timestamp”, constants.LOGLINE_COUNTS]
-:param log_features: log feature dataframe must only contain two columns</p>
-<blockquote>
-<div><p>[‘timestamp’: datetime, constants.LOGLINE_COUNTS: int].</p>
-</div></blockquote>
+<dd><p>Predict anomaly scores for log_feature[“timestamp”, constants.LOGLINE_COUNTS]</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>test_scores: anomaly scores dataframe
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>log_features</strong> – log feature dataframe must only contain two columns
+[‘timestamp’: datetime, constants.LOGLINE_COUNTS: int].</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>test_scores: anomaly scores dataframe
 [‘index’:log_features.index, ‘timestamps’: datetime, ‘anom_score’: scores, ‘trainval’:
 whether it is training set.</p>
 </dd>

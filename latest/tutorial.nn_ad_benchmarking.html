@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme.css" type="text/css" />
 
   
   
@@ -213,76 +214,74 @@
 <p>Below is another sample <code class="code highlight shell docutils literal highlight-shell">hdfs_log_anomaly_detection_unsupervised_lstm.yaml</code> yaml config file which provides the
 configs for each component of the log anomaly detection workflow on the public dataset HDFS using an unsupervised
 Deep-Learning based Anomaly Detector.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span>workflow_config:
-  label_filepath: &quot;tests/logai/test_data/HDFS_AD/anomaly_label.csv&quot;
-  parse_logline: True
-  output_dir: &quot;temp_output&quot;
-  output_file_type: &quot;csv&quot;
-  training_type: &quot;unsupervised&quot;
-  deduplicate_test: True
-  test_data_frac_pos: 0.5
-  dataset_name: hdfs
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">workflow_config</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">label_filepath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;tests/logai/test_data/HDFS_AD/anomaly_label.csv&quot;</span>
+<span class="w">  </span><span class="nt">parse_logline</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">  </span><span class="nt">output_dir</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;temp_output&quot;</span>
+<span class="w">  </span><span class="nt">output_file_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;csv&quot;</span>
+<span class="w">  </span><span class="nt">training_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;unsupervised&quot;</span>
+<span class="w">  </span><span class="nt">deduplicate_test</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">  </span><span class="nt">test_data_frac_pos</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
+<span class="w">  </span><span class="nt">dataset_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hdfs</span>
 
-  data_loader_config:
-    filepath: &quot;tests/logai/test_data/HDFS_AD/HDFS_5k.log&quot;
-    reader_args:
-      log_format: &quot;&lt;Date&gt; &lt;Time&gt; &lt;Pid&gt; &lt;Level&gt; &lt;Component&gt; &lt;Content&gt;&quot;
-    log_type: &quot;log&quot;
-    dimensions:
-      body: [&#39;Content&#39;]
-      timestamp: [&#39;Date&#39;, &#39;Time&#39;]
-    datetime_format: &#39;%y%m%d %H%M%S&#39;
-    infer_datetime: True
-
-
-  preprocessor_config:
-    custom_delimiters_regex:
-                [&#39;:&#39;, &#39;,&#39;, &#39;=&#39;, &#39;\t&#39;]
-    custom_replace_list: [
-                [&#39;(blk_-?\d+)&#39;, &#39; BLOCK &#39;],
-                [&#39;/?/*\d+\.\d+\.\d+\.\d+&#39;,  &#39; IP &#39;],
-                [&#39;(0x)[0-9a-zA-Z]+&#39;, &#39; HEX &#39;],
-                [&#39;\d+&#39;, &#39; INT &#39;]
-            ]
-
-  log_parser_config:
-    parsing_algorithm: &quot;drain&quot;
-    parsing_algo_params:
-      sim_th: 0.5
-      depth: 5
-
-  open_set_partitioner_config:
-    session_window: False
-    sliding_window: 10
-    logsequence_delim: &quot;[SEP]&quot;
+<span class="w">  </span><span class="nt">data_loader_config</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">filepath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;tests/logai/test_data/HDFS_AD/HDFS_5k.log&quot;</span>
+<span class="w">    </span><span class="nt">reader_args</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">log_format</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;Date&gt;</span><span class="nv"> </span><span class="s">&lt;Time&gt;</span><span class="nv"> </span><span class="s">&lt;Pid&gt;</span><span class="nv"> </span><span class="s">&lt;Level&gt;</span><span class="nv"> </span><span class="s">&lt;Component&gt;</span><span class="nv"> </span><span class="s">&lt;Content&gt;&quot;</span>
+<span class="w">    </span><span class="nt">log_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="nt">dimensions</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">body</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;Content&#39;</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">timestamp</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;Date&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;Time&#39;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">datetime_format</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;%y%m%d</span><span class="nv"> </span><span class="s">%H%M%S&#39;</span>
+<span class="w">    </span><span class="nt">infer_datetime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 
 
-  log_vectorizer_config:
-    algo_name: &quot;forecast_nn&quot;
-    algo_param:
-      feature_type: &quot;sequential&quot;
-      sep_token: &quot;[SEP]&quot;
-      max_token_len: 10
-      embedding_dim: 100
-      output_dir: &quot;temp_output&quot;
-      vectorizer_model_dirpath: &quot;temp_output/embedding_model&quot;
-      vectorizer_metadata_filepath: &quot;temp_output/embedding_model/metadata.pkl&quot;
+<span class="w">  </span><span class="nt">preprocessor_config</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">custom_delimiters_regex</span><span class="p">:</span>
+<span class="w">                </span><span class="p p-Indicator">[</span><span class="s">&#39;:&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;=&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;\t&#39;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">custom_replace_list</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">                </span><span class="p p-Indicator">[</span><span class="s">&#39;(blk_-?\d+)&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;</span><span class="nv"> </span><span class="s">BLOCK</span><span class="nv"> </span><span class="s">&#39;</span><span class="p p-Indicator">],</span>
+<span class="w">                </span><span class="p p-Indicator">[</span><span class="s">&#39;/?/*\d+\.\d+\.\d+\.\d+&#39;</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="s">&#39;</span><span class="nv"> </span><span class="s">IP</span><span class="nv"> </span><span class="s">&#39;</span><span class="p p-Indicator">],</span>
+<span class="w">                </span><span class="p p-Indicator">[</span><span class="s">&#39;(0x)[0-9a-zA-Z]+&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;</span><span class="nv"> </span><span class="s">HEX</span><span class="nv"> </span><span class="s">&#39;</span><span class="p p-Indicator">],</span>
+<span class="w">                </span><span class="p p-Indicator">[</span><span class="s">&#39;\d+&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;</span><span class="nv"> </span><span class="s">INT</span><span class="nv"> </span><span class="s">&#39;</span><span class="p p-Indicator">]</span>
+<span class="w">            </span><span class="p p-Indicator">]</span>
+
+<span class="w">  </span><span class="nt">log_parser_config</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">parsing_algorithm</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;drain&quot;</span>
+<span class="w">    </span><span class="nt">parsing_algo_params</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">sim_th</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
+<span class="w">      </span><span class="nt">depth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+
+<span class="w">  </span><span class="nt">open_set_partitioner_config</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">session_window</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
+<span class="w">    </span><span class="nt">sliding_window</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">    </span><span class="nt">logsequence_delim</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[SEP]&quot;</span>
 
 
-  nn_anomaly_detection_config:
-    algo_name: &quot;lstm&quot;
-    algo_params:
-        model_name: &quot;lstm&quot;
-        learning_rate: 0.0001
-        metadata_filepath: &quot;temp_output/embedding_model/metadata.pkl&quot;
-        feature_type: &quot;sequential&quot;
-        label_type: &quot;next_log&quot;
-        eval_type: &quot;session&quot;
-        num_train_epochs: 10
-        batch_size: 4
-        output_dir: &quot;temp_output&quot;
+<span class="w">  </span><span class="nt">log_vectorizer_config</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">algo_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;forecast_nn&quot;</span>
+<span class="w">    </span><span class="nt">algo_param</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">feature_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sequential&quot;</span>
+<span class="w">      </span><span class="nt">sep_token</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[SEP]&quot;</span>
+<span class="w">      </span><span class="nt">max_token_len</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">      </span><span class="nt">embedding_dim</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
+<span class="w">      </span><span class="nt">output_dir</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;temp_output&quot;</span>
+<span class="w">      </span><span class="nt">vectorizer_model_dirpath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;temp_output/embedding_model&quot;</span>
+<span class="w">      </span><span class="nt">vectorizer_metadata_filepath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;temp_output/embedding_model/metadata.pkl&quot;</span>
 
-}
+
+<span class="w">  </span><span class="nt">nn_anomaly_detection_config</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">algo_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;lstm&quot;</span>
+<span class="w">    </span><span class="nt">algo_params</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">model_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;lstm&quot;</span>
+<span class="w">        </span><span class="nt">learning_rate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0001</span>
+<span class="w">        </span><span class="nt">metadata_filepath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;temp_output/embedding_model/metadata.pkl&quot;</span>
+<span class="w">        </span><span class="nt">feature_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sequential&quot;</span>
+<span class="w">        </span><span class="nt">label_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;next_log&quot;</span>
+<span class="w">        </span><span class="nt">eval_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;session&quot;</span>
+<span class="w">        </span><span class="nt">num_train_epochs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">        </span><span class="nt">batch_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">        </span><span class="nt">output_dir</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;temp_output&quot;</span>
 </pre></div>
 </div>
 <p>Then to run the end to end log anomaly detection on the HDFS dataset using LSTM Anomaly Detector (a sequence-based deep-learning model), you can simply create the below python script:</p>
@@ -348,6 +347,32 @@ Deep-Learning based Anomaly Detector.</p>
 </pre></div>
 </div>
 <p>This kind of Anomaly Detection workflow for various Deep-Learning models and various experimental settings have also been automated in <cite>logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflow</cite> class which can be easily invoked like the below example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow</span> <span class="kn">import</span> <span class="n">OpenSetADWorkflow</span><span class="p">,</span> <span class="n">get_openset_ad_config</span>
+
+<span class="n">TEST_DATA_PATH</span> <span class="o">=</span> <span class="s2">&quot;test_data/HDFS_AD/HDFS_5k.log&quot;</span>
+<span class="n">TEST_LABEL_PATH</span> <span class="o">=</span> <span class="s2">&quot;test_data/HDFS_AD/anomaly_label.csv&quot;</span>
+<span class="n">TEST_OUTPUT_PATH</span> <span class="o">=</span> <span class="s2">&quot;test_data/HDFS_AD/output&quot;</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s2">&quot;config_filename&quot;</span><span class="p">:</span> <span class="s2">&quot;hdfs&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;anomaly_detection_type&quot;</span><span class="p">:</span> <span class="s2">&quot;lstm_sequential_unsupervised_parsed_AD&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;vectorizer_type&quot;</span><span class="p">:</span> <span class="s2">&quot;forecast_nn_sequential&quot;</span> <span class="p">,</span>
+      <span class="s2">&quot;parse_logline&quot;</span><span class="p">:</span> <span class="kc">True</span> <span class="p">,</span>
+      <span class="s2">&quot;training_type&quot;</span><span class="p">:</span> <span class="s2">&quot;unsupervised&quot;</span>
+<span class="p">}</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">get_openset_ad_config</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="n">config</span><span class="o">.</span><span class="n">data_loader_config</span><span class="o">.</span><span class="n">filepath</span> <span class="o">=</span> <span class="n">TEST_DATA_PATH</span>
+<span class="n">config</span><span class="o">.</span><span class="n">label_filepath</span> <span class="o">=</span> <span class="n">TEST_LABEL_PATH</span>
+<span class="n">config</span><span class="o">.</span><span class="n">output_dir</span> <span class="o">=</span> <span class="n">TEST_OUTPUT_PATH</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">output_dir</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">output_dir</span><span class="p">)</span>
+
+<span class="n">workflow</span> <span class="o">=</span> <span class="n">OpenSetADWorkflow</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+<span class="n">workflow</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+</pre></div>
+</div>
 <p>For more details of this workflow and more such examples please check the notebook tutorials in
 <a class="reference external" href="https://github.com/salesforce/logai/tree/main/examples/jupyter_notebook/nn_ad_benchmarking">nn_ad_benchmarking examples</a>.</p>
 </section>
