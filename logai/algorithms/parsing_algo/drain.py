@@ -432,7 +432,7 @@ class Drain(ParsingAlgo):
         for l in logline:
             if not isinstance(l, str):
                 continue
-            self.add_log_message(l)
+            self._add_log_message(l)
 
     def parse(self, logline: pd.Series) -> pd.Series:
         """Parse method to run log parser on a given log data
