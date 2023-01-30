@@ -72,7 +72,7 @@ class LogBERT(VectorizationAlgo):
 
         Args:
             config (LogBERTVectorizerParams): config object for specifying
-             parameters of log bert vectorizer
+            parameters of log bert vectorizer
         """
 
         self.config = config
@@ -115,7 +115,7 @@ class LogBERT(VectorizationAlgo):
 
         Args:
             logrecord (LogRecordObject): logrecord object containing the training
-             dataset over which vectorizer is trained
+            dataset over which vectorizer is trained
         """
 
         if os.listdir(self.config.tokenizer_dirpath):
@@ -178,7 +178,7 @@ class LogBERT(VectorizationAlgo):
 
         Args:
             logrecord (LogRecordObject): logrecord object containing the dataset
-             to be vectorized
+            to be vectorized
 
         Returns:
             HFDataset: HuggingFace dataset object

@@ -19,6 +19,7 @@ from logai.algorithms.categorical_encoding_algo.ordinal_encoding import (
     OrdinalEncodingParams,
 )
 from logai.config_interfaces import Config
+from typing import Tuple
 
 
 @dataclass
@@ -71,7 +72,7 @@ class CategoricalEncoder:
                 "Categorical Encoder {} is not defined".format(config.name)
             )
 
-    def fit_transform(self, features: pd.Series) -> (pd.DataFrame, list):
+    def fit_transform(self, features: pd.Series) -> Tuple[pd.DataFrame, list]:
         """
         Transform the str features into categories.
         :param features: pd.Series: list of features

@@ -36,7 +36,7 @@ def validate_config_dict(workflow_config_dict):
 
     Args:
         workflow_config_dict (dict): dict containing config
-         for anomaly detection workflow on open log datasets
+        for anomaly detection workflow on open log datasets
 
     Raises:
         SchemaError: Schema Error
@@ -55,9 +55,10 @@ def get_openset_ad_config(
     training_type: str,
 ):
     """Method to dynamically set some of the config parameters based on the given arguments
-       List of all possible supported anomaly detection types and vectorizer types
-        configurations can be found in the config yaml file
-       Avoid this function if you are directly setting all config parameters manually
+    List of all possible supported anomaly detection types and vectorizer types
+    configurations can be found in the config yaml file
+    Avoid this function if you are directly setting all config parameters manually
+    
     Args:
         config_filename (str): Name of the config file (currently supports hdfs and bgl)
         anomaly_detection_type (str): string describing the type of anomaly detection
@@ -123,11 +124,11 @@ class OpenSetADWorkflowConfig(WorkFlowConfig):
     parse_logline: bool = False # whether to parse or not
     training_type: str = None # should be either supervised or unsupervised
     deduplicate_test: bool = False # whether to de-duplicate the instances in the test data, while maintaining a count
-        of the number of each duplicated instance
+    of the number of each duplicated instance
     test_data_frac_pos: float = 0.8 # fraction of the logs having positive class used for teest
     test_data_frac_neg: float = 0.8 # fraction of the logs having negative class used for test
     train_test_shuffle: bool = False # whether to use chronological ordering of the logs or to shuffle them when
-        creating the train test splits
+    creating the train test splits
 
     """
 
@@ -154,7 +155,7 @@ class OpenSetADWorkflow:
 
         Args:
             config (OpenSetADWorkflowConfig): config object specifying
-             parameters for log anomaly detection over open datasets
+            parameters for log anomaly detection over open datasets
         """
         self.config = config
 
@@ -407,8 +408,8 @@ class OpenSetADWorkflow:
 
     def dedup_data(self, logrecord: LogRecordObject):
         """Method to run deduplication of log records, where loglines having same body
-         and span id is collapsed into a single logline. The original occurrent count values of these
-         loglines is added as a pandas Series object in the 'attributes' property of the logrecord object.
+        and span id is collapsed into a single logline. The original occurrent count values of these
+        loglines is added as a pandas Series object in the 'attributes' property of the logrecord object.
 
         Args:
             logrecord (LogRecordObject): logrecord object to be deduplicated

@@ -16,6 +16,9 @@ from logai.algorithms.factory import factory
 
 @dataclass
 class DbScanParams(Config):
+    """Parameters for DBScan based clustering algorithm. For more details on parameters see 
+    https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html
+    """
     eps: float = 0.3
     min_samples: int = 10
     metric: str = "euclidean"
@@ -29,7 +32,8 @@ class DbScanParams(Config):
 @factory.register("clustering", "dbscan", DbScanParams)
 class DbScanAlgo(ClusteringAlgo):
     """
-    Implement DBSCAN for log clustering
+    DBSCAN algorithm for log clustering. This is a wrapper class for DBScan based from scikit-learn library 
+    https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html
     """
 
     def __init__(self, params: DbScanParams):

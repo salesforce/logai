@@ -17,6 +17,9 @@ from logai.algorithms.factory import factory
 
 @dataclass
 class IsolationForestParams(Config):
+    """Parameters for isolation forest based anomaly detection. For more explanation of the parameters see the documentation page
+    in https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html
+    """
     n_estimators: int = 100
     max_samples: str = "auto"
     contamination: str = "auto"
@@ -30,7 +33,14 @@ class IsolationForestParams(Config):
 
 @factory.register("detection", "isolation_forest", IsolationForestParams)
 class IsolationForestDetector(AnomalyDetectionAlgo):
+    """Isolation Forest based Anomaly Detector. This is a wrapper for the Isolation forest in scikit-learn library.
+    """
     def __init__(self, params: IsolationForestParams):
+        """Constructor for isolation forest based anomaly detector
+
+        Args:
+            params (IsolationForestParams): object of type IsolationForestParams containing parameters of Isolation Forest
+        """
         self.model = IsolationForest(
             n_estimators=params.n_estimators,
             max_samples=params.max_samples,

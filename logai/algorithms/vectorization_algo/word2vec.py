@@ -19,7 +19,8 @@ from logai.algorithms.factory import factory
 @dataclass
 class Word2VecParams(Config):
     """
-    Configuration of Word2Vec vectorization
+    Configuration of Word2Vec vectorization parameters. For more details on the parameters see 
+    https://radimrehurek.com/gensim/models/word2vec.html
     """
 
     max_token_len: int = 100
@@ -31,7 +32,8 @@ class Word2VecParams(Config):
 @factory.register("vectorization", "word2vec", Word2VecParams)
 class Word2Vec(VectorizationAlgo):
     """
-    Wrap Word2Vec algorithm from gensim
+    Word2Vec algorithm for converting raw log data into word2vec vectors. This is a wrapper class for the Word2Vec
+    model from gensim library https://radimrehurek.com/gensim/models/word2vec.html
     """
 
     def __init__(self, params: Word2VecParams):

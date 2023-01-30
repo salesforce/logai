@@ -37,6 +37,8 @@ class Partition:
 
 
 class Event:
+    """Event class to wrap a Log Event 
+    """
     def __init__(self, eventStr):
         self.eventStr = eventStr
         self.eventId = hashlib.md5(" ".join(eventStr).encode("utf-8")).hexdigest()[0:8]
@@ -45,6 +47,9 @@ class Event:
 
 @dataclass
 class IPLoMParams(Config):
+    """Parameters for the IPLoM Log Parser. For more details on parameters see 
+    https://github.com/logpai/logparser/tree/master/logparser/IPLoM
+    """
     rex: str = None
     logformat: str = None
     maxEventLen: int = 200
@@ -58,6 +63,9 @@ class IPLoMParams(Config):
 
 @factory.register("parsing", "iplom", IPLoMParams)
 class IPLoM(ParsingAlgo):
+    """IPLoM Log Parsing algorithm. For details see 
+    https://github.com/logpai/logparser/tree/master/logparser/IPLoM
+    """
     def __init__(self, params: IPLoMParams):
         self.para = params
         self.partitionsL = []
@@ -78,11 +86,19 @@ class IPLoM(ParsingAlgo):
         return
 
     def parse(self, loglines: pd.Series):
-        self.Step1(loglines)
-        self.Step2()
-        self.Step3()
-        self.Step4()
-        self.getOutput()
+        """parsing method to parse the raw log data
+
+        Args:
+            loglines (pd.Series): raw log data 
+
+        Returns:
+            pd.Series: parsed log data 
+        """
+        self._Step1(loglines)
+        self._Step2()
+        self._Step3()
+        self._Step4()
+        self._getOutput()
         eventID_template = {
             event.eventId: " ".join(event.eventStr) for event in self.eventsL
         }
@@ -93,7 +109,7 @@ class IPLoM(ParsingAlgo):
         )
         return res
 
-    def Step1(self, loglines: pd.Series):
+    def _Step1(self, loglines: pd.Series):
         self.df_log = pd.DataFrame(loglines)
         lineCount = 1
         for idx, line in self.df_log.iterrows():
@@ -131,7 +147,7 @@ class IPLoM(ParsingAlgo):
                     self.partitionsL[0].numOfLogs += 1
                 partition.valid = False
 
-    def Step2(self):
+    def _Step2(self):
 
         for partition in self.partitionsL:
 
@@ -193,7 +209,7 @@ class IPLoM(ParsingAlgo):
 
             partition.valid = False
 
-    def Step3(self):
+    def _Step3(self):
 
         for partition in self.partitionsL:
 
@@ -392,7 +408,7 @@ class IPLoM(ParsingAlgo):
 
             partition.valid = False
 
-    def Step4(self):
+    def _Step4(self):
         self.partitionsL[0].valid = False
         if self.para.PST == 0 and self.partitionsL[0].numOfLogs != 0:
             event = Event(["Outlier"])
@@ -433,7 +449,7 @@ class IPLoM(ParsingAlgo):
             for logL in partition.logLL:
                 logL.append(str(event.eventId))
 
-    def getOutput(self):
+    def _getOutput(self):
         if self.para.PST == 0 and self.partitionsL[0].numOfLogs != 0:
             for logL in self.partitionsL[0].logLL:
                 self.output.append(logL[-2:] + logL[:-2])

@@ -17,7 +17,8 @@ from logai.config_interfaces import Config
 @dataclass
 class OrdinalEncodingParams(Config):
     """
-    Configuration of OrdinalEncoding.
+    Configuration of OrdinalEncoding. For more details on the parameters see 
+    https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html
     """
 
     categories: str = "auto"
@@ -28,7 +29,8 @@ class OrdinalEncodingParams(Config):
 
 class OrdinalEncoding(CategoricalEncodingAlgo):
     """
-    Implementation of ordinal encoder.
+    Implementation of ordinal encoder. This is a wrapper class for the OrdinalEncoder from scikit learn 
+    https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html
     """
 
     def __init__(self, params: OrdinalEncodingParams):

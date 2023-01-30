@@ -24,6 +24,7 @@ class HetAnomalyDetector(AnomalyDetector):
     """
     Anomaly Detector Wrapper to handle heterogeneous log feature dataframe which include various attributes of log. For
     each attribute, we build its specific anomaly detector if the data satisfies the requirement.
+    This current version only supports anomaly detection on the constants.LOGLINE_COUNTS field (i.e. frequency count of the log events)
     """
 
     def __init__(self, config: HetAnomalyDetectionConfig):
@@ -40,8 +41,10 @@ class HetAnomalyDetector(AnomalyDetector):
         Split raw log feature dataframe by unique attribute ID
 
         :param counter_df: log feature dataframe must contain at least two columns
-            ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
-            The rest of columns combinations are treated as log attribute ID
+
+        ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
+        The rest of columns combinations are treated as log attribute ID
+
         :return:
         """
         ts_df = counter_df[[constants.LOG_COUNTS]]
@@ -57,8 +60,10 @@ class HetAnomalyDetector(AnomalyDetector):
         Train and predict anomaly scores
 
         :param log_features: log feature dataframe must contain at least two columns
-            ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
-            The rest of columns combinations are treated as log attribute ID
+
+        ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
+        The rest of columns combinations are treated as log attribute ID
+
         :return: pandas.Dataframe
         """
         res = pd.DataFrame()

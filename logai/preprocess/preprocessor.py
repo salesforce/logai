@@ -15,6 +15,12 @@ from logai.dataloader.data_model import LogRecordObject
 
 @dataclass
 class PreprocessorConfig(Config):
+    """Config class for Preprocessor
+
+    custom_delimiters_regex: dictionary of delimiter regex patterns in raw log data 
+    custom_replace_list: list of tuples of custom replace patterns in raw log data.
+    Each Tuple should be of form ('regex-pattern-to-replace', 'replaced-pattern')
+    """
     custom_delimiters_regex: dict = None
     custom_replace_list: list = None
 
@@ -28,6 +34,14 @@ class Preprocessor:
         self.config = config
 
     def clean_log(self, loglines: pd.Series) -> pd.Series:
+        """cleaning log data 
+
+        Args:
+            loglines (pd.Series): raw loglines data to be cleaned 
+
+        Returns:
+            pd.Series: cleaned loglines data 
+        """
         cleaned_log = loglines
         terms = pd.DataFrame()
         if self.config.custom_delimiters_regex:
@@ -57,11 +71,18 @@ class Preprocessor:
                             pair[0], pair[1]
                         )
                     )
-        # if terms:
-        # terms = pd.DataFrame.from_dict(terms, index=)
         return cleaned_log, terms
 
     def group_log_index(self, attributes: pd.DataFrame, by: np.array) -> pd.DataFrame:
+        """grouping log attributes (DataFrame) by a list of its fields
+
+        Args:
+            attributes (pd.DataFrame): log attribute data to be grouped
+            by (np.array): list of fields of the log attribute DataFrame object, to group by
+
+        Returns:
+            pd.DataFrame: log attribute data after grouping
+        """
         attributes["group_index"] = attributes.index
         group_index_list = (
             attributes.groupby(by=by).group_index.apply(np.array).reset_index()
@@ -70,6 +91,4 @@ class Preprocessor:
         return group_index_list
 
     def identify_timestamps(self, logrecord: LogRecordObject):
-        # if logrecord.body:
-        #     timestamp = logrecord.body.apply(func=)
         pass

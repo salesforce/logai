@@ -34,7 +34,7 @@ class OpenSetPreprocessor(Preprocessor):
 
         Args:
             logrecord (LogRecordObject): logrecord object containing the
-             raw log data from open datasets
+            raw log data from open datasets
 
         Returns:
             LogRecordObject: cleaned logrecord object

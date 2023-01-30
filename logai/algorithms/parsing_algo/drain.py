@@ -24,6 +24,10 @@ from logai.algorithms.factory import factory
 
 @dataclass
 class DrainParams(Config):
+    """Parameters for Drain Log Parser. 
+    For more details on parameters see 
+    https://github.com/logpai/Drain3/blob/master/drain3/drain.py
+    """
     depth: int = 3
     sim_th: float = 0.4
     max_children: int = 100
@@ -159,7 +163,7 @@ class Drain(ParsingAlgo):
     def has_numbers(s):
         return any(char.isdigit() for char in s)
 
-    def tree_search(
+    def _tree_search(
         self, root_node: Node, tokens: list, sim_th: float, include_params: bool
     ):
 
@@ -196,10 +200,10 @@ class Drain(ParsingAlgo):
             cur_node_depth += 1
 
         # get best match among all clusters with same prefix, or None if no match is above sim_th
-        cluster = self.fast_match(cur_node.cluster_ids, tokens, sim_th, include_params)
+        cluster = self._fast_match(cur_node.cluster_ids, tokens, sim_th, include_params)
         return cluster
 
-    def add_seq_to_prefix_tree(self, root_node, cluster: LogCluster):
+    def _add_seq_to_prefix_tree(self, root_node, cluster: LogCluster):
         token_count = len(cluster.log_template_tokens)
         token_count_str = str(token_count)
         if token_count_str not in root_node.key_to_child_node:
@@ -266,7 +270,7 @@ class Drain(ParsingAlgo):
             current_depth += 1
 
     # seq1 is template
-    def get_seq_distance(self, seq1, seq2, include_params: bool):
+    def _get_seq_distance(self, seq1, seq2, include_params: bool):
         assert len(seq1) == len(seq2)
         sim_tokens = 0
         param_count = 0
@@ -285,7 +289,7 @@ class Drain(ParsingAlgo):
 
         return ret_val, param_count
 
-    def fast_match(
+    def _fast_match(
         self, cluster_ids: list, tokens: list, sim_th: float, include_params: bool
     ):
         """
@@ -308,7 +312,7 @@ class Drain(ParsingAlgo):
             cluster = self.id_to_cluster.get(cluster_id)
             if cluster is None:
                 continue
-            cur_sim, param_count = self.get_seq_distance(
+            cur_sim, param_count = self._get_seq_distance(
                 cluster.log_template_tokens, tokens, include_params
             )
             if cur_sim > max_sim or (
@@ -323,7 +327,7 @@ class Drain(ParsingAlgo):
 
         return match_cluster
 
-    def create_template(self, seq1, seq2):
+    def _create_template(self, seq1, seq2):
         assert len(seq1) == len(seq2)
         ret_val = list(seq2)
 
@@ -333,10 +337,10 @@ class Drain(ParsingAlgo):
 
         return ret_val
 
-    def print_tree(self, file=None, max_clusters=5):
-        self.print_node("root", self.root_node, 0, file, max_clusters)
+    def _print_tree(self, file=None, max_clusters=5):
+        self._print_node("root", self.root_node, 0, file, max_clusters)
 
-    def print_node(self, token, node, depth, file, max_clusters):
+    def _print_node(self, token, node, depth, file, max_clusters):
         out_str = "\t" * depth
 
         if depth == 0:
@@ -352,26 +356,26 @@ class Drain(ParsingAlgo):
         print(out_str, file=file)
 
         for token, child in node.key_to_child_node.items():
-            self.print_node(token, child, depth + 1, file, max_clusters)
+            self._print_node(token, child, depth + 1, file, max_clusters)
 
         for cid in node.cluster_ids[:max_clusters]:
             cluster = self.id_to_cluster[cid]
             out_str = "\t" * (depth + 1) + str(cluster)
             print(out_str, file=file)
 
-    def get_content_as_tokens(self, content):
+    def _get_content_as_tokens(self, content):
         content = content.strip()
         for delimiter in self.extra_delimiters:
             content = content.replace(delimiter, " ")
         content_tokens = content.split()
         return content_tokens
 
-    def add_log_message(self, content: str):
-        content_tokens = self.get_content_as_tokens(content)
+    def _add_log_message(self, content: str):
+        content_tokens = self._get_content_as_tokens(content)
 
         if self.profiler:
             self.profiler.start_section("tree_search")
-        match_cluster = self.tree_search(
+        match_cluster = self._tree_search(
             self.root_node, content_tokens, self.sim_th, False
         )
         if self.profiler:
@@ -385,14 +389,14 @@ class Drain(ParsingAlgo):
             cluster_id = self.clusters_counter
             match_cluster = LogCluster(content_tokens, cluster_id)
             self.id_to_cluster[cluster_id] = match_cluster
-            self.add_seq_to_prefix_tree(self.root_node, match_cluster)
+            self._add_seq_to_prefix_tree(self.root_node, match_cluster)
             update_type = "cluster_created"
 
         # Add the new log message to the existing cluster
         else:
             if self.profiler:
                 self.profiler.start_section("cluster_exist")
-            new_template_tokens = self.create_template(
+            new_template_tokens = self._create_template(
                 content_tokens, match_cluster.log_template_tokens
             )
             if tuple(new_template_tokens) == match_cluster.log_template_tokens:
@@ -417,20 +421,28 @@ class Drain(ParsingAlgo):
         :param content: log message to match
         :return: Matched cluster or None of no match found.
         """
-        content_tokens = self.get_content_as_tokens(content)
-        match_cluster = self.tree_search(self.root_node, content_tokens, 1.0, True)
+        content_tokens = self._get_content_as_tokens(content)
+        match_cluster = self._tree_search(self.root_node, content_tokens, 1.0, True)
         return match_cluster
 
-    def get_total_cluster_size(self):
+    def _get_total_cluster_size(self):
         return self.clusters_counter
 
     def fit(self, logline: pd.Series):
-        for line in logline:
-            if not isinstance(line, str):
+        for l in logline:
+            if not isinstance(l, str):
                 continue
-            self.add_log_message(line)
+            self._add_log_message(l)
 
     def parse(self, logline: pd.Series) -> pd.Series:
+        """Parse method to run log parser on a given log data
+
+        Args:
+            logline (pd.Series): raw log data to be parsed
+
+        Returns:
+            pd.Series: parsed log data 
+        """
         self.fit(logline)
         parsed_logline = []
         for line in logline:

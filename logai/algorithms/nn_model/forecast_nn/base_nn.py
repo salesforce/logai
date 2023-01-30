@@ -31,23 +31,23 @@ class ForecastBasedNNParams(Config):
 
     model_name: name of the model
     metadata_filepath: path to file containing meta data (pretrained token embeddings in case if semantic log
-        representations are used in feature type)
+    representations are used in feature type)
     output_dir: path to output directory where the model would be dumped
     feature_type: (should be "semantics" or "sequential")type of log feature representations used for the log-lines or
-        log-sequences
+    log-sequences
     label_type: type of label (should be "anomaly" or "next_log") based on whether supervised or unsupervised
-        (forcast based) model is being used
+    (forcast based) model is being used
     eval_type:  (should be "session" or None) whether to aggregate and report the evaluation metrics at the level of
-        sessions (based on the span_id in the log data) or at the level of each logline
+    sessions (based on the span_id in the log data) or at the level of each logline
     topk: the prediction at top-k to consider, when deciding whether an evaluation instance is an anomaly or not
     embedding_dim: dimension of the embedding space. Both for sequential and semantic type feature representation,
-        the input log feature representation is passed through an embedding layer which projects it to the embedding_dim
+    the input log feature representation is passed through an embedding layer which projects it to the embedding_dim
     hidden_size:  dimension of the hidden representations
     freeze: whether to freeze the embedding layer to use the pretrained embeddings or to further train it on the
-        given task
+    given task
     gpu: device number if gpu is used (otherwise -1 or None will use cpu)
     patience: number of eval_steps, the model waits for performance on validation data to improve, before early
-        stopping the training
+    stopping the training
     num_train_epochs: number of training epochs
     batch_size: batch size
     learning_rate: learning rate
@@ -88,14 +88,11 @@ class Embedder(nn.Module):
 
         Args:
             vocab_size (int): vocabulary size
-
             embedding_dim (int): embedding dimension
-
             pretrain_matrix (tensor, optional): torch.Tensor object containing the
-             pretrained embedding of the vocabulary tokens. Defaults to None.
-
+            pretrained embedding of the vocabulary tokens. Defaults to None.
             freeze (bool, optional): Freeze embeddings to pretrained ones if set to
-             True, otherwise makes the embeddings learnable. Defaults to False.
+            True, otherwise makes the embeddings learnable. Defaults to False.
         """
         super(Embedder, self).__init__()
         if pretrain_matrix is not None:
@@ -122,7 +119,7 @@ class ForecastBasedNN(nn.Module):
 
         Args:
             config (ForecastBasedNNParams): config class for parameters of forecasting based
-             neural log representation models
+            neural log representation models
         """
 
         super(ForecastBasedNN, self).__init__()

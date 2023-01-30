@@ -15,7 +15,8 @@ from logai.config_interfaces import Config
 
 class OneHotEncodingParams(Config):
     """
-    Configuration for One-Hot Encoding.
+    Configuration for One-Hot Encoding. For more details on the parameters see
+     https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html
     """
 
     categories: str = "auto"
@@ -25,6 +26,9 @@ class OneHotEncodingParams(Config):
 
 
 class OneHotEncoding(CategoricalEncodingAlgo):
+    """This is a wrapper class for OneHotEncoder from scikit-learn library.
+    https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html
+    """
     def __init__(self, params: OneHotEncodingParams):
         """
         Init one-hot encoder

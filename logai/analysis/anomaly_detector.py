@@ -14,6 +14,8 @@ from logai.algorithms.factory import factory
 
 @dataclass
 class AnomalyDetectionConfig(Config):
+    """Config class for AnomalyDetector 
+    """
     algo_name: str = "one_class_svm"
     algo_params: object = None
     custom_params: object = None

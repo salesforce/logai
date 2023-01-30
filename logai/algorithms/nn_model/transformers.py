@@ -8,7 +8,7 @@
 import numpy as np
 import pandas as pd
 import torch
-
+from typing import Tuple, Dict
 from attr import dataclass
 from datasets import Dataset, load_metric
 from sklearn.model_selection import train_test_split
@@ -27,11 +27,15 @@ from logai.utils import constants
 
 @dataclass
 class TransformerAlgoConfig(Config):
+    """Config class for Transformer based model for log classification tasks  
+    """
     tokenizer_config: dict = {"name": "auto", "model": "bert-base-cased"}
     trainer_config: dict = {}
 
 
 class LogDataset(torch.utils.data.Dataset):
+    """Wrapper class for Log Dataset, to wrap over torch Dataset class 
+    """
     def __init__(self, encodings, labels):
         self.encodings = encodings
         self.labels = labels
@@ -46,6 +50,13 @@ class LogDataset(torch.utils.data.Dataset):
 
 
 class TransformerAlgo:
+    """HuggingFace Transformer based Pretrained Language model (e.g. "bert-base-cased"), 
+    with a sequence classifier head for any supervised log classification task.
+    For e.g. log anomaly detection is one type of log classfication task where the labels
+    are Normal (Label 0) or Anomalous (Label 1). Currently it supports only binary 
+    classification, to change this `num_labels` of AutoModelForSequenceClassification 
+    has to be changed accordingly along with the prediction logic in predict method
+    """
     def __init__(self, config: TransformerAlgoConfig):
         self.config = config
         self.model = AutoModelForSequenceClassification.from_pretrained(
@@ -57,11 +68,24 @@ class TransformerAlgo:
 
         return
 
-    def save(self, output_dir):
+    def save(self, output_dir: str):
+        """save model in given directory
+
+        Args:
+            output_dir (str): path to output directory where model should be dumped 
+        """
         self.trainer.save_model(output_dir)
         return
 
     def train(self, train_logs: pd.Series, train_labels: pd.Series):
+        """train method for Transformer based pretrained language model with
+        a sequence classification head for supervised log classification task. 
+        Internally this method also splits the available training logs into train and dev data 
+
+        Args:
+            train_logs (pd.Series): training log vectors data (after LogVectorizer)
+            train_labels (pd.Series): training label data 
+        """
         train_logs = train_logs.rename(constants.LOG_EVENTS)
         if not self.tokenizer:
             if self.config.tokenizer_config["name"] == "auto":
@@ -112,9 +136,10 @@ class TransformerAlgo:
     def train_with_native_torch(self, train_logs: pd.Series, train_labels: pd.Series):
         """
         Train models in native torch way. Use as needed
-        :param train_logs:
-        :param train_labels:
-        :return:
+
+        Args:
+            train_logs (pd.Series): training log features data (after LogVectorizer)
+            train_labels (pd.Series): label data for training logs
         """
         if not self.tokenizer:
             if self.config.tokenizer_config["name"] == "auto":
@@ -138,7 +163,19 @@ class TransformerAlgo:
         self.model.eval()
         return
 
-    def predict(self, test_logs: pd.Series, test_labels: pd.Series) -> pd.Series:
+    def predict(self, test_logs: pd.Series, test_labels: pd.Series) -> Tuple[pd.Series, np.ndarray, Dict[str, float]]:
+        """Predict method for running evaluation on test log data
+
+        Args:
+            test_logs (pd.Series): test log features data (output of LogVectorizer)
+            test_labels (pd.Series): labels of test log data 
+
+        Returns:
+            res (pd.Series): Predicted test labels as pandas Series object
+            label_ids (`np.ndarray`, *optional*): True test labels (if the dataset contained some).
+            metrics (`Dict[str, float]`, *optional*): The potential dictionary of metrics
+
+        """
         test_logs = test_logs.rename(constants.LOG_EVENTS)
         if not self.tokenizer:
             if self.config.tokenizer_config["name"] == "auto":

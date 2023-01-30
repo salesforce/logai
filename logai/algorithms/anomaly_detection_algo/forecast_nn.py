@@ -20,7 +20,7 @@ from torch.utils.data import DataLoader
 
 class ForcastBasedNeuralAD(NNAnomalyDetectionAlgo):
     """Forcasting based neural anomaly detection models taken from the deep-loglizer paper
-            (https://arxiv.org/pdf/2107.05908.pdf)
+    (https://arxiv.org/pdf/2107.05908.pdf)
 
     Inherits:
         NNAnomalyDetectionAlgo : interface of neural anomaly detection algorithms
@@ -44,9 +44,9 @@ class ForcastBasedNeuralAD(NNAnomalyDetectionAlgo):
 
         Args:
             train_data (ForecastNNVectorizedDataset): training dataset of type ForecastNNVectorizedDataset
-             (consisting of session_idx, features, window_anomalies and window_labels)
+            (consisting of session_idx, features, window_anomalies and window_labels)
             dev_data (ForecastNNVectorizedDataset): development dataset of type ForecastNNVectorizedDataset
-             (consisting of session_idx, features, window_anomalies and window_labels)
+            (consisting of session_idx, features, window_anomalies and window_labels)
         """
         dataloader_train = DataLoader(
             train_data.dataset,
@@ -67,7 +67,7 @@ class ForcastBasedNeuralAD(NNAnomalyDetectionAlgo):
 
         Args:
             test_data (ForecastNNVectorizedDataset): test dataset of type ForecastNNVectorizedDataset
-                (consisting of session_idx, features, window_anomalies and window_labels)
+            (consisting of session_idx, features, window_anomalies and window_labels)
 
         Returns:
             dict: dict containing overall evaluation results
@@ -133,7 +133,7 @@ class ForecastBasedTransformer(ForcastBasedNeuralAD):
 
         Args:
             config (TransformerParams): config object containing parameters for
-                                        Transformer based anomaly detection model.
+            Transformer based anomaly detection model.
         """
         super().__init__(config)
         self.config = config

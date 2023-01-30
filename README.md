@@ -232,14 +232,12 @@ use LogAI modules to create E2E applications in Jupyter Notebook.
 Below is another sample `hdfs_log_anomaly_detection_unsupervised_lstm.yaml` yaml config file which provides the configs for each component of the log anomaly detection workflow on the public dataset HDFS using an unsupervised Deep-Learning based Anomaly Detector. 
 
 ```yaml
+{
 workflow_config:  
   label_filepath: "tests/logai/test_data/HDFS_AD/anomaly_label.csv"
-  parse_logline: True  
   output_dir: "temp_output"
-  output_file_type: "csv"
   training_type: "unsupervised"
-  deduplicate_test: True
-  test_data_frac_pos: 0.5
+  parse_logline: True
   dataset_name: hdfs
 
   data_loader_config:
@@ -253,7 +251,6 @@ workflow_config:
     datetime_format: '%y%m%d %H%M%S'
     infer_datetime: True
     
-
   preprocessor_config:
     custom_delimiters_regex:
                 [':', ',', '=', '\t']
@@ -266,37 +263,28 @@ workflow_config:
     
   log_parser_config:
     parsing_algorithm: "drain"
-    parsing_algo_params: 
-      sim_th: 0.5
-      depth: 5
 
   open_set_partitioner_config:
     session_window: False
     sliding_window: 10
-    logsequence_delim: "[SEP]"
 
 
   log_vectorizer_config:
     algo_name: "forecast_nn"
     algo_param:
       feature_type: "sequential"
-      sep_token: "[SEP]"
       max_token_len: 10
       embedding_dim: 100
       output_dir: "temp_output"
-      vectorizer_model_dirpath: "temp_output/embedding_model"
-      vectorizer_metadata_filepath: "temp_output/embedding_model/metadata.pkl"
 
 
   nn_anomaly_detection_config:
     algo_name: "lstm"
     algo_params:
         model_name: "lstm"
-        learning_rate: 0.0001
         metadata_filepath: "temp_output/embedding_model/metadata.pkl"
         feature_type: "sequential"
         label_type: "next_log"
-        eval_type: "session"
         num_train_epochs: 10
         batch_size: 4
         output_dir: "temp_output"
@@ -304,7 +292,7 @@ workflow_config:
 }
 ```
 
-Then to run the end to end log anomaly detection on the HDFS dataset using LSTM Anomaly Detector (a sequence-based deep-learning model), you can simply create the below python script: 
+Then to run the end to end log anomaly detection on the HDFS dataset using LSTM Anomaly Detector (a sequence-based deep-learning model), you can use a python script like below: 
 
 ```python
 import os 
@@ -372,9 +360,9 @@ This kind of Anomaly Detection workflow for various Deep-Learning models and var
 ```python
 from logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow import OpenSetADWorkflow, get_openset_ad_config
 
-TEST_DATA_PATH = "test_data/HDFS_AD/HDFS_5k.log"
-TEST_LABEL_PATH = "test_data/HDFS_AD/anomaly_label.csv"
-TEST_OUTPUT_PATH = "test_data/HDFS_AD/output"
+TEST_DATA_PATH = "tests/logai/test_data/HDFS_AD/HDFS_5k.log"
+TEST_LABEL_PATH = "tests/logai/test_data/HDFS_AD/anomaly_label.csv"
+TEST_OUTPUT_PATH = "tests/logai/test_data/HDFS_AD/output"
 
 kwargs = {
       "config_filename": "hdfs",
