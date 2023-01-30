@@ -85,6 +85,7 @@ class FeatureExtractor:
     ) -> pd.DataFrame:
         """
         Convert logs to log counter vector.
+
         :param log_pattern: pd.Series: logline or log pattern from previous process
         :param attributes: pd.Dataframe: log attributes
         :param timestamps: pd.Series: timestamps
@@ -112,7 +113,7 @@ class FeatureExtractor:
 
         :param log_vectors: Numeric features
         :param attributes: Categorical or numerical attributes for grouping,
-        or numetrical attributes serve as additional features
+            or numetrical attributes serve as additional features
         :param timestamps:
         :return:
         """
@@ -241,12 +242,6 @@ class FeatureExtractor:
             return input_df.groupby(by=["event_index"])
 
     def _convert_to_feature_df(self, log_vectors: pd.Series) -> pd.DataFrame:
-        """
-
-        :param log_vectors:
-        :param max_len:
-        :return:
-        """
         padded_log_vectors = log_vectors.apply(pad, max_len=self.config.max_feature_len)
         log_features = pd.DataFrame(
             padded_log_vectors.tolist(), index=log_vectors.index
