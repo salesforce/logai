@@ -234,34 +234,80 @@
 <dt class="sig sig-object py" id="logai.algorithms.nn_model.transformers.LogDataset">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.nn_model.transformers.</span></span><span class="sig-name descname"><span class="pre">LogDataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">encodings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.nn_model.transformers.LogDataset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></p>
+<p>Wrapper class for Log Dataset, to wrap over torch Dataset class</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="logai.algorithms.nn_model.transformers.TransformerAlgo">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.nn_model.transformers.</span></span><span class="sig-name descname"><span class="pre">TransformerAlgo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.algorithms.nn_model.transformers.TransformerAlgoConfig" title="logai.algorithms.nn_model.transformers.TransformerAlgoConfig"><span class="pre">TransformerAlgoConfig</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.nn_model.transformers.TransformerAlgo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>HuggingFace Transformer based Pretrained Language model (e.g. “bert-base-cased”),
+with a sequence classifier head for any supervised log classification task.
+For e.g. log anomaly detection is one type of log classfication task where the labels
+are Normal (Label 0) or Anomalous (Label 1). Currently it supports only binary
+classification, to change this <cite>num_labels</cite> of AutoModelForSequenceClassification
+has to be changed accordingly along with the prediction logic in predict method</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.nn_model.transformers.TransformerAlgo.predict">
-<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_logs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#logai.algorithms.nn_model.transformers.TransformerAlgo.predict" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_logs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Series</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#logai.algorithms.nn_model.transformers.TransformerAlgo.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict method for running evaluation on test log data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>test_logs</strong> (<em>pd.Series</em>) – test log features data (output of LogVectorizer)</p></li>
+<li><p><strong>test_labels</strong> (<em>pd.Series</em>) – labels of test log data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Predicted test labels as pandas Series object
+label_ids (<cite>np.ndarray</cite>, <em>optional</em>): True test labels (if the dataset contained some).
+metrics (<cite>Dict[str, float]</cite>, <em>optional</em>): The potential dictionary of metrics</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>res (pd.Series)</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.nn_model.transformers.TransformerAlgo.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_dir</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.nn_model.transformers.TransformerAlgo.save" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.nn_model.transformers.TransformerAlgo.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>save model in given directory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>output_dir</strong> (<em>str</em>) – path to output directory where model should be dumped</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.nn_model.transformers.TransformerAlgo.train">
 <span class="sig-name descname"><span class="pre">train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_logs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.nn_model.transformers.TransformerAlgo.train" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>train method for Transformer based pretrained language model with
+a sequence classification head for supervised log classification task.
+Internally this method also splits the available training logs into train and dev data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>train_logs</strong> (<em>pd.Series</em>) – training log vectors data (after LogVectorizer)</p></li>
+<li><p><strong>train_labels</strong> (<em>pd.Series</em>) – training label data</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.nn_model.transformers.TransformerAlgo.train_with_native_torch">
 <span class="sig-name descname"><span class="pre">train_with_native_torch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_logs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.nn_model.transformers.TransformerAlgo.train_with_native_torch" title="Permalink to this definition">¶</a></dt>
-<dd><p>Train models in native torch way. Use as needed
-:param train_logs:
-:param train_labels:
-:return:</p>
+<dd><p>Train models in native torch way. Use as needed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>train_logs</strong> (<em>pd.Series</em>) – training log features data (after LogVectorizer)</p></li>
+<li><p><strong>train_labels</strong> (<em>pd.Series</em>) – label data for training logs</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -270,6 +316,7 @@
 <dt class="sig sig-object py" id="logai.algorithms.nn_model.transformers.TransformerAlgoConfig">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.nn_model.transformers.</span></span><span class="sig-name descname"><span class="pre">TransformerAlgoConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tokenizer_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{'model':</span> <span class="pre">'bert-base-cased',</span> <span class="pre">'name':</span> <span class="pre">'auto'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trainer_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.nn_model.transformers.TransformerAlgoConfig" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
+<p>Config class for Transformer based model for log classification tasks</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="logai.algorithms.nn_model.transformers.TransformerAlgoConfig.tokenizer_config">
 <span class="sig-name descname"><span class="pre">tokenizer_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="headerlink" href="#logai.algorithms.nn_model.transformers.TransformerAlgoConfig.tokenizer_config" title="Permalink to this definition">¶</a></dt>

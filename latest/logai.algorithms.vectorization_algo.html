@@ -234,7 +234,8 @@
 <dt class="sig sig-object py" id="logai.algorithms.vectorization_algo.fasttext.FastText">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.vectorization_algo.fasttext.</span></span><span class="sig-name descname"><span class="pre">FastText</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.algorithms.vectorization_algo.fasttext.FastTextParams" title="logai.algorithms.vectorization_algo.fasttext.FastTextParams"><span class="pre">FastTextParams</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.vectorization_algo.fasttext.FastText" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.algorithms.html#logai.algorithms.algo_interfaces.VectorizationAlgo" title="logai.algorithms.algo_interfaces.VectorizationAlgo"><code class="xref py py-class docutils literal notranslate"><span class="pre">VectorizationAlgo</span></code></a></p>
-<p>Wrap FastText algorithm from gensim</p>
+<p>This is a wrapper for FastText algorithm from gensim library. For details see
+<a class="reference external" href="https://radimrehurek.com/gensim/models/fasttext.html">https://radimrehurek.com/gensim/models/fasttext.html</a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.vectorization_algo.fasttext.FastText.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loglines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.vectorization_algo.fasttext.FastText.fit" title="Permalink to this definition">¶</a></dt>
@@ -264,7 +265,8 @@
 <dt class="sig sig-object py" id="logai.algorithms.vectorization_algo.fasttext.FastTextParams">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.vectorization_algo.fasttext.</span></span><span class="sig-name descname"><span class="pre">FastTextParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_token_len</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.vectorization_algo.fasttext.FastTextParams" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
-<p>Configuration for FastText vectorizer.</p>
+<p>Configuration for FastText vectorizer. For more details on the parameters see
+<a class="reference external" href="https://radimrehurek.com/gensim/models/fasttext.html">https://radimrehurek.com/gensim/models/fasttext.html</a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="logai.algorithms.vectorization_algo.fasttext.FastTextParams.epochs">
 <span class="sig-name descname"><span class="pre">epochs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#logai.algorithms.vectorization_algo.fasttext.FastTextParams.epochs" title="Permalink to this definition">¶</a></dt>
@@ -385,15 +387,20 @@
 <dt>Inherits:</dt><dd><p>Config : config interface</p>
 </dd>
 </dl>
-<p>feature_type: str = None # type of log feature representation where the supported types “semantics” and “sequential”
-label_type: str = None # type of label, anomaly or next_log, which corresponds to the supervised and the forecasting based unsupervised setting
+<p>feature_type: str = None # type of log feature representation where the supported types “semantics” and “sequential”</p>
+<p>label_type: str = None # type of label, anomaly or next_log, which corresponds to the supervised and the forecasting
+based unsupervised setting
 sep_token: str = “[SEP]” # separator token used when constructing the log sequences during log grouping/partitioning
 max_token_len: int = None # maximum token length of the input
-min_token_count: int = None # minimum number of occurrences of a token in the training data, for it to be considered in the vocab
+min_token_count: int = None # minimum number of occurrences of a token in the training data, for it to be considered
+in the vocab
 embedding_dim: int = None # embedding dimension of the tokens
-output_dir: str = “” # path to output directory where the vectorizer model directory and metadata file would be created
-vectorizer_metadata_filepath: str = “” # path to file where the vectorizer metadata would be saved. This would be read by the anomaly detection model and should be set in the metadata_filepath of the forecast_nn based anomaly detector
-vectorizer_model_dirpath: str = “” # path to directory containing the vectorizer model</p>
+output_dir: str = “” # path to output directory where the vectorizer model directory and metadata file would be
+created
+vectorizer_metadata_filepath: str = “” # path to file where the vectorizer metadata would be saved. This would be
+read by the anomaly detection model and should be set in the metadata_filepath of the forecast_nn based
+anomaly detector</p>
+<p>vectorizer_model_dirpath: str = “” # path to directory containing the vectorizer model</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizerParams.embedding_dim">
 <span class="sig-name descname"><span class="pre">embedding_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizerParams.embedding_dim" title="Permalink to this definition">¶</a></dt>
@@ -469,8 +476,10 @@ vectorizer_model_dirpath: str = “” # path to directory containing the vector
 <dd><p>fit method for training vectorizer for logbert.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>logrecord</strong> (<a class="reference internal" href="logai.dataloader.html#logai.dataloader.data_model.LogRecordObject" title="logai.dataloader.data_model.LogRecordObject"><em>LogRecordObject</em></a>) – logrecord object containing the training
-dataset over which vectorizer is trained</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>logrecord</strong> (<a class="reference internal" href="logai.dataloader.html#logai.dataloader.data_model.LogRecordObject" title="logai.dataloader.data_model.LogRecordObject"><em>LogRecordObject</em></a>) – logrecord object containing the training</p></li>
+<li><p><strong>trained</strong> (<em>dataset over which vectorizer is</em>) – </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -481,8 +490,10 @@ dataset over which vectorizer is trained</p>
 <dd><p>transform method for running vectorizer over logrecord object</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>logrecord</strong> (<a class="reference internal" href="logai.dataloader.html#logai.dataloader.data_model.LogRecordObject" title="logai.dataloader.data_model.LogRecordObject"><em>LogRecordObject</em></a>) – logrecord object containing the dataset
-to be vectorized</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>logrecord</strong> (<a class="reference internal" href="logai.dataloader.html#logai.dataloader.data_model.LogRecordObject" title="logai.dataloader.data_model.LogRecordObject"><em>LogRecordObject</em></a>) – logrecord object containing the dataset</p></li>
+<li><p><strong>vectorized</strong> (<em>to be</em>) – </p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>HuggingFace dataset object</p>
@@ -582,9 +593,11 @@ or training word embedding models like Word2Vec or FastText on the given trainin
 <dd><p>Fit method to train semantic vectorizer</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>loglines</strong> (<em>pd.Series</em>) – pandas Series object containing the dataset on
-which semantic vectorizer is trained (and the vocab is built).
-Each data instance should be a logline or sequence of loglines concatenated by separator token</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>loglines</strong> (<em>pd.Series</em>) – pandas Series object containing the dataset on</p></li>
+<li><p><strong>trained</strong> (<em>which semantic vectorizer is</em>) – </p></li>
+<li><p><strong>token</strong> (<em>Each data instance should be a logline</em><em> or </em><em>sequence</em><em> of </em><em>loglines concatenated by separator</em>) – </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -622,10 +635,12 @@ Each data instance should be a logline or sequence of loglines concatenated by s
 <dt class="sig sig-object py" id="logai.algorithms.vectorization_algo.semantic.SemanticVectorizerParams">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.vectorization_algo.semantic.</span></span><span class="sig-name descname"><span class="pre">SemanticVectorizerParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_token_len</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_token_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'[SEP]'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'fasttext'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_save_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.vectorization_algo.semantic.SemanticVectorizerParams" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
-<p>Configuration of Semantic vectorization of loglines (or sequence of log lines) using models like word2vc, glove and fastText
+<p>Configuration of Semantic vectorization of loglines (or sequence of log lines) using models like word2vc,
+glove and fastText
 max_token_len: int = 10 # maximum token length of the input
-min_token_count: int = 1 # minimum count of occurrences of a token in training data for it to be considered in the vocab
-sep_token: str = “[SEP]” # separator token used to separate log lines in input log sequence
+min_token_count: int = 1 # minimum count of occurrences of a token in training data for it to be considered in the
+vocab</p>
+<p>sep_token: str = “[SEP]” # separator token used to separate log lines in input log sequence
 embedding_dim: int = 300 # embedding dimension of the learnt token embeddings
 window: int = 3 # window size parameter for word2vec and fastText models
 embedding_type: str = “fasttext” # type of embedding, currently supports glove, word2vec and fastText
@@ -681,9 +696,11 @@ model_save_dir: str = None # path to directory where vectorizer models would be 
 <dd><p>Fit method for training the sequential vectorizer</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>loglines</strong> (<em>pd.Series</em>) – pandas Series object containing the dataset on
-which semantic vectorizer is trained (and the vocab is built).
-Each data instance should be a logline or sequence of loglines concatenated by separator token</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>loglines</strong> (<em>pd.Series</em>) – pandas Series object containing the dataset on</p></li>
+<li><p><strong>trained</strong> (<em>which semantic vectorizer is</em>) – </p></li>
+<li><p><strong>token</strong> (<em>Each data instance should be a logline</em><em> or </em><em>sequence</em><em> of </em><em>loglines concatenated by separator</em>) – </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -718,14 +735,12 @@ Each data instance should be a logline or sequence of loglines concatenated by s
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>sep_token</strong> – separator token</p></li>
+<li><p><strong>sep_token</strong> – separator token used to separate log lines in an input log sequence</p></li>
 <li><p><strong>model_save_dir</strong> – path to directory where models related to sequential vectorizer would be stored</p></li>
+<li><p><strong>max_token_len</strong> – maximum token length of input</p></li>
 </ul>
 </dd>
 </dl>
-<p>sep_token: str = None # separator token used to separate log lines in an input log sequence
-model_save_dir: str = None # path to directory where vectorizer models would be saved
-max_token_len: int = None # maximum token length of input</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="logai.algorithms.vectorization_algo.sequential.SequentialVectorizerParams.max_token_len">
 <span class="sig-name descname"><span class="pre">max_token_len</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#logai.algorithms.vectorization_algo.sequential.SequentialVectorizerParams.max_token_len" title="Permalink to this definition">¶</a></dt>
@@ -750,7 +765,8 @@ max_token_len: int = None # maximum token length of input</p>
 <dt class="sig sig-object py" id="logai.algorithms.vectorization_algo.tfidf.TfIdf">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.vectorization_algo.tfidf.</span></span><span class="sig-name descname"><span class="pre">TfIdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.algorithms.vectorization_algo.tfidf.TfIdfParams" title="logai.algorithms.vectorization_algo.tfidf.TfIdfParams"><span class="pre">TfIdfParams</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.vectorization_algo.tfidf.TfIdf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.algorithms.html#logai.algorithms.algo_interfaces.VectorizationAlgo" title="logai.algorithms.algo_interfaces.VectorizationAlgo"><code class="xref py py-class docutils literal notranslate"><span class="pre">VectorizationAlgo</span></code></a></p>
-<p>Wrapping TF-IDF algorithm from scikit-learn.</p>
+<p>TfIdf based vectorizer for log data. This is a wrapper class of the TF-IDF Vectorizer algorithm from scikit-learn.
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html">https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html</a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.vectorization_algo.tfidf.TfIdf.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loglines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.vectorization_algo.tfidf.TfIdf.fit" title="Permalink to this definition">¶</a></dt>
@@ -780,7 +796,8 @@ max_token_len: int = None # maximum token length of input</p>
 <dt class="sig sig-object py" id="logai.algorithms.vectorization_algo.tfidf.TfIdfParams">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.vectorization_algo.tfidf.</span></span><span class="sig-name descname"><span class="pre">TfIdfParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'content'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'utf-8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decode_error:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'strict'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strip_accents:</span> <span class="pre">object</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowercase:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preprocessor:</span> <span class="pre">object</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokenizer:</span> <span class="pre">object</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">analyzer:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'word'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop_words:</span> <span class="pre">object</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token_pattern:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'(?u)\\b\\w\\w+\\b'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ngram_range:</span> <span class="pre">tuple</span> <span class="pre">=</span> <span class="pre">(1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_df:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_df:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_features:</span> <span class="pre">object</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vocabulary:</span> <span class="pre">object</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">binary:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype:</span> <span class="pre">object</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'numpy.float64'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'l2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_idf:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_idf:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sublinear_tf:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.vectorization_algo.tfidf.TfIdfParams" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
-<p>Configuration of TF-IDF vectorizer.</p>
+<p>Configuration of TF-IDF vectorizer. For more details of parameters see
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html">https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html</a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="logai.algorithms.vectorization_algo.tfidf.TfIdfParams.analyzer">
 <span class="sig-name descname"><span class="pre">analyzer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#logai.algorithms.vectorization_algo.tfidf.TfIdfParams.analyzer" title="Permalink to this definition">¶</a></dt>
@@ -895,7 +912,8 @@ max_token_len: int = None # maximum token length of input</p>
 <dt class="sig sig-object py" id="logai.algorithms.vectorization_algo.word2vec.Word2Vec">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.vectorization_algo.word2vec.</span></span><span class="sig-name descname"><span class="pre">Word2Vec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.algorithms.vectorization_algo.word2vec.Word2VecParams" title="logai.algorithms.vectorization_algo.word2vec.Word2VecParams"><span class="pre">Word2VecParams</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.vectorization_algo.word2vec.Word2Vec" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.algorithms.html#logai.algorithms.algo_interfaces.VectorizationAlgo" title="logai.algorithms.algo_interfaces.VectorizationAlgo"><code class="xref py py-class docutils literal notranslate"><span class="pre">VectorizationAlgo</span></code></a></p>
-<p>Wrap Word2Vec algorithm from gensim</p>
+<p>Word2Vec algorithm for converting raw log data into word2vec vectors. This is a wrapper class for the Word2Vec
+model from gensim library <a class="reference external" href="https://radimrehurek.com/gensim/models/word2vec.html">https://radimrehurek.com/gensim/models/word2vec.html</a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.vectorization_algo.word2vec.Word2Vec.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loglines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.vectorization_algo.word2vec.Word2Vec.fit" title="Permalink to this definition">¶</a></dt>
@@ -925,7 +943,8 @@ max_token_len: int = None # maximum token length of input</p>
 <dt class="sig sig-object py" id="logai.algorithms.vectorization_algo.word2vec.Word2VecParams">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.vectorization_algo.word2vec.</span></span><span class="sig-name descname"><span class="pre">Word2VecParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_token_len</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vector_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.vectorization_algo.word2vec.Word2VecParams" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
-<p>Configuration of Word2Vec vectorization</p>
+<p>Configuration of Word2Vec vectorization parameters. For more details on the parameters see
+<a class="reference external" href="https://radimrehurek.com/gensim/models/word2vec.html">https://radimrehurek.com/gensim/models/word2vec.html</a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="logai.algorithms.vectorization_algo.word2vec.Word2VecParams.max_token_len">
 <span class="sig-name descname"><span class="pre">max_token_len</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#logai.algorithms.vectorization_algo.word2vec.Word2VecParams.max_token_len" title="Permalink to this definition">¶</a></dt>
@@ -955,7 +974,8 @@ max_token_len: int = None # maximum token length of input</p>
 <dt class="sig sig-object py" id="logai.algorithms.vectorization_algo.FastText">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.vectorization_algo.</span></span><span class="sig-name descname"><span class="pre">FastText</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.algorithms.vectorization_algo.fasttext.FastTextParams" title="logai.algorithms.vectorization_algo.fasttext.FastTextParams"><span class="pre">FastTextParams</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.vectorization_algo.FastText" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.algorithms.html#logai.algorithms.algo_interfaces.VectorizationAlgo" title="logai.algorithms.algo_interfaces.VectorizationAlgo"><code class="xref py py-class docutils literal notranslate"><span class="pre">VectorizationAlgo</span></code></a></p>
-<p>Wrap FastText algorithm from gensim</p>
+<p>This is a wrapper for FastText algorithm from gensim library. For details see
+<a class="reference external" href="https://radimrehurek.com/gensim/models/fasttext.html">https://radimrehurek.com/gensim/models/fasttext.html</a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.vectorization_algo.FastText.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loglines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.vectorization_algo.FastText.fit" title="Permalink to this definition">¶</a></dt>
@@ -1035,8 +1055,10 @@ max_token_len: int = None # maximum token length of input</p>
 <dd><p>fit method for training vectorizer for logbert.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>logrecord</strong> (<a class="reference internal" href="logai.dataloader.html#logai.dataloader.data_model.LogRecordObject" title="logai.dataloader.data_model.LogRecordObject"><em>LogRecordObject</em></a>) – logrecord object containing the training
-dataset over which vectorizer is trained</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>logrecord</strong> (<a class="reference internal" href="logai.dataloader.html#logai.dataloader.data_model.LogRecordObject" title="logai.dataloader.data_model.LogRecordObject"><em>LogRecordObject</em></a>) – logrecord object containing the training</p></li>
+<li><p><strong>trained</strong> (<em>dataset over which vectorizer is</em>) – </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -1047,8 +1069,10 @@ dataset over which vectorizer is trained</p>
 <dd><p>transform method for running vectorizer over logrecord object</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>logrecord</strong> (<a class="reference internal" href="logai.dataloader.html#logai.dataloader.data_model.LogRecordObject" title="logai.dataloader.data_model.LogRecordObject"><em>LogRecordObject</em></a>) – logrecord object containing the dataset
-to be vectorized</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>logrecord</strong> (<a class="reference internal" href="logai.dataloader.html#logai.dataloader.data_model.LogRecordObject" title="logai.dataloader.data_model.LogRecordObject"><em>LogRecordObject</em></a>) – logrecord object containing the dataset</p></li>
+<li><p><strong>vectorized</strong> (<em>to be</em>) – </p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>HuggingFace dataset object</p>
@@ -1074,9 +1098,11 @@ or training word embedding models like Word2Vec or FastText on the given trainin
 <dd><p>Fit method to train semantic vectorizer</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>loglines</strong> (<em>pd.Series</em>) – pandas Series object containing the dataset on
-which semantic vectorizer is trained (and the vocab is built).
-Each data instance should be a logline or sequence of loglines concatenated by separator token</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>loglines</strong> (<em>pd.Series</em>) – pandas Series object containing the dataset on</p></li>
+<li><p><strong>trained</strong> (<em>which semantic vectorizer is</em>) – </p></li>
+<li><p><strong>token</strong> (<em>Each data instance should be a logline</em><em> or </em><em>sequence</em><em> of </em><em>loglines concatenated by separator</em>) – </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -1121,9 +1147,11 @@ Each data instance should be a logline or sequence of loglines concatenated by s
 <dd><p>Fit method for training the sequential vectorizer</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>loglines</strong> (<em>pd.Series</em>) – pandas Series object containing the dataset on
-which semantic vectorizer is trained (and the vocab is built).
-Each data instance should be a logline or sequence of loglines concatenated by separator token</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>loglines</strong> (<em>pd.Series</em>) – pandas Series object containing the dataset on</p></li>
+<li><p><strong>trained</strong> (<em>which semantic vectorizer is</em>) – </p></li>
+<li><p><strong>token</strong> (<em>Each data instance should be a logline</em><em> or </em><em>sequence</em><em> of </em><em>loglines concatenated by separator</em>) – </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -1154,7 +1182,8 @@ Each data instance should be a logline or sequence of loglines concatenated by s
 <dt class="sig sig-object py" id="logai.algorithms.vectorization_algo.TfIdf">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.vectorization_algo.</span></span><span class="sig-name descname"><span class="pre">TfIdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.algorithms.vectorization_algo.tfidf.TfIdfParams" title="logai.algorithms.vectorization_algo.tfidf.TfIdfParams"><span class="pre">TfIdfParams</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.vectorization_algo.TfIdf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.algorithms.html#logai.algorithms.algo_interfaces.VectorizationAlgo" title="logai.algorithms.algo_interfaces.VectorizationAlgo"><code class="xref py py-class docutils literal notranslate"><span class="pre">VectorizationAlgo</span></code></a></p>
-<p>Wrapping TF-IDF algorithm from scikit-learn.</p>
+<p>TfIdf based vectorizer for log data. This is a wrapper class of the TF-IDF Vectorizer algorithm from scikit-learn.
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html">https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html</a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.vectorization_algo.TfIdf.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loglines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.vectorization_algo.TfIdf.fit" title="Permalink to this definition">¶</a></dt>
@@ -1184,7 +1213,8 @@ Each data instance should be a logline or sequence of loglines concatenated by s
 <dt class="sig sig-object py" id="logai.algorithms.vectorization_algo.Word2Vec">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.vectorization_algo.</span></span><span class="sig-name descname"><span class="pre">Word2Vec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.algorithms.vectorization_algo.word2vec.Word2VecParams" title="logai.algorithms.vectorization_algo.word2vec.Word2VecParams"><span class="pre">Word2VecParams</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.vectorization_algo.Word2Vec" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.algorithms.html#logai.algorithms.algo_interfaces.VectorizationAlgo" title="logai.algorithms.algo_interfaces.VectorizationAlgo"><code class="xref py py-class docutils literal notranslate"><span class="pre">VectorizationAlgo</span></code></a></p>
-<p>Wrap Word2Vec algorithm from gensim</p>
+<p>Word2Vec algorithm for converting raw log data into word2vec vectors. This is a wrapper class for the Word2Vec
+model from gensim library <a class="reference external" href="https://radimrehurek.com/gensim/models/word2vec.html">https://radimrehurek.com/gensim/models/word2vec.html</a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.vectorization_algo.Word2Vec.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loglines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.vectorization_algo.Word2Vec.fit" title="Permalink to this definition">¶</a></dt>

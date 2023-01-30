@@ -247,19 +247,22 @@
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.anomaly_detection_algo.anomaly_detector_het.</span></span><span class="sig-name descname"><span class="pre">HetAnomalyDetector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.algorithms.anomaly_detection_algo.anomaly_detector_het.HetAnomalyDetectionConfig" title="logai.algorithms.anomaly_detection_algo.anomaly_detector_het.HetAnomalyDetectionConfig"><span class="pre">HetAnomalyDetectionConfig</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.anomaly_detector_het.HetAnomalyDetector" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.analysis.html#logai.analysis.anomaly_detector.AnomalyDetector" title="logai.analysis.anomaly_detector.AnomalyDetector"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnomalyDetector</span></code></a></p>
 <p>Anomaly Detector Wrapper to handle heterogeneous log feature dataframe which include various attributes of log. For
-each attribute, we build its specific anomaly detector if the data satisfies the requirement.</p>
+each attribute, we build its specific anomaly detector if the data satisfies the requirement.
+This current version only supports anomaly detection on the constants.LOGLINE_COUNTS field (i.e. frequency count of the log events)</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.anomaly_detector_het.HetAnomalyDetector.fit_predict">
 <span class="sig-name descname"><span class="pre">fit_predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_feature</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.anomaly_detector_het.HetAnomalyDetector.fit_predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Train and predict anomaly scores</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>log_features</strong> – log feature dataframe must contain at least two columns
-[‘timestamp’: datetime, constants.LOGLINE_COUNTS: int].
-The rest of columns combinations are treated as log attribute ID</p>
+<dd class="field-odd"><p><strong>log_features</strong> – log feature dataframe must contain at least two columns</p>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>pandas.Dataframe</p>
+</dl>
+<p>[‘timestamp’: datetime, constants.LOGLINE_COUNTS: int].
+The rest of columns combinations are treated as log attribute ID</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Dataframe</p>
 </dd>
 </dl>
 </dd></dl>
@@ -270,12 +273,14 @@ The rest of columns combinations are treated as log attribute ID</p>
 <dd><p>Split raw log feature dataframe by unique attribute ID</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>counter_df</strong> – log feature dataframe must contain at least two columns
-[‘timestamp’: datetime, constants.LOGLINE_COUNTS: int].
-The rest of columns combinations are treated as log attribute ID</p>
+<dd class="field-odd"><p><strong>counter_df</strong> – log feature dataframe must contain at least two columns</p>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p></p>
+</dl>
+<p>[‘timestamp’: datetime, constants.LOGLINE_COUNTS: int].
+The rest of columns combinations are treated as log attribute ID</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p>
 </dd>
 </dl>
 </dd></dl>
@@ -292,16 +297,20 @@ The rest of columns combinations are treated as log attribute ID</p>
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.dbl.DBLDetector">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.anomaly_detection_algo.dbl.</span></span><span class="sig-name descname"><span class="pre">DBLDetector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.algorithms.anomaly_detection_algo.dbl.DBLDetectorParams" title="logai.algorithms.anomaly_detection_algo.dbl.DBLDetectorParams"><span class="pre">DBLDetectorParams</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.dbl.DBLDetector" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.algorithms.html#logai.algorithms.algo_interfaces.AnomalyDetectionAlgo" title="logai.algorithms.algo_interfaces.AnomalyDetectionAlgo"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnomalyDetectionAlgo</span></code></a></p>
+<p>Dynamic baseline based time series anomaly detection. This is a wrapper class for the Dynamic Baseline
+anomaly detection model from Merlion library
+<a class="reference external" href="https://opensource.salesforce.com/Merlion/v1.3.1/merlion.models.anomaly.html#module-merlion.models.anomaly.dbl">https://opensource.salesforce.com/Merlion/v1.3.1/merlion.models.anomaly.html#module-merlion.models.anomaly.dbl</a>
+Current implementation only supports anomaly detection on the constants.LOGLINE_COUNTS class (which maintains
+frequency counts of the log events )</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.dbl.DBLDetector.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.dbl.DBLDetector.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Train a DBL anomaly detector</p>
+<dd><p>Train method of the Dynamic Baseline model
+:param log_features: log feature dataframe must only contain two columns
+[‘timestamp’: datetime, constants.LOGLINE_COUNTS: int].</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>log_features</strong> – log feature dataframe must only contain two columns [‘timestamp’: datetime, ‘counts’: int].</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p></p>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p>
 </dd>
 </dl>
 </dd></dl>
@@ -326,7 +335,8 @@ The rest of columns combinations are treated as log attribute ID</p>
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.dbl.DBLDetectorParams">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.anomaly_detection_algo.dbl.</span></span><span class="sig-name descname"><span class="pre">DBLDetectorParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixed_period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wind_sz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'1h'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trends</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.dbl.DBLDetectorParams" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
-<p>Dynamic Baseline Parameters</p>
+<p>Dynamic Baseline Parameters. For more details on the paramaters see
+<a class="reference external" href="https://opensource.salesforce.com/Merlion/v1.3.1/merlion.models.anomaly.html#module-merlion.models.anomaly.dbl">https://opensource.salesforce.com/Merlion/v1.3.1/merlion.models.anomaly.html#module-merlion.models.anomaly.dbl</a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.dbl.DBLDetectorParams.fixed_period">
 <span class="sig-name descname"><span class="pre">fixed_period</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.dbl.DBLDetectorParams.fixed_period" title="Permalink to this definition">¶</a></dt>
@@ -366,19 +376,37 @@ The rest of columns combinations are treated as log attribute ID</p>
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.distribution_divergence.DistributionDivergence">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.anomaly_detection_algo.distribution_divergence.</span></span><span class="sig-name descname"><span class="pre">DistributionDivergence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.algorithms.anomaly_detection_algo.distribution_divergence.DistributionDivergenceParams" title="logai.algorithms.anomaly_detection_algo.distribution_divergence.DistributionDivergenceParams"><span class="pre">DistributionDivergenceParams</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.distribution_divergence.DistributionDivergence" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.algorithms.html#logai.algorithms.algo_interfaces.AnomalyDetectionAlgo" title="logai.algorithms.algo_interfaces.AnomalyDetectionAlgo"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnomalyDetectionAlgo</span></code></a></p>
+<p>Class for Distribution Divergene based Anomaly Detection. Both during training and testing, it takes log features
+as input and construct a parametric distribution over them. For the test data, it reports the distribution divergence
+with the training data as the anomaly score</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.distribution_divergence.DistributionDivergence.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.distribution_divergence.DistributionDivergence.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>K-L divergence model fitting. Learn the sample distribution of training data
-:return:</p>
+<dd><p>Fit method of the distribution divergence based anomaly detector. Since it is a non-parametric model,
+there is no training required</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>log_features</strong> (<em>pd.DataFrame</em>) – log features as a pandas DataFrame object</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.distribution_divergence.DistributionDivergence.predict">
-<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.distribution_divergence.DistributionDivergence.predict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute K-L divergence between training and testing samples. Return anomalous scores.
-:param log_features:
-:return:</p>
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.distribution_divergence.DistributionDivergence.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict method of distribution divergence based anomaly detector. It computes the distribution divergence
+between the training distribution and the test distribution provided in predict method</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>log_features</strong> (<em>pd.DataFrame</em>) – test distribution as pandas DataFrame object</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of scalar anomaly scores</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -387,6 +415,16 @@ The rest of columns combinations are treated as log attribute ID</p>
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.distribution_divergence.DistributionDivergenceParams">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.anomaly_detection_algo.distribution_divergence.</span></span><span class="sig-name descname"><span class="pre">DistributionDivergenceParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_bins</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['KL']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.distribution_divergence.DistributionDivergenceParams" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
+<p>parameters for distribution divergence based anomaly detector</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n_bins</strong> – number of bins to use to discretize the continuous distribution into a discrete distribution</p></li>
+<li><p><strong>type</strong> – list of types of distribution divergences. The allowed types are Kullback–Leibler (“KL”), Jensen–Shannon</p></li>
+<li><p><strong>like</strong> (<em>(</em><em>&quot;JS&quot;</em><em>)</em><em>. It also allows a comma separated list</em><em> of </em><em>metrics</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.distribution_divergence.DistributionDivergenceParams.n_bins">
 <span class="sig-name descname"><span class="pre">n_bins</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.distribution_divergence.DistributionDivergenceParams.n_bins" title="Permalink to this definition">¶</a></dt>
@@ -399,31 +437,6 @@ The rest of columns combinations are treated as log attribute ID</p>
 
 </dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.distribution_divergence.compute_probs">
-<span class="sig-prename descclassname"><span class="pre">logai.algorithms.anomaly_detection_algo.distribution_divergence.</span></span><span class="sig-name descname"><span class="pre">compute_probs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.distribution_divergence.compute_probs" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.distribution_divergence.get_probs">
-<span class="sig-prename descclassname"><span class="pre">logai.algorithms.anomaly_detection_algo.distribution_divergence.</span></span><span class="sig-name descname"><span class="pre">get_probs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_of_tuples</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.distribution_divergence.get_probs" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.distribution_divergence.js_divergence">
-<span class="sig-prename descclassname"><span class="pre">logai.algorithms.anomaly_detection_algo.distribution_divergence.</span></span><span class="sig-name descname"><span class="pre">js_divergence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.distribution_divergence.js_divergence" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.distribution_divergence.kl_divergence">
-<span class="sig-prename descclassname"><span class="pre">logai.algorithms.anomaly_detection_algo.distribution_divergence.</span></span><span class="sig-name descname"><span class="pre">kl_divergence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.distribution_divergence.kl_divergence" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.distribution_divergence.support_intersection">
-<span class="sig-prename descclassname"><span class="pre">logai.algorithms.anomaly_detection_algo.distribution_divergence.</span></span><span class="sig-name descname"><span class="pre">support_intersection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.distribution_divergence.support_intersection" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </section>
 <section id="module-logai.algorithms.anomaly_detection_algo.ets">
 <span id="logai-algorithms-anomaly-detection-algo-ets-module"></span><h2>logai.algorithms.anomaly_detection_algo.ets module<a class="headerlink" href="#module-logai.algorithms.anomaly_detection_algo.ets" title="Permalink to this heading">¶</a></h2>
@@ -431,22 +444,22 @@ The rest of columns combinations are treated as log attribute ID</p>
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.ets.ETSDetector">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.anomaly_detection_algo.ets.</span></span><span class="sig-name descname"><span class="pre">ETSDetector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.algorithms.anomaly_detection_algo.ets.ETSDetectorParams" title="logai.algorithms.anomaly_detection_algo.ets.ETSDetectorParams"><span class="pre">ETSDetectorParams</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.ets.ETSDetector" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.algorithms.html#logai.algorithms.algo_interfaces.AnomalyDetectionAlgo" title="logai.algorithms.algo_interfaces.AnomalyDetectionAlgo"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnomalyDetectionAlgo</span></code></a></p>
-<p>ETS Anomaly Detector</p>
+<p>ETS Anomaly Detector. This is a wrapper for the ETS based Anomaly Detector from Merlion library
+<a class="reference external" href="https://opensource.salesforce.com/Merlion/v1.0.2/merlion.models.forecast.html#module-merlion.models.forecast.ets">https://opensource.salesforce.com/Merlion/v1.0.2/merlion.models.forecast.html#module-merlion.models.forecast.ets</a>
+This current version only supports anomaly detection of the constants.LOGLINE_COUNTS (i.e. frequency count of log events)</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.ets.ETSDetector.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.ets.ETSDetector.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Train an ETS anomaly detector</p>
+<dd><p>Fit method to train ETS Anomaly Detector</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>log_features</strong> – log feature dataframe must only contain two columns
-[‘timestamp’: datetime, constants.LOGLINE_COUNTS: int].</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>train_scores: anomaly scores dataframe
-[‘index’:log_features.index, ‘timestamps’: datetime, ‘anom_score’: scores, ‘trainval’:
-whether it is training set.</p>
+<dd class="field-odd"><p><strong>log_features</strong> – log feature dataframe must only contain two columns</p>
 </dd>
 </dl>
+<p>[‘timestamp’: datetime, constants.LOGLINE_COUNTS: int].
+:return: train_scores: anomaly scores dataframe
+[‘index’:log_features.index, ‘timestamps’: datetime, ‘anom_score’: scores, ‘trainval’:
+whether it is training set.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -455,15 +468,13 @@ whether it is training set.</p>
 <dd><p>Predict anomaly scores for log_feature[“timestamp”, constants.LOGLINE_COUNTS]</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>log_features</strong> – log feature dataframe must only contain two columns
-[‘timestamp’: datetime, constants.LOGLINE_COUNTS: int].</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>test_scores: anomaly scores dataframe
-[‘index’:log_features.index, ‘timestamps’: datetime, ‘anom_score’: scores, ‘trainval’:
-whether it is training set.</p>
+<dd class="field-odd"><p><strong>log_features</strong> – log feature dataframe must only contain two columns</p>
 </dd>
 </dl>
+<p>[‘timestamp’: datetime, constants.LOGLINE_COUNTS: int].
+:return: test_scores: anomaly scores dataframe
+[‘index’:log_features.index, ‘timestamps’: datetime, ‘anom_score’: scores, ‘trainval’:
+whether it is training set.</p>
 </dd></dl>
 
 </dd></dl>
@@ -472,7 +483,8 @@ whether it is training set.</p>
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.ets.ETSDetectorParams">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.anomaly_detection_algo.ets.</span></span><span class="sig-name descname"><span class="pre">ETSDetectorParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_forecast_steps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_seq_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'add'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trend</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'add'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">damped_trend</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seasonal</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'add'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seasonal_periods</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.ets.ETSDetectorParams" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
-<p>ETS Anomaly Detector Parameters</p>
+<p>ETS Anomaly Detector Parameters. For more details of ETS parameters see
+<a class="reference external" href="https://opensource.salesforce.com/Merlion/v1.0.2/merlion.models.forecast.html#module-merlion.models.forecast.ets">https://opensource.salesforce.com/Merlion/v1.0.2/merlion.models.forecast.html#module-merlion.models.forecast.ets</a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.ets.ETSDetectorParams.damped_trend">
 <span class="sig-name descname"><span class="pre">damped_trend</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.ets.ETSDetectorParams.damped_trend" title="Permalink to this definition">¶</a></dt>
@@ -527,9 +539,9 @@ whether it is training set.</p>
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.forecast_nn.ForcastBasedNeuralAD">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.anomaly_detection_algo.forecast_nn.</span></span><span class="sig-name descname"><span class="pre">ForcastBasedNeuralAD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ForecastBasedNNParams</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.forecast_nn.ForcastBasedNeuralAD" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.algorithms.html#logai.algorithms.algo_interfaces.NNAnomalyDetectionAlgo" title="logai.algorithms.algo_interfaces.NNAnomalyDetectionAlgo"><code class="xref py py-class docutils literal notranslate"><span class="pre">NNAnomalyDetectionAlgo</span></code></a></p>
+<p>Forcasting based neural anomaly detection models taken from the deep-loglizer paper
+(<a class="reference external" href="https://arxiv.org/pdf/2107.05908.pdf">https://arxiv.org/pdf/2107.05908.pdf</a>)</p>
 <dl class="simple">
-<dt>Forcasting based neural anomaly detection models taken from the deep-loglizer paper</dt><dd><p>(<a class="reference external" href="https://arxiv.org/pdf/2107.05908.pdf">https://arxiv.org/pdf/2107.05908.pdf</a>)</p>
-</dd>
 <dt>Inherits:</dt><dd><p>NNAnomalyDetectionAlgo : interface of neural anomaly detection algorithms</p>
 </dd>
 </dl>
@@ -540,10 +552,14 @@ whether it is training set.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>train_data</strong> (<a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizedDataset" title="logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizedDataset"><em>ForecastNNVectorizedDataset</em></a>) – training dataset of type ForecastNNVectorizedDataset
-(consisting of session_idx, features, window_anomalies and window_labels)</p></li>
-<li><p><strong>dev_data</strong> (<a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizedDataset" title="logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizedDataset"><em>ForecastNNVectorizedDataset</em></a>) – development dataset of type ForecastNNVectorizedDataset
-(consisting of session_idx, features, window_anomalies and window_labels)</p></li>
+<li><p><strong>train_data</strong> (<a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizedDataset" title="logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizedDataset"><em>ForecastNNVectorizedDataset</em></a>) – training dataset of type ForecastNNVectorizedDataset</p></li>
+<li><p><strong>session_idx</strong> (<em>(</em><em>consisting of</em>) – </p></li>
+<li><p><strong>features</strong> – </p></li>
+<li><p><strong>window_labels</strong><strong>)</strong> (<em>window_anomalies and</em>) – </p></li>
+<li><p><strong>dev_data</strong> (<a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizedDataset" title="logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizedDataset"><em>ForecastNNVectorizedDataset</em></a>) – development dataset of type ForecastNNVectorizedDataset</p></li>
+<li><p><strong>session_idx</strong> – </p></li>
+<li><p><strong>features</strong> – </p></li>
+<li><p><strong>window_labels</strong><strong>)</strong> – </p></li>
 </ul>
 </dd>
 </dl>
@@ -555,8 +571,12 @@ whether it is training set.</p>
 <dd><p>predict method to run inference of forecasting based neural anomaly detection model on test dataset</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>test_data</strong> (<a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizedDataset" title="logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizedDataset"><em>ForecastNNVectorizedDataset</em></a>) – test dataset of type ForecastNNVectorizedDataset
-(consisting of session_idx, features, window_anomalies and window_labels)</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>test_data</strong> (<a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizedDataset" title="logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizedDataset"><em>ForecastNNVectorizedDataset</em></a>) – test dataset of type ForecastNNVectorizedDataset</p></li>
+<li><p><strong>session_idx</strong> (<em>(</em><em>consisting of</em>) – </p></li>
+<li><p><strong>features</strong> – </p></li>
+<li><p><strong>window_labels</strong><strong>)</strong> (<em>window_anomalies and</em>) – </p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>dict containing overall evaluation results</p>
@@ -609,6 +629,7 @@ whether it is training set.</p>
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.isolation_forest.IsolationForestDetector">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.anomaly_detection_algo.isolation_forest.</span></span><span class="sig-name descname"><span class="pre">IsolationForestDetector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.algorithms.anomaly_detection_algo.isolation_forest.IsolationForestParams" title="logai.algorithms.anomaly_detection_algo.isolation_forest.IsolationForestParams"><span class="pre">IsolationForestParams</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.isolation_forest.IsolationForestDetector" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.algorithms.html#logai.algorithms.algo_interfaces.AnomalyDetectionAlgo" title="logai.algorithms.algo_interfaces.AnomalyDetectionAlgo"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnomalyDetectionAlgo</span></code></a></p>
+<p>Isolation Forest based Anomaly Detector. This is a wrapper for the Isolation forest in scikit-learn library.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.isolation_forest.IsolationForestDetector.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.isolation_forest.IsolationForestDetector.fit" title="Permalink to this definition">¶</a></dt>
@@ -631,6 +652,8 @@ whether it is training set.</p>
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.isolation_forest.IsolationForestParams">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.anomaly_detection_algo.isolation_forest.</span></span><span class="sig-name descname"><span class="pre">IsolationForestParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_estimators</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_samples</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contamination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bootstrap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">warm_start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.isolation_forest.IsolationForestParams" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
+<p>Parameters for isolation forest based anomaly detection. For more explanation of the parameters see the documentation page
+in <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html">https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html</a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.isolation_forest.IsolationForestParams.bootstrap">
 <span class="sig-name descname"><span class="pre">bootstrap</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.isolation_forest.IsolationForestParams.bootstrap" title="Permalink to this definition">¶</a></dt>
@@ -685,6 +708,8 @@ whether it is training set.</p>
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.local_outlier_factor.LOFDetector">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.anomaly_detection_algo.local_outlier_factor.</span></span><span class="sig-name descname"><span class="pre">LOFDetector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.algorithms.anomaly_detection_algo.local_outlier_factor.LOFParams" title="logai.algorithms.anomaly_detection_algo.local_outlier_factor.LOFParams"><span class="pre">LOFParams</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.local_outlier_factor.LOFDetector" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.algorithms.html#logai.algorithms.algo_interfaces.AnomalyDetectionAlgo" title="logai.algorithms.algo_interfaces.AnomalyDetectionAlgo"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnomalyDetectionAlgo</span></code></a></p>
+<p>Locality Outlier Factor based Anomaly Detector. This is a wrapper method for the LOF based Detector in scikit-learn library
+See <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.LocalOutlierFactor.html">https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.LocalOutlierFactor.html</a> for more details</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.local_outlier_factor.LOFDetector.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.local_outlier_factor.LOFDetector.fit" title="Permalink to this definition">¶</a></dt>
@@ -707,6 +732,8 @@ whether it is training set.</p>
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.local_outlier_factor.LOFParams">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.anomaly_detection_algo.local_outlier_factor.</span></span><span class="sig-name descname"><span class="pre">LOFParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algorithm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leaf_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'minkowski'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contamination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">novelty</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.local_outlier_factor.LOFParams" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
+<p>Parameters of Locality Outlier Factors based Anomaly Detector
+For more explanations of the parameters see <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.LocalOutlierFactor.html">https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.LocalOutlierFactor.html</a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.local_outlier_factor.LOFParams.algorithm">
 <span class="sig-name descname"><span class="pre">algorithm</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.local_outlier_factor.LOFParams.algorithm" title="Permalink to this definition">¶</a></dt>
@@ -790,11 +817,8 @@ whether it is training set.</p>
 <dd class="field-odd"><p><strong>test_data</strong> (<em>HFDataset</em>) – test dataset of type huggingface Dataset object</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><dl class="simple">
-<dt>pandas dataframe object containing the evaluation results</dt><dd><p>for each type of metric</p>
-</dd>
-</dl>
-</p>
+<dd class="field-even"><p>pandas dataframe object containing the evaluation results
+for each type of metric</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pd.DataFrame</p>
@@ -814,27 +838,17 @@ whether it is training set.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.one_class_svm.OneClassSVMDetector.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.one_class_svm.OneClassSVMDetector.fit" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>log_features</strong> – </p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p></p>
-</dd>
-</dl>
+<dd><p>Fit method to train the OneClassSVM on log data
+:param log_features: training log features as pandas DataFrame object
+:return:</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.one_class_svm.OneClassSVMDetector.predict">
 <span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.one_class_svm.OneClassSVMDetector.predict" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>log_features</strong> – </p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p></p>
-</dd>
-</dl>
+<dd><p>Predict method to detect anomalies using OneClassSVM model on test log data
+:param log_features: test log features data as pandas DataFrame object
+:return: pandas Series of anomaly scores</p>
 </dd></dl>
 
 </dd></dl>
@@ -843,6 +857,8 @@ whether it is training set.</p>
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.one_class_svm.OneClassSVMParams">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.anomaly_detection_algo.one_class_svm.</span></span><span class="sig-name descname"><span class="pre">OneClassSVMParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coef0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shrinking</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.one_class_svm.OneClassSVMParams" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
+<p>Parameters for OneClass SVM based Anomaly Detector. For more explanations about the parameters see
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html">https://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html</a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.one_class_svm.OneClassSVMParams.cache_size">
 <span class="sig-name descname"><span class="pre">cache_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.one_class_svm.OneClassSVMParams.cache_size" title="Permalink to this definition">¶</a></dt>
@@ -900,16 +916,20 @@ whether it is training set.</p>
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.DBLDetector">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.anomaly_detection_algo.</span></span><span class="sig-name descname"><span class="pre">DBLDetector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.algorithms.anomaly_detection_algo.dbl.DBLDetectorParams" title="logai.algorithms.anomaly_detection_algo.dbl.DBLDetectorParams"><span class="pre">DBLDetectorParams</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.DBLDetector" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.algorithms.html#logai.algorithms.algo_interfaces.AnomalyDetectionAlgo" title="logai.algorithms.algo_interfaces.AnomalyDetectionAlgo"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnomalyDetectionAlgo</span></code></a></p>
+<p>Dynamic baseline based time series anomaly detection. This is a wrapper class for the Dynamic Baseline
+anomaly detection model from Merlion library
+<a class="reference external" href="https://opensource.salesforce.com/Merlion/v1.3.1/merlion.models.anomaly.html#module-merlion.models.anomaly.dbl">https://opensource.salesforce.com/Merlion/v1.3.1/merlion.models.anomaly.html#module-merlion.models.anomaly.dbl</a>
+Current implementation only supports anomaly detection on the constants.LOGLINE_COUNTS class (which maintains
+frequency counts of the log events )</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.DBLDetector.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.DBLDetector.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Train a DBL anomaly detector</p>
+<dd><p>Train method of the Dynamic Baseline model
+:param log_features: log feature dataframe must only contain two columns
+[‘timestamp’: datetime, constants.LOGLINE_COUNTS: int].</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>log_features</strong> – log feature dataframe must only contain two columns [‘timestamp’: datetime, ‘counts’: int].</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p></p>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p>
 </dd>
 </dl>
 </dd></dl>
@@ -934,19 +954,37 @@ whether it is training set.</p>
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.DistributionDivergence">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.anomaly_detection_algo.</span></span><span class="sig-name descname"><span class="pre">DistributionDivergence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.algorithms.anomaly_detection_algo.distribution_divergence.DistributionDivergenceParams" title="logai.algorithms.anomaly_detection_algo.distribution_divergence.DistributionDivergenceParams"><span class="pre">DistributionDivergenceParams</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.DistributionDivergence" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.algorithms.html#logai.algorithms.algo_interfaces.AnomalyDetectionAlgo" title="logai.algorithms.algo_interfaces.AnomalyDetectionAlgo"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnomalyDetectionAlgo</span></code></a></p>
+<p>Class for Distribution Divergene based Anomaly Detection. Both during training and testing, it takes log features
+as input and construct a parametric distribution over them. For the test data, it reports the distribution divergence
+with the training data as the anomaly score</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.DistributionDivergence.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.DistributionDivergence.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>K-L divergence model fitting. Learn the sample distribution of training data
-:return:</p>
+<dd><p>Fit method of the distribution divergence based anomaly detector. Since it is a non-parametric model,
+there is no training required</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>log_features</strong> (<em>pd.DataFrame</em>) – log features as a pandas DataFrame object</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.DistributionDivergence.predict">
-<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.DistributionDivergence.predict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute K-L divergence between training and testing samples. Return anomalous scores.
-:param log_features:
-:return:</p>
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.DistributionDivergence.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict method of distribution divergence based anomaly detector. It computes the distribution divergence
+between the training distribution and the test distribution provided in predict method</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>log_features</strong> (<em>pd.DataFrame</em>) – test distribution as pandas DataFrame object</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of scalar anomaly scores</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -955,22 +993,22 @@ whether it is training set.</p>
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.ETSDetector">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.anomaly_detection_algo.</span></span><span class="sig-name descname"><span class="pre">ETSDetector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.algorithms.anomaly_detection_algo.ets.ETSDetectorParams" title="logai.algorithms.anomaly_detection_algo.ets.ETSDetectorParams"><span class="pre">ETSDetectorParams</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.ETSDetector" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.algorithms.html#logai.algorithms.algo_interfaces.AnomalyDetectionAlgo" title="logai.algorithms.algo_interfaces.AnomalyDetectionAlgo"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnomalyDetectionAlgo</span></code></a></p>
-<p>ETS Anomaly Detector</p>
+<p>ETS Anomaly Detector. This is a wrapper for the ETS based Anomaly Detector from Merlion library
+<a class="reference external" href="https://opensource.salesforce.com/Merlion/v1.0.2/merlion.models.forecast.html#module-merlion.models.forecast.ets">https://opensource.salesforce.com/Merlion/v1.0.2/merlion.models.forecast.html#module-merlion.models.forecast.ets</a>
+This current version only supports anomaly detection of the constants.LOGLINE_COUNTS (i.e. frequency count of log events)</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.ETSDetector.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.ETSDetector.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Train an ETS anomaly detector</p>
+<dd><p>Fit method to train ETS Anomaly Detector</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>log_features</strong> – log feature dataframe must only contain two columns
-[‘timestamp’: datetime, constants.LOGLINE_COUNTS: int].</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>train_scores: anomaly scores dataframe
-[‘index’:log_features.index, ‘timestamps’: datetime, ‘anom_score’: scores, ‘trainval’:
-whether it is training set.</p>
+<dd class="field-odd"><p><strong>log_features</strong> – log feature dataframe must only contain two columns</p>
 </dd>
 </dl>
+<p>[‘timestamp’: datetime, constants.LOGLINE_COUNTS: int].
+:return: train_scores: anomaly scores dataframe
+[‘index’:log_features.index, ‘timestamps’: datetime, ‘anom_score’: scores, ‘trainval’:
+whether it is training set.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -979,15 +1017,13 @@ whether it is training set.</p>
 <dd><p>Predict anomaly scores for log_feature[“timestamp”, constants.LOGLINE_COUNTS]</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>log_features</strong> – log feature dataframe must only contain two columns
-[‘timestamp’: datetime, constants.LOGLINE_COUNTS: int].</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>test_scores: anomaly scores dataframe
-[‘index’:log_features.index, ‘timestamps’: datetime, ‘anom_score’: scores, ‘trainval’:
-whether it is training set.</p>
+<dd class="field-odd"><p><strong>log_features</strong> – log feature dataframe must only contain two columns</p>
 </dd>
 </dl>
+<p>[‘timestamp’: datetime, constants.LOGLINE_COUNTS: int].
+:return: test_scores: anomaly scores dataframe
+[‘index’:log_features.index, ‘timestamps’: datetime, ‘anom_score’: scores, ‘trainval’:
+whether it is training set.</p>
 </dd></dl>
 
 </dd></dl>
@@ -1029,6 +1065,7 @@ whether it is training set.</p>
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.IsolationForestDetector">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.anomaly_detection_algo.</span></span><span class="sig-name descname"><span class="pre">IsolationForestDetector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.algorithms.anomaly_detection_algo.isolation_forest.IsolationForestParams" title="logai.algorithms.anomaly_detection_algo.isolation_forest.IsolationForestParams"><span class="pre">IsolationForestParams</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.IsolationForestDetector" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.algorithms.html#logai.algorithms.algo_interfaces.AnomalyDetectionAlgo" title="logai.algorithms.algo_interfaces.AnomalyDetectionAlgo"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnomalyDetectionAlgo</span></code></a></p>
+<p>Isolation Forest based Anomaly Detector. This is a wrapper for the Isolation forest in scikit-learn library.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.IsolationForestDetector.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.IsolationForestDetector.fit" title="Permalink to this definition">¶</a></dt>
@@ -1051,6 +1088,8 @@ whether it is training set.</p>
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.LOFDetector">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.anomaly_detection_algo.</span></span><span class="sig-name descname"><span class="pre">LOFDetector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.algorithms.anomaly_detection_algo.local_outlier_factor.LOFParams" title="logai.algorithms.anomaly_detection_algo.local_outlier_factor.LOFParams"><span class="pre">LOFParams</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.LOFDetector" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.algorithms.html#logai.algorithms.algo_interfaces.AnomalyDetectionAlgo" title="logai.algorithms.algo_interfaces.AnomalyDetectionAlgo"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnomalyDetectionAlgo</span></code></a></p>
+<p>Locality Outlier Factor based Anomaly Detector. This is a wrapper method for the LOF based Detector in scikit-learn library
+See <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.LocalOutlierFactor.html">https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.LocalOutlierFactor.html</a> for more details</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.LOFDetector.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.LOFDetector.fit" title="Permalink to this definition">¶</a></dt>
@@ -1102,11 +1141,8 @@ whether it is training set.</p>
 <dd class="field-odd"><p><strong>test_data</strong> (<em>HFDataset</em>) – test dataset of type huggingface Dataset object</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><dl class="simple">
-<dt>pandas dataframe object containing the evaluation results</dt><dd><p>for each type of metric</p>
-</dd>
-</dl>
-</p>
+<dd class="field-even"><p>pandas dataframe object containing the evaluation results
+for each type of metric</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pd.DataFrame</p>
@@ -1123,27 +1159,17 @@ whether it is training set.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.OneClassSVMDetector.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.OneClassSVMDetector.fit" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>log_features</strong> – </p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p></p>
-</dd>
-</dl>
+<dd><p>Fit method to train the OneClassSVM on log data
+:param log_features: training log features as pandas DataFrame object
+:return:</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.anomaly_detection_algo.OneClassSVMDetector.predict">
 <span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#logai.algorithms.anomaly_detection_algo.OneClassSVMDetector.predict" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>log_features</strong> – </p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p></p>
-</dd>
-</dl>
+<dd><p>Predict method to detect anomalies using OneClassSVM model on test log data
+:param log_features: test log features data as pandas DataFrame object
+:return: pandas Series of anomaly scores</p>
 </dd></dl>
 
 </dd></dl>
