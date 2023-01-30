@@ -370,7 +370,7 @@ paper corresponding to those configurations.
         </tr>
         <tr>
             <td rowspan=4>Supervised</td>
-            <td rowspan=2>heavy_check_mark:</td>
+            <td rowspan=2>:heavy_check_mark:</td>
             <td>sequential</td>
             <td>0.934</td>
             <td>-</td>
