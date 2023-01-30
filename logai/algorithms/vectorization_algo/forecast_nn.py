@@ -60,6 +60,7 @@ class ForecastNNVectorizerParams(Config):
         Config : config interface
 
     feature_type: str = None # type of log feature representation where the supported types "semantics" and "sequential"
+
     label_type: str = None # type of label, anomaly or next_log, which corresponds to the supervised and the forecasting
     based unsupervised setting
     sep_token: str = "[SEP]" # separator token used when constructing the log sequences during log grouping/partitioning
@@ -72,6 +73,7 @@ class ForecastNNVectorizerParams(Config):
     vectorizer_metadata_filepath: str = "" # path to file where the vectorizer metadata would be saved. This would be
     read by the anomaly detection model and should be set in the metadata_filepath of the forecast_nn based
     anomaly detector
+
     vectorizer_model_dirpath: str = "" # path to directory containing the vectorizer model
 
     """

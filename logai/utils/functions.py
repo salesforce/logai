@@ -81,6 +81,7 @@ def get_parameter_list(row):
 def pd_to_timeseries(log_features: pd.Series):
     """
     Covert pandas.DataFrame to merlion.TimeSeries for log counter vectors
+
     :param log_features: log feature dataframe must only contain two columns
     ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
     :return: merlion.TimeSeries type.

@@ -86,10 +86,12 @@ class FeatureExtractor:
         timestamps: pd.Series = None,
     ) -> pd.DataFrame:
         """
+
         Convert logs to log counter vector, after grouping log data based on the FeatureExtractor config. 
         
 
         :param log_pattern: pd.Series: unstructured part of the log data 
+
         :param attributes: pd.Dataframe: log attributes
         :param timestamps: pd.Series: timestamps
 
@@ -116,6 +118,7 @@ class FeatureExtractor:
         timestamps: pd.Series,
     ) -> pd.DataFrame:
         """
+
         Converting log data into feature vector, by combining the log vectors (can be output
         of LogVectorizer) with other numerical or categorical attributes of the logs,
         after grouping based on the FeatureExtractorConfig  
@@ -134,6 +137,7 @@ class FeatureExtractor:
             "event_index" field which maintains the sequence of log event ids where these ids correspond to the 
             original input dataframe's indices.  
             block_list: pd.DataFrame
+
         """
         # if log_vectors.empty:
         #     raise TypeError("Log vector must be not NULL to generate feature vector")

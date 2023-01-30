@@ -20,6 +20,7 @@ def split_train_dev_test_for_anomaly_detection(
     shuffle=False,
 ):
     """Util method to split a logrecord object into train dev and test splits, where the splitting
+
     and the fractions are based on the SPAN_ID field of the logrecord.
     
     Args:
@@ -32,6 +33,7 @@ def split_train_dev_test_for_anomaly_detection(
             then it uses the chronological ordering, where the first (chronologically first) split will constitute train data, 
             second one development data and third one as test data. Defaults to False.
             
+
     Returns:
         logrecord_train: logrecord object containing train data
         logrecord_dev: logrecord object containing dev data
