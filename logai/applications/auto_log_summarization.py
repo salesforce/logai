@@ -23,13 +23,12 @@ class AutoLogSummarization:
     The unified framework for log parsing analysis.
     How to use, the design of this analysis app should follow the general workflow of
     automated log parsing. The workflow should be able to control solely by `WorkFlowConfig`
+
+    :param config: WorkFlowConfig: the configuratiion that controls the behavior this app
     """
 
     def __init__(self, config: WorkFlowConfig):
-        """
-
-        :param config: WorkFlowConfig: the configuratiion that controls the behavior this app
-        """
+        
         self.config = config
         self._parsing_results = pd.DataFrame()
         self._attributes = None
@@ -53,6 +52,7 @@ class AutoLogSummarization:
     def get_parameter_list(self, log_pattern):
         """
         For a given log pattern, return the dynamic parameters
+        
         :param log_pattern: str: input log pattern
         :return: pd.DataFrame: parameter list with Values, valuecounts and position
         """
@@ -79,6 +79,7 @@ class AutoLogSummarization:
     def recognize_parameter_entity(self, para_list):
         """
         Placeholder for log parameter entity recognization
+        
         :param para_list:
         :return:
         """
@@ -87,6 +88,7 @@ class AutoLogSummarization:
     def summarize_numeric_paramters(self, paras: list):
         """
         Placeholder for numeric parameter summarization
+        
         :param para_list:
         :return:
         """
@@ -96,6 +98,7 @@ class AutoLogSummarization:
     def find_log_pattern(self, logline: str, return_para_list: bool = True):
         """
         Find the log pattern for a given logline, return all dynamic parameters in this log pattern if needed.
+        
         :param logline:
         :param return_para_list:
         :return:
@@ -124,6 +127,7 @@ class AutoLogSummarization:
     def execute(self):
         """
         Execute auto log parsing analysis. Store the results and index for searching.
+        
         :return:
         """
         # load data

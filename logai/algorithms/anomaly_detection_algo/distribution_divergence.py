@@ -35,10 +35,8 @@ def _js_divergence(p, q):
 class DistributionDivergenceParams(Config):
     """parameters for distribution divergence based anomaly detector
 
-    Args:
-        n_bins: number of bins to use to discretize the continuous distribution into a discrete distribution
-        type: list of types of distribution divergences. The allowed types are Kullback–Leibler ("KL"), Jensen–Shannon
-        ("JS"). It also allows a comma separated list of metrics like ("KL,JS" or "JS,KL"). 
+    :param n_bins: number of bins to use to discretize the continuous distribution into a discrete distribution
+    :param type: list of types of distribution divergences. The allowed types are Kullback–Leibler ("KL"), Jensen–Shannon ("JS"). It also allows a comma separated list of metrics like ("KL,JS" or "JS,KL"). 
     """
     n_bins: int = 100
     type: list = ["KL"]  # "KL", "JS", "KL,JS"
@@ -60,9 +58,8 @@ class DistributionDivergence(AnomalyDetectionAlgo):
     def fit(self, log_features: pd.DataFrame):
         """Fit method of the distribution divergence based anomaly detector. Since it is a non-parametric model, 
         there is no training required
-
-        Args:
-            log_features (pd.DataFrame): log features as a pandas DataFrame object
+        
+        :param log_features: (pd.DataFrame): log features as a pandas DataFrame object
         """
         self.train_sample = np.array(log_features)
 
@@ -70,11 +67,8 @@ class DistributionDivergence(AnomalyDetectionAlgo):
         """Predict method of distribution divergence based anomaly detector. It computes the distribution divergence
         between the training distribution and the test distribution provided in predict method
 
-        Args:
-            log_features (pd.DataFrame): test distribution as pandas DataFrame object
-
-        Returns:
-            list: list of scalar anomaly scores
+        :param log_features: (pd.DataFrame): test distribution as pandas DataFrame object
+        :return: list: list of scalar anomaly scores
         """
 
         log_features = np.array(log_features)

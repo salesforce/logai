@@ -32,11 +32,10 @@ class ForecastNNVectorizedDataset:
     def __init__(self, logline_features, labels, nextlogline_ids, span_ids):
         """initializing object for ForecastNNVectorizedDataset
 
-        Args:
-            logline_features (np.array): list of vectorized log-sequences
-            labels (list or pd.Series or np.array): list of labels (anomalous or non-anomalous) for each log sequence.
-            nextlogline_ids (list or pd.Series or np.array): list of ids of next loglines, for each log sequence
-            span_ids (list or pd.Series or np.array): list of ids of log sequences.
+        :param logline_features: (np.array): list of vectorized log-sequences
+        :param labels: (list or pd.Series or np.array): list of labels (anomalous or non-anomalous) for each log sequence.
+        :param nextlogline_ids: (list or pd.Series or np.array): list of ids of next loglines, for each log sequence
+        :param span_ids: (list or pd.Series or np.array): list of ids of log sequences.
         """
         self.dataset = []
         for data_i, label_i, next_i, index_i in zip(
@@ -55,27 +54,16 @@ class ForecastNNVectorizedDataset:
 @dataclass
 class ForecastNNVectorizerParams(Config):
     """Config class for vectorizer for forecast based neural models for log representation learning
-
-    Inherits:
-        Config : config interface
-
-    feature_type: str = None # type of log feature representation where the supported types "semantics" and "sequential"
-
-    label_type: str = None # type of label, anomaly or next_log, which corresponds to the supervised and the forecasting
-    based unsupervised setting
-    sep_token: str = "[SEP]" # separator token used when constructing the log sequences during log grouping/partitioning
-    max_token_len: int = None # maximum token length of the input
-    min_token_count: int = None # minimum number of occurrences of a token in the training data, for it to be considered
-    in the vocab
-    embedding_dim: int = None # embedding dimension of the tokens
-    output_dir: str = "" # path to output directory where the vectorizer model directory and metadata file would be
-    created
-    vectorizer_metadata_filepath: str = "" # path to file where the vectorizer metadata would be saved. This would be
-    read by the anomaly detection model and should be set in the metadata_filepath of the forecast_nn based
-    anomaly detector
-
-    vectorizer_model_dirpath: str = "" # path to directory containing the vectorizer model
-
+    
+    :param feature_type: str = None : type of log feature representation where the supported types "semantics" and "sequential"
+    :param label_type: str = None : type of label, anomaly or next_log, which corresponds to the supervised and the forecasting based unsupervised setting
+    :param sep_token: str = "[SEP]" : separator token used when constructing the log sequences during log grouping/partitioning
+    :param max_token_len: int = None : maximum token length of the input
+    :param min_token_count: int = None : minimum number of occurrences of a token in the training data, for it to be considered in the vocab
+    :param embedding_dim: int = None : embedding dimension of the tokens
+    :param output_dir: str = "" : path to output directory where the vectorizer model directory and metadata file would be created
+    :param vectorizer_metadata_filepath: str = "" : path to file where the vectorizer metadata would be saved. This would be read by the anomaly detection model and should be set in the metadata_filepath of the forecast_nn based anomaly detector
+    :param vectorizer_model_dirpath: str = "" : path to directory containing the vectorizer model
     """
 
     feature_type: str = None  # supported types "semantics" and "sequential"
@@ -94,15 +82,12 @@ class ForecastNNVectorizerParams(Config):
 
 @factory.register("vectorization", "forecast_nn", ForecastNNVectorizerParams)
 class ForecastNN(VectorizationAlgo):
-    """Vectorizer Class for forecast based neural models for log representation learning"""
+    """Vectorizer Class for forecast based neural models for log representation learning
+    
+    :param config: (ForecastNNVectorizerParams): config object specifying parameters of forecast based neural log repersentation learning model
+    """
 
     def __init__(self, config: ForecastNNVectorizerParams):
-        """initializing vectorizer object for forecast based neural model
-
-        Args:
-            config (ForecastNNVectorizerParams): config object specifying parameters
-             of forecast based neural log repersentation learning model
-        """
         self.meta_data = {}
         self.config = config
         self.config.vectorizer_model_dirpath = os.path.join(
@@ -153,8 +138,7 @@ class ForecastNN(VectorizationAlgo):
     def fit(self, logrecord: LogRecordObject):
         """fit method to train vectorizer
 
-        Args:
-            logrecord (LogRecordObject): logrecord object to train the vectorizer on
+        :param logrecord: (LogRecordObject): logrecord object to train the vectorizer on
         """
         if self.sequential_vectorizer.vocab is None or (
             self.config.feature_type == "semantics"
@@ -180,12 +164,8 @@ class ForecastNN(VectorizationAlgo):
     def transform(self, logrecord: LogRecordObject):
         """transform method to run vectorizer on logrecord object
 
-        Args:
-            logrecord (LogRecordObject): logrecord object to be vectorized
-
-        Returns:
-            ForecastNNVectorizedDataset: ForecastNNVectorizedDataset object
-             containing the vectorized dataset
+        :param logrecord: (LogRecordObject): logrecord object to be vectorized
+        :return:ForecastNNVectorizedDataset: ForecastNNVectorizedDataset object containing the vectorized dataset
         """
         if self.config.feature_type == "sequential":
             logline_features = self.sequential_vectorizer.transform(

@@ -14,9 +14,6 @@ from logai.utils import constants
 
 class ThunderbirdPreprocessor(OpenSetPreprocessor):
     """Custom Preprocessor for Open log dataset Thunderbird
-
-    Inherits:
-        OpenSetPreprocessor: log preprocessor class for open log datasets
     """
 
     def __init__(self, config: PreprocessorConfig):
@@ -25,21 +22,15 @@ class ThunderbirdPreprocessor(OpenSetPreprocessor):
     def _get_ids(self, logrecord: LogRecordObject) -> pd.Series:
         """get ids of loglines
 
-        Args:
-            logrecord (LogRecordObject): logrecord object
-
-        Returns:
-            pd.Series: pandas series containing the ids of te loglines
+        :param logrecord: (LogRecordObject): logrecord object
+        :return: pd.Series: pandas series containing the ids of te loglines
         """
         return logrecord.span_id[constants.SPAN_ID]
 
     def _get_labels(self, logrecord: LogRecordObject):
         """get anomaly detection labels of loglines
-
-        Args:
-            logrecord (LogRecordObject):  logrecord object containing hdfs data
-
-        Returns:
-            pd.Series: containing the anomaly detection labels of loglines
+        
+        :param logrecord: (LogRecordObject):  logrecord object containing hdfs data
+        :return:pd.Series: containing the anomaly detection labels of loglines
         """
         return logrecord.labels[constants.LABELS].apply(lambda x: int(x != "-"))

@@ -36,7 +36,7 @@ class OneClassSVMDetector(AnomalyDetectionAlgo):
         """
         OneClass SVM based Anomaly Detector. This is a wrapper class for the OneClassSVM model from scikit-learn library. For more details see 
         https://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html
-
+        
         :param params: OneClassSVMParams: parameters to control one class SVM models
         """
         self.model = OneClassSVM(
@@ -54,6 +54,7 @@ class OneClassSVMDetector(AnomalyDetectionAlgo):
     def fit(self, log_features: pd.DataFrame):
         """
         Fit method to train the OneClassSVM on log data
+        
         :param log_features: training log features as pandas DataFrame object
         :return:
         """
@@ -66,6 +67,7 @@ class OneClassSVMDetector(AnomalyDetectionAlgo):
     def predict(self, log_features: pd.DataFrame) -> pd.Series:
         """
         Predict method to detect anomalies using OneClassSVM model on test log data 
+        
         :param log_features: test log features data as pandas DataFrame object
         :return: pandas Series of anomaly scores 
         """

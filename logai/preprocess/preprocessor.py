@@ -17,9 +17,8 @@ from logai.dataloader.data_model import LogRecordObject
 class PreprocessorConfig(Config):
     """Config class for Preprocessor
 
-    custom_delimiters_regex: dictionary of delimiter regex patterns in raw log data 
-    custom_replace_list: list of tuples of custom replace patterns in raw log data.
-    Each Tuple should be of form ('regex-pattern-to-replace', 'replaced-pattern')
+    :param custom_delimiters_regex: dictionary of delimiter regex patterns in raw log data 
+    :param custom_replace_list: list of tuples of custom replace patterns in raw log data. Each Tuple should be of form ('regex-pattern-to-replace', 'replaced-pattern')
     """
     custom_delimiters_regex: dict = None
     custom_replace_list: list = None
@@ -36,11 +35,8 @@ class Preprocessor:
     def clean_log(self, loglines: pd.Series) -> pd.Series:
         """cleaning log data 
 
-        Args:
-            loglines (pd.Series): raw loglines data to be cleaned 
-
-        Returns:
-            pd.Series: cleaned loglines data 
+        :param loglines: (pd.Series): raw loglines data to be cleaned 
+        :return:pd.Series: cleaned loglines data 
         """
         cleaned_log = loglines
         terms = pd.DataFrame()
@@ -75,13 +71,9 @@ class Preprocessor:
 
     def group_log_index(self, attributes: pd.DataFrame, by: np.array) -> pd.DataFrame:
         """grouping log attributes (DataFrame) by a list of its fields
-
-        Args:
-            attributes (pd.DataFrame): log attribute data to be grouped
-            by (np.array): list of fields of the log attribute DataFrame object, to group by
-
-        Returns:
-            pd.DataFrame: log attribute data after grouping
+        
+        :param attributes: (pd.DataFrame): log attribute data to be grouped by (np.array): list of fields of the log attribute DataFrame object, to group by
+        :return:pd.DataFrame: log attribute data after grouping
         """
         attributes["group_index"] = attributes.index
         group_index_list = (

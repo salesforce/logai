@@ -24,6 +24,22 @@ from logai.preprocess.preprocessor import PreprocessorConfig
 
 @dataclass
 class WorkFlowConfig(Config):
+    """config class for end to end workflow 
+    
+    :param data_loader_config: config object for data loader
+    :param open_set_data_loader_config: config object for data loader for opensource public log datasets 
+    :param preprocessor_config: config object for log preprocessor 
+    :param log_parser_config: config object for log parser
+    :param log_vectorizer_config: config object for log vectorizer
+    :param partitioner_config: config object for log partitioner
+    :param open_set_partitioner_config: config object for log partitioner for opensource public log datasets
+    :param categorical_encoder_config: config object for categorical encoder of log data 
+    :param feature_extractor_config: config object for log feature extractor 
+    :param anomaly_detection_config: config object for log anomaly detector
+    :param nn_anomaly_detection_config: config object for neural anomaly detector 
+    :param clustering_config: config object for log clustering algorithm 
+    :param workflow_config: 
+    """
     data_loader_config: object = None
     open_set_data_loader_config: object = None
     preprocessor_config: object = None

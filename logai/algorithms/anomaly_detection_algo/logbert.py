@@ -17,37 +17,27 @@ import pandas as pd
 @factory.register("detection", "logbert", LogBERTConfig)
 class LogBERT(NNAnomalyDetectionAlgo):
     """Logbert model for anomaly detection of logs
-
-    Args:
-        NNAnomalyDetectionAlgo : base class for neural models for anomaly detection
     """
 
     def __init__(self, config: LogBERTConfig):
         """initializing logBERT model
-
-        Args:
-            config (LogBERTConfig): config class for logbert model
+        :param config: (LogBERTConfig): config class for logbert model
         """
         self.logbert_train = LogBERTTrain(config=config)
         self.logbert_predict = LogBERTPredict(config=config)
 
     def fit(self, train_data: HFDataset, dev_data: HFDataset):
         """Fit method for training logBERT model
-
-        Args:
-            train_data (HFDataset): training dataset of type huggingface Dataset object
-            dev_data (HFDataset): development dataset of type huggingface Dataset object
+        
+        :param train_data: (HFDataset): training dataset of type huggingface Dataset object
+        :param dev_data: (HFDataset): development dataset of type huggingface Dataset object
         """
         self.logbert_train.fit(train_data, dev_data)
 
     def predict(self, test_data: HFDataset) -> pd.DataFrame:
         """Predict method for running inference on logBERT model
-
-        Args:
-            test_data (HFDataset): test dataset of type huggingface Dataset object
-
-        Returns:
-            pd.DataFrame: pandas dataframe object containing the evaluation results
-            for each type of metric
+        
+        :param test_data: (HFDataset): test dataset of type huggingface Dataset object
+        :return:pd.DataFrame: pandas dataframe object containing the evaluation results for each type of metric
         """
         return self.logbert_predict.predict(test_data)

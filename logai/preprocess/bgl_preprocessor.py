@@ -15,9 +15,6 @@ from logai.dataloader.data_model import LogRecordObject
 class BGLPreprocessor(OpenSetPreprocessor):
     """
     Custom preprocessor for Open log dataset BGL
-
-    Inherits:
-        OpenSetPreprocessor: log preprocessor class for open log datasets
     """
 
     def __init__(self, config: PreprocessorConfig):
@@ -25,12 +22,9 @@ class BGLPreprocessor(OpenSetPreprocessor):
 
     def _get_ids(self, logrecord: LogRecordObject) -> pd.Series:
         """get ids of loglines
-
-        Args:
-            logrecord (LogRecordObject):  logrecord object containing the BGL data
-
-        Returns:
-            pd.Series: containing the ids of the loglines
+        
+        :param logrecord: (LogRecordObject):  logrecord object containing the BGL data
+        :return: pd.Series: containing the ids of the loglines
         """
         time_unit_in_secs = 60  # 21600.0 # 6 hours
         ids = logrecord.span_id[constants.SPAN_ID].astype(int)
@@ -40,11 +34,8 @@ class BGLPreprocessor(OpenSetPreprocessor):
 
     def _get_labels(self, logrecord: LogRecordObject):
         """get anomaly detection labels of loglines
-
-        Args:
-            logrecord (LogRecordObject): logrecord object containing the BGL data
-
-        Returns:
-            pd.Series: containing the labels of the loglines
+        
+        :param logrecord: (LogRecordObject): logrecord object containing the BGL data
+        :return:pd.Series: containing the labels of the loglines
         """
         return logrecord.labels[constants.LABELS].apply(lambda x: int(x != "-"))

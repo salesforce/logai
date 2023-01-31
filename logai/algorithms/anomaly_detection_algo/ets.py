@@ -42,8 +42,7 @@ class ETSDetectorParams(Config):
 
 @factory.register("detection", "ets", ETSDetectorParams)
 class ETSDetector(AnomalyDetectionAlgo):
-    """
-    ETS Anomaly Detector. This is a wrapper for the ETS based Anomaly Detector from Merlion library 
+    """ETS Anomaly Detector. This is a wrapper for the ETS based Anomaly Detector from Merlion library 
     https://opensource.salesforce.com/Merlion/v1.0.2/merlion.models.forecast.html#module-merlion.models.forecast.ets
     This current version only supports anomaly detection of the constants.LOGLINE_COUNTS (i.e. frequency count of log events)
     """
@@ -65,14 +64,10 @@ class ETSDetector(AnomalyDetectionAlgo):
 
     def fit(self, log_features: pd.DataFrame):
         """
-
         Fit method to train ETS Anomaly Detector
-
-        :param log_features: log feature dataframe must only contain two columns
-        ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
-        :return: train_scores: anomaly scores dataframe
-        ['index':log_features.index, 'timestamps': datetime, 'anom_score': scores, 'trainval':
-        whether it is training set.
+        
+        :param log_features: log feature dataframe must only contain two columns ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
+        :return: train_scores: anomaly scores dataframe ['index':log_features.index, 'timestamps': datetime, 'anom_score': scores, 'trainval': whether it is training set.
         """
         self._is_valid_ts_df(log_features)
         index = log_features.index
@@ -90,11 +85,8 @@ class ETSDetector(AnomalyDetectionAlgo):
         """
         Predict anomaly scores for log_feature["timestamp", constants.LOGLINE_COUNTS]
 
-        :param log_features: log feature dataframe must only contain two columns
-        ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
-        :return: test_scores: anomaly scores dataframe
-        ['index':log_features.index, 'timestamps': datetime, 'anom_score': scores, 'trainval':
-        whether it is training set.
+        :param log_features: log feature dataframe must only contain two columns ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
+        :return: test_scores: anomaly scores dataframe ['index':log_features.index, 'timestamps': datetime, 'anom_score': scores, 'trainval':  whether it is training set.
         """
         self._is_valid_ts_df(log_features)
         index = log_features.index

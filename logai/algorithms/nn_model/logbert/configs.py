@@ -12,35 +12,27 @@ from logai.config_interfaces import Config
 @dataclass
 class LogBERTConfig(Config):
     """Config for logBERT model
-
-    Inherits:
-        Config: config interface
-
-    pretrain_from_scratch: bool = True  # whether to do pretraining from scratch or intialize with the
-    HuggingFace pretrained LM.
-    model_name: str = "bert-base-cased" # name of the model using HuggingFace standardized naming
-    model_dirname: str = None # name of the directory where the model would be saved. Directory of this name
-    would be created inside `output_dir`, if it does not exist
-    mlm_probability: float = 0.15 # probability of the tokens to be masked during MLM trainning
-    mask_ngram: int = 1 # length of ngrams that are masked during inference
-    max_token_len: int = 384 # maximum token length of the input
-    learning_rate: float = 1e-5 # learning rate
-    weight_decay: float = 0.0001 # parameter to use weight decay of the learning rate
-    per_device_train_batch_size: int = 50 # training batch size per gpu device
-    per_device_eval_batch_size: int = 256 # evaluation batch size per gpu device
-    eval_accumulation_steps: int = 1000 # parameter to accumulate the evaluation results over the steps
-    num_eval_shards: int = 10 # parameter to shard the evaluation data (to avoid any OOM issue)
-    evaluation_strategy: str = "steps" # either steps or epoch, based on whether the unit of the eval_steps
-    parameter is "steps" or "epoch"
-    num_train_epochs: int = 20 # number of training epochs
-    logging_steps: int = 10 # number of steps after which the output is logged
-    save_steps: int = 50 # number of steps after which the model is saved
-    eval_steps: int = 50 # number of steps after which evaluation is run
-    resume_from_checkpoint: bool = True # whether to resume from a given model checkpoint. If set to true,
-    it will find the latest checkpoint saved in the dir and use that to load the model
-    output_dir: str = None # output directory where the model would be saved.
-    tokenizer_dirpath: str = None # path to directory containing the tokenizer
-
+    
+    :param pretrain_from_scratch: bool = True  : whether to do pretraining from scratch or intialize with the HuggingFace pretrained LM.
+    :param model_name: str = "bert-base-cased" : name of the model using HuggingFace standardized naming
+    :param model_dirname: str = None : name of the directory where the model would be saved. Directory of this name would be created inside `output_dir`, if it does not exist
+    :param mlm_probability: float = 0.15 : probability of the tokens to be masked during MLM trainning
+    :param mask_ngram: int = 1 : length of ngrams that are masked during inference
+    :param max_token_len: int = 384 : maximum token length of the input
+    :param learning_rate: float = 1e-5 : learning rate
+    :param weight_decay: float = 0.0001 : parameter to use weight decay of the learning rate
+    :param per_device_train_batch_size: int = 50 : training batch size per gpu device
+    :param per_device_eval_batch_size: int = 256 : evaluation batch size per gpu device
+    :param eval_accumulation_steps: int = 1000 : parameter to accumulate the evaluation results over the steps
+    :param num_eval_shards: int = 10 : parameter to shard the evaluation data (to avoid any OOM issue)
+    :param evaluation_strategy: str = "steps" : either steps or epoch, based on whether the unit of the eval_steps parameter is "steps" or "epoch"
+    :param num_train_epochs: int = 20 : number of training epochs
+    :param logging_steps: int = 10 : number of steps after which the output is logged
+    :param save_steps: int = 50 : number of steps after which the model is saved
+    :param eval_steps: int = 50 : number of steps after which evaluation is run
+    :param resume_from_checkpoint: bool = True : whether to resume from a given model checkpoint. If set to true, it will find the latest checkpoint saved in the dir and use that to load the model
+    :param output_dir: str = None : output directory where the model would be saved.
+    :param tokenizer_dirpath: str = None : path to directory containing the tokenizer
     """
 
     pretrain_from_scratch: bool = True

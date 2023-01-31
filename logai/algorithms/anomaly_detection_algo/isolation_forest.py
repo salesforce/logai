@@ -37,9 +37,8 @@ class IsolationForestDetector(AnomalyDetectionAlgo):
     """
     def __init__(self, params: IsolationForestParams):
         """Constructor for isolation forest based anomaly detector
-
-        Args:
-            params (IsolationForestParams): object of type IsolationForestParams containing parameters of Isolation Forest
+        
+        :param params: (IsolationForestParams): object of type IsolationForestParams containing parameters of Isolation Forest
         """
         self.model = IsolationForest(
             n_estimators=params.n_estimators,
@@ -56,6 +55,7 @@ class IsolationForestDetector(AnomalyDetectionAlgo):
     def fit(self, log_features: pd.DataFrame):
         """
         Fit model
+        
         :param log_features: pandas.DataFrame: input for model training
         :return: pandas.DataFrame
         """
@@ -68,6 +68,7 @@ class IsolationForestDetector(AnomalyDetectionAlgo):
     def predict(self, log_features: pd.DataFrame) -> pd.Series:
         """
         Predict for input.
+        
         :param log_features: pandas.DataFrame: input for inference
         :return: pandas.DataFrame
         """

@@ -24,6 +24,7 @@ class LabelEncoding(CategoricalEncodingAlgo):
     def fit_transform(self, log_attributes: pd.DataFrame):
         """
         fit and transform log_attributes into label encoding categories.
+        
         :param log_attributes: list of log attributes in text format.
         :return: label encoding categories.
         """

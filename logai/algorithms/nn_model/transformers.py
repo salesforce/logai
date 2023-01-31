@@ -71,8 +71,7 @@ class TransformerAlgo:
     def save(self, output_dir: str):
         """save model in given directory
 
-        Args:
-            output_dir (str): path to output directory where model should be dumped 
+        :param output_dir: (str): path to output directory where model should be dumped 
         """
         self.trainer.save_model(output_dir)
         return
@@ -82,9 +81,8 @@ class TransformerAlgo:
         a sequence classification head for supervised log classification task. 
         Internally this method also splits the available training logs into train and dev data 
 
-        Args:
-            train_logs (pd.Series): training log vectors data (after LogVectorizer)
-            train_labels (pd.Series): training label data 
+        :param train_logs: (pd.Series): training log vectors data (after LogVectorizer)
+        :param train_labels: (pd.Series): training label data 
         """
         train_logs = train_logs.rename(constants.LOG_EVENTS)
         if not self.tokenizer:
@@ -137,9 +135,8 @@ class TransformerAlgo:
         """
         Train models in native torch way. Use as needed
 
-        Args:
-            train_logs (pd.Series): training log features data (after LogVectorizer)
-            train_labels (pd.Series): label data for training logs
+        :param train_logs: (pd.Series): training log features data (after LogVectorizer)
+        :param train_labels: (pd.Series): label data for training logs
         """
         if not self.tokenizer:
             if self.config.tokenizer_config["name"] == "auto":
@@ -166,14 +163,12 @@ class TransformerAlgo:
     def predict(self, test_logs: pd.Series, test_labels: pd.Series) -> Tuple[pd.Series, np.ndarray, Dict[str, float]]:
         """Predict method for running evaluation on test log data
 
-        Args:
-            test_logs (pd.Series): test log features data (output of LogVectorizer)
-            test_labels (pd.Series): labels of test log data 
-
-        Returns:
-            res (pd.Series): Predicted test labels as pandas Series object
-            label_ids (`np.ndarray`, *optional*): True test labels (if the dataset contained some).
-            metrics (`Dict[str, float]`, *optional*): The potential dictionary of metrics
+        :param test_logs: (pd.Series): test log features data (output of LogVectorizer)
+        :param test_labels: (pd.Series): labels of test log data 
+        :return:
+        - res (pd.Series): Predicted test labels as pandas Series object
+        - label_ids (`np.ndarray`, *optional*): True test labels (if the dataset contained some).
+        - metrics (`Dict[str, float]`, *optional*): The potential dictionary of metrics
 
         """
         test_logs = test_logs.rename(constants.LOG_EVENTS)

@@ -52,6 +52,7 @@ class LOFDetector(AnomalyDetectionAlgo):
     def fit(self, log_features: pd.DataFrame):
         """
         Fit model
+        
         :param log_features: pandas.DataFrame: input for model training
         :return: pandas.Dataframe
         """
@@ -66,6 +67,7 @@ class LOFDetector(AnomalyDetectionAlgo):
     def predict(self, log_features: pd.DataFrame) -> pd.Series:
         """
         Predict for input
+        
         :param log_features: pandas.DataFrame: input for inference
         :return: pandas.Dataframe
         """

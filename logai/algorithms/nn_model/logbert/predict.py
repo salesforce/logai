@@ -25,14 +25,12 @@ from .tokenizer_utils import (
 
 
 class LogBERTPredict:
-    """Class for running inference on logBERT model for unsupervised log anomaly detection"""
+    """Class for running inference on logBERT model for unsupervised log anomaly detection
+
+    :param config: (LogBERTConfig): config object describing the parameters of logbert model
+    """
 
     def __init__(self, config: LogBERTConfig):
-        """Initializing logBERTPredict class
-
-        Args:
-            config (LogBERTConfig): config object describing the parameters of logbert model
-        """
 
         self.config = config
 
@@ -139,11 +137,8 @@ class LogBERTPredict:
     def predict(self, test_dataset: HFDataset):
         """Method for running inference on logbert to predict anomalous loglines in test dataset
 
-        Args:
-            test_dataset (HFDataset): test dataset of type huggingface Dataset object
-
-        Returns:
-            dict: dict containing instance-wise loss and scores
+        :param test_dataset: (HFDataset): test dataset of type huggingface Dataset object
+        :return: dict containing instance-wise loss and scores
         """
         if not self.model:
             self.load_model()

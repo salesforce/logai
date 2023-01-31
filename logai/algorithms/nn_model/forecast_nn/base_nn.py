@@ -24,34 +24,24 @@ from torch.utils.data import DataLoader
 
 @dataclass
 class ForecastBasedNNParams(Config):
-    """Config for neural representation learning for logs using forecasting based self-supervised tasks
+    """
+    Config for neural representation learning for logs using forecasting based self-supervised tasks
 
-    Inherits:
-        Config : Config interface
-
-    model_name: name of the model
-    metadata_filepath: path to file containing meta data (pretrained token embeddings in case if semantic log
-    representations are used in feature type)
-    output_dir: path to output directory where the model would be dumped
-    feature_type: (should be "semantics" or "sequential")type of log feature representations used for the log-lines or
-    log-sequences
-    label_type: type of label (should be "anomaly" or "next_log") based on whether supervised or unsupervised
-    (forcast based) model is being used
-    eval_type:  (should be "session" or None) whether to aggregate and report the evaluation metrics at the level of
-    sessions (based on the span_id in the log data) or at the level of each logline
-    topk: the prediction at top-k to consider, when deciding whether an evaluation instance is an anomaly or not
-    embedding_dim: dimension of the embedding space. Both for sequential and semantic type feature representation,
-    the input log feature representation is passed through an embedding layer which projects it to the embedding_dim
-    hidden_size:  dimension of the hidden representations
-    freeze: whether to freeze the embedding layer to use the pretrained embeddings or to further train it on the
-    given task
-    gpu: device number if gpu is used (otherwise -1 or None will use cpu)
-    patience: number of eval_steps, the model waits for performance on validation data to improve, before early
-    stopping the training
-    num_train_epochs: number of training epochs
-    batch_size: batch size
-    learning_rate: learning rate
-
+    :param model_name: str: name of the model
+    :param metadata_filepath: str: path to file containing meta data (pretrained token embeddings in case if semantic log representations are used in feature type)
+    :param output_dir: str: path to output directory where the model would be dumped
+    :param feature_type: str: (should be "semantics" or "sequential")type of log feature representations used for the log-lines or log-sequences
+    :param label_type: str: type of label (should be "anomaly" or "next_log") based on whether supervised or unsupervised (forcast based) model is being used
+    :param eval_type:  str: (should be "session" or None) whether to aggregate and report the evaluation metrics at the level of sessions (based on the span_id in the log data) or at the level of each logline
+    :param topk: int: the prediction at top-k to consider, when deciding whether an evaluation instance is an anomaly or not
+    :param embedding_dim: int: dimension of the embedding space. Both for sequential and semantic type feature representation, the input log feature representation is passed through an embedding layer which projects it to the embedding_dim
+    :param hidden_size:  int: dimension of the hidden representations
+    :param freeze: whether to freeze the embedding layer to use the pretrained embeddings or to further train it on the given task
+    :param gpu: int: device number if gpu is used (otherwise -1 or None will use cpu)
+    :param patience: int: number of eval_steps, the model waits for performance on validation data to improve, before early stopping the training
+    :param num_train_epochs: int: number of training epochs
+    :param batch_size: int: batch size
+    :param learning_rate: float:learning rate
     """
 
     model_name: str = None
@@ -73,8 +63,6 @@ class ForecastBasedNNParams(Config):
 
 class Embedder(nn.Module):
     """Learnable embedder for embedding loglines
-
-    Inherits:    torch nn.Module
     """
 
     def __init__(
@@ -84,15 +72,13 @@ class Embedder(nn.Module):
         pretrain_matrix: np.array = None,
         freeze: bool = False,
     ):
-        """initializing embedder class
+        """
+        initializing embedder class
 
-        Args:
-            vocab_size (int): vocabulary size
-            embedding_dim (int): embedding dimension
-            pretrain_matrix (tensor, optional): torch.Tensor object containing the
-            pretrained embedding of the vocabulary tokens. Defaults to None.
-            freeze (bool, optional): Freeze embeddings to pretrained ones if set to
-            True, otherwise makes the embeddings learnable. Defaults to False.
+        :param vocab_size: int: vocabulary size
+        :param embedding_dim: int: embedding dimension
+        :param pretrain_matrix: (tensor, optional): torch.Tensor object containing the pretrained embedding of the vocabulary tokens. Defaults to None.
+        :param freeze: (bool, optional): Freeze embeddings to pretrained ones if set to True, otherwise makes the embeddings learnable. Defaults to False.
         """
         super(Embedder, self).__init__()
         if pretrain_matrix is not None:
@@ -109,18 +95,12 @@ class Embedder(nn.Module):
 
 
 class ForecastBasedNN(nn.Module):
-    """Model for learning log representations through a forecasting based self-supervised task
-
-    Inherits: nn.Module
+    """
+    Model for learning log representations through a forecasting based self-supervised task
+    :param config: (ForecastBasedNNParams): config class for parameters of forecasting based neural log representation models
     """
 
     def __init__(self, config: ForecastBasedNNParams):
-        """Initialization of base class for forecasting based neural log representation learning
-
-        Args:
-            config (ForecastBasedNNParams): config class for parameters of forecasting based
-            neural log representation models
-        """
 
         super(ForecastBasedNN, self).__init__()
         self.config = config
@@ -153,15 +133,12 @@ class ForecastBasedNN(nn.Module):
             )
 
     def predict(self, test_loader: DataLoader, dtype: str = "test"):
-        """predict method on test data
+        """
+        Predict method on test data
 
-        Args:
-            test_loader (Dataloader): dataloader (torch.utils.data.DataLoader) for test (or development) dataset
-            dtype (str, optional): can be of type "test" or "dev" based on which the predict method is called for.
-            Defaults to "test".
-
-        Returns:
-            dict : dict object containing the overall evaluation metrics for test (or dev) data
+        :param test_loader: (DataLoader): dataloader (torch.utils.data.DataLoader) for test (or development) dataset
+        :param dtype: (str, optional): can be of type "test" or "dev" based on which the predict method is called for. Defaults to "test".
+        :return: dict object containing the overall evaluation metrics for test (or dev) data
         """
         logging.info("Evaluating {} data.".format(dtype))
 
@@ -413,23 +390,18 @@ class ForecastBasedNN(nn.Module):
 
     def load_model(self, model_save_file: str = ""):
         """loading model from file
-
-        Args:
-            model_save_file (str, optional): _description_. Defaults to "".
+        :param model_save_file : path to file where model would be saved. Defaults to "".
         """
         logging.info("Loading model from {}".format(self.model_save_file))
         self.load_state_dict(torch.load(model_save_file, map_location=self.device))
 
     def fit(self, train_loader: DataLoader, dev_loader: DataLoader = None):
-        """Fit method for training model
+        """
+        Fit method for training model
 
-        Args:
-            train_loader (DataLoader): dataloader (torch.utils.data.DataLoader) for the train dataset
-            dev_loader (DataLoader, optional): dataloader (torch.utils.data.DataLoader) for the train dataset.
-                Defaults to None, for which no evaluation is run
-
-        Returns:
-            dict : dict containing the best loss on dev dataset
+        :param train_loader: (DataLoader): dataloader (torch.utils.data.DataLoader) for the train dataset
+        :param dev_loader: (DataLoader, optional): dataloader (torch.utils.data.DataLoader) for the train dataset. Defaults to None, for which no evaluation is run
+        :return: dict containing the best loss on dev dataset
         """
         self.to(self.device)
         logging.info(

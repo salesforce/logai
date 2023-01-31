@@ -44,6 +44,7 @@ class OrdinalEncoding(CategoricalEncodingAlgo):
     def fit_transform(self, log_attributes: pd.DataFrame) -> pd.DataFrame:
         """
         Fit and transform log attributes into ordinal encoding categories.
+        
         :param log_attributes: list of log attributes in text format.
         :return: pd.DataFrame: ordinal encoding categories
         """

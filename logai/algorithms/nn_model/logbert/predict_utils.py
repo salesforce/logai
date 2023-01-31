@@ -13,19 +13,12 @@ import torch
 
 class Predictor(Trainer):
     """Custom Trainer object for running the inference of logBERT model for unsupervised anomaly detection
-
-    Inherits:
-        Trainer: HuggingFace trainer class
     """
 
     def get_test_dataloader(self, test_dataset: Dataset) -> DataLoader:
         """
-        Returns the test [`~torch.utils.data.DataLoader`].
-        Subclass and override this method if you want to inject some custom behavior.
-        Args:
-            test_dataset (`torch.utils.data.Dataset`, *optional*):
-                The test dataset to use. If it is an `datasets.Dataset`, columns not accepted by the `model.forward()`
-                method are automatically removed. It must implement `__len__`.
+        Returns the test [`~torch.utils.data.DataLoader`]. Subclass and override this method if you want to inject some custom behavior.
+        :param test_dataset: (`torch.utils.data.Dataset`, *optional*): The test dataset to use. If it is an `datasets.Dataset`, columns not accepted by the `model.forward()` method are automatically removed. It must implement `__len__`.
         """
 
         if isinstance(test_dataset, torch.utils.data.IterableDataset):
@@ -62,11 +55,6 @@ class Predictor(Trainer):
         Subclass and override for custom behavior.
         """
 
-        """print ('Input: ', tokenizer.decode(inputs['input_ids'].cpu().data.numpy().tolist()[0]))
-            i = inputs['labels'].cpu().data.numpy().tolist()[0]
-            i = list(filter((-100).__ne__, i))
-            print ('Output: ', tokenizer.decode(i))"""
-
         if self.label_smoother is not None and "labels" in inputs:
             labels = inputs.pop("labels")
         else:
@@ -94,12 +82,8 @@ class Predictor(Trainer):
 class PredictionLabelSmoother(LabelSmoother):
     """
     Adds label-smoothing on a pre-computed output from a Transformers model.
-
-    Args:
-        epsilon (:obj:`float`, `optional`, defaults to 0.1):
-            The label smoothing factor.
-        ignore_index (:obj:`int`, `optional`, defaults to -100):
-            The index in the labels to ignore when computing the loss.
+    :param epsilon: (:obj:`float`, `optional`, defaults to 0.1): The label smoothing factor.
+    :param ignore_index: (:obj:`int`, `optional`, defaults to -100): The index in the labels to ignore when computing the loss.
     """
 
     epsilon: float = 0.0

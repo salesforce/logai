@@ -16,13 +16,12 @@ import logging
 def __plot_roc(x, y, label, y_name, x_name, fig_name):
     """plotting roc curve
 
-    Args:
-        x (np.array): array of x values
-        y (np.array): array of y values
-        label (np.array): array of label values
-        y_name (str): y axis label
-        x_name (str): x axis label
-        fig_name (str): figure name
+    :param x:(np.array): array of x values
+    :param y:(np.array): array of y values
+    :param label:(np.array): array of label values
+    :param y_name:(str): y axis label
+    :param  x_name:(str): x axis label
+    :param fig_name:(str): figure name
     """
     plt.plot(x, y, label=label)
     plt.ylabel(y_name)
@@ -39,10 +38,9 @@ def __plot_roc(x, y, label, y_name, x_name, fig_name):
 def __plot_scores_kde(scores_pos, scores_neg, fig_name):
     """plotting kernel density estimation of positive and negative scores
 
-    Args:
-        scores_pos (np.array): array of positive scores
-        scores_neg (np.array): array of negative scores
-        fig_name (str): figure name
+    :param scores_pos: (np.array): array of positive scores
+    :param scores_neg:(np.array): array of negative scores
+    :param fig_name: (str): figure name
     """
     plt.rcParams["figure.figsize"] = [7.00, 3.50]
     plt.rcParams["figure.autolayout"] = True
@@ -70,28 +68,18 @@ def __plot_scores_kde(scores_pos, scores_neg, fig_name):
 def compute_metrics(eval_metrics_per_instance_series, test_labels, test_counts=None):
     """computing evaluation metric scores for anomaly detection
 
-    Args:
-        eval_metrics_per_instance_series (dict): dict object consisting of eval metrics for each instance index
-        test_labels (dict): gold labels for each instance index
-        test_counts (dict): counts of each instance index
-
-    Raises:
-        Exception: IndexError if the indices of eval_metrics_per_instance_series do not match with
-            indices of test_labels
-
-    Returns:
-        list of tuples: list of tuples containing labels and scores computed for each index
-        y: list of anomaly label for each instance
-        loss_mean: list of mean loss (over all masked non-padded tokens) for each instance
-        loss_max: list of max loss (over all masked non-padded tokens) for each instance
-        loss_top6_mean: list of mean loss (averaged over top-k masked non-padded tokens) for each instance, k = 6
-            (following LanoBERT paper https://arxiv.org/pdf/2111.09564.pdf)
-        scores_top6_max_prob: for each instance, we take the max prob. score obtained and average over the top-k masked
-            (non-padded) token prediction, k = 6
-        scores_top6_min_logprob: for each instance, we take the min logprob score obtained and average over the
-            top-k masked (non-padded) token prediction, k = 6
-        scores_top6_max_entropy: for each instance we take the max entropy score obtained and average over the top-k
-            masked (non-padded) token prediction, k = 6
+    :param eval_metrics_per_instance_series:(dict): dict object consisting of eval metrics for each instance index
+    :param test_labels:(dict): gold labels for each instance index
+    :param test_counts:(dict): counts of each instance index
+    :raises: Exception: IndexError if the indices of eval_metrics_per_instance_series do not match with indices of test_labels
+    :return: list of tuples containing labels and scores computed for each index
+    - y: list of anomaly label for each instance
+    - loss_mean: list of mean loss (over all masked non-padded tokens) for each instance
+    - loss_max: list of max loss (over all masked non-padded tokens) for each instance
+    - loss_top6_mean: list of mean loss (averaged over top-k masked non-padded tokens) for each instance, k = 6(following LanoBERT paper https://arxiv.org/pdf/2111.09564.pdf)
+    - scores_top6_max_prob: for each instance, we take the max prob. score obtained and average over the top-k masked (non-padded) token prediction, k = 6
+    - scores_top6_min_logprob: for each instance, we take the min logprob score obtained and average over the top-k masked (non-padded) token prediction, k = 6
+    - scores_top6_max_entropy: for each instance we take the max entropy score obtained and average over the top-k masked (non-padded) token prediction, k = 6
 
     """
     eval_metrics_per_instance_series["indices"] = eval_metrics_per_instance_series[
@@ -191,20 +179,15 @@ def __compute_auc_roc(
 ):
     """computing AUROC for each of the type of metrics
 
-    Args:
-        y (list): list of anomaly labels for each instances
-        loss_mean (list): list of mean loss (over all masked non-padded tokens) for each instance
-        loss_max (list): list of max loss (over all masked non-padded tokens) for each instance
-        loss_top6_mean (list): list of mean loss (averaged over top-k masked non-padded tokens) for each instance,
-        k = 6 (following LanoBERT paper https://arxiv.org/pdf/2111.09564.pdf)
-        scores_top6_max_prob (list): for each instance, we take the max prob. score obtained and average over the
-        top-k masked (non-padded) token prediction, k = 6
-        scores_top6_min_logprob (list): for each instance, we take the min logprob score obtained and average over the
-        top-k masked (non-padded) token prediction, k = 6
-        scores_top6_max_entropy (list): for each instance we take the max entropy score obtained and average over the
-        top-k masked (non-padded) token prediction, k = 6
-        plot_graph (bool, optional): whether to plot roc graph. Defaults to False.
-        plot_histogram (bool, optional): whether to plot scores histogram. Defaults to False.
+    :param y: (list): list of anomaly labels for each instances
+    :param loss_mean: (list): list of mean loss (over all masked non-padded tokens) for each instance
+    :param loss_max: (list): list of max loss (over all masked non-padded tokens) for each instance
+    :param loss_top6_mean: (list): list of mean loss (averaged over top-k masked non-padded tokens) for each instance, k = 6 (following LanoBERT paper https://arxiv.org/pdf/2111.09564.pdf)
+    :param scores_top6_max_prob: (list): for each instance, we take the max prob. score obtained and average over the top-k masked (non-padded) token prediction, k = 6
+    :param scores_top6_min_logprob: (list): for each instance, we take the min logprob score obtained and average over the top-k masked (non-padded) token prediction, k = 6
+    :param scores_top6_max_entropy: (list): for each instance we take the max entropy score obtained and average over the top-k masked (non-padded) token prediction, k = 6
+    :param plot_graph: (bool, optional): whether to plot roc graph. Defaults to False.
+    :param plot_histogram: (bool, optional): whether to plot scores histogram. Defaults to False.
     """
 
     __compute_auc_roc_for_metric(
@@ -256,12 +239,11 @@ def __compute_auc_roc_for_metric(
 ):
     """computing AUROC for each metric
 
-    Args:
-        y (list): list of anomaly labels for each instance
-        metric (list): list of metric scores for each instance
-        metric_name_str (str): name of metric
-        plot_graph (bool, optional): Whether to plot ROC graph. Defaults to False.
-        plot_histogram (bool, optional): Whether to plot histogram of metric scores. Defaults to False.
+    :param y: (list): list of anomaly labels for each instance
+    :param metric: (list): list of metric scores for each instance
+    :param metric_name_str: (str): name of metric
+    :param plot_graph: (bool, optional): Whether to plot ROC graph. Defaults to False.
+    :param plot_histogram: (bool, optional): Whether to plot histogram of metric scores. Defaults to False.
     """
 
     metric_pos = np.array([metric[i] for i in range(len(metric)) if y[i] == 1])

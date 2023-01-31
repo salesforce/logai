@@ -71,9 +71,7 @@ class LogBERTTrain:
 
     def get_model_checkpoint(self):
         """Get the latest dumped checkpoint from the model directory path mentioned in logBERTConfig
-
-        Returns:
-            str: path to model checkpoint (or name of model in case of a pretrained model from hugging face)
+        :return: path to model checkpoint (or name of model in case of a pretrained model from hugging face)
         """
         if os.path.exists(self.model_dirpath) and os.listdir(self.model_dirpath):
             checkpoint_dir = "checkpoint-" + str(
@@ -94,10 +92,8 @@ class LogBERTTrain:
 
     def fit(self, train_dataset: HFDataset, dev_dataset: HFDataset):
         """fit method for training logbert model
-
-        Args:
-            train_dataset (HFDataset): training dataset of type huggingface Dataset object
-            dev_dataset (HFDataset): development dataset of type huggingface Dataset object
+        :param train_dataset: (HFDataset): training dataset of type huggingface Dataset object
+        :param dev_dataset: (HFDataset): development dataset of type huggingface Dataset object
         """
         model_checkpoint = self.get_model_checkpoint()
 

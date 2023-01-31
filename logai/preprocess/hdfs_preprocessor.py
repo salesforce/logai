@@ -15,9 +15,6 @@ from logai.dataloader.data_model import LogRecordObject
 class HDFSPreprocessor(OpenSetPreprocessor):
     """
     Custom Preprocessor for open log dataset HDFS
-
-    Inherits:
-        OpenSetPreprocessor: log preprocessor class for open log datasets
     """
 
     def __init__(self, config: PreprocessorConfig, label_file: str):
@@ -27,12 +24,9 @@ class HDFSPreprocessor(OpenSetPreprocessor):
 
     def _get_labels(self, logrecord: LogRecordObject):
         """get anomaly detection labels of loglines
-
-        Args:
-            logrecord (LogRecordObject):  logrecord object containing hdfs data
-
-        Returns:
-            pd.Series: containing the anomaly detection labels of loglines
+        
+        :param: logrecord: (LogRecordObject):  logrecord object containing hdfs data
+        :return: pd.Series: containing the anomaly detection labels of loglines
         """
         blk_df = pd.read_csv(self.label_file, header=0)
         anomaly_blk = set(blk_df[blk_df["Label"] == "Anomaly"]["BlockId"])
@@ -46,12 +40,9 @@ class HDFSPreprocessor(OpenSetPreprocessor):
 
     def _get_ids(self, logrecord: LogRecordObject):
         """get ids of loglines
-
-        Args:
-            logrecord (LogRecordObject): logrecord object containing hdfs data
-
-        Returns:
-            pd.Series: containing the ids of the loglines
+        
+        :param logrecord: (LogRecordObject): logrecord object containing hdfs data
+        :return:pd.Series: containing the ids of the loglines
         """
         predefined_ids = logrecord.body[" BLOCK "]
         predefined_ids = predefined_ids.apply(lambda x: self.id_separator.join(set(x)))
