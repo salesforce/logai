@@ -34,5 +34,5 @@ setup(
     install_requires=REQUIRED,
     license=license,
     packages=find_packages(exclude=["tests", "tests.*", "docs", "gui", "gui.*"]),
-    data_files=glob.glob('logai/dataloader/openset_configs/*.json'),
+    include_package_data=True,
 )
