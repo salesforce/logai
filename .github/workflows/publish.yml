@@ -1,10 +1,6 @@
 name: Publish to pip
 
 on:
-  push:
-    branches:
-      - 'fix_publish_yml'
-
   release:
     types: [published]
 
