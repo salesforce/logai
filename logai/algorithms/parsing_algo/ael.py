@@ -7,7 +7,7 @@
 #
 """
 This is wrapping the logpai/logparser implementation of AEL algorithm
-link: https://github.com/logpai/logparser/blob/master/logparser/AEL/AEL.py
+link: https://github.com/logpai/logparser/blob/master/logparser/AEL/AEL.py.
 """
 
 import re
@@ -23,7 +23,7 @@ from logai.algorithms.factory import factory
 
 
 class Event:
-    """Event class to wrap log events 
+    """Event class to wrap log events.
     """
     def __init__(self, logidx, Eventstr=""):
         self.id = hashlib.md5(Eventstr.encode("utf-8")).hexdigest()[0:8]
@@ -33,7 +33,7 @@ class Event:
         self.merged = False
 
     def refresh_id(self):
-        """generating id for a log event using the hashing function 
+        """Generates id for a log event using the hashing function.
         """
         self.id = hashlib.md5(self.Eventstr.encode("utf-8")).hexdigest()[0:8]
 
@@ -41,12 +41,12 @@ class Event:
 @dataclass
 class AELParams(Config):
     """Parameters for the AEL Log Parsing algorithm. For more details see 
-    https://github.com/logpai/logparser/tree/master/logparser/AEL
+    https://github.com/logpai/logparser/tree/master/logparser/AEL.
 
-    :param rex: str:
-    :param minEventCount: int: minimum event count
-    :param merge_percent: int: merge percentage
-    :param keep_para: bool: wheter to keep parameters
+    :param rex: A rex string.
+    :param minEventCount: The minimum event count.
+    :param merge_percent: The merge percentage.
+    :param keep_para: Whether to keep parameters.
     """
     rex: str = None
     minEventCount: int = 2
@@ -68,21 +68,15 @@ class AEL(ParsingAlgo):
 
     def fit(self, loglines: pd.DataFrame):
         """Fit method to train log parser on given log data.
-        Since AEL Log Parser does not require any training, this method is empty
-        
-        :param loglines: input loglines
-        :return:
+        Since AEL Log Parser does not require any training, this method is empty.
         """
-        return
+        pass
 
     def parse(self, loglines: pd.Series) -> pd.Series:
-        """Parse method to run log parser on given log data 
+        """Parse method to run log parser on given log data.
 
-        Args:
-            loglines (pd.Series): raw log data to be parsed
-
-        Returns:
-            pd.Series: parsed log data 
+        :param loglines: The raw log data to be parsed.
+        :returns: The parsed log data.
         """
         self.logname = "logname"
         self.load_data(loglines)
@@ -100,8 +94,7 @@ class AEL(ParsingAlgo):
 
     def tokenize(self):
         """
-        Put logs into bins according to (# of '<*>', # of token)
-
+        Puts logs into bins according to (# of '<*>', # of token).
         """
         for idx, log in self.df_log["Content_"].iteritems():
             para_count = 0
@@ -118,8 +111,7 @@ class AEL(ParsingAlgo):
 
     def categorize(self):
         """
-        Abstract templates bin by bin
-
+        Categorizes templates bin by bin.
         """
         for key in self.bins:
             abin = self.bins[key]
@@ -138,8 +130,7 @@ class AEL(ParsingAlgo):
 
     def reconcile(self):
         """
-        Merge events if a bin has too many events
-
+        Merges events if a bin has too many events.
         """
         for key in self.bins:
             abin = self.bins[key]
@@ -166,14 +157,11 @@ class AEL(ParsingAlgo):
                     self.merged_events.append(e)
 
     def merge_event(self, e1, e2):
-        """Method to merge two events 
+        """Method to merge two events.
 
-        Args:
-            e1: first event to merge (merged in-place)
-            e2: second event to merge
-
-        Returns:
-            merged event 
+        :param e1: The first event to merge (merged in-place).
+        :param e2: The second event to merge.
+        :returns: The merged event.
         """
         for pos in range(len(e1.EventToken)):
             if e1.EventToken[pos] != e2.EventToken[pos]:
@@ -184,15 +172,12 @@ class AEL(ParsingAlgo):
 
         return e1
 
-    def has_diff(self, tokens1, tokens2):
-        """Method to check if there is significant different between two given token sequences
+    def has_diff(self, tokens1: list, tokens2: list):
+        """Method to check if there is significant different between two given token sequences.
 
-        Args:
-            tokens1 (list): first token sequence
-            tokens2 (list): second token sequence
-
-        Returns:
-            bool: 0 if no significant difference between given token sequences else 1
+        :param tokens1: The first token sequence.
+        :param tokens2: The second token sequence.
+        :returns: 0 if no significant difference between given token sequences else 1.
         """
         diff = 0
         for idx in range(len(tokens1)):
@@ -201,10 +186,9 @@ class AEL(ParsingAlgo):
         return True if 0 < diff * 1.0 / len(tokens1) <= self.merge_percent else False
 
     def load_data(self, loglines: pd.Series):
-        """Method to load log data (pandas Series object) to a format compatible for parsing
+        """Method to load log data (pandas Series object) to a format compatible for parsing.
 
-        Args:
-            loglines (pd.Series): log data to be parsed
+        :param loglines: The log data to be parsed.
         """
         def preprocess(log):
             if self.rex:
