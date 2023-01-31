@@ -25,7 +25,7 @@ from typing import Tuple
 @dataclass
 class CategoricalEncoderConfig(Config):
     """
-    Categorical encoding configurations
+    Categorical encoding configurations.
     """
 
     name: str = "label_encoder"
@@ -43,16 +43,15 @@ class CategoricalEncoderConfig(Config):
 
 class CategoricalEncoder:
     """
-    Implementation of categorical encoder
+    Implementation of the categorical encoder.
     """
 
     def __init__(self, config: CategoricalEncoderConfig):
         """
-        Initialize categorical encoder.
-        :param config: Configuration of categorical encoders. Currently support:
-        - label encoder
-        - ordinal encoder
-        - one-hot encoder
+        Initializes a categorical encoder.
+
+        :param config: Configuration of categorical encoders. Currently support label encoder,
+            ordinal encoder, and one-hot encoder.
         """
         self.encoder = None
         if config.name.lower() == "label_encoder":
@@ -75,7 +74,8 @@ class CategoricalEncoder:
     def fit_transform(self, features: pd.Series) -> Tuple[pd.DataFrame, list]:
         """
         Transform the str features into categories.
-        :param features: pd.Series: list of features
-        :return: pd.Dataframe: list of encoded features.
+
+        :param features: A list of features.
+        :return: A list of encoded features.
         """
         return self.encoder.fit_transform(features)
