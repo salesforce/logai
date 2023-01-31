@@ -240,7 +240,7 @@ detection benchmarking on different datasets and algorithms can be found in
 ## Documentation
 
 For more detail about LogAI library and advanced use cases, please visit 
-[LogAI Documentation](https://opensource.salesforce.com/LogAI).
+[LogAI Documentation](https://opensource.salesforce.com/logai).
 
 ## Technical Report and Citing LogAI
 
