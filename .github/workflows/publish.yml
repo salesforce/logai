@@ -1,6 +1,10 @@
 name: Publish to pip
 
 on:
+  push:
+    branches:
+      - 'fix_publish_yml'
+
   release:
     types: [published]
 
@@ -12,7 +16,10 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: ["3.8", "3.9", "3.10"]
+          python-version:
+            - "3.8"
+            - "3.9"
+            - "3.10"
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
