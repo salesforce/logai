@@ -14,12 +14,13 @@ from logai.config_interfaces import Config
 from logai.dataloader.data_loader import FileDataLoader, DataLoaderConfig
 
 
-def get_config(dataset_name, filepath):
+def get_config(dataset_name, filepath) -> DataLoaderConfig:
     """
-    Retrieve the configuration of open log datasets to load data
-    :param dataset_name: supported log dataset name from ("hdfs", "bgl", "HealthApp")
-    :param filepath: log file path
-    :return: DataLoaderConfig: the configuration to load open log datasets
+    Retrieve the configuration of open log datasets to load data.
+
+    :param dataset_name: Supported log dataset name from ("hdfs", "bgl", "HealthApp").
+    :param filepath: The log file path.
+    :return: The configuration to load open log datasets.
     """
     config_path = os.path.join(
         os.path.dirname(__file__),

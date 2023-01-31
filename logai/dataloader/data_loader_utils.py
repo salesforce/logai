@@ -12,7 +12,8 @@ import pandas as pd
 
 def generate_logformat_regex(log_format):
     """
-    Function to generate regular expression to split log messages
+    Function to generate regular expression to split log messages.
+
     return: headers, regex
     """
     headers = []
@@ -32,8 +33,9 @@ def generate_logformat_regex(log_format):
 
 def log_to_dataframe(log_file, regex, headers):
     """
-    Function to transform log file to dataframe
-    return: pd.Dataframe: log dataframe
+    Function to transform log file to dataframe.
+
+    return: The log dataframe.
     """
     log_messages = []
     linecount = 0
@@ -55,10 +57,11 @@ def log_to_dataframe(log_file, regex, headers):
 
 def load_data(filename, log_format):
     """
-    Load log from given file and format
-    :param filename: files to read
-    :param log_format: target log format
-    :return:
+    Load log from given file and format.
+
+    :param filename: Files to read.
+    :param log_format: Target log format.
+    :return: The loaded log data.
     """
     headers, regex = generate_logformat_regex(log_format)
     df_log = log_to_dataframe(filename, regex, headers)
