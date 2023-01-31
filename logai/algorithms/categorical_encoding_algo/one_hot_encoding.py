@@ -16,9 +16,13 @@ from logai.config_interfaces import Config
 class OneHotEncodingParams(Config):
     """
     Configuration for One-Hot Encoding. For more details on the parameters see
-     https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html
-    """
+    https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html.
 
+    :param categories: Categories (unique values) per feature.
+    :param drop: Specifies a methodology to use to drop one of the categories per feature.
+    :param dtype: Desired dtype of output.
+    :param handle_unknown: Specifies the way unknown categories are handled during transform.
+    """
     categories: str = "auto"
     drop: object = None
     dtype: np.float64 = np.float64
@@ -26,12 +30,12 @@ class OneHotEncodingParams(Config):
 
 
 class OneHotEncoding(CategoricalEncodingAlgo):
-    """This is a wrapper class for OneHotEncoder from scikit-learn library.
-    https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html
+    """This is a wrapper class for OneHotEncoder from scikit-learn library
+    https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html.
     """
     def __init__(self, params: OneHotEncodingParams):
         """
-        Init one-hot encoder
+        Initializes the one-hot encoder.
         """
         self.model = OneHotEncoder(
             categories=params.categories,
@@ -43,9 +47,10 @@ class OneHotEncoding(CategoricalEncodingAlgo):
 
     def fit_transform(self, log_attributes: pd.DataFrame) -> pd.DataFrame:
         """
-        fit and transform log attributes into one-hot encoding categories
-        :param log_attributes: list of log attributes in text form
-        :return: pd.DataFrame: categories in on-hot encoding
+        Fits and transforms log attributes into one-hot encoding categories.
+
+        :param log_attributes: A list of log attributes in text form.
+        :return: The categories in on-hot encoding.
         """
         col_names = log_attributes.columns
         if len(col_names) == 1:

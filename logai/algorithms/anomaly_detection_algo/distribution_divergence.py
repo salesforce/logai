@@ -33,12 +33,11 @@ def _js_divergence(p, q):
 
 @dataclass
 class DistributionDivergenceParams(Config):
-    """parameters for distribution divergence based anomaly detector
+    """Parameters for distribution divergence based anomaly detector.
 
-    Args:
-        n_bins: number of bins to use to discretize the continuous distribution into a discrete distribution
-        type: list of types of distribution divergences. The allowed types are Kullback–Leibler ("KL"), Jensen–Shannon
-        ("JS"). It also allows a comma separated list of metrics like ("KL,JS" or "JS,KL"). 
+    :param n_bins: number of bins to use to discretize the continuous distribution into a discrete distribution
+    :param type: list of types of distribution divergences. The allowed types are Kullback–Leibler ("KL"), Jensen–Shannon
+        ("JS"). It also allows a comma separated list of metrics like ("KL,JS" or "JS,KL").
     """
     n_bins: int = 100
     type: list = ["KL"]  # "KL", "JS", "KL,JS"
@@ -48,7 +47,7 @@ class DistributionDivergenceParams(Config):
 class DistributionDivergence(AnomalyDetectionAlgo):
     """Class for Distribution Divergene based Anomaly Detection. Both during training and testing, it takes log features 
     as input and construct a parametric distribution over them. For the test data, it reports the distribution divergence
-    with the training data as the anomaly score
+    with the training data as the anomaly score.
     """
     def __init__(self, params: DistributionDivergenceParams):
         self.n_bins = params.n_bins
@@ -59,22 +58,18 @@ class DistributionDivergence(AnomalyDetectionAlgo):
 
     def fit(self, log_features: pd.DataFrame):
         """Fit method of the distribution divergence based anomaly detector. Since it is a non-parametric model, 
-        there is no training required
+        there is no training required.
 
-        Args:
-            log_features (pd.DataFrame): log features as a pandas DataFrame object
+        :param log_features: Log features as a pandas DataFrame object.
         """
         self.train_sample = np.array(log_features)
 
     def predict(self, log_features: pd.DataFrame) -> list:
         """Predict method of distribution divergence based anomaly detector. It computes the distribution divergence
-        between the training distribution and the test distribution provided in predict method
+        between the training distribution and the test distribution provided in predict method.
 
-        Args:
-            log_features (pd.DataFrame): test distribution as pandas DataFrame object
-
-        Returns:
-            list: list of scalar anomaly scores
+        :param log_features: The test distribution as pandas DataFrame object.
+        :returns: A list of scalar anomaly scores.
         """
 
         log_features = np.array(log_features)

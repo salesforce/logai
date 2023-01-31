@@ -36,14 +36,6 @@ logai.applications.log\_clustering module
    :undoc-members:
    :show-inheritance:
 
-logai.applications.pretrained\_lm\_log\_representation module
--------------------------------------------------------------
-
-.. automodule:: logai.applications.pretrained_lm_log_representation
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 Module contents
 ---------------
 

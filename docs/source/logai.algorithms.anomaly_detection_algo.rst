@@ -12,14 +12,6 @@ logai.algorithms.anomaly\_detection\_algo.anomaly\_detector\_het module
    :undoc-members:
    :show-inheritance:
 
-logai.algorithms.anomaly\_detection\_algo.arima module
-------------------------------------------------------
-
-.. automodule:: logai.algorithms.anomaly_detection_algo.arima
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 logai.algorithms.anomaly\_detection\_algo.dbl module
 ----------------------------------------------------
 
@@ -80,14 +72,6 @@ logai.algorithms.anomaly\_detection\_algo.one\_class\_svm module
 ----------------------------------------------------------------
 
 .. automodule:: logai.algorithms.anomaly_detection_algo.one_class_svm
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-logai.algorithms.anomaly\_detection\_algo.prophet module
---------------------------------------------------------
-
-.. automodule:: logai.algorithms.anomaly_detection_algo.prophet
    :members:
    :undoc-members:
    :show-inheritance:
