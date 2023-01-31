@@ -27,6 +27,14 @@ class DrainParams(Config):
     """Parameters for Drain Log Parser. 
     For more details on parameters see 
     https://github.com/logpai/Drain3/blob/master/drain3/drain.py
+
+    param: depth: int = 3: depth of tree
+    param: sim_th: float = 0.4: similarity threshold
+    param: max_children: int = 100: max number of children nodes
+    param: max_clusters: int = None: max number of clusters
+    param: extra_delimiters: tuple = (): extra delimiters
+    param: param_str: str = "*": wildcard parameter string
+
     """
     depth: int = 3
     sim_th: float = 0.4

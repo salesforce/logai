@@ -21,6 +21,16 @@ class Word2VecParams(Config):
     """
     Configuration of Word2Vec vectorization parameters. For more details on the parameters see 
     https://radimrehurek.com/gensim/models/word2vec.html
+
+    param: max_token_len: int = 100
+            The maximum length of tokens
+    param: min_count: int = 1 optional
+            Ignores all words with total frequency lower than this.
+    param: vector_size: int = 3 optional
+            Dimensionality of the feature vectors.
+    param: window: int = 3 optional
+            The maximum distance between the current and predicted word within a sentence.
+
     """
 
     max_token_len: int = 100
