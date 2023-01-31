@@ -1,0 +1,3 @@
+recursive-include logai *.yaml *.json
+
+include requirements.txt
