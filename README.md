@@ -24,7 +24,7 @@ For full license text, see the LICENSE file in the repo root or https://opensour
   </a>
 </div>
 
-# LogAI: A Library for AI-based Log Analytics and Intelligence
+# LogAI: A Library for Log Analytics and Intelligence
 
 ## Table of Contents
 * [Introduction](#introduction)
