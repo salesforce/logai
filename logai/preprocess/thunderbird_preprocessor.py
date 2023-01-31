@@ -13,10 +13,7 @@ from logai.utils import constants
 
 
 class ThunderbirdPreprocessor(OpenSetPreprocessor):
-    """Custom Preprocessor for Open log dataset Thunderbird
-
-    Inherits:
-        OpenSetPreprocessor: log preprocessor class for open log datasets
+    """Custom Preprocessor for Open log dataset Thunderbird.
     """
 
     def __init__(self, config: PreprocessorConfig):

@@ -30,14 +30,10 @@ class OpenSetPreprocessor(Preprocessor):
         return data_id
 
     def clean_log(self, logrecord: LogRecordObject) -> LogRecordObject:
-        """preprocessing cleaning of logrecord object creating from open log datasets
+        """Preprocessing cleaning of logrecord object creating from open log datasets.
 
-        Args:
-            logrecord (LogRecordObject): logrecord object containing the
-            raw log data from open datasets
-
-        Returns:
-            LogRecordObject: cleaned logrecord object
+        :param logrecord: A logrecord object containing the raw log data from open datasets.
+        :return: The cleaned logrecord object.
         """
         preprocessed_loglines, custom_patterns = super().clean_log(
             logrecord.body[constants.LOGLINE_NAME]
