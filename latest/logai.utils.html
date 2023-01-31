@@ -382,11 +382,13 @@ logrecord_test: logrecord object containing test data</p>
 <dd><p>Covert pandas.DataFrame to merlion.TimeSeries for log counter vectors</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>log_features</strong> – log feature dataframe must only contain two columns</p>
+<dd class="field-odd"><p><strong>log_features</strong> – log feature dataframe must only contain two columns
+[‘timestamp’: datetime, constants.LOGLINE_COUNTS: int].</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>merlion.TimeSeries type.</p>
 </dd>
 </dl>
-<p>[‘timestamp’: datetime, constants.LOGLINE_COUNTS: int].
-:return: merlion.TimeSeries type.</p>
 </dd></dl>
 
 </section>
