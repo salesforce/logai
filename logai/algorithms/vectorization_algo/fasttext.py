@@ -21,6 +21,21 @@ class FastTextParams(Config):
     """
     Configuration for FastText vectorizer. For more details on the parameters see
     https://radimrehurek.com/gensim/models/fasttext.html
+
+    param: vector_size: int = 100
+            size of vector
+    param: window: int = 100: optional
+            The maximum distance between the current and predicted word within a sentence.
+    param: min_count: int = 1: optional
+            Ignores all words with total frequency lower than this.
+    param: sample: float = 1e-2: optional
+            The threshold for configuring which higher-frequency words are randomly downsampled,
+            useful range is (0, 1e-5).
+    param: workers: int = 4: number of workers to run
+    param: sg: int = 1: optional. Training algorithm: skip-gram if `sg=1`, otherwise CBOW.
+    param: epochs: int = 100.
+    param: max_token_len: int = 100  : max token length.
+
     """
 
     vector_size: int = 100

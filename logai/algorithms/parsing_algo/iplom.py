@@ -49,6 +49,17 @@ class Event:
 class IPLoMParams(Config):
     """Parameters for the IPLoM Log Parser. For more details on parameters see 
     https://github.com/logpai/logparser/tree/master/logparser/IPLoM
+
+    param: rex: str = None: rex string
+    param: logformat: str = None: log format
+    param: maxEventLen: int = 200: max event length
+    param: step2Support: float = 0: step to support
+    param: PST: float = 0:
+    param: CT: float = 0:
+    param: lowerBound: float = 0.25: lower bound threshold
+    param: upperBound: float = 0.9: upper bound threshold
+    param: keep_para: bool = True: whether to keep parameters
+
     """
     rex: str = None
     logformat: str = None

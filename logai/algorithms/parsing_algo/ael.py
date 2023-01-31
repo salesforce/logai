@@ -42,6 +42,11 @@ class Event:
 class AELParams(Config):
     """Parameters for the AEL Log Parsing algorithm. For more details see 
     https://github.com/logpai/logparser/tree/master/logparser/AEL
+
+    :param rex: str:
+    :param minEventCount: int: minimum event count
+    :param merge_percent: int: merge percentage
+    :param keep_para: bool: wheter to keep parameters
     """
     rex: str = None
     minEventCount: int = 2
@@ -65,7 +70,7 @@ class AEL(ParsingAlgo):
         """Fit method to train log parser on given log data.
         Since AEL Log Parser does not require any training, this method is empty
         
-        :param loglines:
+        :param loglines: input loglines
         :return:
         """
         return
