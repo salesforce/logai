@@ -37,7 +37,7 @@ For full license text, see the LICENSE file in the repo root or https://opensour
 * [Documentation](#documentation)
 * [Technical Report and Citing LogAI](#technical-report-and-citing-logai)
 * [Contact](#contact)
-* [Liscense](#license)
+* [License](#license)
 
 ## Introduction
 
@@ -194,7 +194,7 @@ Make sure to set `filepath` to the target log dataset file path.
     }
 ```
 
-Then to run log anomaly detection. You can simple create below python script:
+Then to run log anomaly detection. You can simply create below python script:
 
 
 ```python
@@ -232,181 +232,15 @@ use LogAI modules to create E2E applications in Jupyter Notebook.
 ### Deep-learning Anomaly Detection Benchmarking
 
 LogAI can be used to benchmark deep-learning anomaly detection results. 
-A [tutorial](examples/jupyter_notebook/nn_ad_benchmarking/tutorial_lstm_deep_ad_hdfs.md) is provided for 
+A [tutorial](examples/jupyter_notebook/tutorial_deep_ad.md) is provided for 
 Anomaly Detection Benchmarking using LSTM anomaly detector for HDFS Dataset. More examples of deep-learning anomaly 
 detection benchmarking on different datasets and algorithms can be found in 
-[Deep Anomaly Detection Benchmarking Examples](examples/jupyter_notebook/nn_ad_benchmarking). 
-
-Below table is the comparison between 
-different supervised and unsupervised deep learning anomaly detection
-models in LogAI and [Deep-Loglizer](https://github.com/logpai/deep-loglizer) library, using F1-Score as the 
-performance metric. The dashed (-) cells indicate that there are no reported numbers in the Deep-Loglizer 
-paper corresponding to those configurations.
-
-<table>
-    <thead>
-        <tr>
-            <th rowspan=2>Model</th>
-            <th rowspan=2>Details</th>
-            <th rowspan=2>Supervision</th>
-            <th rowspan=2>Log Parsing</th>
-            <th rowspan=2>Log Representation</th>
-            <th colspan=2>HDFS</th>
-            <th colspan=2>BGL</th>
-        </tr>
-        <tr>
-            <th>LogAI</th>
-            <th>Deep Loglizer</th>
-            <th>LogAI</th>
-            <th>Deep Loglizer</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td rowspan=4>LSTM</td>
-            <td rowspan=2>Undirectional, No Attention</td>
-            <td rowspan=2>Unsupervised</td>
-            <td>:heavy_check_mark:</td>
-            <td>sequential</td>
-            <td>0.981</td>
-            <td>0.944</td>
-            <td>0.938</td>
-            <td>0.961</td>
-        </tr>
-        <tr>
-            <td>:heavy_multiplication_x:</td>
-            <td>semantic</td>
-            <td>0.981</td>
-            <td>0.945</td>
-            <td>0.924</td>
-            <td>0.967</td>
-        </tr>
-        <tr>
-            <td rowspan=2>Bidirectional, with Attention</td>
-            <td rowspan=2>Supervisedn</td>
-            <td>:heavy_check_mark:</td>
-            <td>sequntial</td>
-            <td>0.979</td>
-            <td>-</td>
-            <td>0.925</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>:heavy_multiplication_x:</td>
-            <td>semantic</td>
-            <td>0.981</td>
-            <td>-</td>
-            <td>0.924</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td rowspan=4>CNN</td>
-            <td rowspan=4>2-D Convolution with 1-D Max Pooling</td>
-            <td rowspan=2>Unsupervised</td>
-            <td>:heavy_check_mark:</td>
-            <td>sequential</td>
-            <td>0.981</td>
-            <td>-</td>
-            <td>0.929</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>:heavy_multiplication_x:</td>
-            <td>sequential</td>
-            <td>0.981</td>
-            <td>-</td>
-            <td>0.922</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td rowspan=2>Supervised</td>
-            <td>:heavy_check_mark:</td>
-            <td>sequential</td>
-            <td>0.943</td>
-            <td>0.97</td>
-            <td>0.983</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>:heavy_multiplication_x:</td>
-            <td>sequential</td>
-            <td>0.946</td>
-            <td>-</td>
-            <td>0.99</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td rowspan=8>Transformer</td>
-            <td rowspan=8>Multihead single-layer self-attention model, trained from scratch</td>
-            <td rowspan=4>Unsupervised</td>
-            <td rowspan=2>:heavy_check_mark:</td>
-            <td>sequential</td>
-            <td>0.971</td>
-            <td>0.905</td>
-            <td>0.933</td>
-            <td>0.956</td>
-        </tr>
-        <tr>
-            <td>semantic</td>
-            <td>0.978</td>
-            <td>925</td>
-            <td>0.921</td>
-            <td>0.957</td>
-        </tr>
-        <tr>
-            <td rowspan=2>:heavy_multiplication_x:</td>
-            <td>sequential</td>
-            <td>0.98</td>
-            <td>-</td>
-            <td>0.92</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>semantic</td>
-            <td>0.975</td>
-            <td>-</td>
-            <td>0.917</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td rowspan=4>Supervised</td>
-            <td rowspan=2>:heavy_check_mark:</td>
-            <td>sequential</td>
-            <td>0.934</td>
-            <td>-</td>
-            <td>0.986</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>semantic</td>
-            <td>0.784</td>
-            <td>-</td>
-            <td>0.963</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td rowspan=2>:heavy_multiplication_x:</td>
-            <td>sequential</td>
-            <td>0.945</td>
-            <td>-</td>
-            <td>0.994</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>semantic</td>
-            <td>0.915</td>
-            <td>-</td>
-            <td>0.977</td>
-            <td>-</td>
-        </tr>
-    </tbody>
-</table>
-
+[Deep Anomaly Detection Benchmarking Examples](examples/jupyter_notebook/nn_ad_benchmarking).
 
 ## Documentation
 
-For more detail about LogAI library and advanced use cases, please visit [LogAI Documentation]().
-
+For more detail about LogAI library and advanced use cases, please visit 
+[LogAI Documentation](https://opensource.salesforce.com/LogAI).
 
 ## Technical Report and Citing LogAI
 

@@ -11,8 +11,9 @@ import pickle
 from os.path import dirname, exists
 
 import pandas as pd
-from dataclasses import dataclass
+import logai.algorithms.parsing_algo
 
+from dataclasses import dataclass
 from logai.config_interfaces import Config
 from logai.utils import constants
 from logai.algorithms.factory import factory
