@@ -26,15 +26,14 @@ from logai.algorithms.factory import factory
 class DrainParams(Config):
     """Parameters for Drain Log Parser. 
     For more details on parameters see 
-    https://github.com/logpai/Drain3/blob/master/drain3/drain.py
+    https://github.com/logpai/Drain3/blob/master/drain3/drain.py.
 
-    param: depth: int = 3: depth of tree
-    param: sim_th: float = 0.4: similarity threshold
-    param: max_children: int = 100: max number of children nodes
-    param: max_clusters: int = None: max number of clusters
-    param: extra_delimiters: tuple = (): extra delimiters
-    param: param_str: str = "*": wildcard parameter string
-
+    :param depth: The depth of tree.
+    :param sim_th: The similarity threshold.
+    :param max_children: The max number of children nodes.
+    :param max_clusters: The max number of clusters.
+    :param extra_delimiters: Extra delimiters.
+    :param param_str: The wildcard parameter string.
     """
     depth: int = 3
     sim_th: float = 0.4
@@ -301,12 +300,13 @@ class Drain(ParsingAlgo):
         self, cluster_ids: list, tokens: list, sim_th: float, include_params: bool
     ):
         """
-        Find the best match for a log message (represented as tokens) versus a list of clusters
-        :param cluster_ids: List of clusters to match against (represented by their IDs)
+        Find the best match for a log message (represented as tokens) versus a list of clusters.
+
+        :param cluster_ids: List of clusters to match against (represented by their IDs).
         :param tokens: the log message, separated to tokens.
-        :param sim_th: minimum required similarity threshold (None will be returned in no clusters reached it)
+        :param sim_th: minimum required similarity threshold (None will be returned in no clusters reached it).
         :param include_params: consider tokens matched to wildcard parameters in similarity threshold.
-        :return: Best match cluster or None
+        :return: Best match cluster or None.
         """
         match_cluster = None
 
@@ -426,7 +426,8 @@ class Drain(ParsingAlgo):
         """
         Match against an already existing cluster. Match shall be perfect (sim_th=1.0).
         New cluster will not be created as a result of this call, nor any cluster modifications.
-        :param content: log message to match
+
+        :param content: The log message to match.
         :return: Matched cluster or None of no match found.
         """
         content_tokens = self._get_content_as_tokens(content)
@@ -443,13 +444,10 @@ class Drain(ParsingAlgo):
             self._add_log_message(l)
 
     def parse(self, logline: pd.Series) -> pd.Series:
-        """Parse method to run log parser on a given log data
+        """Parse method to run log parser on a given log data.
 
-        Args:
-            logline (pd.Series): raw log data to be parsed
-
-        Returns:
-            pd.Series: parsed log data 
+        :param logline: The raw log data to be parsed.
+        :returns: The parsed log data.
         """
         self.fit(logline)
         parsed_logline = []

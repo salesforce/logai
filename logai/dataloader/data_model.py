@@ -55,8 +55,7 @@ class LogRecordObject:
 
     def to_dataframe(self):
         """
-        Generate pandas.DataFrame from LogRecordType
-        :return:
+        Generates pandas.DataFrame from LogRecordType.
         """
         if self.body.empty:
             return None
@@ -73,10 +72,11 @@ class LogRecordObject:
     @classmethod
     def from_dataframe(cls, data: pd.DataFrame, meta_data: dict = None):
         """
-        Convert pandas.DataFrame to log record object
-        :param data: pd.DataFrame: log data in pandas dataframe
-        :param meta_data: dict: a dictionary that maps data.columns to fields of LogRecordObject
-        :return: LogRecordObject
+        Converts pandas.DataFrame to log record object.
+
+        :param data: The log data in pandas dataframe.
+        :param meta_data: A dictionary that maps data.columns to fields of LogRecordObject.
+        :return: A LogRecordObject object.
         """
         if meta_data is None and not data.empty:
             logbody = data.apply(" ".join, axis=1)
@@ -94,15 +94,15 @@ class LogRecordObject:
         logrecord.__post_init__()
         return logrecord
 
-    def save_to_csv(self, filepath):
+    def save_to_csv(self, filepath: str):
         """
-        save logrecord object to file
+        Saves the logrecord object to a file.
 
         Args:
-            filepath (str): absolute path to filename where the logrecord object would be saved
+            filepath: The absolute path to filename where the logrecord object would be saved.
 
         Raises:
-            Exception: supports only file extensions (.csv, .json, and .pickle or .pkl)
+            Exception: Supports only file extensions (.csv, .json, and .pickle or .pkl).
         """
         f = pathlib.Path(filepath)
         filepath_metadata = filepath.replace(f.suffix, "_metadata.json")
@@ -121,15 +121,15 @@ class LogRecordObject:
         meta_data = json.load(open(filepath_metadata))
         return cls.from_dataframe(data=data, meta_data=meta_data)
 
-    def select_by_index(self, indices, inplace=False):
-        """Select a subset of a logrecord object based on selected indices
+    def select_by_index(self, indices: list, inplace: bool = False):
+        """Select a subset of a logrecord object based on selected indices.
 
         Args:
-            indices (list): list of indices to select
-            inplace (bool, optional): performs operation inplace or not. Defaults to False.
+            indices: A list of indices to select.
+            inplace: Performs operation inplace or not. Defaults to False.
 
         Returns:
-            LogRecordObject: resulting logrecord object created from the selected indices
+            LogRecordObject: Resulting logrecord object created from the selected indices.
         """
         if not inplace:
             target = LogRecordObject()
@@ -142,15 +142,15 @@ class LogRecordObject:
             target.__setattr__(key, val)
         return target
 
-    def filter_by_index(self, indices, inplace=False):
-        """Select a subset of a logrecord object by removing certain indices
+    def filter_by_index(self, indices: list, inplace: bool = False):
+        """Select a subset of a logrecord object by removing certain indices.
 
         Args:
-            indices (list): list of indices to remove
-            inplace (bool, optional): performs operation inplace or not. Defaults to False.
+            indices: A list of indices to remove.
+            inplace: Performs operation inplace or not. Defaults to False.
 
         Returns:
-            LogRecordObject: resulting logrecord object created after removing the indices
+            LogRecordObject: Resulting logrecord object created after removing the indices.
         """
         if not inplace:
             target = LogRecordObject()
@@ -164,10 +164,10 @@ class LogRecordObject:
         return target
 
     def dropna(self):
-        """method to drop entries containing NaN or null values in the logrecord object
+        """Method to drop entries containing NaN or null values in the logrecord object.
 
         Returns:
-            LogRecordObject : modified logrecord object after removing entries with NaN or null values
+            LogRecordObject: Modified logrecord object after removing entries with NaN or null values.
         """
         null_body = self.body.isnull()
         null_body = null_body[null_body[constants.LOGLINE_NAME] == True]

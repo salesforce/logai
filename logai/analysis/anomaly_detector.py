@@ -15,7 +15,11 @@ from logai.algorithms.factory import factory
 
 @dataclass
 class AnomalyDetectionConfig(Config):
-    """Config class for AnomalyDetector 
+    """Config class for AnomalyDetector.
+
+    :param algo_name: The algorithm name.
+    :param algo_params: The algorithm parameters.
+    :param custom_params: Additional customized parameters.
     """
     algo_name: str = "one_class_svm"
     algo_params: object = None
@@ -33,8 +37,9 @@ class AnomalyDetectionConfig(Config):
 class AnomalyDetector:
     def __init__(self, config: AnomalyDetectionConfig):
         """
-        Init the anomaly detector with proper configuration. If no config provided, use default
-        :param config: AnomalyDetectionConfig
+        Initializes the anomaly detector with proper configuration. If no config provided, use default.
+
+        :param config: A config object for anomaly detection.
         """
         self.anomaly_detector = factory.get_algorithm(
             "detection", config.algo_name.lower(), config

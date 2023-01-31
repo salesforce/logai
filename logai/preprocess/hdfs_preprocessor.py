@@ -14,10 +14,10 @@ from logai.dataloader.data_model import LogRecordObject
 
 class HDFSPreprocessor(OpenSetPreprocessor):
     """
-    Custom Preprocessor for open log dataset HDFS
+    Custom Preprocessor for open log dataset HDFS.
 
     Inherits:
-        OpenSetPreprocessor: log preprocessor class for open log datasets
+        OpenSetPreprocessor: log preprocessor class for open log datasets.
     """
 
     def __init__(self, config: PreprocessorConfig, label_file: str):

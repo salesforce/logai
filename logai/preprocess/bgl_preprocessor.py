@@ -14,10 +14,10 @@ from logai.dataloader.data_model import LogRecordObject
 
 class BGLPreprocessor(OpenSetPreprocessor):
     """
-    Custom preprocessor for Open log dataset BGL
+    Custom preprocessor for Open log dataset BGL.
 
     Inherits:
-        OpenSetPreprocessor: log preprocessor class for open log datasets
+        OpenSetPreprocessor: log preprocessor class for open log datasets.
     """
 
     def __init__(self, config: PreprocessorConfig):

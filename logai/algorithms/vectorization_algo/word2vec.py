@@ -20,17 +20,12 @@ from logai.algorithms.factory import factory
 class Word2VecParams(Config):
     """
     Configuration of Word2Vec vectorization parameters. For more details on the parameters see 
-    https://radimrehurek.com/gensim/models/word2vec.html
+    https://radimrehurek.com/gensim/models/word2vec.html.
 
-    param: max_token_len: int = 100
-            The maximum length of tokens
-    param: min_count: int = 1 optional
-            Ignores all words with total frequency lower than this.
-    param: vector_size: int = 3 optional
-            Dimensionality of the feature vectors.
-    param: window: int = 3 optional
-            The maximum distance between the current and predicted word within a sentence.
-
+    :param max_token_len: The maximum length of tokens.
+    :param min_count: Ignores all words with total frequency lower than this.
+    :param vector_size: Dimensionality of the feature vectors.
+    :param window: The maximum distance between the current and predicted word within a sentence.
     """
 
     max_token_len: int = 100
@@ -43,22 +38,21 @@ class Word2VecParams(Config):
 class Word2Vec(VectorizationAlgo):
     """
     Word2Vec algorithm for converting raw log data into word2vec vectors. This is a wrapper class for the Word2Vec
-    model from gensim library https://radimrehurek.com/gensim/models/word2vec.html
+    model from gensim library https://radimrehurek.com/gensim/models/word2vec.html.
     """
 
     def __init__(self, params: Word2VecParams):
         """
-        Initialize Word2Vec vectorizer.
-        :param max_token_len: the max token length to vectorize, longer sentences will be chopped.
+        :param max_token_len: The max token length to vectorize, longer sentences will be chopped.
         """
         self.params = params
         self.model = None
 
     def fit(self, loglines: pd.Series):
         """
-        Fit Word2Vec model.
-        :param loglines: parsed loglines.
-        :return:
+        Fits Word2Vec model.
+
+        :param loglines: The parsed loglines.
         """
         max_token_len = self.params.max_token_len
 
@@ -79,9 +73,10 @@ class Word2Vec(VectorizationAlgo):
 
     def transform(self, loglines: pd.Series) -> pd.Series:
         """
-        Transform input loglines to log vectros
-        :param loglines: pd.Series: input loglines.
-        :return: pd.Series
+        Transforms input loglines to log vectors.
+
+        :param loglines: The input loglines.
+        :return: The transformed log vectors.
         """
         log_vectors = []
         max_len = 0
@@ -103,7 +98,6 @@ class Word2Vec(VectorizationAlgo):
 
     def summary(self):
         """
-        generate model summary
-        :return:
+        Generate model summary.
         """
         return self.model.summary()

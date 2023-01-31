@@ -16,7 +16,7 @@ from logai.utils.functions import pad
 
 @dataclass
 class FeatureExtractorConfig(Config):
-    """Config class for Feature Extractor
+    """Config class for Feature Extractor.
     """
     group_by_category: list = None
     group_by_time: str = None
@@ -77,7 +77,6 @@ class FeatureExtractor:
 
     def __init__(self, config: FeatureExtractorConfig):
         self.config = config
-        return
 
     def convert_to_counter_vector(
         self,
@@ -86,18 +85,12 @@ class FeatureExtractor:
         timestamps: pd.Series = None,
     ) -> pd.DataFrame:
         """
-
         Convert logs to log counter vector, after grouping log data based on the FeatureExtractor config. 
-        
 
-        :param log_pattern: pd.Series: unstructured part of the log data 
-
-        :param attributes: pd.Dataframe: log attributes
-        :param timestamps: pd.Series: timestamps
-
-        :return: 
-            (pd.DataFrame): event_index_list: dataframe object containing the counts of the log-events after grouping
-
+        :param log_pattern: An unstructured part of the log data.
+        :param attributes: The log attributes.
+        :param timestamps: The timestamps.
+        :return: A pandas dataframe containing the counts of the log-events after grouping.
         """
         # TODO: Implement sliding window for counter vectors
         input_df = self._get_input_df(log_pattern, attributes, timestamps)
@@ -108,7 +101,6 @@ class FeatureExtractor:
         event_index_list[constants.LOG_COUNTS] = event_index_list["event_index"].apply(
             lambda x: len(x)
         )
-
         return event_index_list
 
     def convert_to_feature_vector(
@@ -118,30 +110,18 @@ class FeatureExtractor:
         timestamps: pd.Series,
     ) -> pd.DataFrame:
         """
-
         Converting log data into feature vector, by combining the log vectors (can be output
         of LogVectorizer) with other numerical or categorical attributes of the logs,
-        after grouping based on the FeatureExtractorConfig  
-
-        Args:
-            log_vectors (pd.Series): Numeric features of the logs (for e.g. the vectorized form
-            of the log data obtained as output of LogVectorizer)
-            attributes (pd.DataFrame): Categorical or numerical attributes for grouping,
-            or numerical attributes serve as additional features
-            timestamps (pd.Series): pd.Series object containing the timestamp data of the loglines 
+        after grouping based on the FeatureExtractorConfig.
 
 
         Return:
             (pd.DataFrame): event_index_list: modified log data (pd.DataFrame) consisting of the converted
             feature vector form of the input log data after applying the log grouping. It contains an 
             "event_index" field which maintains the sequence of log event ids where these ids correspond to the 
-            original input dataframe's indices.  
+            original input dataframe's indices.
             block_list: pd.DataFrame
-
         """
-        # if log_vectors.empty:
-        #     raise TypeError("Log vector must be not NULL to generate feature vector")
-
         if log_vectors is None or log_vectors.empty:
             feature_df = None
         else:
@@ -164,7 +144,7 @@ class FeatureExtractor:
         attributes: pd.DataFrame = None,
         timestamps: pd.Series = None,
     ):
-        """Converting log data into sequence using sliding window technique, as defined in FeatureExtractorConfig  
+        """Converting log data into sequence using sliding window technique, as defined in FeatureExtractorConfig.
 
         Args:
             log_pattern (pd.Series, optional): pd.Series object that encapsulates the entire arbitrary unstructured part of the log data (for example, 
@@ -178,7 +158,7 @@ class FeatureExtractor:
             contains an "event_index" field which maintains the sequence of log event ids where these ids correspond to the 
             original input dataframe's indices. 
             (pd.Series): event_sequence: Contains the concatenating form of the unstructured input data (i.e. log_pattern argument),
-            after concatenating the unstructured data for each sliding window 
+            after concatenating the unstructured data for each sliding window.
         """
         # TODO: Converting sequence by sliding windows.
         # Partioning: length of sequence, step

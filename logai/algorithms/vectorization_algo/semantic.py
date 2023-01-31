@@ -25,19 +25,17 @@ from logai.algorithms.factory import factory
 @dataclass
 class SemanticVectorizerParams(Config):
     """
-
     Configuration of Semantic vectorization of loglines (or sequence of log lines) using models like word2vc,
-    glove and fastText
-    max_token_len: int = 10 # maximum token length of the input
-    min_token_count: int = 1 # minimum count of occurrences of a token in training data for it to be considered in the
-    vocab
+    glove and fastText.
 
-    sep_token: str = "[SEP]" # separator token used to separate log lines in input log sequence
-    embedding_dim: int = 300 # embedding dimension of the learnt token embeddings
-    window: int = 3 # window size parameter for word2vec and fastText models
-    embedding_type: str = "fasttext" # type of embedding, currently supports glove, word2vec and fastText
-    model_save_dir: str = None # path to directory where vectorizer models would be saved
-
+    :param max_token_len: The maximum token length of the input.
+    :param min_token_count: The minimum count of occurrences of a token in training data for it to be
+        considered in the vocab.
+    :param sep_token: The separator token used to separate log lines in input log sequence.
+    :param embedding_dim: The embedding dimension of the learnt token embeddings.
+    :param window: The window size parameter for word2vec and fastText models.
+    :param embedding_type: The type of embedding, currently supports glove, word2vec and fastText.
+    :param model_save_dir: The path to directory where vectorizer models would be saved.
     """
 
     max_token_len: int = 10
@@ -54,14 +52,12 @@ class Semantic(VectorizationAlgo):
     """
     Semantic vectorizer to convert loglines into token ids based on a embedding model and vocabulary
     (like word2vec, glove and fastText). It supports either pretrained models and pretrained vocabulary
-    or training word embedding models like Word2Vec or FastText on the given training data
+    or training word embedding models like Word2Vec or FastText on the given training data.
     """
 
     def __init__(self, params: SemanticVectorizerParams):
-        """intializing semantic vectorizer
-
-        Args:
-            params (SemanticVectorizerParams): config object for semantic vectorizer
+        """
+        :param params: The config object for semantic vectorizer.
         """
         self.params = params
         self.model = None
@@ -98,12 +94,12 @@ class Semantic(VectorizationAlgo):
         return token_list
 
     def fit(self, loglines: pd.Series):
-        """Fit method to train semantic vectorizer
+        """Fit method to train semantic vectorizer.
 
-        Args:
-            loglines (pd.Series): pandas Series object containing the dataset on
+        :param loglines: A pandas Series object containing the dataset on
             which semantic vectorizer is trained (and the vocab is built).
-            Each data instance should be a logline or sequence of loglines concatenated by separator token
+            Each data instance should be a logline or sequence of loglines
+            concatenated by separator token.
         """
         if (
             self.params.model_save_dir
@@ -204,14 +200,12 @@ class Semantic(VectorizationAlgo):
                     np.save(self.embed_mat_filename, self.embed_matrix)
 
     def transform(self, loglines: pd.Series) -> pd.Series:
-        """Transform method to run semantic vectorizer on loglines
+        """Transform method to run semantic vectorizer on loglines.
 
-        Args:
-            loglines (pd.Series): pandas Series containing the data to be vectorized
-            Each data instance should be a logline or sequence of loglines concatenated by separator token
-
-        Returns:
-            pd.Series: vectorized log data
+        :param loglines: The pandas Series containing the data to be vectorized.
+            Each data instance should be a logline or sequence of loglines concatenated by separator
+            token.
+        :return: The vectorized log data.
         """
         log_vectors = []
         count = 0
@@ -232,7 +226,6 @@ class Semantic(VectorizationAlgo):
 
     def summary(self):
         """
-        generate model summary
-        :return:
+        Generate model summary.
         """
         return self.model.summary()
