@@ -1,5 +1,174 @@
 
-# Deep-learning Anomaly Detection Benchmarking for HDFS Dataset
+# Deep-learning Anomaly Detection Benchmarking
+
+## Benchmarking Result Table
+
+Below table is the comparison between 
+different supervised and unsupervised deep learning anomaly detection
+models in LogAI and [Deep-Loglizer](https://github.com/logpai/deep-loglizer) library, using F1-Score as the 
+performance metric. The dashed (-) cells indicate that there are no reported numbers in the Deep-Loglizer 
+paper corresponding to those configurations.
+<table>
+    <thead>
+        <tr>
+            <th rowspan=2>Model</th>
+            <th rowspan=2>Details</th>
+            <th rowspan=2>Supervision</th>
+            <th rowspan=2>Log Parsing</th>
+            <th rowspan=2>Log Representation</th>
+            <th colspan=2>HDFS</th>
+            <th colspan=2>BGL</th>
+        </tr>
+        <tr>
+            <th>LogAI</th>
+            <th>Deep Loglizer</th>
+            <th>LogAI</th>
+            <th>Deep Loglizer</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan=4>LSTM</td>
+            <td rowspan=2>Undirectional, No Attention</td>
+            <td rowspan=2>Unsupervised</td>
+            <td>:heavy_check_mark:</td>
+            <td>sequential</td>
+            <td>0.981</td>
+            <td>0.944</td>
+            <td>0.938</td>
+            <td>0.961</td>
+        </tr>
+        <tr>
+            <td>:heavy_multiplication_x:</td>
+            <td>semantic</td>
+            <td>0.981</td>
+            <td>0.945</td>
+            <td>0.924</td>
+            <td>0.967</td>
+        </tr>
+        <tr>
+            <td rowspan=2>Bidirectional, with Attention</td>
+            <td rowspan=2>Supervisedn</td>
+            <td>:heavy_check_mark:</td>
+            <td>sequntial</td>
+            <td>0.979</td>
+            <td>-</td>
+            <td>0.925</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>:heavy_multiplication_x:</td>
+            <td>semantic</td>
+            <td>0.981</td>
+            <td>-</td>
+            <td>0.924</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td rowspan=4>CNN</td>
+            <td rowspan=4>2-D Convolution with 1-D Max Pooling</td>
+            <td rowspan=2>Unsupervised</td>
+            <td>:heavy_check_mark:</td>
+            <td>sequential</td>
+            <td>0.981</td>
+            <td>-</td>
+            <td>0.929</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>:heavy_multiplication_x:</td>
+            <td>sequential</td>
+            <td>0.981</td>
+            <td>-</td>
+            <td>0.922</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td rowspan=2>Supervised</td>
+            <td>:heavy_check_mark:</td>
+            <td>sequential</td>
+            <td>0.943</td>
+            <td>0.97</td>
+            <td>0.983</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>:heavy_multiplication_x:</td>
+            <td>sequential</td>
+            <td>0.946</td>
+            <td>-</td>
+            <td>0.99</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td rowspan=8>Transformer</td>
+            <td rowspan=8>Multihead single-layer self-attention model, trained from scratch</td>
+            <td rowspan=4>Unsupervised</td>
+            <td rowspan=2>:heavy_check_mark:</td>
+            <td>sequential</td>
+            <td>0.971</td>
+            <td>0.905</td>
+            <td>0.933</td>
+            <td>0.956</td>
+        </tr>
+        <tr>
+            <td>semantic</td>
+            <td>0.978</td>
+            <td>925</td>
+            <td>0.921</td>
+            <td>0.957</td>
+        </tr>
+        <tr>
+            <td rowspan=2>:heavy_multiplication_x:</td>
+            <td>sequential</td>
+            <td>0.98</td>
+            <td>-</td>
+            <td>0.92</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>semantic</td>
+            <td>0.975</td>
+            <td>-</td>
+            <td>0.917</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td rowspan=4>Supervised</td>
+            <td rowspan=2>:heavy_check_mark:</td>
+            <td>sequential</td>
+            <td>0.934</td>
+            <td>-</td>
+            <td>0.986</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>semantic</td>
+            <td>0.784</td>
+            <td>-</td>
+            <td>0.963</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td rowspan=2>:heavy_multiplication_x:</td>
+            <td>sequential</td>
+            <td>0.945</td>
+            <td>-</td>
+            <td>0.994</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>semantic</td>
+            <td>0.915</td>
+            <td>-</td>
+            <td>0.977</td>
+            <td>-</td>
+        </tr>
+    </tbody>
+</table>
+
+
+## Create Benchmarking Application Workflow 
 
 Below is a sample `hdfs_log_anomaly_detection_unsupervised_lstm.yaml` yaml config file which provides the configs for each component of the log anomaly detection workflow on the public dataset HDFS using an unsupervised Deep-Learning based Anomaly Detector. 
 
