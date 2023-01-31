@@ -33,7 +33,8 @@ jobs:
         sudo apt-get update -y
         python -m pip install --upgrade pip setuptools wheel build
         python -m pip install flake8 pytest
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        python -m build
+        for f in dist/*.whl; do pip install "$f[all]; done
         python -m nltk.downloader punkt
 
 #    TODO: Add Flake8 check
