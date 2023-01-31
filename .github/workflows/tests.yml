@@ -34,7 +34,7 @@ jobs:
         python -m pip install --upgrade pip setuptools wheel build
         python -m pip install flake8 pytest
         python -m build
-        for f in dist/*.whl; do pip install "$f[all]; done
+        for f in dist/*.whl; do pip install $f[all]; done
         python -m nltk.downloader punkt
 
 #    TODO: Add Flake8 check
