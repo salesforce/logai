@@ -32,9 +32,7 @@ sys.path.insert(0, os.path.abspath("../../"))
 
 project = "LogAI"
 copyright = "2023, Salesforce.com, Inc."
-author = (
-    "Q.Cheng"
-)
+author = "Qian Cheng, Amrita Saha, Wenzhuo Yang, Chenghao Liu, Gerald Woo, Doyen Sahoo, Steven Hoi"
 
 
 # -- General configuration ---------------------------------------------------
