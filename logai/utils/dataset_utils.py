@@ -31,7 +31,6 @@ def split_train_dev_test_for_anomaly_detection(
         shuffle (bool, optional): whether to shuffle the log data when splitting into train and test. If False,
             then it uses the chronological ordering, where the first (chronologically first) split will constitute train data, 
             second one development data and third one as test data. Defaults to False.
-            
 
     Returns:
         logrecord_train: logrecord object containing train data
