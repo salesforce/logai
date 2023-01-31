@@ -16,8 +16,9 @@ NNAnomalyDetectionConfig = AnomalyDetectionConfig
 class NNAnomalyDetector:
     def __init__(self, config: NNAnomalyDetectionConfig):
         """
-        Init the anomaly detector with proper configuration. If no config provided, use default
-        :param config: AnomalyDetectionConfig
+        Initializes the anomaly detector with proper configuration. If no config provided, use default.
+
+        :param config: A config object for anomaly detection.
         """
         self.anomaly_detector = factory.get_algorithm(
             "detection", config.algo_name.lower(), config
@@ -32,7 +33,7 @@ class NNAnomalyDetector:
         Trains an anomaly detection given the training and validation datasets.
 
         :param train_data: The training dataset.
-        :pram dev_data: The validation dataset
+        :param dev_data: The validation dataset
         """
         return self.anomaly_detector.fit(train_data, dev_data)
 
