@@ -69,10 +69,10 @@ class ETSDetector(AnomalyDetectionAlgo):
         Fit method to train ETS Anomaly Detector
 
         :param log_features: log feature dataframe must only contain two columns
-        ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
+            ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
         :return: train_scores: anomaly scores dataframe
-        ['index':log_features.index, 'timestamps': datetime, 'anom_score': scores, 'trainval':
-        whether it is training set.
+            ['index':log_features.index, 'timestamps': datetime, 'anom_score': scores, 'trainval':
+            whether it is training set.
         """
         self._is_valid_ts_df(log_features)
         index = log_features.index
@@ -91,10 +91,10 @@ class ETSDetector(AnomalyDetectionAlgo):
         Predict anomaly scores for log_feature["timestamp", constants.LOGLINE_COUNTS]
 
         :param log_features: log feature dataframe must only contain two columns
-        ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
+            ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
         :return: test_scores: anomaly scores dataframe
-        ['index':log_features.index, 'timestamps': datetime, 'anom_score': scores, 'trainval':
-        whether it is training set.
+            ['index':log_features.index, 'timestamps': datetime, 'anom_score': scores, 'trainval':
+            whether it is training set.
         """
         self._is_valid_ts_df(log_features)
         index = log_features.index
