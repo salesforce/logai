@@ -26,7 +26,19 @@ from logai.algorithms.factory import factory
 class ETSDetectorParams(Config):
     """
     ETS Anomaly Detector Parameters. For more details of ETS parameters see 
-    https://opensource.salesforce.com/Merlion/v1.0.2/merlion.models.forecast.html#module-merlion.models.forecast.ets
+    https://opensource.salesforce.com/Merlion/v1.0.2/merlion.models.forecast.html#module-merlion.models.forecast.ets.
+
+    :param max_forecast_steps: Number of steps we would like to forecast for.
+    :param target_seq_index: The index of the univariate (amongst all univariates in a general multivariate
+        time series) whose value we would like to forecast.
+    :param error: The error term. “add” or “mul”.
+    :param trend: The trend component. “add”, “mul” or None.
+    :param damped_trend: Whether or not an included trend component is damped.
+    :param seasonal: The seasonal component. “add”, “mul” or None.
+    :param seasonal_periods: The length of the seasonality cycle. ‘auto’ indicates automatically select the
+        seasonality cycle. If no seasonality exists, change seasonal to None.
+    :param refit: if ``True``, refit the full ETS model when ``time_series_prev`` is given to the forecast method
+        (slower). If ``False``, simply perform exponential smoothing (faster).
     """
 
     max_forecast_steps: int = None
@@ -44,8 +56,8 @@ class ETSDetectorParams(Config):
 class ETSDetector(AnomalyDetectionAlgo):
     """
     ETS Anomaly Detector. This is a wrapper for the ETS based Anomaly Detector from Merlion library 
-    https://opensource.salesforce.com/Merlion/v1.0.2/merlion.models.forecast.html#module-merlion.models.forecast.ets
-    This current version only supports anomaly detection of the constants.LOGLINE_COUNTS (i.e. frequency count of log events)
+    https://opensource.salesforce.com/Merlion/v1.0.2/merlion.models.forecast.html#module-merlion.models.forecast.ets.
+    This current version only supports anomaly detection of the constants.LOGLINE_COUNTS (i.e. frequency count of log events).
     """
 
     def __init__(self, params: ETSDetectorParams):
@@ -66,7 +78,7 @@ class ETSDetector(AnomalyDetectionAlgo):
     def fit(self, log_features: pd.DataFrame):
         """
 
-        Fit method to train ETS Anomaly Detector
+        Fit method to train ETS Anomaly Detector.
 
         :param log_features: log feature dataframe must only contain two columns
             ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
@@ -88,7 +100,7 @@ class ETSDetector(AnomalyDetectionAlgo):
 
     def predict(self, log_features: pd.DataFrame):
         """
-        Predict anomaly scores for log_feature["timestamp", constants.LOGLINE_COUNTS]
+        Predict anomaly scores for log_feature["timestamp", constants.LOGLINE_COUNTS].
 
         :param log_features: log feature dataframe must only contain two columns
             ['timestamp': datetime, constants.LOGLINE_COUNTS: int].

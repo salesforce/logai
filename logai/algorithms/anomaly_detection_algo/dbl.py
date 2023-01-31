@@ -25,6 +25,14 @@ class DBLDetectorParams(Config):
     """
     Dynamic Baseline Parameters. For more details on the paramaters see 
     https://opensource.salesforce.com/Merlion/v1.3.1/merlion.models.anomaly.html#module-merlion.models.anomaly.dbl
+
+    :param threshold: The rule to use for thresholding anomaly scores.
+    :param fixed_period: ``(t0, tf)``; Train the model on all datapoints occurring between t0 and tf (inclusive).
+    :param train_window: A string representing a duration of time to serve as the scope for a
+        rolling dynamic baseline model.
+    :param wind_sz: The window size in minutes to bucket times of day. This parameter only applied
+        if a daily trend is one of the trends used.
+    :param trends: The list of trends to use. Supported trends are “daily”, “weekly” and “monthly”.
     """
 
     threshold: float = 0.0
@@ -72,7 +80,8 @@ class DBLDetector(AnomalyDetectionAlgo):
         Predict anomaly scores for log_feature["timestamp", constants.LOGLINE_COUNTS]
 
         :param log_features: log feature dataframe must contain two columns ['timestamp': datetime, 'counts': int].
-        :return: pd.Series(): index:log_features.index. value: anomaly score to indicate if anomaly or not.
+        :return: A dataframe of the predicted anomaly scores, e.g., index:log_features.index.
+            value: anomaly score to indicate if anomaly or not.
         """
         self._is_valid_ts_df(log_features)
 
