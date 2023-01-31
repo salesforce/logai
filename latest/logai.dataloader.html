@@ -288,8 +288,12 @@
 Currently support file formats:
 - csv
 - tsv
-- other plain text format such as .log with proper parsing configurations
-:return: LogRecordObject: the logs read from log files and converted into LogRecordObject</p>
+- other plain text format such as .log with proper parsing configurations</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>LogRecordObject: the logs read from log files and converted into LogRecordObject.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -300,24 +304,32 @@ Currently support file formats:
 <dl class="py function">
 <dt class="sig sig-object py" id="logai.dataloader.data_loader_utils.generate_logformat_regex">
 <span class="sig-prename descclassname"><span class="pre">logai.dataloader.data_loader_utils.</span></span><span class="sig-name descname"><span class="pre">generate_logformat_regex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_format</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.dataloader.data_loader_utils.generate_logformat_regex" title="Permalink to this definition">¶</a></dt>
-<dd><p>Function to generate regular expression to split log messages
-return: headers, regex</p>
+<dd><p>Function to generate regular expression to split log messages.</p>
+<p>return: headers, regex</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="logai.dataloader.data_loader_utils.load_data">
 <span class="sig-prename descclassname"><span class="pre">logai.dataloader.data_loader_utils.</span></span><span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_format</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.dataloader.data_loader_utils.load_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Load log from given file and format
-:param filename: files to read
-:param log_format: target log format
-:return:</p>
+<dd><p>Load log from given file and format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> – Files to read.</p></li>
+<li><p><strong>log_format</strong> – Target log format.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The loaded log data.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="logai.dataloader.data_loader_utils.log_to_dataframe">
 <span class="sig-prename descclassname"><span class="pre">logai.dataloader.data_loader_utils.</span></span><span class="sig-name descname"><span class="pre">log_to_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headers</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.dataloader.data_loader_utils.log_to_dataframe" title="Permalink to this definition">¶</a></dt>
-<dd><p>Function to transform log file to dataframe
-return: pd.Dataframe: log dataframe</p>
+<dd><p>Function to transform log file to dataframe.</p>
+<p>return: The log dataframe.</p>
 </dd></dl>
 
 </section>
@@ -341,10 +353,10 @@ return: pd.Dataframe: log dataframe</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.dataloader.data_model.LogRecordObject.dropna">
 <span class="sig-name descname"><span class="pre">dropna</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#logai.dataloader.data_model.LogRecordObject.dropna" title="Permalink to this definition">¶</a></dt>
-<dd><p>method to drop entries containing NaN or null values in the logrecord object</p>
+<dd><p>Method to drop entries containing NaN or null values in the logrecord object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>modified logrecord object after removing entries with NaN or null values</p>
+<dd class="field-odd"><p>Modified logrecord object after removing entries with NaN or null values.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="#logai.dataloader.data_model.LogRecordObject" title="logai.dataloader.data_model.LogRecordObject">LogRecordObject</a></p>
@@ -354,17 +366,17 @@ return: pd.Dataframe: log dataframe</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.dataloader.data_model.LogRecordObject.filter_by_index">
-<span class="sig-name descname"><span class="pre">filter_by_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.dataloader.data_model.LogRecordObject.filter_by_index" title="Permalink to this definition">¶</a></dt>
-<dd><p>Select a subset of a logrecord object by removing certain indices</p>
+<span class="sig-name descname"><span class="pre">filter_by_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.dataloader.data_model.LogRecordObject.filter_by_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select a subset of a logrecord object by removing certain indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>indices</strong> (<em>list</em>) – list of indices to remove</p></li>
-<li><p><strong>inplace</strong> (<em>bool</em><em>, </em><em>optional</em>) – performs operation inplace or not. Defaults to False.</p></li>
+<li><p><strong>indices</strong> – A list of indices to remove.</p></li>
+<li><p><strong>inplace</strong> – Performs operation inplace or not. Defaults to False.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>resulting logrecord object created after removing the indices</p>
+<dd class="field-even"><p>Resulting logrecord object created after removing the indices.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#logai.dataloader.data_model.LogRecordObject" title="logai.dataloader.data_model.LogRecordObject">LogRecordObject</a></p>
@@ -375,10 +387,18 @@ return: pd.Dataframe: log dataframe</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.dataloader.data_model.LogRecordObject.from_dataframe">
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meta_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.dataloader.data_model.LogRecordObject.from_dataframe" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convert pandas.DataFrame to log record object
-:param data: pd.DataFrame: log data in pandas dataframe
-:param meta_data: dict: a dictionary that maps data.columns to fields of LogRecordObject
-:return: LogRecordObject</p>
+<dd><p>Converts pandas.DataFrame to log record object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – The log data in pandas dataframe.</p></li>
+<li><p><strong>meta_data</strong> – A dictionary that maps data.columns to fields of LogRecordObject.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A LogRecordObject object.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
@@ -398,31 +418,31 @@ return: pd.Dataframe: log dataframe</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.dataloader.data_model.LogRecordObject.save_to_csv">
-<span class="sig-name descname"><span class="pre">save_to_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.dataloader.data_model.LogRecordObject.save_to_csv" title="Permalink to this definition">¶</a></dt>
-<dd><p>save logrecord object to file</p>
+<span class="sig-name descname"><span class="pre">save_to_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.dataloader.data_model.LogRecordObject.save_to_csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves the logrecord object to a file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>filepath</strong> (<em>str</em>) – absolute path to filename where the logrecord object would be saved</p>
+<dd class="field-odd"><p><strong>filepath</strong> – The absolute path to filename where the logrecord object would be saved.</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>Exception</strong> – supports only file extensions (.csv, .json, and .pickle or .pkl)</p>
+<dd class="field-even"><p><strong>Exception</strong> – Supports only file extensions (.csv, .json, and .pickle or .pkl).</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.dataloader.data_model.LogRecordObject.select_by_index">
-<span class="sig-name descname"><span class="pre">select_by_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.dataloader.data_model.LogRecordObject.select_by_index" title="Permalink to this definition">¶</a></dt>
-<dd><p>Select a subset of a logrecord object based on selected indices</p>
+<span class="sig-name descname"><span class="pre">select_by_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.dataloader.data_model.LogRecordObject.select_by_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select a subset of a logrecord object based on selected indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>indices</strong> (<em>list</em>) – list of indices to select</p></li>
-<li><p><strong>inplace</strong> (<em>bool</em><em>, </em><em>optional</em>) – performs operation inplace or not. Defaults to False.</p></li>
+<li><p><strong>indices</strong> – A list of indices to select.</p></li>
+<li><p><strong>inplace</strong> – Performs operation inplace or not. Defaults to False.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>resulting logrecord object created from the selected indices</p>
+<dd class="field-even"><p>Resulting logrecord object created from the selected indices.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#logai.dataloader.data_model.LogRecordObject" title="logai.dataloader.data_model.LogRecordObject">LogRecordObject</a></p>
@@ -453,8 +473,7 @@ return: pd.Dataframe: log dataframe</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.dataloader.data_model.LogRecordObject.to_dataframe">
 <span class="sig-name descname"><span class="pre">to_dataframe</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#logai.dataloader.data_model.LogRecordObject.to_dataframe" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate pandas.DataFrame from LogRecordType
-:return:</p>
+<dd><p>Generates pandas.DataFrame from LogRecordType.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -483,8 +502,12 @@ return: pd.Dataframe: log dataframe</p>
 Currently support file formats:
 - csv
 - tsv
-- other plain text format such as .log with proper parsing configurations
-:return: LogRecordObject: the logs read from log files and converted into LogRecordObject</p>
+- other plain text format such as .log with proper parsing configurations</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>LogRecordObject: the logs read from log files and converted into LogRecordObject.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -507,11 +530,19 @@ Currently support file formats:
 
 <dl class="py function">
 <dt class="sig sig-object py" id="logai.dataloader.openset_data_loader.get_config">
-<span class="sig-prename descclassname"><span class="pre">logai.dataloader.openset_data_loader.</span></span><span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.dataloader.openset_data_loader.get_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieve the configuration of open log datasets to load data
-:param dataset_name: supported log dataset name from (“hdfs”, “bgl”, “HealthApp”)
-:param filepath: log file path
-:return: DataLoaderConfig: the configuration to load open log datasets</p>
+<span class="sig-prename descclassname"><span class="pre">logai.dataloader.openset_data_loader.</span></span><span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#logai.dataloader.data_loader.DataLoaderConfig" title="logai.dataloader.data_loader.DataLoaderConfig"><span class="pre">DataLoaderConfig</span></a></span></span><a class="headerlink" href="#logai.dataloader.openset_data_loader.get_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the configuration of open log datasets to load data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset_name</strong> – Supported log dataset name from (“hdfs”, “bgl”, “HealthApp”).</p></li>
+<li><p><strong>filepath</strong> – The log file path.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The configuration to load open log datasets.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>

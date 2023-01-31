@@ -231,7 +231,7 @@
 <section id="module-logai.algorithms.parsing_algo.ael">
 <span id="logai-algorithms-parsing-algo-ael-module"></span><h2>logai.algorithms.parsing_algo.ael module<a class="headerlink" href="#module-logai.algorithms.parsing_algo.ael" title="Permalink to this heading">¶</a></h2>
 <p>This is wrapping the logpai/logparser implementation of AEL algorithm
-link: <a class="reference external" href="https://github.com/logpai/logparser/blob/master/logparser/AEL/AEL.py">https://github.com/logpai/logparser/blob/master/logparser/AEL/AEL.py</a></p>
+link: <a class="reference external" href="https://github.com/logpai/logparser/blob/master/logparser/AEL/AEL.py">https://github.com/logpai/logparser/blob/master/logparser/AEL/AEL.py</a>.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.ael.AEL">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.parsing_algo.ael.</span></span><span class="sig-name descname"><span class="pre">AEL</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.algorithms.parsing_algo.ael.AELParams" title="logai.algorithms.parsing_algo.ael.AELParams"><span class="pre">AELParams</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.parsing_algo.ael.AEL" title="Permalink to this definition">¶</a></dt>
@@ -239,40 +239,29 @@ link: <a class="reference external" href="https://github.com/logpai/logparser/bl
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.ael.AEL.categorize">
 <span class="sig-name descname"><span class="pre">categorize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.parsing_algo.ael.AEL.categorize" title="Permalink to this definition">¶</a></dt>
-<dd><p>Abstract templates bin by bin</p>
+<dd><p>Categorizes templates bin by bin.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.ael.AEL.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loglines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.parsing_algo.ael.AEL.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit method to train log parser on given log data.
-Since AEL Log Parser does not require any training, this method is empty</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>loglines</strong> – input loglines</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p></p>
-</dd>
-</dl>
+Since AEL Log Parser does not require any training, this method is empty.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.ael.AEL.has_diff">
-<span class="sig-name descname"><span class="pre">has_diff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tokens1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokens2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.parsing_algo.ael.AEL.has_diff" title="Permalink to this definition">¶</a></dt>
-<dd><p>Method to check if there is significant different between two given token sequences</p>
+<span class="sig-name descname"><span class="pre">has_diff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tokens1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokens2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.parsing_algo.ael.AEL.has_diff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to check if there is significant different between two given token sequences.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>tokens1</strong> (<em>list</em>) – first token sequence</p></li>
-<li><p><strong>tokens2</strong> (<em>list</em>) – second token sequence</p></li>
+<li><p><strong>tokens1</strong> – The first token sequence.</p></li>
+<li><p><strong>tokens2</strong> – The second token sequence.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>0 if no significant difference between given token sequences else 1</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>bool</p>
+<dd class="field-even"><p>0 if no significant difference between given token sequences else 1.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -280,10 +269,10 @@ Since AEL Log Parser does not require any training, this method is empty</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.ael.AEL.load_data">
 <span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loglines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.parsing_algo.ael.AEL.load_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Method to load log data (pandas Series object) to a format compatible for parsing</p>
+<dd><p>Method to load log data (pandas Series object) to a format compatible for parsing.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>loglines</strong> (<em>pd.Series</em>) – log data to be parsed</p>
+<dd class="field-odd"><p><strong>loglines</strong> – The log data to be parsed.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -291,16 +280,16 @@ Since AEL Log Parser does not require any training, this method is empty</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.ael.AEL.merge_event">
 <span class="sig-name descname"><span class="pre">merge_event</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.parsing_algo.ael.AEL.merge_event" title="Permalink to this definition">¶</a></dt>
-<dd><p>Method to merge two events</p>
+<dd><p>Method to merge two events.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>e1</strong> – first event to merge (merged in-place)</p></li>
-<li><p><strong>e2</strong> – second event to merge</p></li>
+<li><p><strong>e1</strong> – The first event to merge (merged in-place).</p></li>
+<li><p><strong>e2</strong> – The second event to merge.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>merged event</p>
+<dd class="field-even"><p>The merged event.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -308,16 +297,13 @@ Since AEL Log Parser does not require any training, this method is empty</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.ael.AEL.parse">
 <span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loglines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#logai.algorithms.parsing_algo.ael.AEL.parse" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parse method to run log parser on given log data</p>
+<dd><p>Parse method to run log parser on given log data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>loglines</strong> (<em>pd.Series</em>) – raw log data to be parsed</p>
+<dd class="field-odd"><p><strong>loglines</strong> – The raw log data to be parsed.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>parsed log data</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>pd.Series</p>
+<dd class="field-even"><p>The parsed log data.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -325,13 +311,13 @@ Since AEL Log Parser does not require any training, this method is empty</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.ael.AEL.reconcile">
 <span class="sig-name descname"><span class="pre">reconcile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.parsing_algo.ael.AEL.reconcile" title="Permalink to this definition">¶</a></dt>
-<dd><p>Merge events if a bin has too many events</p>
+<dd><p>Merges events if a bin has too many events.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.ael.AEL.tokenize">
 <span class="sig-name descname"><span class="pre">tokenize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.parsing_algo.ael.AEL.tokenize" title="Permalink to this definition">¶</a></dt>
-<dd><p>Put logs into bins according to (# of ‘&lt;*&gt;’, # of token)</p>
+<dd><p>Puts logs into bins according to (# of ‘&lt;*&gt;’, # of token).</p>
 </dd></dl>
 
 </dd></dl>
@@ -341,14 +327,14 @@ Since AEL Log Parser does not require any training, this method is empty</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.parsing_algo.ael.</span></span><span class="sig-name descname"><span class="pre">AELParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minEventCount</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">merge_percent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_para</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.parsing_algo.ael.AELParams" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
 <p>Parameters for the AEL Log Parsing algorithm. For more details see
-<a class="reference external" href="https://github.com/logpai/logparser/tree/master/logparser/AEL">https://github.com/logpai/logparser/tree/master/logparser/AEL</a></p>
+<a class="reference external" href="https://github.com/logpai/logparser/tree/master/logparser/AEL">https://github.com/logpai/logparser/tree/master/logparser/AEL</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>rex</strong> – str:</p></li>
-<li><p><strong>minEventCount</strong> – int: minimum event count</p></li>
-<li><p><strong>merge_percent</strong> – int: merge percentage</p></li>
-<li><p><strong>keep_para</strong> – bool: wheter to keep parameters</p></li>
+<li><p><strong>rex</strong> – A rex string.</p></li>
+<li><p><strong>minEventCount</strong> – The minimum event count.</p></li>
+<li><p><strong>merge_percent</strong> – The merge percentage.</p></li>
+<li><p><strong>keep_para</strong> – Whether to keep parameters.</p></li>
 </ul>
 </dd>
 </dl>
@@ -378,11 +364,11 @@ Since AEL Log Parser does not require any training, this method is empty</p>
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.ael.Event">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.parsing_algo.ael.</span></span><span class="sig-name descname"><span class="pre">Event</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logidx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Eventstr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.parsing_algo.ael.Event" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Event class to wrap log events</p>
+<p>Event class to wrap log events.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.ael.Event.refresh_id">
 <span class="sig-name descname"><span class="pre">refresh_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.parsing_algo.ael.Event.refresh_id" title="Permalink to this definition">¶</a></dt>
-<dd><p>generating id for a log event using the hashing function</p>
+<dd><p>Generates id for a log event using the hashing function.</p>
 </dd></dl>
 
 </dd></dl>
@@ -424,24 +410,27 @@ Link: <a class="reference external" href="https://github.com/IBM/Drain3/blob/mas
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.drain.Drain.match">
 <span class="sig-name descname"><span class="pre">match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.parsing_algo.drain.Drain.match" title="Permalink to this definition">¶</a></dt>
 <dd><p>Match against an already existing cluster. Match shall be perfect (sim_th=1.0).
-New cluster will not be created as a result of this call, nor any cluster modifications.
-:param content: log message to match
-:return: Matched cluster or None of no match found.</p>
+New cluster will not be created as a result of this call, nor any cluster modifications.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>content</strong> – The log message to match.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Matched cluster or None of no match found.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.drain.Drain.parse">
 <span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logline</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#logai.algorithms.parsing_algo.drain.Drain.parse" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parse method to run log parser on a given log data</p>
+<dd><p>Parse method to run log parser on a given log data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>logline</strong> (<em>pd.Series</em>) – raw log data to be parsed</p>
+<dd class="field-odd"><p><strong>logline</strong> – The raw log data to be parsed.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>parsed log data</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>pd.Series</p>
+<dd class="field-even"><p>The parsed log data.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -454,13 +443,19 @@ New cluster will not be created as a result of this call, nor any cluster modifi
 <dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
 <p>Parameters for Drain Log Parser.
 For more details on parameters see
-<a class="reference external" href="https://github.com/logpai/Drain3/blob/master/drain3/drain.py">https://github.com/logpai/Drain3/blob/master/drain3/drain.py</a></p>
-<p>param: depth: int = 3: depth of tree
-param: sim_th: float = 0.4: similarity threshold
-param: max_children: int = 100: max number of children nodes
-param: max_clusters: int = None: max number of clusters
-param: extra_delimiters: tuple = (): extra delimiters
-param: param_str: str = “*”: wildcard parameter string</p>
+<a class="reference external" href="https://github.com/logpai/Drain3/blob/master/drain3/drain.py">https://github.com/logpai/Drain3/blob/master/drain3/drain.py</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>depth</strong> – The depth of tree.</p></li>
+<li><p><strong>sim_th</strong> – The similarity threshold.</p></li>
+<li><p><strong>max_children</strong> – The max number of children nodes.</p></li>
+<li><p><strong>max_clusters</strong> – The max number of clusters.</p></li>
+<li><p><strong>extra_delimiters</strong> – Extra delimiters.</p></li>
+<li><p><strong>param_str</strong> – The wildcard parameter string.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.drain.DrainParams.depth">
 <span class="sig-name descname"><span class="pre">depth</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#logai.algorithms.parsing_algo.drain.DrainParams.depth" title="Permalink to this definition">¶</a></dt>
@@ -619,7 +614,7 @@ the cache eviction algorithm.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.parsing_algo.iplom.</span></span><span class="sig-name descname"><span class="pre">IPLoM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.algorithms.parsing_algo.iplom.IPLoMParams" title="logai.algorithms.parsing_algo.iplom.IPLoMParams"><span class="pre">IPLoMParams</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.parsing_algo.iplom.IPLoM" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.algorithms.html#logai.algorithms.algo_interfaces.ParsingAlgo" title="logai.algorithms.algo_interfaces.ParsingAlgo"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParsingAlgo</span></code></a></p>
 <p>IPLoM Log Parsing algorithm. For details see
-<a class="reference external" href="https://github.com/logpai/logparser/tree/master/logparser/IPLoM">https://github.com/logpai/logparser/tree/master/logparser/IPLoM</a></p>
+<a class="reference external" href="https://github.com/logpai/logparser/tree/master/logparser/IPLoM">https://github.com/logpai/logparser/tree/master/logparser/IPLoM</a>.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.iplom.IPLoM.DetermineP1P2">
 <span class="sig-name descname"><span class="pre">DetermineP1P2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">partition</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.parsing_algo.iplom.IPLoM.DetermineP1P2" title="Permalink to this definition">¶</a></dt>
@@ -648,24 +643,19 @@ the cache eviction algorithm.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.iplom.IPLoM.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loglines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.parsing_algo.iplom.IPLoM.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>IPLoM does not support model fit. Call parse() directly with given input and get log templates
-:param loglines:
-:return:</p>
+<dd><p>IPLoM does not support model fit. Call parse() directly with given input and get log templates.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.iplom.IPLoM.parse">
-<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loglines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.parsing_algo.iplom.IPLoM.parse" title="Permalink to this definition">¶</a></dt>
-<dd><p>parsing method to parse the raw log data</p>
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loglines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#logai.algorithms.parsing_algo.iplom.IPLoM.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parsing method to parse the raw log data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>loglines</strong> (<em>pd.Series</em>) – raw log data</p>
+<dd class="field-odd"><p><strong>loglines</strong> – The raw log data</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>parsed log data</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>pd.Series</p>
+<dd class="field-even"><p>The parsed log data.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -677,16 +667,20 @@ the cache eviction algorithm.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.parsing_algo.iplom.</span></span><span class="sig-name descname"><span class="pre">IPLoMParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logformat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxEventLen</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step2Support</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PST</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CT</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowerBound</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upperBound</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_para</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.parsing_algo.iplom.IPLoMParams" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
 <p>Parameters for the IPLoM Log Parser. For more details on parameters see
-<a class="reference external" href="https://github.com/logpai/logparser/tree/master/logparser/IPLoM">https://github.com/logpai/logparser/tree/master/logparser/IPLoM</a></p>
-<p>param: rex: str = None: rex string
-param: logformat: str = None: log format
-param: maxEventLen: int = 200: max event length
-param: step2Support: float = 0: step to support
-param: PST: float = 0:
-param: CT: float = 0:
-param: lowerBound: float = 0.25: lower bound threshold
-param: upperBound: float = 0.9: upper bound threshold
-param: keep_para: bool = True: whether to keep parameters</p>
+<a class="reference external" href="https://github.com/logpai/logparser/tree/master/logparser/IPLoM">https://github.com/logpai/logparser/tree/master/logparser/IPLoM</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rex</strong> – The rex string.</p></li>
+<li><p><strong>logformat</strong> – The log format.</p></li>
+<li><p><strong>maxEventLen</strong> – The max event length.</p></li>
+<li><p><strong>step2Support</strong> – The step to support.</p></li>
+<li><p><strong>lowerBound</strong> – The lower bound threshold.</p></li>
+<li><p><strong>upperBound</strong> – The upper bound threshold.</p></li>
+<li><p><strong>keep_para</strong> – Whether to keep parameters.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.iplom.IPLoMParams.CT">
 <span class="sig-name descname"><span class="pre">CT</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#logai.algorithms.parsing_algo.iplom.IPLoMParams.CT" title="Permalink to this definition">¶</a></dt>
@@ -751,40 +745,29 @@ param: keep_para: bool = True: whether to keep parameters</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.AEL.categorize">
 <span class="sig-name descname"><span class="pre">categorize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.parsing_algo.AEL.categorize" title="Permalink to this definition">¶</a></dt>
-<dd><p>Abstract templates bin by bin</p>
+<dd><p>Categorizes templates bin by bin.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.AEL.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loglines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.parsing_algo.AEL.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit method to train log parser on given log data.
-Since AEL Log Parser does not require any training, this method is empty</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>loglines</strong> – input loglines</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p></p>
-</dd>
-</dl>
+Since AEL Log Parser does not require any training, this method is empty.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.AEL.has_diff">
-<span class="sig-name descname"><span class="pre">has_diff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tokens1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokens2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.parsing_algo.AEL.has_diff" title="Permalink to this definition">¶</a></dt>
-<dd><p>Method to check if there is significant different between two given token sequences</p>
+<span class="sig-name descname"><span class="pre">has_diff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tokens1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokens2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.parsing_algo.AEL.has_diff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to check if there is significant different between two given token sequences.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>tokens1</strong> (<em>list</em>) – first token sequence</p></li>
-<li><p><strong>tokens2</strong> (<em>list</em>) – second token sequence</p></li>
+<li><p><strong>tokens1</strong> – The first token sequence.</p></li>
+<li><p><strong>tokens2</strong> – The second token sequence.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>0 if no significant difference between given token sequences else 1</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>bool</p>
+<dd class="field-even"><p>0 if no significant difference between given token sequences else 1.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -792,10 +775,10 @@ Since AEL Log Parser does not require any training, this method is empty</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.AEL.load_data">
 <span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loglines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.parsing_algo.AEL.load_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Method to load log data (pandas Series object) to a format compatible for parsing</p>
+<dd><p>Method to load log data (pandas Series object) to a format compatible for parsing.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>loglines</strong> (<em>pd.Series</em>) – log data to be parsed</p>
+<dd class="field-odd"><p><strong>loglines</strong> – The log data to be parsed.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -803,16 +786,16 @@ Since AEL Log Parser does not require any training, this method is empty</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.AEL.merge_event">
 <span class="sig-name descname"><span class="pre">merge_event</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.parsing_algo.AEL.merge_event" title="Permalink to this definition">¶</a></dt>
-<dd><p>Method to merge two events</p>
+<dd><p>Method to merge two events.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>e1</strong> – first event to merge (merged in-place)</p></li>
-<li><p><strong>e2</strong> – second event to merge</p></li>
+<li><p><strong>e1</strong> – The first event to merge (merged in-place).</p></li>
+<li><p><strong>e2</strong> – The second event to merge.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>merged event</p>
+<dd class="field-even"><p>The merged event.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -820,16 +803,13 @@ Since AEL Log Parser does not require any training, this method is empty</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.AEL.parse">
 <span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loglines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#logai.algorithms.parsing_algo.AEL.parse" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parse method to run log parser on given log data</p>
+<dd><p>Parse method to run log parser on given log data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>loglines</strong> (<em>pd.Series</em>) – raw log data to be parsed</p>
+<dd class="field-odd"><p><strong>loglines</strong> – The raw log data to be parsed.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>parsed log data</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>pd.Series</p>
+<dd class="field-even"><p>The parsed log data.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -837,13 +817,13 @@ Since AEL Log Parser does not require any training, this method is empty</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.AEL.reconcile">
 <span class="sig-name descname"><span class="pre">reconcile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.parsing_algo.AEL.reconcile" title="Permalink to this definition">¶</a></dt>
-<dd><p>Merge events if a bin has too many events</p>
+<dd><p>Merges events if a bin has too many events.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.AEL.tokenize">
 <span class="sig-name descname"><span class="pre">tokenize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.parsing_algo.AEL.tokenize" title="Permalink to this definition">¶</a></dt>
-<dd><p>Put logs into bins according to (# of ‘&lt;*&gt;’, # of token)</p>
+<dd><p>Puts logs into bins according to (# of ‘&lt;*&gt;’, # of token).</p>
 </dd></dl>
 
 </dd></dl>
@@ -880,24 +860,27 @@ Since AEL Log Parser does not require any training, this method is empty</p>
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.Drain.match">
 <span class="sig-name descname"><span class="pre">match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.parsing_algo.Drain.match" title="Permalink to this definition">¶</a></dt>
 <dd><p>Match against an already existing cluster. Match shall be perfect (sim_th=1.0).
-New cluster will not be created as a result of this call, nor any cluster modifications.
-:param content: log message to match
-:return: Matched cluster or None of no match found.</p>
+New cluster will not be created as a result of this call, nor any cluster modifications.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>content</strong> – The log message to match.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Matched cluster or None of no match found.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.Drain.parse">
 <span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logline</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#logai.algorithms.parsing_algo.Drain.parse" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parse method to run log parser on a given log data</p>
+<dd><p>Parse method to run log parser on a given log data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>logline</strong> (<em>pd.Series</em>) – raw log data to be parsed</p>
+<dd class="field-odd"><p><strong>logline</strong> – The raw log data to be parsed.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>parsed log data</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>pd.Series</p>
+<dd class="field-even"><p>The parsed log data.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -909,7 +892,7 @@ New cluster will not be created as a result of this call, nor any cluster modifi
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.parsing_algo.</span></span><span class="sig-name descname"><span class="pre">IPLoM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.algorithms.parsing_algo.iplom.IPLoMParams" title="logai.algorithms.parsing_algo.iplom.IPLoMParams"><span class="pre">IPLoMParams</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.parsing_algo.IPLoM" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.algorithms.html#logai.algorithms.algo_interfaces.ParsingAlgo" title="logai.algorithms.algo_interfaces.ParsingAlgo"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParsingAlgo</span></code></a></p>
 <p>IPLoM Log Parsing algorithm. For details see
-<a class="reference external" href="https://github.com/logpai/logparser/tree/master/logparser/IPLoM">https://github.com/logpai/logparser/tree/master/logparser/IPLoM</a></p>
+<a class="reference external" href="https://github.com/logpai/logparser/tree/master/logparser/IPLoM">https://github.com/logpai/logparser/tree/master/logparser/IPLoM</a>.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.IPLoM.DetermineP1P2">
 <span class="sig-name descname"><span class="pre">DetermineP1P2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">partition</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.parsing_algo.IPLoM.DetermineP1P2" title="Permalink to this definition">¶</a></dt>
@@ -938,24 +921,19 @@ New cluster will not be created as a result of this call, nor any cluster modifi
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.IPLoM.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loglines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.parsing_algo.IPLoM.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>IPLoM does not support model fit. Call parse() directly with given input and get log templates
-:param loglines:
-:return:</p>
+<dd><p>IPLoM does not support model fit. Call parse() directly with given input and get log templates.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.IPLoM.parse">
-<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loglines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.parsing_algo.IPLoM.parse" title="Permalink to this definition">¶</a></dt>
-<dd><p>parsing method to parse the raw log data</p>
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loglines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#logai.algorithms.parsing_algo.IPLoM.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parsing method to parse the raw log data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>loglines</strong> (<em>pd.Series</em>) – raw log data</p>
+<dd class="field-odd"><p><strong>loglines</strong> – The raw log data</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>parsed log data</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>pd.Series</p>
+<dd class="field-even"><p>The parsed log data.</p>
 </dd>
 </dl>
 </dd></dl>

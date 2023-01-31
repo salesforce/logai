@@ -232,9 +232,9 @@
 <dt class="sig sig-object py" id="logai.preprocess.bgl_preprocessor.BGLPreprocessor">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.preprocess.bgl_preprocessor.</span></span><span class="sig-name descname"><span class="pre">BGLPreprocessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.preprocess.preprocessor.PreprocessorConfig" title="logai.preprocess.preprocessor.PreprocessorConfig"><span class="pre">PreprocessorConfig</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.preprocess.bgl_preprocessor.BGLPreprocessor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#logai.preprocess.openset_preprocessor.OpenSetPreprocessor" title="logai.preprocess.openset_preprocessor.OpenSetPreprocessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">OpenSetPreprocessor</span></code></a></p>
-<p>Custom preprocessor for Open log dataset BGL</p>
+<p>Custom preprocessor for Open log dataset BGL.</p>
 <dl class="simple">
-<dt>Inherits:</dt><dd><p>OpenSetPreprocessor: log preprocessor class for open log datasets</p>
+<dt>Inherits:</dt><dd><p>OpenSetPreprocessor: log preprocessor class for open log datasets.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -246,9 +246,9 @@
 <dt class="sig sig-object py" id="logai.preprocess.hdfs_preprocessor.HDFSPreprocessor">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.preprocess.hdfs_preprocessor.</span></span><span class="sig-name descname"><span class="pre">HDFSPreprocessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.preprocess.preprocessor.PreprocessorConfig" title="logai.preprocess.preprocessor.PreprocessorConfig"><span class="pre">PreprocessorConfig</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.preprocess.hdfs_preprocessor.HDFSPreprocessor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#logai.preprocess.openset_preprocessor.OpenSetPreprocessor" title="logai.preprocess.openset_preprocessor.OpenSetPreprocessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">OpenSetPreprocessor</span></code></a></p>
-<p>Custom Preprocessor for open log dataset HDFS</p>
+<p>Custom Preprocessor for open log dataset HDFS.</p>
 <dl class="simple">
-<dt>Inherits:</dt><dd><p>OpenSetPreprocessor: log preprocessor class for open log datasets</p>
+<dt>Inherits:</dt><dd><p>OpenSetPreprocessor: log preprocessor class for open log datasets.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -263,17 +263,15 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.preprocess.openset_partitioner.OpenSetPartitioner.generate_session_window">
 <span class="sig-name descname"><span class="pre">generate_session_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logrecord</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.preprocess.openset_partitioner.OpenSetPartitioner.generate_session_window" title="Permalink to this definition">¶</a></dt>
-<dd><p>method to generate session window based log sequences from a logrecord object given some
-ids at the logline level</p>
+<dd><p>Method to generate session window based log sequences from a logrecord object given some
+ids at the logline level.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>logrecord</strong> (<a class="reference internal" href="logai.dataloader.html#logai.dataloader.data_model.LogRecordObject" title="logai.dataloader.data_model.LogRecordObject"><em>LogRecordObject</em></a>) – logrecord object to be partitioned into session windows</p>
+<dd class="field-odd"><p><strong>logrecord</strong> – A logrecord object to be partitioned into session windows.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>where the body of logrecord object contains the generated log sequences</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="logai.dataloader.html#logai.dataloader.data_model.LogRecordObject" title="logai.dataloader.data_model.LogRecordObject">LogRecordObject</a></p>
+<dd class="field-even"><p>A LogRecordObject object where the body of logrecord object contains the generated
+log sequences.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -281,16 +279,14 @@ ids at the logline level</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.preprocess.openset_partitioner.OpenSetPartitioner.generate_sliding_window">
 <span class="sig-name descname"><span class="pre">generate_sliding_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logrecord</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.preprocess.openset_partitioner.OpenSetPartitioner.generate_sliding_window" title="Permalink to this definition">¶</a></dt>
-<dd><p>method to generate sliding window based log sequences from a logrecord object</p>
+<dd><p>Method to generate sliding window based log sequences from a logrecord object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>logrecord</strong> (<a class="reference internal" href="logai.dataloader.html#logai.dataloader.data_model.LogRecordObject" title="logai.dataloader.data_model.LogRecordObject"><em>LogRecordObject</em></a>) – logrecord object to be partitioned into sliding windows</p>
+<dd class="field-odd"><p><strong>logrecord</strong> – A logrecord object to be partitioned into sliding windows.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>where the body of logrecord object contains the generated log sequences</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="logai.dataloader.html#logai.dataloader.data_model.LogRecordObject" title="logai.dataloader.data_model.LogRecordObject">LogRecordObject</a></p>
+<dd class="field-even"><p>A LogRecordObject object where the body of logrecord object contains the generated
+log sequences.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -298,16 +294,14 @@ ids at the logline level</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.preprocess.openset_partitioner.OpenSetPartitioner.partition">
 <span class="sig-name descname"><span class="pre">partition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logrecord</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.preprocess.openset_partitioner.OpenSetPartitioner.partition" title="Permalink to this definition">¶</a></dt>
-<dd><p>Wrapper function for applying partitioning on a logrecord object based on the Config parameters</p>
+<dd><p>Wrapper function for applying partitioning on a logrecord object based on the Config parameters.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>logrecord</strong> (<a class="reference internal" href="logai.dataloader.html#logai.dataloader.data_model.LogRecordObject" title="logai.dataloader.data_model.LogRecordObject"><em>LogRecordObject</em></a>) – logrecord object to be partitioned into session or sliding windows</p>
+<dd class="field-odd"><p><strong>logrecord</strong> – A logrecord object to be partitioned into session or sliding windows.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>where the body of logrecord object contains the generated log sequences</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="logai.dataloader.html#logai.dataloader.data_model.LogRecordObject" title="logai.dataloader.data_model.LogRecordObject">LogRecordObject</a></p>
+<dd class="field-even"><p>A LogRecordObject object where the body of logrecord object contains the generated
+log sequences.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -318,7 +312,7 @@ ids at the logline level</p>
 <dt class="sig sig-object py" id="logai.preprocess.openset_partitioner.OpenSetPartitionerConfig">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.preprocess.openset_partitioner.</span></span><span class="sig-name descname"><span class="pre">OpenSetPartitionerConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sliding_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logsequence_delim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'[SEP]'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.preprocess.openset_partitioner.OpenSetPartitionerConfig" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
-<p>Config for Partitioner for open log datasets</p>
+<p>Config for Partitioner for open log datasets.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="logai.preprocess.openset_partitioner.OpenSetPartitionerConfig.logsequence_delim">
 <span class="sig-name descname"><span class="pre">logsequence_delim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#logai.preprocess.openset_partitioner.OpenSetPartitionerConfig.logsequence_delim" title="Permalink to this definition">¶</a></dt>
@@ -346,19 +340,13 @@ ids at the logline level</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.preprocess.openset_preprocessor.OpenSetPreprocessor.clean_log">
 <span class="sig-name descname"><span class="pre">clean_log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logrecord</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="logai.dataloader.html#logai.dataloader.data_model.LogRecordObject" title="logai.dataloader.data_model.LogRecordObject"><span class="pre">LogRecordObject</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="logai.dataloader.html#logai.dataloader.data_model.LogRecordObject" title="logai.dataloader.data_model.LogRecordObject"><span class="pre">LogRecordObject</span></a></span></span><a class="headerlink" href="#logai.preprocess.openset_preprocessor.OpenSetPreprocessor.clean_log" title="Permalink to this definition">¶</a></dt>
-<dd><p>preprocessing cleaning of logrecord object creating from open log datasets</p>
+<dd><p>Preprocessing cleaning of logrecord object creating from open log datasets.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>logrecord</strong> (<a class="reference internal" href="logai.dataloader.html#logai.dataloader.data_model.LogRecordObject" title="logai.dataloader.data_model.LogRecordObject"><em>LogRecordObject</em></a>) – logrecord object containing the</p></li>
-<li><p><strong>datasets</strong> (<em>raw log data from open</em>) – </p></li>
-</ul>
+<dd class="field-odd"><p><strong>logrecord</strong> – A logrecord object containing the raw log data from open datasets.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>cleaned logrecord object</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="logai.dataloader.html#logai.dataloader.data_model.LogRecordObject" title="logai.dataloader.data_model.LogRecordObject">LogRecordObject</a></p>
+<dd class="field-even"><p>The cleaned logrecord object.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -374,33 +362,45 @@ ids at the logline level</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.preprocess.partitioner.Partitioner.group_counter">
-<span class="sig-name descname"><span class="pre">group_counter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logrecord_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.preprocess.partitioner.Partitioner.group_counter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Group log record by given categories and return counter vectors
-:param logrecord_df: pd.DataFrame: the log record dataframe.
-:return: pd.DataFrame: log counter vector dataframe after grouping</p>
+<span class="sig-name descname"><span class="pre">group_counter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logrecord_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#logai.preprocess.partitioner.Partitioner.group_counter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Group log record by given categories and return counter vectors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>logrecord_df</strong> – The log record dataframe.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The log counter vector dataframe after grouping</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.preprocess.partitioner.Partitioner.group_sliding_window">
-<span class="sig-name descname"><span class="pre">group_sliding_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logrecord_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logline_col_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'logline'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.preprocess.partitioner.Partitioner.group_sliding_window" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">group_sliding_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logrecord_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logline_col_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'logline'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#logai.preprocess.partitioner.Partitioner.group_sliding_window" title="Permalink to this definition">¶</a></dt>
 <dd><p>Group log record by sliding window based on the sliding window length, and returns the
-resulting pandas DataFrame object</p>
+resulting pandas DataFrame object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>logrecord_df</strong> – pandas DataFrame object on which grouping is to be applied</p>
+<dd class="field-odd"><p><strong>logrecord_df</strong> – A pandas DataFrame object on which grouping is to be applied.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>pd.DataFrame object after sliding window based grouping</p>
+<dd class="field-even"><p>A pd.DataFrame object after sliding window based grouping.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.preprocess.partitioner.Partitioner.sliding_window">
-<span class="sig-name descname"><span class="pre">sliding_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loglines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.preprocess.partitioner.Partitioner.sliding_window" title="Permalink to this definition">¶</a></dt>
-<dd><p>Conduct sliding window log partitioning.
-:param loglines: pd.Series: series of loglines
-:return: pd.Series: series of logline sequence after sliding window.</p>
+<span class="sig-name descname"><span class="pre">sliding_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loglines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#logai.preprocess.partitioner.Partitioner.sliding_window" title="Permalink to this definition">¶</a></dt>
+<dd><p>Conduct sliding window log partitioning.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>loglines</strong> – A series of loglines.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A series of logline sequence after sliding window.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -409,16 +409,22 @@ resulting pandas DataFrame object</p>
 <dt class="sig sig-object py" id="logai.preprocess.partitioner.PartitionerConfig">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.preprocess.partitioner.</span></span><span class="sig-name descname"><span class="pre">PartitionerConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_by_category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_by_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sliding_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'[SEP]'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_last_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_smaller_windows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.preprocess.partitioner.PartitionerConfig" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
-<p>Config class for Partitioner</p>
-<p>group_by_category: list of fields to group log data by
-group_by_time:  string-type argument to specify grouping by time, supported types
-<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases">https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases</a>
-sliding_window: sliding window length if partitioning loglines into sliding windows,
-sep_token: separator token string to be used as delimiter, when grouping log data
-exclude_last_window: boolean (default false) whether to exclude the last window when doing
-sliding window based grouping of log data
-exclude_smaller_windows: boolean (default false) whether to exclude windows of length smaller
-than the given <cite>sliding_window</cite> argument.</p>
+<p>Config class for Partitioner.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>group_by_category</strong> – A list of fields to group log data by.</p></li>
+<li><p><strong>group_by_time</strong> – A string-type argument to specify grouping by time, supported types
+<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases">https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases</a>.</p></li>
+<li><p><strong>sliding_window</strong> – The sliding window length if partitioning loglines into sliding windows.</p></li>
+<li><p><strong>sep_token</strong> – The separator token string to be used as delimiter, when grouping log data.</p></li>
+<li><p><strong>exclude_last_window</strong> – Whether to exclude the last window when doing
+sliding window based grouping of log data.</p></li>
+<li><p><strong>exclude_smaller_windows</strong> – Whether to exclude windows of length smaller
+than the given <cite>sliding_window</cite> argument.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="logai.preprocess.partitioner.PartitionerConfig.exclude_last_window">
 <span class="sig-name descname"><span class="pre">exclude_last_window</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#logai.preprocess.partitioner.PartitionerConfig.exclude_last_window" title="Permalink to this definition">¶</a></dt>
@@ -467,16 +473,13 @@ than the given <cite>sliding_window</cite> argument.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.preprocess.preprocessor.Preprocessor.clean_log">
 <span class="sig-name descname"><span class="pre">clean_log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loglines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#logai.preprocess.preprocessor.Preprocessor.clean_log" title="Permalink to this definition">¶</a></dt>
-<dd><p>cleaning log data</p>
+<dd><p>Cleans the input log data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>loglines</strong> (<em>pd.Series</em>) – raw loglines data to be cleaned</p>
+<dd class="field-odd"><p><strong>loglines</strong> – The raw loglines data to be cleaned.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>cleaned loglines data</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>pd.Series</p>
+<dd class="field-even"><p>The cleaned loglines data.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -484,19 +487,16 @@ than the given <cite>sliding_window</cite> argument.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.preprocess.preprocessor.Preprocessor.group_log_index">
 <span class="sig-name descname"><span class="pre">group_log_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attributes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#logai.preprocess.preprocessor.Preprocessor.group_log_index" title="Permalink to this definition">¶</a></dt>
-<dd><p>grouping log attributes (DataFrame) by a list of its fields</p>
+<dd><p>Groups log attributes (DataFrame) by a list of its fields.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>attributes</strong> (<em>pd.DataFrame</em>) – log attribute data to be grouped</p></li>
-<li><p><strong>by</strong> (<em>np.array</em>) – list of fields of the log attribute DataFrame object, to group by</p></li>
+<li><p><strong>attributes</strong> – The log attribute data to be grouped.</p></li>
+<li><p><strong>by</strong> – A list of fields of the log attribute DataFrame object to group by.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>log attribute data after grouping</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>pd.DataFrame</p>
+<dd class="field-even"><p>The log attribute data after grouping.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -512,10 +512,16 @@ than the given <cite>sliding_window</cite> argument.</p>
 <dt class="sig sig-object py" id="logai.preprocess.preprocessor.PreprocessorConfig">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.preprocess.preprocessor.</span></span><span class="sig-name descname"><span class="pre">PreprocessorConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">custom_delimiters_regex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_replace_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.preprocess.preprocessor.PreprocessorConfig" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
-<p>Config class for Preprocessor</p>
-<p>custom_delimiters_regex: dictionary of delimiter regex patterns in raw log data
-custom_replace_list: list of tuples of custom replace patterns in raw log data.
-Each Tuple should be of form (‘regex-pattern-to-replace’, ‘replaced-pattern’)</p>
+<p>Config class for Preprocessor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>custom_delimiters_regex</strong> – A dictionary of delimiter regex patterns in raw log data.</p></li>
+<li><p><strong>custom_replace_list</strong> – A list of tuples of custom replace patterns in raw log data.
+Each Tuple should be of form (‘regex-pattern-to-replace’, ‘replaced-pattern’).</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="logai.preprocess.preprocessor.PreprocessorConfig.custom_delimiters_regex">
 <span class="sig-name descname"><span class="pre">custom_delimiters_regex</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="headerlink" href="#logai.preprocess.preprocessor.PreprocessorConfig.custom_delimiters_regex" title="Permalink to this definition">¶</a></dt>
@@ -535,11 +541,7 @@ Each Tuple should be of form (‘regex-pattern-to-replace’, ‘replaced-patter
 <dt class="sig sig-object py" id="logai.preprocess.thunderbird_preprocessor.ThunderbirdPreprocessor">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.preprocess.thunderbird_preprocessor.</span></span><span class="sig-name descname"><span class="pre">ThunderbirdPreprocessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.preprocess.preprocessor.PreprocessorConfig" title="logai.preprocess.preprocessor.PreprocessorConfig"><span class="pre">PreprocessorConfig</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.preprocess.thunderbird_preprocessor.ThunderbirdPreprocessor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#logai.preprocess.openset_preprocessor.OpenSetPreprocessor" title="logai.preprocess.openset_preprocessor.OpenSetPreprocessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">OpenSetPreprocessor</span></code></a></p>
-<p>Custom Preprocessor for Open log dataset Thunderbird</p>
-<dl class="simple">
-<dt>Inherits:</dt><dd><p>OpenSetPreprocessor: log preprocessor class for open log datasets</p>
-</dd>
-</dl>
+<p>Custom Preprocessor for Open log dataset Thunderbird.</p>
 </dd></dl>
 
 </section>

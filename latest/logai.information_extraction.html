@@ -232,13 +232,19 @@
 <dt class="sig sig-object py" id="logai.information_extraction.categorical_encoder.CategoricalEncoder">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.information_extraction.categorical_encoder.</span></span><span class="sig-name descname"><span class="pre">CategoricalEncoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.information_extraction.categorical_encoder.CategoricalEncoderConfig" title="logai.information_extraction.categorical_encoder.CategoricalEncoderConfig"><span class="pre">CategoricalEncoderConfig</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.information_extraction.categorical_encoder.CategoricalEncoder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Implementation of categorical encoder</p>
+<p>Implementation of the categorical encoder.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.information_extraction.categorical_encoder.CategoricalEncoder.fit_transform">
 <span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#logai.information_extraction.categorical_encoder.CategoricalEncoder.fit_transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Transform the str features into categories.
-:param features: pd.Series: list of features
-:return: pd.Dataframe: list of encoded features.</p>
+<dd><p>Transform the str features into categories.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>features</strong> – A list of features.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of encoded features.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -247,7 +253,7 @@
 <dt class="sig sig-object py" id="logai.information_extraction.categorical_encoder.CategoricalEncoderConfig">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.information_extraction.categorical_encoder.</span></span><span class="sig-name descname"><span class="pre">CategoricalEncoderConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'label_encoder'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.information_extraction.categorical_encoder.CategoricalEncoderConfig" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
-<p>Categorical encoding configurations</p>
+<p>Categorical encoding configurations.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.information_extraction.categorical_encoder.CategoricalEncoderConfig.from_dict">
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.information_extraction.categorical_encoder.CategoricalEncoderConfig.from_dict" title="Permalink to this definition">¶</a></dt>
@@ -305,13 +311,13 @@ Generate feature sets:
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>log_pattern</strong> – pd.Series: unstructured part of the log data</p></li>
-<li><p><strong>attributes</strong> – pd.Dataframe: log attributes</p></li>
-<li><p><strong>timestamps</strong> – pd.Series: timestamps</p></li>
+<li><p><strong>log_pattern</strong> – An unstructured part of the log data.</p></li>
+<li><p><strong>attributes</strong> – The log attributes.</p></li>
+<li><p><strong>timestamps</strong> – The timestamps.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>(pd.DataFrame): event_index_list: dataframe object containing the counts of the log-events after grouping</p>
+<dd class="field-even"><p>A pandas dataframe containing the counts of the log-events after grouping.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -321,26 +327,17 @@ Generate feature sets:
 <span class="sig-name descname"><span class="pre">convert_to_feature_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_vectors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#logai.information_extraction.feature_extractor.FeatureExtractor.convert_to_feature_vector" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converting log data into feature vector, by combining the log vectors (can be output
 of LogVectorizer) with other numerical or categorical attributes of the logs,
-after grouping based on the FeatureExtractorConfig</p>
+after grouping based on the FeatureExtractorConfig.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>log_vectors</strong> (<em>pd.Series</em>) – Numeric features of the logs (for e.g. the vectorized form</p></li>
-<li><p><strong>LogVectorizer</strong><strong>)</strong> (<em>of the log data obtained as output of</em>) – </p></li>
-<li><p><strong>attributes</strong> (<em>pd.DataFrame</em>) – Categorical or numerical attributes for grouping,</p></li>
-<li><p><strong>features</strong> (<em>or numerical attributes serve as additional</em>) – </p></li>
-<li><p><strong>timestamps</strong> (<em>pd.Series</em>) – pd.Series object containing the timestamp data of the loglines</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>event_index_list: modified log data (pd.DataFrame) consisting of the converted
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>event_index_list: modified log data (pd.DataFrame) consisting of the converted
 feature vector form of the input log data after applying the log grouping. It contains an
 “event_index” field which maintains the sequence of log event ids where these ids correspond to the
 original input dataframe’s indices.
 block_list: pd.DataFrame</p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>(pd.DataFrame)</p>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>(pd.DataFrame)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -348,7 +345,7 @@ block_list: pd.DataFrame</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.information_extraction.feature_extractor.FeatureExtractor.convert_to_sequence">
 <span class="sig-name descname"><span class="pre">convert_to_sequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.information_extraction.feature_extractor.FeatureExtractor.convert_to_sequence" title="Permalink to this definition">¶</a></dt>
-<dd><p>Converting log data into sequence using sliding window technique, as defined in FeatureExtractorConfig</p>
+<dd><p>Converting log data into sequence using sliding window technique, as defined in FeatureExtractorConfig.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -364,7 +361,7 @@ data (i.e. log_pattern and attributes arguments) after running sliding window. F
 contains an “event_index” field which maintains the sequence of log event ids where these ids correspond to the
 original input dataframe’s indices.
 (pd.Series): event_sequence: Contains the concatenating form of the unstructured input data (i.e. log_pattern argument),
-after concatenating the unstructured data for each sliding window</p>
+after concatenating the unstructured data for each sliding window.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>(pd.DataFrame)</p>
@@ -378,7 +375,7 @@ after concatenating the unstructured data for each sliding window</p>
 <dt class="sig sig-object py" id="logai.information_extraction.feature_extractor.FeatureExtractorConfig">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.information_extraction.feature_extractor.</span></span><span class="sig-name descname"><span class="pre">FeatureExtractorConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_by_category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_by_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sliding_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_feature_len</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.information_extraction.feature_extractor.FeatureExtractorConfig" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
-<p>Config class for Feature Extractor</p>
+<p>Config class for Feature Extractor.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="logai.information_extraction.feature_extractor.FeatureExtractorConfig.group_by_category">
 <span class="sig-name descname"><span class="pre">group_by_category</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#logai.information_extraction.feature_extractor.FeatureExtractorConfig.group_by_category" title="Permalink to this definition">¶</a></dt>
@@ -417,49 +414,76 @@ after concatenating the unstructured data for each sliding window</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.information_extraction.log_parser.LogParser.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loglines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.information_extraction.log_parser.LogParser.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Train log parser with training loglines.
-:param loglines: pd.Series: the list of loglines for training
-:return:</p>
+<dd><p>Trains log parser with training loglines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>loglines</strong> – pd.Series: the list of loglines for training</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.information_extraction.log_parser.LogParser.fit_parse">
 <span class="sig-name descname"><span class="pre">fit_parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loglines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#logai.information_extraction.log_parser.LogParser.fit_parse" title="Permalink to this definition">¶</a></dt>
-<dd><p>Train and parse the given loglines
-:param loglines: pd.Series: the list of loglines to train and parse
-:return: pd.DataFrame: a dataframe of parsed result [“loglines”, “parsed_loglines”, “parameter_list”]</p>
+<dd><p>Trains and parses the given loglines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>loglines</strong> – The list of loglines to train and parse.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dataframe of parsed result [“loglines”, “parsed_loglines”, “parameter_list”].</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.information_extraction.log_parser.LogParser.get_parameter_list">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_parameter_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.information_extraction.log_parser.LogParser.get_parameter_list" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return parameter list of the loglines
-:param row: row in dataframe as function input containing [‘logline’, ‘parsed_logline’]
-:return: list of dynamic parameters</p>
+<dd><p>Returns parameter list of the loglines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>row</strong> – A row in dataframe as function input containing [‘logline’, ‘parsed_logline’].</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of dynamic parameters.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.information_extraction.log_parser.LogParser.load">
 <span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.information_extraction.log_parser.LogParser.load" title="Permalink to this definition">¶</a></dt>
-<dd><p>Load existing parser models.
-:param model_path: The directory to load parser models
-:return:</p>
+<dd><p>Loads existing parser models.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model_path</strong> – The directory to load parser models.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.information_extraction.log_parser.LogParser.parse">
 <span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loglines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#logai.information_extraction.log_parser.LogParser.parse" title="Permalink to this definition">¶</a></dt>
-<dd><p>Use the trained log parser to parse loglines
-:param loglines: pd.Series: the loglines for parsing
-:return: pd.DataFrame: a dataframe of parsed result [“loglines”, “parsed_loglines”, “parameter_list”]</p>
+<dd><p>Uses the trained log parser to parse loglines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>loglines</strong> – pd.Series: the loglines for parsing.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>pd.DataFrame: a dataframe of parsed result [“loglines”, “parsed_loglines”, “parameter_list”].</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.information_extraction.log_parser.LogParser.save">
 <span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.information_extraction.log_parser.LogParser.save" title="Permalink to this definition">¶</a></dt>
-<dd><p>Save the parser model
-:param out_path: the directory to save parser models.
-:return:</p>
+<dd><p>Save the parser model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>out_path</strong> – The directory to save parser models.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -468,7 +492,7 @@ after concatenating the unstructured data for each sliding window</p>
 <dt class="sig sig-object py" id="logai.information_extraction.log_parser.LogParserConfig">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.information_extraction.log_parser.</span></span><span class="sig-name descname"><span class="pre">LogParserConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parsing_algorithm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'drain'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parsing_algo_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.information_extraction.log_parser.LogParserConfig" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
-<p>Log Parser configuration</p>
+<p>Log Parser configuration.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="logai.information_extraction.log_parser.LogParserConfig.custom_config">
 <span class="sig-name descname"><span class="pre">custom_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">object</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#logai.information_extraction.log_parser.LogParserConfig.custom_config" title="Permalink to this definition">¶</a></dt>
@@ -505,28 +529,28 @@ after concatenating the unstructured data for each sliding window</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.information_extraction.log_vectorizer.</span></span><span class="sig-name descname"><span class="pre">LogVectorizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.information_extraction.log_vectorizer.VectorizerConfig" title="logai.information_extraction.log_vectorizer.VectorizerConfig"><span class="pre">VectorizerConfig</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.information_extraction.log_vectorizer.LogVectorizer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Implement Log Vectorizer to transform raw log data to vectors. It Currently supports various statistical
-(e.g. TfIdfVectorizer) and neural (Word2Vec, FastText, LogBERT) vectorizer models</p>
+(e.g. TfIdfVectorizer) and neural (Word2Vec, FastText, LogBERT) vectorizer models.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.information_extraction.log_vectorizer.LogVectorizer.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loglines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.information_extraction.log_vectorizer.LogVectorizer.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>fit method for LogVectorizer, to train the vectorizer model on the training data
-:param loglines: pandas Series object containing the training raw log data
-:type loglines: pd.Series</p>
+<dd><p>Fit method for LogVectorizer, to train the vectorizer model on the training data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>loglines</strong> – A pandas Series object containing the training raw log data.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.information_extraction.log_vectorizer.LogVectorizer.transform">
 <span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loglines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#logai.information_extraction.log_vectorizer.LogVectorizer.transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>transform method for LogVectorizer, to transform the raw log text data to vectors</p>
+<dd><p>Transform method for LogVectorizer, to transform the raw log text data to vectors.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>loglines</strong> (<em>pd.Series</em>) – pandas Series object containing the test raw log data</p>
+<dd class="field-odd"><p><strong>loglines</strong> – A pandas Series object containing the test raw log data.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>pandas Series object containing the vectorized log data</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>pd.Series</p>
+<dd class="field-even"><p>A pandas Series object containing the vectorized log data.</p>
 </dd>
 </dl>
 </dd></dl>

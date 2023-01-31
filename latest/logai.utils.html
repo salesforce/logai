@@ -270,20 +270,19 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="logai.utils.dataset_utils.split_train_dev_test_for_anomaly_detection">
 <span class="sig-prename descclassname"><span class="pre">logai.utils.dataset_utils.</span></span><span class="sig-name descname"><span class="pre">split_train_dev_test_for_anomaly_detection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logrecord</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_data_frac_neg_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_data_frac_pos_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.utils.dataset_utils.split_train_dev_test_for_anomaly_detection" title="Permalink to this definition">¶</a></dt>
-<dd><p>Util method to split a logrecord object into train dev and test splits, where the splitting</p>
-<p>and the fractions are based on the SPAN_ID field of the logrecord.</p>
+<dd><p>Util method to split a logrecord object into train dev and test splits, where the splitting
+and the fractions are based on the SPAN_ID field of the logrecord.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>logrecord</strong> (<a class="reference internal" href="logai.dataloader.html#logai.dataloader.data_model.LogRecordObject" title="logai.dataloader.data_model.LogRecordObject"><em>LogRecordObject</em></a>) – input logrecord object to be split into train, dev and test splits</p></li>
 <li><p><strong>training_type</strong> (<em>str</em>) – ‘supervised’ or ‘unsupervised’</p></li>
 <li><p><strong>test_data_frac_neg_class</strong> (<em>float</em>) – fraction of the negative class to be . Defaults to None.</p></li>
-<li><p><strong>test_data_frac_pos_class</strong> (<em>float</em><em>, </em><em>optional</em>) – when supervised mode is selected, fraction of the positive class</p></li>
-<li><p><strong>data.</strong> (<em>data to be used for test</em>) – </p></li>
-<li><p><strong>shuffle</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether to shuffle the log data when splitting into train and test. If False,</p></li>
-<li><p><strong>ordering</strong> (<em>then it uses the chronological</em>) – </p></li>
-<li><p><strong>first</strong> (<em>where the</em>) – </p></li>
-<li><p><strong>False.</strong> (<em>second one development data and third one as test data. Defaults to</em>) – </p></li>
+<li><p><strong>test_data_frac_pos_class</strong> (<em>float</em><em>, </em><em>optional</em>) – when supervised mode is selected, fraction of the positive class
+data to be used for test data. (fraction for dev data is fixed).For unsupervised mode this value is fixed to 1.0</p></li>
+<li><p><strong>shuffle</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether to shuffle the log data when splitting into train and test. If False,
+then it uses the chronological ordering, where the first (chronologically first) split will constitute train data,
+second one development data and third one as test data. Defaults to False.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -303,10 +302,18 @@ logrecord_test: logrecord object containing test data</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="logai.utils.evaluate.get_accuracy_precision_recall">
 <span class="sig-prename descclassname"><span class="pre">logai.utils.evaluate.</span></span><span class="sig-name descname"><span class="pre">get_accuracy_precision_recall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.utils.evaluate.get_accuracy_precision_recall" title="Permalink to this definition">¶</a></dt>
-<dd><p>Evaluating the anomaly and labels
-:param y: model inference results
-:param y_labels: y labels
-:return: accuracy, precision, recall</p>
+<dd><p>Evaluates the anomaly and labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y</strong> – Model inference results.</p></li>
+<li><p><strong>y_labels</strong> – y labels.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Accuracy, precision, and recall.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -315,13 +322,13 @@ logrecord_test: logrecord object containing test data</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="logai.utils.file_utils.file_exists">
 <span class="sig-prename descclassname"><span class="pre">logai.utils.file_utils.</span></span><span class="sig-name descname"><span class="pre">file_exists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.utils.file_utils.file_exists" title="Permalink to this definition">¶</a></dt>
-<dd><p>util function to check if file exists</p>
+<dd><p>Util function to check if file exists.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – path to file</p>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – path to file.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>if file exists or not</p>
+<dd class="field-even"><p>if file exists or not.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
@@ -332,13 +339,13 @@ logrecord_test: logrecord object containing test data</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="logai.utils.file_utils.read_file">
 <span class="sig-prename descclassname"><span class="pre">logai.utils.file_utils.</span></span><span class="sig-name descname"><span class="pre">read_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.utils.file_utils.read_file" title="Permalink to this definition">¶</a></dt>
-<dd><p>reading yaml, json, csv or pickle files</p>
+<dd><p>Reads yaml, json, csv or pickle files.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>filepath</strong> (<em>str</em>) – path to file</p>
+<dd class="field-odd"><p><strong>filepath</strong> (<em>str</em>) – path to file.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>data object containing file contents</p>
+<dd class="field-even"><p>data object containing file contents.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>object</p>
@@ -358,17 +365,17 @@ logrecord_test: logrecord object containing test data</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="logai.utils.functions.pad">
 <span class="sig-prename descclassname"><span class="pre">logai.utils.functions.</span></span><span class="sig-name descname"><span class="pre">pad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_len</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.utils.functions.pad" title="Permalink to this definition">¶</a></dt>
-<dd><p>Method to trim or pad any 1-d numpy array to a given max length with the given padding value</p>
+<dd><p>Method to trim or pad any 1-d numpy array to a given max length with the given padding value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> (<em>np.array</em>) – given 1-d numpy array to be padded/trimmed</p></li>
-<li><p><strong>max_len</strong> (<em>int</em>) – maximum length of padded/trimmed output</p></li>
+<li><p><strong>x</strong> (<em>np.array</em>) – given 1-d numpy array to be padded/trimmed.</p></li>
+<li><p><strong>max_len</strong> (<em>int</em>) – maximum length of padded/trimmed output.</p></li>
 <li><p><strong>padding_value</strong> (<em>int</em><em>, </em><em>optional</em>) – padding value. Defaults to 0.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>padded/trimmed numpy array</p>
+<dd class="field-even"><p>padded/trimmed numpy array.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>np.array</p>
@@ -379,7 +386,7 @@ logrecord_test: logrecord object containing test data</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="logai.utils.functions.pd_to_timeseries">
 <span class="sig-prename descclassname"><span class="pre">logai.utils.functions.</span></span><span class="sig-name descname"><span class="pre">pd_to_timeseries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.utils.functions.pd_to_timeseries" title="Permalink to this definition">¶</a></dt>
-<dd><p>Covert pandas.DataFrame to merlion.TimeSeries for log counter vectors</p>
+<dd><p>Covert pandas.DataFrame to merlion.TimeSeries for log counter vectors.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>log_features</strong> – log feature dataframe must only contain two columns
@@ -398,19 +405,13 @@ logrecord_test: logrecord object containing test data</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="logai.utils.tokenize.replace_delimeters">
 <span class="sig-prename descclassname"><span class="pre">logai.utils.tokenize.</span></span><span class="sig-name descname"><span class="pre">replace_delimeters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logline</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimeter_regex</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.utils.tokenize.replace_delimeters" title="Permalink to this definition">¶</a></dt>
-<dd><p>Remove customer delimeters
-:param delimeter_regex:
-:param logline:
-:return:</p>
+<dd><p>Remove customer delimeters.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="logai.utils.tokenize.tokenize">
 <span class="sig-prename descclassname"><span class="pre">logai.utils.tokenize.</span></span><span class="sig-name descname"><span class="pre">tokenize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logline</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.utils.tokenize.tokenize" title="Permalink to this definition">¶</a></dt>
-<dd><p>Common tokenization of logline and using space to separate tokens.
-:param config:
-:param logline:
-:return:</p>
+<dd><p>Common tokenization of logline and using space to separate tokens.</p>
 </dd></dl>
 
 </section>
