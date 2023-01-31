@@ -267,6 +267,21 @@
 <dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
 <p>Configuration for FastText vectorizer. For more details on the parameters see
 <a class="reference external" href="https://radimrehurek.com/gensim/models/fasttext.html">https://radimrehurek.com/gensim/models/fasttext.html</a></p>
+<dl class="simple">
+<dt>param: vector_size: int = 100</dt><dd><p>size of vector</p>
+</dd>
+<dt>param: window: int = 100: optional</dt><dd><p>The maximum distance between the current and predicted word within a sentence.</p>
+</dd>
+<dt>param: min_count: int = 1: optional</dt><dd><p>Ignores all words with total frequency lower than this.</p>
+</dd>
+<dt>param: sample: float = 1e-2: optional</dt><dd><p>The threshold for configuring which higher-frequency words are randomly downsampled,
+useful range is (0, 1e-5).</p>
+</dd>
+</dl>
+<p>param: workers: int = 4: number of workers to run
+param: sg: int = 1: optional. Training algorithm: skip-gram if <cite>sg=1</cite>, otherwise CBOW.
+param: epochs: int = 100.
+param: max_token_len: int = 100  : max token length.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="logai.algorithms.vectorization_algo.fasttext.FastTextParams.epochs">
 <span class="sig-name descname"><span class="pre">epochs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#logai.algorithms.vectorization_algo.fasttext.FastTextParams.epochs" title="Permalink to this definition">¶</a></dt>
@@ -798,6 +813,114 @@ model_save_dir: str = None # path to directory where vectorizer models would be 
 <dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
 <p>Configuration of TF-IDF vectorizer. For more details of parameters see
 <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html">https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html</a></p>
+<dl>
+<dt>param: input: str = “content”: {‘filename’, ‘file’, ‘content’}</dt><dd><ul class="simple">
+<li><p>If <cite>‘filename’</cite>, the sequence passed as an argument to fit is
+expected to be a list of filenames that need reading to fetch
+the raw content to analyze.</p></li>
+</ul>
+</dd>
+<dt>param: encoding: str = “utf-8”: default=’utf-8’</dt><dd><ul class="simple">
+<li><p>If bytes or files are given to analyze, this encoding is used to</p></li>
+</ul>
+<p>decode.</p>
+</dd>
+<dt>param: decode_error: str = “strict”: {‘strict’, ‘ignore’, ‘replace’}</dt><dd><p>Instruction on what to do if a byte sequence is given to analyze that
+contains characters not of the given <cite>encoding</cite>. By default, it is
+‘strict’, meaning that a UnicodeDecodeError will be raised. Other
+values are ‘ignore’ and ‘replace’.</p>
+</dd>
+<dt>param: strip_accents: object = None: {‘ascii’, ‘unicode’} or callable</dt><dd><p>Remove accents and perform other character normalization
+during the preprocessing step.
+‘ascii’ is a fast method that only works on characters that have
+a direct ASCII mapping.
+‘unicode’ is a slightly slower method that works on any characters.
+None (default) does nothing.</p>
+<p>Both ‘ascii’ and ‘unicode’ use NFKD normalization from
+<code class="xref py py-func docutils literal notranslate"><span class="pre">unicodedata.normalize()</span></code>.</p>
+</dd>
+<dt>param: lowercase: bool = True</dt><dd><p>Convert all characters to lowercase before tokenizing.</p>
+</dd>
+<dt>param: preprocessor: object = None</dt><dd><p>Override the preprocessing (string transformation) stage while
+preserving the tokenizing and n-grams generation steps.
+Only applies if <code class="docutils literal notranslate"><span class="pre">analyzer</span></code> is not callable.</p>
+</dd>
+<dt>param: tokenizer: object = None</dt><dd><p>Override the string tokenization step while preserving the
+preprocessing and n-grams generation steps.
+Only applies if <code class="docutils literal notranslate"><span class="pre">analyzer</span> <span class="pre">==</span> <span class="pre">'word'</span></code>.</p>
+</dd>
+<dt>param: analyzer: str = “word” {‘word’, ‘char’, ‘char_wb’} or callable</dt><dd><p>Whether the feature should be made of word or character n-grams.
+Option ‘char_wb’ creates character n-grams only from text inside
+word boundaries; n-grams at the edges of words are padded with space.</p>
+</dd>
+<dt>param: stop_words: object = None: {‘english’}, list</dt><dd><p>If a string, it is passed to _check_stop_list and the appropriate stop
+list is returned. ‘english’ is currently the only supported string
+value.
+There are several known issues with ‘english’ and you should
+consider an alternative (see <span class="xref std std-ref">stop_words</span>).</p>
+</dd>
+<dt>param: token_pattern: str = r”(?u)ww+”</dt><dd><p>Regular expression denoting what constitutes a “token”, only used
+if <code class="docutils literal notranslate"><span class="pre">analyzer</span> <span class="pre">==</span> <span class="pre">'word'</span></code>. The default regexp selects tokens of 2
+or more alphanumeric characters (punctuation is completely ignored
+and always treated as a token separator).</p>
+<p>If there is a capturing group in token_pattern then the
+captured group content, not the entire match, becomes the token.
+At most one capturing group is permitted.</p>
+</dd>
+<dt>param: ngram_range: tuple = (1, 1)</dt><dd><p>The lower and upper boundary of the range of n-values for different
+n-grams to be extracted. All values of n such that min_n &lt;= n &lt;= max_n
+will be used. For example an <code class="docutils literal notranslate"><span class="pre">ngram_range</span></code> of <code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">1)</span></code> means only
+unigrams, <code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">2)</span></code> means unigrams and bigrams, and <code class="docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">2)</span></code> means
+only bigrams.
+Only applies if <code class="docutils literal notranslate"><span class="pre">analyzer</span></code> is not callable.</p>
+</dd>
+<dt>param: max_df: float = 1.0</dt><dd><p>When building the vocabulary ignore terms that have a document
+frequency strictly higher than the given threshold (corpus-specific
+stop words).
+If float in range [0.0, 1.0], the parameter represents a proportion of
+documents, integer absolute counts.
+This parameter is ignored if vocabulary is not None.</p>
+</dd>
+<dt>param: min_df: int = 1</dt><dd><p>When building the vocabulary ignore terms that have a document
+frequency strictly lower than the given threshold. This value is also
+called cut-off in the literature.
+If float in range of [0.0, 1.0], the parameter represents a proportion
+of documents, integer absolute counts.
+This parameter is ignored if vocabulary is not None.</p>
+</dd>
+<dt>param: max_features: object = None int</dt><dd><p>If not None, build a vocabulary that only consider the top
+max_features ordered by term frequency across the corpus.</p>
+<p>This parameter is ignored if vocabulary is not None.</p>
+</dd>
+<dt>param: vocabulary: object = None Mapping or iterable</dt><dd><p>Either a Mapping (e.g., a dict) where keys are terms and values are
+indices in the feature matrix, or an iterable over terms. If not
+given, a vocabulary is determined from the input documents.</p>
+</dd>
+<dt>param: binary: bool = False</dt><dd><p>If True, all non-zero term counts are set to 1. This does not mean
+outputs will have only 0/1 values, only that the tf term in tf-idf
+is binary. (Set idf and normalization to False to get 0/1 outputs).</p>
+</dd>
+<dt>param: dtype: object = np.float64 default=float64</dt><dd><p>Type of the matrix returned by fit_transform() or transform().</p>
+</dd>
+<dt>param: norm: str = “l2” {‘l1’, ‘l2’} or None</dt><dd><p>Each output row will have unit norm, either:</p>
+<ul class="simple">
+<li><p>‘l2’: Sum of squares of vector elements is 1. The cosine
+similarity between two vectors is their dot product when l2 norm has
+been applied.</p></li>
+<li><p>‘l1’: Sum of absolute values of vector elements is 1.
+See <code class="xref py py-func docutils literal notranslate"><span class="pre">preprocessing.normalize()</span></code>.</p></li>
+<li><p>None: No normalization.</p></li>
+</ul>
+</dd>
+<dt>param: use_idf: bool = True</dt><dd><p>Enable inverse-document-frequency reweighting. If False, idf(t) = 1.</p>
+</dd>
+<dt>param: smooth_idf: bool = True default=True</dt><dd><p>Smooth idf weights by adding one to document frequencies, as if an
+extra document was seen containing every term in the collection
+exactly once. Prevents zero divisions.</p>
+</dd>
+<dt>param: sublinear_tf: bool = False</dt><dd><p>Apply sublinear tf scaling, i.e. replace tf with 1 + log(tf).</p>
+</dd>
+</dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="logai.algorithms.vectorization_algo.tfidf.TfIdfParams.analyzer">
 <span class="sig-name descname"><span class="pre">analyzer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#logai.algorithms.vectorization_algo.tfidf.TfIdfParams.analyzer" title="Permalink to this definition">¶</a></dt>
@@ -945,6 +1068,16 @@ model from gensim library <a class="reference external" href="https://radimrehur
 <dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
 <p>Configuration of Word2Vec vectorization parameters. For more details on the parameters see
 <a class="reference external" href="https://radimrehurek.com/gensim/models/word2vec.html">https://radimrehurek.com/gensim/models/word2vec.html</a></p>
+<dl class="simple">
+<dt>param: max_token_len: int = 100</dt><dd><p>The maximum length of tokens</p>
+</dd>
+<dt>param: min_count: int = 1 optional</dt><dd><p>Ignores all words with total frequency lower than this.</p>
+</dd>
+<dt>param: vector_size: int = 3 optional</dt><dd><p>Dimensionality of the feature vectors.</p>
+</dd>
+<dt>param: window: int = 3 optional</dt><dd><p>The maximum distance between the current and predicted word within a sentence.</p>
+</dd>
+</dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="logai.algorithms.vectorization_algo.word2vec.Word2VecParams.max_token_len">
 <span class="sig-name descname"><span class="pre">max_token_len</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#logai.algorithms.vectorization_algo.word2vec.Word2VecParams.max_token_len" title="Permalink to this definition">¶</a></dt>

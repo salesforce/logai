@@ -249,7 +249,7 @@ link: <a class="reference external" href="https://github.com/logpai/logparser/bl
 Since AEL Log Parser does not require any training, this method is empty</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>loglines</strong> – </p>
+<dd class="field-odd"><p><strong>loglines</strong> – input loglines</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p></p>
@@ -342,6 +342,16 @@ Since AEL Log Parser does not require any training, this method is empty</p>
 <dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
 <p>Parameters for the AEL Log Parsing algorithm. For more details see
 <a class="reference external" href="https://github.com/logpai/logparser/tree/master/logparser/AEL">https://github.com/logpai/logparser/tree/master/logparser/AEL</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rex</strong> – str:</p></li>
+<li><p><strong>minEventCount</strong> – int: minimum event count</p></li>
+<li><p><strong>merge_percent</strong> – int: merge percentage</p></li>
+<li><p><strong>keep_para</strong> – bool: wheter to keep parameters</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.ael.AELParams.keep_para">
 <span class="sig-name descname"><span class="pre">keep_para</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#logai.algorithms.parsing_algo.ael.AELParams.keep_para" title="Permalink to this definition">¶</a></dt>
@@ -445,6 +455,12 @@ New cluster will not be created as a result of this call, nor any cluster modifi
 <p>Parameters for Drain Log Parser.
 For more details on parameters see
 <a class="reference external" href="https://github.com/logpai/Drain3/blob/master/drain3/drain.py">https://github.com/logpai/Drain3/blob/master/drain3/drain.py</a></p>
+<p>param: depth: int = 3: depth of tree
+param: sim_th: float = 0.4: similarity threshold
+param: max_children: int = 100: max number of children nodes
+param: max_clusters: int = None: max number of clusters
+param: extra_delimiters: tuple = (): extra delimiters
+param: param_str: str = “*”: wildcard parameter string</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.drain.DrainParams.depth">
 <span class="sig-name descname"><span class="pre">depth</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#logai.algorithms.parsing_algo.drain.DrainParams.depth" title="Permalink to this definition">¶</a></dt>
@@ -662,6 +678,15 @@ the cache eviction algorithm.</p>
 <dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
 <p>Parameters for the IPLoM Log Parser. For more details on parameters see
 <a class="reference external" href="https://github.com/logpai/logparser/tree/master/logparser/IPLoM">https://github.com/logpai/logparser/tree/master/logparser/IPLoM</a></p>
+<p>param: rex: str = None: rex string
+param: logformat: str = None: log format
+param: maxEventLen: int = 200: max event length
+param: step2Support: float = 0: step to support
+param: PST: float = 0:
+param: CT: float = 0:
+param: lowerBound: float = 0.25: lower bound threshold
+param: upperBound: float = 0.9: upper bound threshold
+param: keep_para: bool = True: whether to keep parameters</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="logai.algorithms.parsing_algo.iplom.IPLoMParams.CT">
 <span class="sig-name descname"><span class="pre">CT</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#logai.algorithms.parsing_algo.iplom.IPLoMParams.CT" title="Permalink to this definition">¶</a></dt>
@@ -736,7 +761,7 @@ the cache eviction algorithm.</p>
 Since AEL Log Parser does not require any training, this method is empty</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>loglines</strong> – </p>
+<dd class="field-odd"><p><strong>loglines</strong> – input loglines</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p></p>
