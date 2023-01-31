@@ -8,6 +8,7 @@
 import pandas as pd
 from attr import dataclass
 
+import logai.algorithms.clustering_algo
 from logai.config_interfaces import Config
 from logai.algorithms.factory import factory
 
