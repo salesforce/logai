@@ -19,10 +19,12 @@ class FeatureExtractorConfig(Config):
     """Config class for Feature Extractor
     
     :param group_by_category: list = None: which fields of the dataframe object to group by
-    :param group_by_time: str = None: grouping log lines by the time frequency, using the notations in https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases
+    :param group_by_time: str = None: grouping log lines by the time frequency, using the notations in 
+        https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases
     :param sliding_window: int = 0: length of the sliding window 
     :param steps: int = 1: step-size of sliding window
     :param max_feature_len: int = 100: pad the log vector to this size 
+    
     """
     group_by_category: list = None
     group_by_time: str = None
@@ -43,10 +45,11 @@ class FeatureExtractorConfig(Config):
 
 def _get_group_counter(attributes: pd.DataFrame, group_by_category: list) -> pd.Series:
     """
-    TODO: merge counting with other feature extraction functions
+    merge counting with other feature extraction functions
     
     :param attributes: pd.Dataframe or pd.Series for counting
     :param group_by_category: selected attributes for grouping and counting
+
     :return:
     """
     attributes["group_index"] = attributes.index
@@ -82,7 +85,6 @@ class FeatureExtractor:
 
     def __init__(self, config: FeatureExtractorConfig):
         self.config = config
-        return
 
     def convert_to_counter_vector(
         self,
@@ -96,8 +98,8 @@ class FeatureExtractor:
         :param log_pattern: pd.Series: unstructured part of the log data 
         :param attributes: pd.Dataframe: log attributes
         :param timestamps: pd.Series: timestamps
-        :return: (pd.DataFrame): event_index_list: dataframe object containing the counts of the log-events after grouping
 
+        :return: (pd.DataFrame): event_index_list: dataframe object containing the counts of the log-events after grouping
         """
         # TODO: Implement sliding window for counter vectors
         input_df = self._get_input_df(log_pattern, attributes, timestamps)
@@ -108,7 +110,6 @@ class FeatureExtractor:
         event_index_list[constants.LOG_COUNTS] = event_index_list["event_index"].apply(
             lambda x: len(x)
         )
-
         return event_index_list
 
     def convert_to_feature_vector(
@@ -118,7 +119,6 @@ class FeatureExtractor:
         timestamps: pd.Series,
     ) -> pd.DataFrame:
         """
-
         Converting log data into feature vector, by combining the log vectors (can be output
         of LogVectorizer) with other numerical or categorical attributes of the logs,
         after grouping based on the FeatureExtractorConfig  
@@ -126,13 +126,14 @@ class FeatureExtractor:
         :param log_vectors: (pd.Series): Numeric features of the logs (for e.g. the vectorized form of the log data obtained as output of LogVectorizer)
         :param attributes: (pd.DataFrame): Categorical or numerical attributes for grouping, or numerical attributes serve as additional features
         :param timestamps: (pd.Series): pd.Series object containing the timestamp data of the loglines 
+
         :return:
-        - (pd.DataFrame): event_index_list: modified log data (pd.DataFrame) consisting of the converted feature vector form of the input log data after applying the log grouping. It contains an "event_index" field which maintains the sequence of log event ids where these ids correspond to the  original input dataframe's indices.  
+        - (pd.DataFrame): event_index_list: modified log data (pd.DataFrame) consisting of the converted feature vector form of the input log data
+         after applying the log grouping. It contains an "event_index" field which maintains the sequence of log event ids where these ids correspond
+          to the  original input dataframe's indices.  
+
         - (pd.DataFrame): block_list: 
         """
-        # if log_vectors.empty:
-        #     raise TypeError("Log vector must be not NULL to generate feature vector")
-
         if log_vectors is None or log_vectors.empty:
             feature_df = None
         else:
@@ -157,7 +158,8 @@ class FeatureExtractor:
     ):
         """Converting log data into sequence using sliding window technique, as defined in FeatureExtractorConfig  
         
-        :param log_pattern: (pd.Series, optional): pd.Series object that encapsulates the entire arbitrary unstructured part of the log data (for example, can be the unstructured part of the raw log data or the output of the output of the log parser). Defaults to None.
+        :param log_pattern: (pd.Series, optional): pd.Series object that encapsulates the entire arbitrary unstructured part of the log data
+            (for example, can be the unstructured part of the raw log data or the output of the output of the log parser). Defaults to None.
         :param attributes: (pd.DataFrame, optional): structured part (attributes) of the raw log data. Defaults to None.
         :param timestamps: (pd.Series, optional): timestamps data corresponding to the log lines. Defaults to None.
         :return:
@@ -165,6 +167,7 @@ class FeatureExtractor:
         data (i.e. log_pattern and attributes arguments) after running sliding window. For the unstructured part, the returned DataFrame
         contains an "event_index" field which maintains the sequence of log event ids where these ids correspond to the 
         original input dataframe's indices. 
+
         - (pd.Series): event_sequence: Contains the concatenating form of the unstructured input data (i.e. log_pattern argument),
         after concatenating the unstructured data for each sliding window 
         """

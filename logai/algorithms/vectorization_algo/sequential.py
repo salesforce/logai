@@ -53,9 +53,11 @@ class Sequential(VectorizationAlgo):
         return data.strip()
 
     def fit(self, loglines: pd.Series):
-        """Fit method for training the sequential vectorizer
+        """Fit method for training the sequential vectorizer.
 
-        :param loglines: (pd.Series):  pandas Series object containing the dataset on which semantic vectorizer is trained (and the vocab is built). Each data instance should be a logline or sequence of loglines concatenated by separator token
+        :param loglines (pd.Series):  A pandas Series object containing the dataset on
+            which semantic vectorizer is trained (and the vocab is built).
+            Each data instance should be a logline or sequence of loglines concatenated by separator token.
         """
         model_file = None
         if self.params.model_save_dir:
@@ -78,10 +80,11 @@ class Sequential(VectorizationAlgo):
                 pkl.dump(self.vocab, open(model_file, "wb"))
 
     def transform(self, loglines: pd.Series) -> pd.Series:
-        """Transform method for applying sequential vectorizer to loglines
-        
-        :param loglines: (pd.Series): pandas Series containing the data to be vectorized. Each data instance should be a logline or sequence of loglines concatenated by separator token
-        :return: pd.Series: vectorized loglines
+        """Transform method for applying sequential vectorizer to loglines.
+
+        :param loglines (pd.Series): A pandas Series containing the data to be vectorized.
+            Each data instance should be a logline or sequence of loglines concatenated by separator token.
+        :return: The vectorized loglines.
         """
         indices = loglines.index
         if self.params.sep_token is not None:

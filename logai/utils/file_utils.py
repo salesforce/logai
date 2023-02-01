@@ -23,7 +23,7 @@ def file_exists(path: str):
 
 
 def read_file(filepath: str):
-    """reading yaml, json, csv or pickle files
+    """Reads yaml, json, csv or pickle files.
 
     :param filepath: (str): path to file
     :return: data object containing file contents

@@ -22,7 +22,7 @@ from logai.algorithms.factory import factory
 
 
 class ForecastNNVectorizedDataset:
-    """class for storing vectorized dataset for forecasting based neural models"""
+    """Class for storing vectorized dataset for forecasting based neural models."""
 
     session_idx: str = "session_idx"
     features: str = "features"
@@ -53,17 +53,22 @@ class ForecastNNVectorizedDataset:
 
 @dataclass
 class ForecastNNVectorizerParams(Config):
-    """Config class for vectorizer for forecast based neural models for log representation learning
-    
-    :param feature_type: str = None : type of log feature representation where the supported types "semantics" and "sequential"
-    :param label_type: str = None : type of label, anomaly or next_log, which corresponds to the supervised and the forecasting based unsupervised setting
-    :param sep_token: str = "[SEP]" : separator token used when constructing the log sequences during log grouping/partitioning
-    :param max_token_len: int = None : maximum token length of the input
-    :param min_token_count: int = None : minimum number of occurrences of a token in the training data, for it to be considered in the vocab
-    :param embedding_dim: int = None : embedding dimension of the tokens
-    :param output_dir: str = "" : path to output directory where the vectorizer model directory and metadata file would be created
-    :param vectorizer_metadata_filepath: str = "" : path to file where the vectorizer metadata would be saved. This would be read by the anomaly detection model and should be set in the metadata_filepath of the forecast_nn based anomaly detector
-    :param vectorizer_model_dirpath: str = "" : path to directory containing the vectorizer model
+    """Config class for vectorizer for forecast based neural models for log representation learning.
+
+    :param feature_type: The type of log feature representation where the supported types "semantics" and "sequential".
+    :param label_type: The type of label, anomaly or next_log, which corresponds to the supervised and the
+        forecasting based unsupervised setting.
+    :param sep_token: The separator token used when constructing the log sequences during log grouping/partitioning. (default = "[SEP]")
+    :param max_token_len: The maximum token length of the input.
+    :param min_token_count: The minimum number of occurrences of a token in the training data, for it to be
+        considered in the vocab.
+    :param embedding_dim: The embedding dimension of the tokens.
+    :param output_dir: The path to output directory where the vectorizer model directory and metadata file
+        would be created.
+    :param vectorizer_metadata_filepath: The path to file where the vectorizer metadata would be saved.
+        This would be read by the anomaly detection model and should be set in the metadata_filepath of
+        the forecast_nn based anomaly detector.
+    :param vectorizer_model_dirpath: The path to directory containing the vectorizer model.
     """
 
     feature_type: str = None  # supported types "semantics" and "sequential"
@@ -136,7 +141,7 @@ class ForecastNN(VectorizationAlgo):
         return unique_data_instances
 
     def fit(self, logrecord: LogRecordObject):
-        """fit method to train vectorizer
+        """Fit method to train vectorizer.
 
         :param logrecord: (LogRecordObject): logrecord object to train the vectorizer on
         """

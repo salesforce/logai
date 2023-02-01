@@ -18,7 +18,20 @@ from logai.algorithms.factory import factory
 @dataclass
 class IsolationForestParams(Config):
     """Parameters for isolation forest based anomaly detection. For more explanation of the parameters see the documentation page
-    in https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html
+    in https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html.
+
+    :param n_estimators: The number of base estimators in the ensemble.
+    :param max_samples: The number of samples to draw from X to train each base estimator.
+    :param contamination: The amount of contamination of the data set, i.e. the proportion of outliers in the data set.
+    :param max_features: The number of features to draw from X to train each base estimator.
+    :param bootstrap: If True, individual trees are fit on random subsets of the training data sampled with
+        replacement. If False, sampling without replacement is performed.
+    :param n_jobs: The number of jobs to run in parallel for both fit and predict.
+    :param random_state: Controls the pseudo-randomness of the selection of the feature and split values
+        for each branching step and each tree in the forest.
+    :param verbose: Controls the verbosity of the tree building process.
+    :param warm_start: When set to True, reuse the solution of the previous call to fit and add more estimators
+        to the ensemble, otherwise, just fit a whole new forest.
     """
     n_estimators: int = 100
     max_samples: str = "auto"
@@ -54,10 +67,10 @@ class IsolationForestDetector(AnomalyDetectionAlgo):
 
     def fit(self, log_features: pd.DataFrame):
         """
-        Fit model
-        
-        :param log_features: pandas.DataFrame: input for model training
-        :return: pandas.DataFrame
+        Fits an isolation forest model.
+
+        :param log_features: The input for model training.
+        :return: The scores of the training dataset.
         """
         self.model.fit(log_features)
         train_scores = self.model.score_samples(log_features)
@@ -67,10 +80,10 @@ class IsolationForestDetector(AnomalyDetectionAlgo):
 
     def predict(self, log_features: pd.DataFrame) -> pd.Series:
         """
-        Predict for input.
-        
-        :param log_features: pandas.DataFrame: input for inference
-        :return: pandas.DataFrame
+        Predicts anomalies.
+
+        :param log_features: The input for inference
+        :return: A pandas dataframe of the predicted anomaly scores.
         """
         test_scores = self.model.predict(log_features)
         test_scores = pd.DataFrame(

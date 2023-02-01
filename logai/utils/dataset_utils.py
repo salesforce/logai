@@ -13,23 +13,29 @@ from sklearn.model_selection import train_test_split
 
 
 def split_train_dev_test_for_anomaly_detection(
-    logrecord,
-    training_type,
-    test_data_frac_neg_class,
-    test_data_frac_pos_class=None,
-    shuffle=False,
+        logrecord,
+        training_type,
+        test_data_frac_neg_class,
+        test_data_frac_pos_class=None,
+        shuffle=False,
 ):
-    """Util method to split a logrecord object into train dev and test splits, where the splitting fractions are based on the SPAN_ID field of the logrecord.
-    
+    """Util method to split a logrecord object into train dev and test splits, where the splitting fractions 
+    are based on the SPAN_ID field of the logrecord.
+
     :param logrecord: (LogRecordObject): input logrecord object to be split into train, dev and test splits
     :param training_type: (str): 'supervised' or 'unsupervised'
     :param test_data_frac_neg_class: (float): fraction of the negative class to be . Defaults to None.
-    :param test_data_frac_pos_class: (float, optional): when supervised mode is selected, fraction of the positive class data to be used for test data. (fraction for dev data is fixed).For unsupervised mode this value is fixed to 1.0
-    :param shuffle: (bool, optional): whether to shuffle the log data when splitting into train and test. If False, then it uses the chronological ordering, where the first (chronologically first) split will constitute train data, second one development data and third one as test data. Defaults to False.
+    :param test_data_frac_pos_class: (float, optional): when supervised mode is selected, fraction of the
+        positive class data to be used for test data. (fraction for dev data is fixed).For unsupervised mode this value is fixed to 1.0
+    :param shuffle: (bool, optional): whether to shuffle the log data when splitting into train and test. 
+        If False, then it uses the chronological ordering, where the first (chronologically first) split will
+        constitute train data, second one development data and third one as test data. Defaults to False.
+
     :return:
     - logrecord_train: logrecord object containing train data
     - logrecord_dev: logrecord object containing dev data
     - logrecord_test: logrecord object containing test data
+    
     """
 
     if training_type not in ["supervised", "unsupervised"]:

@@ -18,7 +18,19 @@ from logai.algorithms.factory import factory
 @dataclass
 class LOFParams(Config):
     """Parameters of Locality Outlier Factors based Anomaly Detector 
-    For more explanations of the parameters see https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.LocalOutlierFactor.html
+    For more explanations of the parameters see https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.LocalOutlierFactor.html.
+
+    :param n_neighbors: Number of neighbors to use by default for kneighbors queries.
+    :param algorithm: Algorithm used to compute the nearest neighbors, e.g.,
+        ``{‘auto’, ‘ball_tree’, ‘kd_tree’, ‘brute’}``.
+    :param leaf_size: Leaf is size passed to BallTree or KDTree.
+    :param metric: Metric to use for distance computation.
+    :param p: Parameter for the Minkowski metric from ``sklearn.metrics.pairwise.pairwise_distances``.
+    :param metric_params: Additional keyword arguments for the metric function.
+    :param contamination: The amount of contamination of the data set, i.e. the proportion of outliers in the data set.
+    :param novelty: By default, LocalOutlierFactor is only meant to be used for outlier detection (novelty=False).
+        Set novelty to True if you want to use LocalOutlierFactor for novelty detection.
+    :param n_jobs: The number of parallel jobs to run for neighbors search.
     """
     n_neighbors: int = 20
     algorithm: str = "auto"
@@ -33,8 +45,8 @@ class LOFParams(Config):
 
 @factory.register("detection", "lof", LOFParams)
 class LOFDetector(AnomalyDetectionAlgo):
-    """Locality Outlier Factor based Anomaly Detector. This is a wrapper method for the LOF based Detector in scikit-learn library 
-    See https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.LocalOutlierFactor.html for more details
+    """Locality Outlier Factor based Anomaly Detector. This is a wrapper method for the LOF based Detector in scikit-learn library.
+    See https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.LocalOutlierFactor.html for more details.
     """
     def __init__(self, params: LOFParams):
         self.model = LocalOutlierFactor(
@@ -51,10 +63,10 @@ class LOFDetector(AnomalyDetectionAlgo):
 
     def fit(self, log_features: pd.DataFrame):
         """
-        Fit model
-        
-        :param log_features: pandas.DataFrame: input for model training
-        :return: pandas.Dataframe
+        Fits a LOF model.
+
+        :param log_features: The input for model training.
+        :return:  pandas.Dataframe : The scores of the training dataset.
         """
         self.model.fit(
             np.array(log_features)
@@ -66,10 +78,10 @@ class LOFDetector(AnomalyDetectionAlgo):
 
     def predict(self, log_features: pd.DataFrame) -> pd.Series:
         """
-        Predict for input
-        
-        :param log_features: pandas.DataFrame: input for inference
-        :return: pandas.Dataframe
+        Predicts anomaly scores.
+
+        :param log_features: The input for inference
+        :return: A pandas dataframe of the predicted anomaly scores.
         """
         test_scores = self.model.predict(
             np.array(log_features)

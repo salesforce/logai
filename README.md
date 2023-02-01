@@ -24,7 +24,7 @@ For full license text, see the LICENSE file in the repo root or https://opensour
   </a>
 </div>
 
-# LogAI: A Library for AI-based Log Analytics and Intelligence
+# LogAI: A Library for Log Analytics and Intelligence
 
 ## Table of Contents
 * [Introduction](#introduction)
@@ -240,7 +240,7 @@ detection benchmarking on different datasets and algorithms can be found in
 ## Documentation
 
 For more detail about LogAI library and advanced use cases, please visit 
-[LogAI Documentation](https://opensource.salesforce.com/LogAI).
+[LogAI Documentation](https://opensource.salesforce.com/logai).
 
 ## Technical Report and Citing LogAI
 

@@ -108,7 +108,7 @@ class LogRecordObject:
         logrecord.__post_init__()
         return logrecord
 
-    def save_to_csv(self, filepath):
+    def save_to_csv(self, filepath: str):
         """
         save logrecord object to file
         

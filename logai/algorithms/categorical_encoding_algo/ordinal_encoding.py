@@ -18,9 +18,14 @@ from logai.config_interfaces import Config
 class OrdinalEncodingParams(Config):
     """
     Configuration of OrdinalEncoding. For more details on the parameters see 
-    https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html
-    """
+    https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html.
 
+    :param categories: Categories (unique values) per feature.
+    :param dtype: Desired dtype of output.
+    :param handle_unknown: Specifies the way unknown categories are handled during transform.
+    :param unknown_value: When the parameter handle_unknown is set to ‘use_encoded_value’,
+        this parameter is required and will set the encoded value of unknown categories.
+    """
     categories: str = "auto"
     dtype: np.float64 = np.float64
     handle_unknown: str = "error"
@@ -30,7 +35,7 @@ class OrdinalEncodingParams(Config):
 class OrdinalEncoding(CategoricalEncodingAlgo):
     """
     Implementation of ordinal encoder. This is a wrapper class for the OrdinalEncoder from scikit learn 
-    https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html
+    https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html.
     """
 
     def __init__(self, params: OrdinalEncodingParams):

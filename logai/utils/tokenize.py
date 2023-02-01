@@ -18,10 +18,7 @@ from logai.utils import constants
 
 def replace_delimeters(logline, delimeter_regex):
     """
-    Remove customer delimeters
-    :param delimeter_regex:
-    :param logline:
-    :return:
+    Remove customer delimeters.
     """
     return logline.replace(delimeter_regex, " ")
 
@@ -29,9 +26,6 @@ def replace_delimeters(logline, delimeter_regex):
 def tokenize(logline, config):
     """
     Common tokenization of logline and using space to separate tokens.
-    :param config:
-    :param logline:
-    :return:
     """
     logline = " ".join(
         ["".join(g).strip() for k, g in itertools.groupby(logline, str.isalpha)]

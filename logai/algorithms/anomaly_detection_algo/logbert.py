@@ -17,12 +17,10 @@ import pandas as pd
 @factory.register("detection", "logbert", LogBERTConfig)
 class LogBERT(NNAnomalyDetectionAlgo):
     """Logbert model for anomaly detection of logs
+    :param config: (LogBERTConfig): config class for logbert model
     """
 
     def __init__(self, config: LogBERTConfig):
-        """initializing logBERT model
-        :param config: (LogBERTConfig): config class for logbert model
-        """
         self.logbert_train = LogBERTTrain(config=config)
         self.logbert_predict = LogBERTPredict(config=config)
 

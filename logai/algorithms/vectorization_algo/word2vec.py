@@ -20,7 +20,12 @@ from logai.algorithms.factory import factory
 class Word2VecParams(Config):
     """
     Configuration of Word2Vec vectorization parameters. For more details on the parameters see 
-    https://radimrehurek.com/gensim/models/word2vec.html
+    https://radimrehurek.com/gensim/models/word2vec.html.
+
+    :param max_token_len: The maximum length of tokens.
+    :param min_count: Ignores all words with total frequency lower than this.
+    :param vector_size: Dimensionality of the feature vectors.
+    :param window: The maximum distance between the current and predicted word within a sentence.
     """
 
     max_token_len: int = 100
@@ -93,7 +98,6 @@ class Word2Vec(VectorizationAlgo):
 
     def summary(self):
         """
-        generate model summary
-        :return:
+        Generate model summary.
         """
         return self.model.summary()

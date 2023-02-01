@@ -15,6 +15,8 @@ import numpy as np
 class HetAnomalyDetectionConfig(AnomalyDetectionConfig):
     """
     Heterogeneous Anomaly Detector Parameters
+
+    :param train_test_ratio: The ratio between test and training splits.
     """
 
     train_test_ratio: float = 0.3
@@ -40,8 +42,10 @@ class HetAnomalyDetector(AnomalyDetector):
         """
         Split raw log feature dataframe by unique attribute ID
 
-        :param counter_df: log feature dataframe must contain at least two columns ['timestamp': datetime, constants.LOGLINE_COUNTS: int]. The rest of columns combinations are treated as log attribute ID
-        :return:
+        :param counter_df: log feature dataframe must contain at least two columns
+            ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
+            The rest of columns combinations are treated as log attribute ID
+        :return: The processed log feature dataframe.
         """
         ts_df = counter_df[[constants.LOG_COUNTS]]
         ts_df.index = counter_df[constants.LOG_TIMESTAMPS]
@@ -55,8 +59,10 @@ class HetAnomalyDetector(AnomalyDetector):
         """
         Train and predict anomaly scores
 
-        :param log_features: log feature dataframe must contain at least two columns ['timestamp': datetime, constants.LOGLINE_COUNTS: int]. The rest of columns combinations are treated as log attribute ID
-        :return: pandas.Dataframe
+        :param log_features: log feature dataframe must contain at least two columns
+            ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
+            The rest of columns combinations are treated as log attribute ID
+        :return: pandas.Dataframe: The predicted anomaly scores.
         """
         res = pd.DataFrame()
         attr_list = self.preprocess(log_feature)

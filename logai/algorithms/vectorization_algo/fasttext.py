@@ -20,7 +20,16 @@ from logai.algorithms.factory import factory
 class FastTextParams(Config):
     """
     Configuration for FastText vectorizer. For more details on the parameters see
-    https://radimrehurek.com/gensim/models/fasttext.html
+    https://radimrehurek.com/gensim/models/fasttext.html.
+
+    :param vector_size: The size of vector
+    :param window: The maximum distance between the current and predicted word within a sentence.
+    :param min_count: Ignores all words with total frequency lower than this.
+    :param sample: The threshold for configuring which higher-frequency words are randomly downsampled.
+    :param workers: The number of workers to run
+    :param sg: Training algorithm: skip-gram if `sg=1`, otherwise CBOW.
+    :param epochs: The number o epochs.
+    :param max_token_len: The max token length.
     """
 
     vector_size: int = 100
@@ -37,22 +46,23 @@ class FastTextParams(Config):
 class FastText(VectorizationAlgo):
     """
     This is a wrapper for FastText algorithm from gensim library. For details see
-    https://radimrehurek.com/gensim/models/fasttext.html
+    https://radimrehurek.com/gensim/models/fasttext.html.
     """
 
     def __init__(self, params: FastTextParams):
         """
-        Initialize FastText vectorizer
-        :param max_token_len: the max token length to vectorize, longer sentences will be chopped.
+        Initializes FastText vectorizer.
+
+        :param max_token_len: The max token length to vectorize, longer sentences will be chopped.
         """
         self.params = params
         self.model = None
 
     def fit(self, loglines: pd.Series):
         """
-        fit FastText model.
-        :param loglines: parsed loglines.
-        :return:
+        Fits a FastText model.
+
+        :param loglines: The parsed loglines.
         """
         max_token_len = self.params.max_token_len
 
@@ -77,9 +87,10 @@ class FastText(VectorizationAlgo):
 
     def transform(self, loglines: pd.Series) -> pd.Series:
         """
-        Transform input loglines to log vectors
-        :param loglines: pd.Series: input loglines
-        :return: pd.Series
+        Transforms input loglines to log vectors.
+
+        :param loglines: The input loglines.
+        :return: The transformed log vectors.
         """
         log_vectors = []
         max_len = 0
@@ -101,7 +112,6 @@ class FastText(VectorizationAlgo):
 
     def summary(self):
         """
-        generate model summary
-        :return:
+        Generates model summary.
         """
         return self.model.summary()

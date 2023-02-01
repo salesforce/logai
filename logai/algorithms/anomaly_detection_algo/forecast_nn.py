@@ -35,10 +35,12 @@ class ForcastBasedNeuralAD(NNAnomalyDetectionAlgo):
         train_data: ForecastNNVectorizedDataset,
         dev_data: ForecastNNVectorizedDataset,
     ):
-        """fit method to train forecasting based neural anomaly detection models
+        """The fit method to train forecasting based neural anomaly detection models.
 
-        :param train_data: (ForecastNNVectorizedDataset): training dataset of type ForecastNNVectorizedDataset (consisting of session_idx, features, window_anomalies and window_labels)
-        :param dev_data: (ForecastNNVectorizedDataset): development dataset of type ForecastNNVectorizedDataset (consisting of session_idx, features, window_anomalies and window_labels)
+        :param train_data: training dataset of type ForecastNNVectorizedDataset
+            (consisting of session_idx, features, window_anomalies and window_labels).
+        :param dev_data: development dataset of type ForecastNNVectorizedDataset
+            (consisting of session_idx, features, window_anomalies and window_labels).
         """
         dataloader_train = DataLoader(
             train_data.dataset,
@@ -55,10 +57,11 @@ class ForcastBasedNeuralAD(NNAnomalyDetectionAlgo):
         self.model.fit(train_loader=dataloader_train, dev_loader=dataloader_dev)
 
     def predict(self, test_data: ForecastNNVectorizedDataset):
-        """predict method to run inference of forecasting based neural anomaly detection model on test dataset
+        """The predict method to run inference of forecasting based neural anomaly detection model on test dataset.
 
-        :param test_data: (ForecastNNVectorizedDataset): test dataset of type ForecastNNVectorizedDataset (consisting of session_idx, features, window_anomalies and window_labels)
-        :return:dict: dict containing overall evaluation results
+        :param test_data: The test dataset of type ForecastNNVectorizedDataset
+            (consisting of session_idx, features, window_anomalies and window_labels).
+        :returns: A dict containing overall evaluation results.
         """
         dataloader_test = DataLoader(
             test_data.dataset,

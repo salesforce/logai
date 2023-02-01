@@ -92,9 +92,12 @@ class Semantic(VectorizationAlgo):
         return token_list
 
     def fit(self, loglines: pd.Series):
-        """Fit method to train semantic vectorizer
-        
-        :param loglines: (pd.Series): pandas Series object containing the dataset on which semantic vectorizer is trained (and the vocab is built). Each data instance should be a logline or sequence of loglines concatenated by separator token
+        """Fit method to train semantic vectorizer.
+
+        :param loglines: A pandas Series object containing the dataset on
+            which semantic vectorizer is trained (and the vocab is built).
+            Each data instance should be a logline or sequence of loglines
+            concatenated by separator token.
         """
         if (
             self.params.model_save_dir
@@ -195,10 +198,12 @@ class Semantic(VectorizationAlgo):
                     np.save(self.embed_mat_filename, self.embed_matrix)
 
     def transform(self, loglines: pd.Series) -> pd.Series:
-        """Transform method to run semantic vectorizer on loglines
-        
-        :param loglines: (pd.Series): pandas Series containing the data to be vectorized. Each data instance should be a logline or sequence of loglines concatenated by separator token
-        :return: pd.Series: vectorized log data
+        """Transform method to run semantic vectorizer on loglines.
+
+        :param loglines: The pandas Series containing the data to be vectorized.
+            Each data instance should be a logline or sequence of loglines concatenated by separator
+            token.
+        :return: The vectorized log data.
         """
         log_vectors = []
         count = 0
@@ -219,7 +224,6 @@ class Semantic(VectorizationAlgo):
 
     def summary(self):
         """
-        generate model summary
-        :return:
+        Generate model summary.
         """
         return self.model.summary()

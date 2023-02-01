@@ -39,10 +39,8 @@ class FileDataLoader:
     def __init__(self, config: DataLoaderConfig):
         """
         Initialize FileDataLoader by consuming the configuration.
-        :param config:
         """
         self.config = config
-        return
 
     def load_data(self) -> LogRecordObject:
         """
@@ -51,7 +49,8 @@ class FileDataLoader:
         - csv
         - tsv
         - other plain text format such as .log with proper parsing configurations
-        :return: LogRecordObject: the logs read from log files and converted into LogRecordObject
+
+        :return: LogRecordObject: the logs read from log files and converted into LogRecordObject.
         """
         kwargs = self.config.reader_args
         fpath = self.config.filepath
@@ -168,4 +167,3 @@ class DefaultDataLoader:
         Initialize default data loader
         """
         self._logger = logging.Logger()
-        pass

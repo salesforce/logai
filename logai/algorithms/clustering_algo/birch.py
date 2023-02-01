@@ -18,7 +18,13 @@ from logai.algorithms.factory import factory
 @dataclass
 class BirchParams(Config):
     """Parameters for Birch Clustering Algo. For more details on the parameters, see 
-    https://scikit-learn.org/stable/modules/generated/sklearn.cluster.Birch.html
+    https://scikit-learn.org/stable/modules/generated/sklearn.cluster.Birch.html.
+
+    :param branching_factor: Maximum number of CF subclusters in each node.
+    :param n_clusters: Number of clusters after the final clustering step, which treats the subclusters
+        from the leaves as new samples.
+    :param threshold: The radius of the subcluster obtained by merging a new sample and the closest
+        subcluster should be lesser than the threshold.
     """
     branching_factor: int = 50
     n_clusters: int = None
@@ -29,7 +35,7 @@ class BirchParams(Config):
 class BirchAlgo(ClusteringAlgo):
     """
     BIRCH algorithm for log clustering. This is a wrapper class for the Birch Clustering algorithm in scikit-learn 
-    https://scikit-learn.org/stable/modules/generated/sklearn.cluster.Birch.html
+    https://scikit-learn.org/stable/modules/generated/sklearn.cluster.Birch.html.
     """
 
     def __init__(self, params: BirchParams):
@@ -41,18 +47,19 @@ class BirchAlgo(ClusteringAlgo):
 
     def fit(self, log_features: pd.DataFrame):
         """
-        Train BIRCH model
-        :param log_features: pd.DataFrame: log features for training.
-        :return:
+        Trains a BIRCH model.
+
+        :param log_features: The log features for training.
         """
         log_features = np.ascontiguousarray(log_features)
         self.model.partial_fit(log_features)
 
     def predict(self, log_features: pd.DataFrame) -> pd.Series:
         """
-        Inference using trained BIRCH model
-        :param log_features: log features for inference
-        :return: pd.Series: series of log cluster labels
+        Predicts using trained BIRCH model.
+
+        :param log_features: The log features for inference.
+        :return: A pandas series of log cluster labels.
         """
         log_features_carray = np.ascontiguousarray(log_features)
 

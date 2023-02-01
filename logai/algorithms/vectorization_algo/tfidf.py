@@ -19,7 +19,47 @@ from logai.algorithms.factory import factory
 class TfIdfParams(Config):
     """
     Configuration of TF-IDF vectorizer. For more details of parameters see 
-    https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html
+    https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html.
+
+    :param input: ``{'filename', 'file', 'content'}``; If `'filename'`, the sequence passed as an argument to
+        fit is expected to be a list of filenames that need reading to fetch the raw content to analyze.
+    :param encoding: If bytes or files are given to analyze, this encoding is used to decode.
+    :param decode_error: ``{'strict', 'ignore', 'replace'}``;
+        Instruction on what to do if a byte sequence is given to analyze that
+        contains characters not of the given `encoding`. By default, it is
+        'strict', meaning that a UnicodeDecodeError will be raised. Other
+        values are 'ignore' and 'replace'.
+    :param strip_accents: Remove accents and perform other character normalization
+        during the preprocessing step.
+    :param lowercase: Convert all characters to lowercase before tokenizing.
+    :param preprocessor: Override the preprocessing (string transformation) stage while
+        preserving the tokenizing and n-grams generation steps.
+    :param tokenizer: Override the string tokenization step while preserving the
+        preprocessing and n-grams generation steps.
+    :param analyzer: Whether the feature should be made of word or character n-grams.
+    :param stop_words: If a string, it is passed to _check_stop_list and the appropriate stop
+        list is returned. 'english' is currently the only supported string value.
+    :param token_pattern: Regular expression denoting what constitutes a "token", only used
+        if ``analyzer == 'word'``.
+    :param ngram_range: The lower and upper boundary of the range of n-values for different
+        n-grams to be extracted.
+    :param max_df: When building the vocabulary ignore terms that have a document
+        frequency strictly higher than the given threshold.
+    :param min_df: When building the vocabulary ignore terms that have a document
+        frequency strictly lower than the given threshold.
+    :param max_features: If not None, build a vocabulary that only consider the top
+        max_features ordered by term frequency across the corpus.
+    :param vocabulary: Either a Mapping (e.g., a dict) where keys are terms and values are
+        indices in the feature matrix, or an iterable over terms. If not
+        given, a vocabulary is determined from the input documents.
+    :param binary: If True, all non-zero term counts are set to 1. This does not mean
+        outputs will have only 0/1 values, only that the tf term in tf-idf
+        is binary.
+    :param dtype: Type of the matrix returned by fit_transform() or transform().
+    :param norm: Each output row will have unit norm, i.e., ``{'l1', 'l2'}``.
+    :param use_idf: Enable inverse-document-frequency reweighting. If False, idf(t) = 1.
+    :param smooth_idf: Smooth idf weights by adding one to document frequencies.
+    :param sublinear_tf: Apply sublinear tf scaling, i.e. replace tf with 1 + log(tf).
     """
 
     input: str = "content"
@@ -49,14 +89,15 @@ class TfIdfParams(Config):
 class TfIdf(VectorizationAlgo):
     """
     TfIdf based vectorizer for log data. This is a wrapper class of the TF-IDF Vectorizer algorithm from scikit-learn.
-    https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html
+    https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html.
     """
 
     def __init__(self, params: TfIdfParams, **kwargs):
         """
-        Initialize TF-IDF vectorizer.
-        :param params: TF-IDF algorithm parameters
-        :param kwargs: Optional k-v based params
+        Initializes TF-IDF vectorizer.
+
+        :param params: TF-IDF algorithm parameters.
+        :param kwargs: Optional k-v based params.
         """
         self.model = TfidfVectorizer(
             input=params.input,
@@ -84,9 +125,9 @@ class TfIdf(VectorizationAlgo):
 
     def fit(self, loglines: pd.Series):
         """
-        Train TF-IDF model.
-        :param loglines: pandas.Series input training set.
-        :return:
+        Trains a TF-IDF model.
+
+        :param loglines: The input training dataset.
         """
         self.model.fit(loglines)
         self.vocab = self.model.vocabulary_
@@ -94,9 +135,10 @@ class TfIdf(VectorizationAlgo):
 
     def transform(self, loglines: pd.Series) -> pd.Series:
         """
-        Transform loglines into log vectors.
-        :param loglines: pandas.Series input inference set.
-        :return: pandas.Series
+        Transforms loglines into log vectors.
+
+        :param loglines: The input test dataset.
+        :return: The transformed log vectors.
         """
         res = self.model.transform(loglines)
         return pd.Series(res.todense().tolist(), index=loglines.index).apply(
@@ -105,7 +147,8 @@ class TfIdf(VectorizationAlgo):
 
     def summary(self):
         """
-        generate model summary
-        :return: TfidfVectorizer.summary
+        Generates model summary.
+
+        :return: TfidfVectorizer.summary.
         """
         return self.model.summary()

@@ -48,7 +48,15 @@ class Event:
 @dataclass
 class IPLoMParams(Config):
     """Parameters for the IPLoM Log Parser. For more details on parameters see 
-    https://github.com/logpai/logparser/tree/master/logparser/IPLoM
+    https://github.com/logpai/logparser/tree/master/logparser/IPLoM.
+
+    :param rex: The rex string.
+    :param logformat: The log format.
+    :param maxEventLen: The max event length.
+    :param step2Support: The step to support.
+    :param lowerBound: The lower bound threshold.
+    :param upperBound: The upper bound threshold.
+    :param keep_para: Whether to keep parameters.
     """
     rex: str = None
     logformat: str = None
@@ -64,7 +72,7 @@ class IPLoMParams(Config):
 @factory.register("parsing", "iplom", IPLoMParams)
 class IPLoM(ParsingAlgo):
     """IPLoM Log Parsing algorithm. For details see 
-    https://github.com/logpai/logparser/tree/master/logparser/IPLoM
+    https://github.com/logpai/logparser/tree/master/logparser/IPLoM.
     """
     def __init__(self, params: IPLoMParams):
         self.para = params
@@ -79,20 +87,15 @@ class IPLoM(ParsingAlgo):
 
     def fit(self, loglines: pd.Series):
         """
-        IPLoM does not support model fit. Call parse() directly with given input and get log templates
-        :param loglines:
-        :return:
+        IPLoM does not support model fit. Call parse() directly with given input and get log templates.
         """
-        return
+        pass
 
-    def parse(self, loglines: pd.Series):
-        """parsing method to parse the raw log data
+    def parse(self, loglines: pd.Series) -> pd.Series:
+        """Parsing method to parse the raw log data.
 
-        Args:
-            loglines (pd.Series): raw log data 
-
-        Returns:
-            pd.Series: parsed log data 
+        :param loglines: The raw log data
+        :returns: The parsed log data.
         """
         self._Step1(loglines)
         self._Step2()

@@ -37,7 +37,7 @@ class VectorizerConfig(Config):
 class LogVectorizer:
     """
     Implement Log Vectorizer to transform raw log data to vectors. It Currently supports various statistical 
-    (e.g. TfIdfVectorizer) and neural (Word2Vec, FastText, LogBERT) vectorizer models 
+    (e.g. TfIdfVectorizer) and neural (Word2Vec, FastText, LogBERT) vectorizer models.
     """
 
     def __init__(self, config: VectorizerConfig):
