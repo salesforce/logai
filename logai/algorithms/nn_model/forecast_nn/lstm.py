@@ -71,13 +71,11 @@ class Attention(nn.Module):
 
 class LSTM(ForecastBasedNN):
     """LSTM based model for learning log representation through a self-supervised forecasting task over log sequences.
+    :param config: parameters for lstm based model.
     """
 
     def __init__(self, config: LSTMParams):
-        """initializing lstm model for log representation learning.
-
-        :param config: parameters for lstm based model.
-        """
+        
         super().__init__(config)
         self.config = config
         self.config.model_name = "lstm"

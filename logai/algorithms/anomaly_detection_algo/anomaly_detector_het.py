@@ -14,7 +14,7 @@ import numpy as np
 
 class HetAnomalyDetectionConfig(AnomalyDetectionConfig):
     """
-    Heterogeneous Anomaly Detector Parameters
+    Heterogeneous Anomaly Detector Parameters.
 
     :param train_test_ratio: The ratio between test and training splits.
     """
@@ -40,7 +40,7 @@ class HetAnomalyDetector(AnomalyDetector):
 
     def preprocess(self, counter_df: pd.DataFrame):
         """
-        Split raw log feature dataframe by unique attribute ID
+        Split raw log feature dataframe by unique attribute ID.
 
         :param counter_df: log feature dataframe must contain at least two columns
             ['timestamp': datetime, constants.LOGLINE_COUNTS: int].

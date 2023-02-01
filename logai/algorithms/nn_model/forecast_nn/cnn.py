@@ -31,7 +31,7 @@ class CNN(ForecastBasedNN):
     """
     CNN based model for learning log representation through a self-supervised forecasting task over log sequences.
 
-    :param config: CNNParams: parameters for CNN log representation learning model.
+    :param config: parameters for CNN log representation learning model.
     """
 
     def __init__(self, config: CNNParams):
@@ -58,7 +58,7 @@ class CNN(ForecastBasedNN):
         )
 
     def forward(self, input_dict):
-        """forward method for cnn model.
+        """Forward method for cnn model.
 
         :param input_dict : dict containing the session_idx, features, window_anomalies and window_labels as in ForecastNNVectorizedDataset object.
         :return: dict containing loss and prediction tensor.

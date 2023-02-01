@@ -381,7 +381,7 @@ class ForecastBasedNN(nn.Module):
         return {k: v.to(self.device) for k, v in batch_input.items()}
 
     def save_model(self):
-        """saving model to file as specified in config"""
+        """Saving model to file as specified in config"""
         logging.info("Saving model to {}".format(self.model_save_file))
         try:
             torch.save(
@@ -393,7 +393,7 @@ class ForecastBasedNN(nn.Module):
             torch.save(self.state_dict(), self.model_save_file)
 
     def load_model(self, model_save_file: str = ""):
-        """loading model from file
+        """Loading model from file.
         :param model_save_file : path to file where model would be saved. Defaults to "".
         """
         logging.info("Loading model from {}".format(self.model_save_file))
@@ -403,9 +403,9 @@ class ForecastBasedNN(nn.Module):
         """
         Fit method for training model
 
-        :param train_loader: dataloader (torch.utils.data.DataLoader) for the train dataset
-        :param dev_loader: dataloader (torch.utils.data.DataLoader) for the train dataset. Defaults to None, for which no evaluation is run
-        :return: dict containing the best loss on dev dataset
+        :param train_loader: dataloader (torch.utils.data.DataLoader) for the train dataset.
+        :param dev_loader: dataloader (torch.utils.data.DataLoader) for the train dataset. Defaults to None, for which no evaluation is run.
+        :return: dict containing the best loss on dev dataset.
         """
         self.to(self.device)
         logging.info(
