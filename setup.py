@@ -46,7 +46,7 @@ extras_require["all"] = sum(extras_require.values(), [])
 
 setup(
     name="logai",
-    version="v0.1.2",
+    version="v0.1.3",
     description="LogAI is unified framework for AI-based log analytics",
     long_description_content_type="text/markdown",
     long_description=readme,
