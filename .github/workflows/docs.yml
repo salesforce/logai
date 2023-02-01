@@ -34,9 +34,6 @@ jobs:
         sudo apt-get install pandoc --fix-missing
         python3 -m pip install --upgrade pip
         python3 -m pip install setuptools wheel nbsphinx recommonmark sphinx_rtd_theme
-        python -m build
-        for f in dist/*.whl; do pip install $f[all]; done
-        python -m nltk.downloader punkt
     - name: Build Sphinx docs
       run: |
         docs/build_docs.sh
