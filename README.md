@@ -79,11 +79,37 @@ like NewRelic and DataDog, or popular log analysis open source tools on Github.
 You can install LogAI using `pip install` with the instruction below:
 
 ```shell
+
+# Check out LogAI code repo from Github
 git clone https://git.soma.salesforce.com/SalesforceResearch/logai.git
 cd logai
+
+# [Optional] Create virtual environment
 python3 -m venv venv # create virtual environment
 source venv/bin/activate # activate virtual env
-pip install ./ # install LogAI from root directory
+pip install . # install LogAI from root directory
+```
+To conduct deep learning model related tasks, please install extra requirements by:
+
+```shell
+pip install ".[deep-learning]"
+```
+
+To use LogAI GUI portal, please install extra requirements by:
+
+```shell
+pip install ".[gui]"
+```
+
+To develop LogAI, run build and testing tools, please install extra requirements by:
+
+```shell
+pip install ".[dev]"
+```
+
+Or you can install the full dependencies by:
+```shell
+pip install ".[all]"
 ```
 
 ## Getting Started
@@ -97,6 +123,20 @@ own log analysis application with LogAI.
 You can also start a local LogAI service and use the GUI portal to explore LogAI.
 
 ```shell
+
+# Check out LogAI code repo from Github
+git clone https://git.soma.salesforce.com/SalesforceResearch/logai.git
+cd logai
+
+# [Optional] Create virtual environment
+python3 -m venv venv # create virtual environment
+source venv/bin/activate # activate virtual env
+
+# install LogAI and GUI dependencies
+pip install ".[dev]"
+pip install ".[gui]"
+
+# Start LogAI service
 export PYTHONPATH='.'  # make sure to add current root to PYTHONPATH
 python3 gui/application.py # Run local plotly dash server.
 ```
