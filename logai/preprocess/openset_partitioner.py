@@ -20,6 +20,9 @@ from attr import dataclass
 @dataclass
 class OpenSetPartitionerConfig(Config):
     """Config for Partitioner for open log datasets.
+    :param sliding_window: size of sliding window
+    session_window: boolean flag whether to use session based partitioning or not
+    logsequence_delim: delimiter string for concatenating log sequences
     """
 
     sliding_window: int = 0
