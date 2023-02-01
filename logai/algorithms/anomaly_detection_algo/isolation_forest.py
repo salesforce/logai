@@ -49,9 +49,9 @@ class IsolationForestDetector(AnomalyDetectionAlgo):
     """Isolation Forest based Anomaly Detector. This is a wrapper for the Isolation forest in scikit-learn library.
     """
     def __init__(self, params: IsolationForestParams):
-        """Constructor for isolation forest based anomaly detector
+        """Constructor for isolation forest based anomaly detector.
         
-        :param params: (IsolationForestParams): object of type IsolationForestParams containing parameters of Isolation Forest
+        :param params: object of type IsolationForestParams containing parameters of Isolation Forest.
         """
         self.model = IsolationForest(
             n_estimators=params.n_estimators,
@@ -82,7 +82,7 @@ class IsolationForestDetector(AnomalyDetectionAlgo):
         """
         Predicts anomalies.
 
-        :param log_features: The input for inference
+        :param log_features: The input for inference.
         :return: A pandas dataframe of the predicted anomaly scores.
         """
         test_scores = self.model.predict(log_features)

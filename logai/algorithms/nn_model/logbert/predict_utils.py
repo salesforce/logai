@@ -12,13 +12,14 @@ import torch
 
 
 class Predictor(Trainer):
-    """Custom Trainer object for running the inference of logBERT model for unsupervised anomaly detection
+    """Custom Trainer object for running the inference of logBERT model for unsupervised anomaly detection.
     """
 
     def get_test_dataloader(self, test_dataset: Dataset) -> DataLoader:
         """
         Returns the test [`~torch.utils.data.DataLoader`]. Subclass and override this method if you want to inject some custom behavior.
-        :param test_dataset: (`torch.utils.data.Dataset`, *optional*): The test dataset to use. If it is an `datasets.Dataset`, columns not accepted by the `model.forward()` method are automatically removed. It must implement `__len__`.
+        :param test_dataset: (`torch.utils.data.Dataset`, *optional*): The test dataset to use. If it is an `datasets.Dataset`, 
+            columns not accepted by the `model.forward()` method are automatically removed. It must implement `__len__`.
         """
 
         if isinstance(test_dataset, torch.utils.data.IterableDataset):

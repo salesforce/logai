@@ -19,7 +19,7 @@ from attr import dataclass
 
 @dataclass
 class OpenSetPartitionerConfig(Config):
-    """Config for Partitioner for open log datasets
+    """Config for Partitioner for open log datasets.
     """
 
     sliding_window: int = 0
@@ -28,9 +28,9 @@ class OpenSetPartitionerConfig(Config):
 
 
 class OpenSetPartitioner:
-    """Partitioner class for Open log datasets
+    """Partitioner class for Open log datasets.
         
-    :param config: (OpenSetPartitionerConfig): config object specifying parameters of log partititoning for open log datasets
+    :param config: config object specifying parameters of log partititoning for open log datasets.
     """
     def __init__(self, config: OpenSetPartitionerConfig):
         
@@ -89,10 +89,10 @@ class OpenSetPartitioner:
         return nextdata
 
     def generate_sliding_window(self, logrecord):
-        """method to generate sliding window based log sequences from a logrecord object
+        """Method to generate sliding window based log sequences from a logrecord object.
         
-        :param logrecord: (LogRecordObject): logrecord object to be partitioned into sliding windows
-        :return: LogRecordObject : where the body of logrecord object contains the generated log sequences
+        :param logrecord: logrecord object to be partitioned into sliding windows.
+        :return: LogRecordObject where the body of logrecord object contains the generated log sequences.
         """
         log_data = logrecord.to_dataframe()
         partitioned_data = self._get_group_sliding_window(
@@ -113,11 +113,11 @@ class OpenSetPartitioner:
         return logrecord
 
     def generate_session_window(self, logrecord):
-        """method to generate session window based log sequences from a logrecord object given some
+        """Method to generate session window based log sequences from a logrecord object given some.
         ids at the logline level
         
-        :param logrecord: (LogRecordObject): logrecord object to be partitioned into session windows
-        :return:LogRecordObject: where the body of logrecord object contains the generated log sequences
+        :param logrecord: logrecord object to be partitioned into session windows.
+        :return:LogRecordObject where the body of logrecord object contains the generated log sequences.
         """
 
         partitioned_data = self.feature_extractor.convert_to_counter_vector(
@@ -138,10 +138,10 @@ class OpenSetPartitioner:
         return logrecord
 
     def partition(self, logrecord):
-        """Wrapper function for applying partitioning on a logrecord object based on the Config parameters
+        """Wrapper function for applying partitioning on a logrecord object based on the Config parameters.
         
-        :param logrecord: (LogRecordObject): logrecord object to be partitioned into session or sliding windows
-        :return: LogRecordObject: where the body of logrecord object contains the generated log sequences
+        :param logrecord: logrecord object to be partitioned into session or sliding windows.
+        :return: LogRecordObject where the body of logrecord object contains the generated log sequences.
         """
         if self.config.sliding_window > 0:
             logrecord = self.generate_sliding_window(logrecord)

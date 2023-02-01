@@ -18,12 +18,12 @@ from attr import dataclass
 
 @dataclass
 class LSTMParams(ForecastBasedNNParams):
-    """Config for lstm based log representation learning
+    """Config for lstm based log representation learning.
 
-    :param num_directions: int = 2 : whether bidirectional or unidirectional (left to right) model
-    :param num_layers: int = 1 : number of hidden layers in the neural network
-    :param max_token_len: int = None : maximum token length of the input
-    :param use_attention: bool = False : whether to use attention or not
+    :param num_directions: whether bidirectional or unidirectional (left to right) model.
+    :param num_layers: number of hidden layers in the neural network.
+    :param max_token_len:  maximum token length of the input.
+    :param use_attention: whether to use attention or not.
     """
 
     num_directions: int = 2
@@ -33,10 +33,10 @@ class LSTMParams(ForecastBasedNNParams):
 
 
 class Attention(nn.Module):
-    """Attention model for lstm based log representation learning
+    """Attention model for lstm based log representation learning.
 
-    :param input_size: (int): input dimension
-    :param max_seq_len: (int): maximum sequence length
+    :param input_size: input dimension.
+    :param max_seq_len: maximum sequence length.
     """
 
     def __init__(self, input_size, max_seq_len):
@@ -70,13 +70,13 @@ class Attention(nn.Module):
 
 
 class LSTM(ForecastBasedNN):
-    """LSTM based model for learning log representation through a self-supervised forecasting task over log sequences
+    """LSTM based model for learning log representation through a self-supervised forecasting task over log sequences.
     """
 
     def __init__(self, config: LSTMParams):
-        """initializing lstm model for log representation learning
+        """initializing lstm model for log representation learning.
 
-        :param config: (LSTMParams): parameters for lstm based model
+        :param config: parameters for lstm based model.
         """
         super().__init__(config)
         self.config = config
@@ -109,10 +109,10 @@ class LSTM(ForecastBasedNN):
         )
 
     def forward(self, input_dict):
-        """forward method for lstm model
+        """Forward method for lstm model.
 
-        :param input_dict: (dict): dict containing the session_idx, features, window_anomalies and window_labels as in ForecastNNVectorizedDataset object
-        :return: dict containing loss and prediction tensor
+        :param input_dict: dict containing the session_idx, features, window_anomalies and window_labels as in ForecastNNVectorizedDataset object.
+        :return: dict containing loss and prediction tensor.
         """
         if self.label_type == "anomaly":
             y = input_dict[ForecastNNVectorizedDataset.window_anomalies].long().view(-1)

@@ -19,9 +19,9 @@ from attr import dataclass
 
 @dataclass
 class CNNParams(ForecastBasedNNParams):
-    """Config for CNN based log representation learning
+    """Config for CNN based log representation learning.
     
-    :param kernel_sizes: the kernel size (default value: list = [2, 3, 4])
+    :param kernel_sizes: the kernel size (default value: list = [2, 3, 4]).
     """
 
     kernel_sizes: list = [2, 3, 4]
@@ -29,9 +29,9 @@ class CNNParams(ForecastBasedNNParams):
 
 class CNN(ForecastBasedNN):
     """
-    CNN based model for learning log representation through a self-supervised forecasting task over log sequences
-    
-    :param config: CNNParams: parameters for CNN log representation learning model
+    CNN based model for learning log representation through a self-supervised forecasting task over log sequences.
+
+    :param config: CNNParams: parameters for CNN log representation learning model.
     """
 
     def __init__(self, config: CNNParams):
@@ -58,10 +58,10 @@ class CNN(ForecastBasedNN):
         )
 
     def forward(self, input_dict):
-        """forward method for cnn model
+        """forward method for cnn model.
 
-        :param input_dict: dict : dict containing the session_idx, features, window_anomalies and window_labels as in ForecastNNVectorizedDataset object
-        :return: dict containing loss and prediction tensor
+        :param input_dict : dict containing the session_idx, features, window_anomalies and window_labels as in ForecastNNVectorizedDataset object.
+        :return: dict containing loss and prediction tensor.
         """
         if self.label_type == "anomaly":
             y = input_dict[ForecastNNVectorizedDataset.window_anomalies].long().view(-1)

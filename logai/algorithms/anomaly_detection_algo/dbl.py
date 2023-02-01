@@ -65,7 +65,7 @@ class DBLDetector(AnomalyDetectionAlgo):
 
     def fit(self, log_features: pd.DataFrame):
         """
-        Train method of the Dynamic Baseline model
+        Train method of the Dynamic Baseline model.
 
         :param log_features: log feature dataframe must only contain two columns
             ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
@@ -77,7 +77,7 @@ class DBLDetector(AnomalyDetectionAlgo):
 
     def predict(self, log_features: pd.DataFrame):
         """
-        Predict anomaly scores for log_feature["timestamp", constants.LOGLINE_COUNTS]
+        Predict anomaly scores for log_feature["timestamp", constants.LOGLINE_COUNTS].
 
         :param log_features: log feature dataframe must contain two columns ['timestamp': datetime, 'counts': int].
         :return: A dataframe of the predicted anomaly scores, e.g., index:log_features.index.

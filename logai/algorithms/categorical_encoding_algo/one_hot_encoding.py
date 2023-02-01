@@ -34,9 +34,6 @@ class OneHotEncoding(CategoricalEncodingAlgo):
     https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html.
     """
     def __init__(self, params: OneHotEncodingParams):
-        """
-        Initializes the one-hot encoder.
-        """
         self.model = OneHotEncoder(
             categories=params.categories,
             drop=params.drop,
@@ -47,10 +44,10 @@ class OneHotEncoding(CategoricalEncodingAlgo):
 
     def fit_transform(self, log_attributes: pd.DataFrame) -> pd.DataFrame:
         """
-        fit and transform log attributes into one-hot encoding categories
+        Fit and transform log attributes into one-hot encoding categories.
         
-        :param log_attributes: list of log attributes in text form
-        :return: pd.DataFrame: categories in on-hot encoding
+        :param log_attributes: list of log attributes in text form.
+        :return: pd.DataFrame object of categories in on-hot encoding.
         """
         col_names = log_attributes.columns
         if len(col_names) == 1:

@@ -22,7 +22,7 @@ class FastTextParams(Config):
     Configuration for FastText vectorizer. For more details on the parameters see
     https://radimrehurek.com/gensim/models/fasttext.html.
 
-    :param vector_size: The size of vector
+    :param vector_size: The size of vector.
     :param window: The maximum distance between the current and predicted word within a sentence.
     :param min_count: Ignores all words with total frequency lower than this.
     :param sample: The threshold for configuring which higher-frequency words are randomly downsampled.

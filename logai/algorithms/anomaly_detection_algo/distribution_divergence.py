@@ -60,7 +60,7 @@ class DistributionDivergence(AnomalyDetectionAlgo):
         """Fit method of the distribution divergence based anomaly detector. Since it is a non-parametric model, 
         there is no training required.
 
-        :param log_features:  (pd.DataFrame):Log features as a pandas DataFrame object.
+        :param log_features:Log features as a pandas DataFrame object.
         """
         self.train_sample = np.array(log_features)
 

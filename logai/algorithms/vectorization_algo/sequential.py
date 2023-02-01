@@ -18,11 +18,11 @@ from logai.algorithms.factory import factory
 
 @dataclass
 class SequentialVectorizerParams(Config):
-    """Config for Sequential Vectorizer which converts a sequence of loglines to sequence of log ids
+    """Config for Sequential Vectorizer which converts a sequence of loglines to sequence of log ids.
 
-    :param sep_token: separator token used to separate log lines in an input log sequence
-    :param model_save_dir: path to directory where models related to sequential vectorizer would be stored
-    :param max_token_len: maximum token length of input
+    :param sep_token: separator token used to separate log lines in an input log sequence.
+    :param model_save_dir: path to directory where models related to sequential vectorizer would be stored.
+    :param max_token_len: maximum token length of input.
     """
 
     sep_token: str = None
@@ -32,8 +32,8 @@ class SequentialVectorizerParams(Config):
 
 @factory.register("vectorization", "sequential", SequentialVectorizerParams)
 class Sequential(VectorizationAlgo):
-    """Sequential Vectorizer to convert a sequence of loglines to sequence of log ids
-    :param params: (SequentialVectorizerParams): config object for storing parameters of Sequential Vectorizer
+    """Sequential Vectorizer to convert a sequence of loglines to sequence of log ids.
+    :param params: config object for storing parameters of Sequential Vectorizer.
     """
 
     def __init__(self, params: SequentialVectorizerParams):
@@ -55,7 +55,7 @@ class Sequential(VectorizationAlgo):
     def fit(self, loglines: pd.Series):
         """Fit method for training the sequential vectorizer.
 
-        :param loglines (pd.Series):  A pandas Series object containing the dataset on
+        :param loglines:  A pandas Series object containing the dataset on
             which semantic vectorizer is trained (and the vocab is built).
             Each data instance should be a logline or sequence of loglines concatenated by separator token.
         """
@@ -82,7 +82,7 @@ class Sequential(VectorizationAlgo):
     def transform(self, loglines: pd.Series) -> pd.Series:
         """Transform method for applying sequential vectorizer to loglines.
 
-        :param loglines (pd.Series): A pandas Series containing the data to be vectorized.
+        :param loglines: A pandas Series containing the data to be vectorized.
             Each data instance should be a logline or sequence of loglines concatenated by separator token.
         :return: The vectorized loglines.
         """

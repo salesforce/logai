@@ -46,9 +46,9 @@ class OneClassSVMDetector(AnomalyDetectionAlgo):
     def __init__(self, params: OneClassSVMParams):
         """
         OneClass SVM based Anomaly Detector. This is a wrapper class for the OneClassSVM model from scikit-learn library. For more details see 
-        https://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html
+        https://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html.
         
-        :param params: OneClassSVMParams: parameters to control one class SVM models
+        :param params: OneClassSVMParams: parameters to control one class SVM models.
         """
         self.model = OneClassSVM(
             kernel=params.kernel,

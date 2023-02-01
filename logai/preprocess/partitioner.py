@@ -15,15 +15,15 @@ from logai.utils import constants
 
 @dataclass
 class PartitionerConfig(Config):
-    """Config class for Partitioner 
+    """Config class for Partitioner. 
 
-    :param group_by_category: list of fields to group log data by 
+    :param group_by_category: list of fields to group log data by .
     :param group_by_time:  string-type argument to specify grouping by time, supported types
-        https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases
-    :param sliding_window: sliding window length if partitioning loglines into sliding windows, 
-    :param sep_token: separator token string to be used as delimiter, when grouping log data 
+        https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases.
+    :param sliding_window: sliding window length if partitioning loglines into sliding windows. 
+    :param sep_token: separator token string to be used as delimiter, when grouping log data .
     :param exclude_last_window: boolean (default false) whether to exclude the last window 
-        when doing sliding window based grouping of log data
+        when doing sliding window based grouping of log data.
     :param exclude_smaller_windows: boolean (default false) whether to exclude windows of 
         length smaller than the given `sliding_window` argument.
     """
@@ -52,7 +52,7 @@ class Partitioner:
         """
         Conduct sliding window log partitioning.
         
-        :param loglines: pd.Series: series of loglines
+        :param loglines: series of loglines.
         :return: pd.Series: series of logline sequence after sliding window.
         """
         partitioned_loglines = self._sliding_window(loglines)
@@ -60,10 +60,10 @@ class Partitioner:
 
     def group_counter(self, logrecord_df: pd.DataFrame) -> pd.DataFrame:
         """
-        Group log record by given categories and return counter vectors
+        Group log record by given categories and return counter vectors.
         
-        :param logrecord_df: pd.DataFrame: the log record dataframe.
-        :return: pd.DataFrame: log counter vector dataframe after grouping
+        :param logrecord_df: the log record dataframe.
+        :return: pd.DataFrame: log counter vector dataframe after grouping.
         """
         if not self._valid_columns(logrecord_df.columns.values):
             raise ValueError("Make sure logrecord has the columns to group by.")
@@ -105,10 +105,10 @@ class Partitioner:
     ) -> pd.DataFrame:
         """
         Group log record by sliding window based on the sliding window length, and returns
-         the resulting pandas DataFrame object 
+         the resulting pandas DataFrame object. 
         
-        :param logrecord_df: pandas DataFrame object on which grouping is to be applied
-        :return: pd.DataFrame object after sliding window based grouping
+        :param logrecord_df: pandas DataFrame object on which grouping is to be applied.
+        :return: pd.DataFrame object after sliding window based grouping.
         """
         if not self._valid_columns(logrecord_df.columns):
             raise ValueError("Make sure logrecord has the columns to group by.")

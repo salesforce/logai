@@ -17,7 +17,7 @@ from logai.algorithms.factory import factory
 
 @dataclass
 class LOFParams(Config):
-    """Parameters of Locality Outlier Factors based Anomaly Detector 
+    """Parameters of Locality Outlier Factors based Anomaly Detector .
     For more explanations of the parameters see https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.LocalOutlierFactor.html.
 
     :param n_neighbors: Number of neighbors to use by default for kneighbors queries.
@@ -80,7 +80,7 @@ class LOFDetector(AnomalyDetectionAlgo):
         """
         Predicts anomaly scores.
 
-        :param log_features: The input for inference
+        :param log_features: The input for inference.
         :return: A pandas dataframe of the predicted anomaly scores.
         """
         test_scores = self.model.predict(

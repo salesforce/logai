@@ -70,8 +70,8 @@ class LogBERTTrain:
         )
 
     def get_model_checkpoint(self):
-        """Get the latest dumped checkpoint from the model directory path mentioned in logBERTConfig
-        :return: path to model checkpoint (or name of model in case of a pretrained model from hugging face)
+        """Get the latest dumped checkpoint from the model directory path mentioned in logBERTConfig.
+        :return: path to model checkpoint (or name of model in case of a pretrained model from hugging face).
         """
         if os.path.exists(self.model_dirpath) and os.listdir(self.model_dirpath):
             checkpoint_dir = "checkpoint-" + str(
@@ -91,9 +91,9 @@ class LogBERTTrain:
         return model_checkpoint
 
     def fit(self, train_dataset: HFDataset, dev_dataset: HFDataset):
-        """fit method for training logbert model
-        :param train_dataset: (HFDataset): training dataset of type huggingface Dataset object
-        :param dev_dataset: (HFDataset): development dataset of type huggingface Dataset object
+        """Fit method for training logbert model.
+        :param train_dataset: training dataset of type huggingface Dataset object.
+        :param dev_dataset: development dataset of type huggingface Dataset object.
         """
         model_checkpoint = self.get_model_checkpoint()
 
@@ -110,6 +110,6 @@ class LogBERTTrain:
         self.trainer.train()
 
     def evaluate(self):
-        """evaluate methof for evaluating logbert model on dev data using perplexity metric"""
+        """Evaluate methof for evaluating logbert model on dev data using perplexity metric."""
         eval_results = self.trainer.evaluate()
         logging.info("Perplexity: {}".format(math.exp(eval_results["eval_loss"])))
