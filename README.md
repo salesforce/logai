@@ -19,6 +19,12 @@ For full license text, see the LICENSE file in the repo root or https://opensour
   <a href="https://github.com/salesforce/logai/actions/workflows/pages/pages-build-deployment">
     <img alt="pages-build-deployment" src="https://github.com/salesforce/logai/actions/workflows/pages/pages-build-deployment/badge.svg" />
   </a>
+  <a href="https://github.com/salesforce/logai/releases">
+    <img alt="Latest Release" src="https://img.shields.io/github/release/salesforce/logai.svg" />
+  </a>
+  <a href="https://badge.fury.io/py/logai">
+    <img src="https://badge.fury.io/py/logai.svg" alt="PyPI version">
+  </a>
   <a href="https://opensource.org/licenses/BSD-3-Clause">
     <img alt="license" src="https://img.shields.io/badge/License-BSD_3--Clause-blue.svg"/>
   </a>
@@ -76,7 +82,8 @@ like NewRelic and DataDog, or popular log analysis open source tools on Github.
 
 ## Installation
 
-You can install LogAI using `pip install` with the instruction below:
+### Quick Install
+You can install LogAI core library using `pip install`:
 
 ```shell
 
@@ -85,32 +92,36 @@ git clone https://git.soma.salesforce.com/SalesforceResearch/logai.git
 cd logai
 
 # [Optional] Create virtual environment
-python3 -m venv venv # create virtual environment
-source venv/bin/activate # activate virtual env
-pip install . # install LogAI from root directory
-```
-To conduct deep learning model related tasks, please install extra requirements by:
+python3 -m venv venv
+source venv/bin/activate
 
-```shell
-pip install ".[deep-learning]"
+# Install LogAI
+pip install logai
+
 ```
 
-To use LogAI GUI portal, please install extra requirements by:
+### Install Optional Dependencies
+LogAI core library is light-weight with limited dependent packages installed. Users can install optional dependencies
+to enable extended functionalities of LogAI.
 
-```shell
-pip install ".[gui]"
-```
+**Deep Learning Log Analysis**. To conduct deep learning model related tasks and run benchmarking,
+please install extra requirements by `pip install "logai[deep-learning]"`.
 
-To develop LogAI, run build and testing tools, please install extra requirements by:
+**Enable LogAI GUI Portal***. To use LogAI GUI portal, 
+please install extra requirements by `pip install "logai[gui]"`.
 
-```shell
-pip install ".[dev]"
-```
+**LogAI Development**. To contribute to LogAI development, build and test code changes, 
+please install extra requirements by `pip install "logai[dev]"`.
 
-Or you can install the full dependencies by:
-```shell
-pip install ".[all]"
-```
+**Complete Installation**. you can install the full list of dependencies by `pip install "logai[all]"`.
+
+### Known Issues
+
+> :warning: You may see `Resource punkt not found` while using LogAI. You can download `punkt`
+> package from NLTK to solve the problem.
+> ```shell
+> python -m nltk.downloader punkt
+> ```
 
 ## Getting Started
 
@@ -236,7 +247,6 @@ Make sure to set `filepath` to the target log dataset file path.
 
 Then to run log anomaly detection. You can simply create below python script:
 
-
 ```python
 import json
 
@@ -264,10 +274,10 @@ For full context of this example please check
 [Tutorial: Use Log Anomaly Detection Application](./examples/jupyter_notebook/log_anomaly_detection_example.ipynb).
 
 ### Build Customized LogAI Applications
-You can build your own customized log analysis applications using LogAI. 
-Please refer to [Build LogAI Application in Jupyter Notebook](examples/jupyter_notebook/jupyter_tutorial.md) 
-for more information about how to
-use LogAI modules to create E2E applications in Jupyter Notebook.
+You can build your own customized log analysis applications using LogAI. Here we show two examples:
+
+* [Tutorial: Log Clustering Using LogAI](./examples/jupyter_notebook/tutorial_log_clustering.ipynb)
+* [Tutorial: Log Anomaly Detection Using LogAI](./examples/jupyter_notebook/tutorial_log_anomaly_detection.ipynb)
 
 ### Deep-learning Anomaly Detection Benchmarking
 
@@ -284,19 +294,20 @@ For more detail about LogAI library and advanced use cases, please visit
 
 ## Technical Report and Citing LogAI
 
-You can find more details about LogAI in the [technical report]().
-
+You can find more details about LogAI in the [technical report](https://arxiv.org/abs/2301.13415). 
 If you're using LogAI in your research or applications, please cite using this BibTeX:
 
 ```
-@article{logai2023,
-      title={LogAI: A Toolkit for AI-based Log Analysis},
-      author={Qian Cheng, Amrita Saha, Wenzhuo Yang, Chenghao Liu, Gerald Woo, Doyen Sahoo, Steven HOI},
-      year={2023},
-      eprint={?},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG}
+@misc{https://doi.org/10.48550/arxiv.2301.13415,
+    title = {LogAI: A Library for Log Analytics and Intelligence},
+    author = {Cheng, Qian and Saha, Amrita and Yang, Wenzhuo and Liu, Chenghao and Sahoo, Doyen and Hoi, Steven},
+    publisher = {arXiv},
+    year = {2023},
+    doi = {10.48550/ARXIV.2301.13415},
+    url = {https://arxiv.org/abs/2301.13415},
+    copyright = {arXiv.org perpetual, non-exclusive license}
 }
+
 ```
 
 ## Contact
