@@ -1,0 +1,341 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>logai.applications.openset package &mdash; LogAI  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="logai.applications.openset.anomaly_detection package" href="logai.applications.openset.anomaly_detection.html" />
+    <link rel="prev" title="logai.applications package" href="logai.applications.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> LogAI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers' Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="develop.html">Developers’ Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LogAI Core Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">logai</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="logai.html">logai package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="logai.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.html">logai.algorithms package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.analysis.html">logai.analysis package</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="logai.applications.html">logai.applications package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.dataloader.html">logai.dataloader package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.information_extraction.html">logai.information_extraction package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.preprocess.html">logai.preprocess package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.utils.html">logai.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="logai.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logai.html#module-logai.config_interfaces">logai.config_interfaces module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logai.html#module-logai">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">LogAI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">logai</a> &raquo;</li>
+        
+          <li><a href="logai.html">logai package</a> &raquo;</li>
+        
+          <li><a href="logai.applications.html">logai.applications package</a> &raquo;</li>
+        
+      <li>logai.applications.openset package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/logai.applications.openset.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="logai-applications-openset-package">
+<h1>logai.applications.openset package<a class="headerlink" href="#logai-applications-openset-package" title="Permalink to this heading">¶</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html">logai.applications.openset.anomaly_detection package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="logai.applications.openset.anomaly_detection.configs.html">logai.applications.openset.anomaly_detection.configs package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.openset.anomaly_detection.configs.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.openset.anomaly_detection.configs.html#module-logai.applications.openset.anomaly_detection.configs.schema">logai.applications.openset.anomaly_detection.configs.schema module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.openset.anomaly_detection.configs.html#module-logai.applications.openset.anomaly_detection.configs">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#module-logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow">logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflow"><code class="docutils literal notranslate"><span class="pre">OpenSetADWorkflow</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflow.dedup_data"><code class="docutils literal notranslate"><span class="pre">OpenSetADWorkflow.dedup_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflow.execute"><code class="docutils literal notranslate"><span class="pre">OpenSetADWorkflow.execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflow.generate_train_dev_test_data"><code class="docutils literal notranslate"><span class="pre">OpenSetADWorkflow.generate_train_dev_test_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflow.load_anomaly_detector"><code class="docutils literal notranslate"><span class="pre">OpenSetADWorkflow.load_anomaly_detector()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflow.load_data"><code class="docutils literal notranslate"><span class="pre">OpenSetADWorkflow.load_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflow.load_dataloader"><code class="docutils literal notranslate"><span class="pre">OpenSetADWorkflow.load_dataloader()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflow.load_deduper"><code class="docutils literal notranslate"><span class="pre">OpenSetADWorkflow.load_deduper()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflow.load_parser"><code class="docutils literal notranslate"><span class="pre">OpenSetADWorkflow.load_parser()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflow.load_partitioner"><code class="docutils literal notranslate"><span class="pre">OpenSetADWorkflow.load_partitioner()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflow.load_preprocessor"><code class="docutils literal notranslate"><span class="pre">OpenSetADWorkflow.load_preprocessor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflow.load_vectorizer"><code class="docutils literal notranslate"><span class="pre">OpenSetADWorkflow.load_vectorizer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflow.parse_log_data"><code class="docutils literal notranslate"><span class="pre">OpenSetADWorkflow.parse_log_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflow.partition_log_data"><code class="docutils literal notranslate"><span class="pre">OpenSetADWorkflow.partition_log_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflow.preprocess_log_data"><code class="docutils literal notranslate"><span class="pre">OpenSetADWorkflow.preprocess_log_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflow.run_anomaly_detection"><code class="docutils literal notranslate"><span class="pre">OpenSetADWorkflow.run_anomaly_detection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflow.run_data_processing_workflow"><code class="docutils literal notranslate"><span class="pre">OpenSetADWorkflow.run_data_processing_workflow()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflow.run_vectorizer"><code class="docutils literal notranslate"><span class="pre">OpenSetADWorkflow.run_vectorizer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflow.set_anomaly_detector_configs"><code class="docutils literal notranslate"><span class="pre">OpenSetADWorkflow.set_anomaly_detector_configs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflow.vectorizer_transform"><code class="docutils literal notranslate"><span class="pre">OpenSetADWorkflow.vectorizer_transform()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflowConfig"><code class="docutils literal notranslate"><span class="pre">OpenSetADWorkflowConfig</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflowConfig.dataset_name"><code class="docutils literal notranslate"><span class="pre">OpenSetADWorkflowConfig.dataset_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflowConfig.deduplicate_test"><code class="docutils literal notranslate"><span class="pre">OpenSetADWorkflowConfig.deduplicate_test</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflowConfig.label_filepath"><code class="docutils literal notranslate"><span class="pre">OpenSetADWorkflowConfig.label_filepath</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflowConfig.output_dir"><code class="docutils literal notranslate"><span class="pre">OpenSetADWorkflowConfig.output_dir</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflowConfig.parse_logline"><code class="docutils literal notranslate"><span class="pre">OpenSetADWorkflowConfig.parse_logline</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflowConfig.test_data_frac_neg"><code class="docutils literal notranslate"><span class="pre">OpenSetADWorkflowConfig.test_data_frac_neg</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflowConfig.test_data_frac_pos"><code class="docutils literal notranslate"><span class="pre">OpenSetADWorkflowConfig.test_data_frac_pos</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflowConfig.train_test_shuffle"><code class="docutils literal notranslate"><span class="pre">OpenSetADWorkflowConfig.train_test_shuffle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflowConfig.training_type"><code class="docutils literal notranslate"><span class="pre">OpenSetADWorkflowConfig.training_type</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.get_openset_ad_config"><code class="docutils literal notranslate"><span class="pre">get_openset_ad_config()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.validate_config_dict"><code class="docutils literal notranslate"><span class="pre">validate_config_dict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="logai.applications.openset.anomaly_detection.html#module-logai.applications.openset.anomaly_detection">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="module-logai.applications.openset">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-logai.applications.openset" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="logai.applications.openset.anomaly_detection.html" class="btn btn-neutral float-right" title="logai.applications.openset.anomaly_detection package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="logai.applications.html" class="btn btn-neutral float-left" title="logai.applications package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2023, Salesforce.com, Inc..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
