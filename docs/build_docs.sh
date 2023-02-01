@@ -33,7 +33,6 @@ sphinx-build -M clean "${DIRNAME}/source" "${DIRNAME}/_build"
 
 # Build API docs for current head
 export current_version="latest"
-python3 -m pip install "${DIRNAME}/../"
 sphinx-build -b html "${DIRNAME}/source" "${DIRNAME}/_build/html/${current_version}" -W --keep-going
 rm -rf "${DIRNAME}/_build/html/${current_version}/.doctrees"
 
