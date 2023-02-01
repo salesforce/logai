@@ -19,6 +19,12 @@ For full license text, see the LICENSE file in the repo root or https://opensour
   <a href="https://github.com/salesforce/logai/actions/workflows/pages/pages-build-deployment">
     <img alt="pages-build-deployment" src="https://github.com/salesforce/logai/actions/workflows/pages/pages-build-deployment/badge.svg" />
   </a>
+  <a href="https://github.com/salesforce/logai/releases">
+    <img alt="Latest Release" src="https://img.shields.io/github/release/salesforce/logai.svg" />
+  </a>
+  <a href="https://badge.fury.io/py/logai">
+    <img src="https://badge.fury.io/py/logai.svg" alt="PyPI version">
+  </a>
   <a href="https://opensource.org/licenses/BSD-3-Clause">
     <img alt="license" src="https://img.shields.io/badge/License-BSD_3--Clause-blue.svg"/>
   </a>
