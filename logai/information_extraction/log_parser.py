@@ -41,14 +41,11 @@ class LogParserConfig(Config):
 class LogParser:
     """
     Implementation of log parser for free-form text loglines.
+    
+    :param config: The log parser configuration.
     """
 
     def __init__(self, config: object):
-        """
-        Initialization of log parser.
-
-        :param config: LogParserConfig: log parser configuration.
-        """
         name = config.parsing_algorithm.lower()
         config_class = factory.get_config_class("parsing", name)
         algorithm_class = factory.get_algorithm_class("parsing", name)
@@ -59,17 +56,15 @@ class LogParser:
     def fit(self, loglines: pd.Series):
         """
         Trains log parser with training loglines.
-
-        :param loglines: pd.Series: the list of loglines for training
+        :param loglines: A pd.Series object containing the list of loglines for training.
         """
         self.parser.fit(loglines)
 
     def parse(self, loglines: pd.Series) -> pd.DataFrame:
         """
         Uses the trained log parser to parse loglines.
-
-        :param loglines: pd.Series: the loglines for parsing.
-        :return: pd.DataFrame: a dataframe of parsed result ["loglines", "parsed_loglines", "parameter_list"].
+        :param loglines: A pd.Series object conatining the loglines for parsing.
+        :return: A dataframe of parsed result ["loglines", "parsed_loglines", "parameter_list"].
         """
         if self.parser is None:
             raise RuntimeError("Parser is None.")
@@ -87,8 +82,7 @@ class LogParser:
     def fit_parse(self, loglines: pd.Series) -> pd.DataFrame:
         """
         Trains and parses the given loglines.
-
-        :param loglines: The list of loglines to train and parse.
+        :param loglines: A pd.Series object containing the list of loglines to train and parse.
         :return: A dataframe of parsed result ["loglines", "parsed_loglines", "parameter_list"].
         """
         try:
@@ -100,8 +94,7 @@ class LogParser:
 
     def save(self, out_path):
         """
-        Save the parser model.
-
+        Saves the parser model.
         :param out_path: The directory to save parser models.
         """
 
@@ -121,7 +114,6 @@ class LogParser:
     def load(self, model_path):
         """
         Loads existing parser models.
-
         :param model_path: The directory to load parser models.
         """
 
@@ -134,8 +126,8 @@ class LogParser:
         """
         Returns parameter list of the loglines.
 
-        :param row: A row in dataframe as function input containing ['logline', 'parsed_logline'].
-        :return: A list of dynamic parameters.
+        :param row: The row in dataframe as function input containing ['logline', 'parsed_logline'].
+        :return: The list of dynamic parameters.
         """
         parameter_list = []
         if not isinstance(row.logline, str) or not isinstance(row.parsed_logline, str):

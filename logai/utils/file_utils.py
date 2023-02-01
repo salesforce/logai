@@ -14,13 +14,10 @@ import pickle as pkl
 
 
 def file_exists(path: str):
-    """Util function to check if file exists.
-
-    Args:
-        path (str): path to file.
-
-    Returns:
-        bool: if file exists or not.
+    """util function to check if file exists
+    
+    :param path: (str): path to file
+    :return: bool: if file exists or not
     """
     return os.path.exists(path)
 
@@ -28,11 +25,8 @@ def file_exists(path: str):
 def read_file(filepath: str):
     """Reads yaml, json, csv or pickle files.
 
-    Args:
-        filepath (str): path to file.
-
-    Returns:
-        object : data object containing file contents.
+    :param filepath: (str): path to file
+    :return: data object containing file contents
     """
     file_type = pathlib.Path(filepath).suffix
     if file_type == ".yaml":

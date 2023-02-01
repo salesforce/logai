@@ -16,6 +16,10 @@ from logai.algorithms.factory import factory
 @dataclass
 class VectorizerConfig(Config):
     """Config class for Vectorizer. 
+    
+    :param algo_name: The name of the vectorizer algorithm.
+    :param algo_param: The parameters of the vectorizer algorithm .
+    :param custom_param: Additional custom parameters to be passed to the vectorizer algorithm.
     """
     algo_name: str = "word2vec"
     algo_param: object = None
@@ -46,14 +50,14 @@ class LogVectorizer:
 
     def fit(self, loglines: pd.Series):
         """Fit method for LogVectorizer, to train the vectorizer model on the training data.
-
+        
         :param loglines: A pandas Series object containing the training raw log data.
         """
         self.vectorizer.fit(loglines)
 
     def transform(self, loglines: pd.Series) -> pd.Series:
         """Transform method for LogVectorizer, to transform the raw log text data to vectors.
-
+        
         :param loglines: A pandas Series object containing the test raw log data.
         :return: A pandas Series object containing the vectorized log data.
         """

@@ -1,6 +1,14 @@
 logai.applications package
 ==========================
 
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   logai.applications.openset
+
 Submodules
 ----------
 

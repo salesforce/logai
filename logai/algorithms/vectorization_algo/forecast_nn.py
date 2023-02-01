@@ -22,7 +22,12 @@ from logai.algorithms.factory import factory
 
 
 class ForecastNNVectorizedDataset:
-    """Class for storing vectorized dataset for forecasting based neural models."""
+    """Class for storing vectorized dataset for forecasting based neural models.
+    :param logline_features: (np.array): list of vectorized log-sequences
+    :param labels: (list or pd.Series or np.array): list of labels (anomalous or non-anomalous) for each log sequence.
+    :param nextlogline_ids: (list or pd.Series or np.array): list of ids of next loglines, for each log sequence
+    :param span_ids: (list or pd.Series or np.array): list of ids of log sequences.
+    """
 
     session_idx: str = "session_idx"
     features: str = "features"
@@ -30,14 +35,7 @@ class ForecastNNVectorizedDataset:
     window_labels: str = "window_labels"
 
     def __init__(self, logline_features, labels, nextlogline_ids, span_ids):
-        """
-        :param logline_features (np.array): The list of vectorized log-sequences.
-        :param labels (list or pd.Series or np.array): The list of labels (anomalous or non-anomalous)
-            for each log sequence.
-        :param nextlogline_ids (list or pd.Series or np.array): The list of ids of next loglines
-            for each log sequence.
-        :param span_ids (list or pd.Series or np.array): The list of ids of log sequences.
-        """
+        
         self.dataset = []
         for data_i, label_i, next_i, index_i in zip(
             logline_features, labels, nextlogline_ids, span_ids
@@ -59,7 +57,7 @@ class ForecastNNVectorizerParams(Config):
     :param feature_type: The type of log feature representation where the supported types "semantics" and "sequential".
     :param label_type: The type of label, anomaly or next_log, which corresponds to the supervised and the
         forecasting based unsupervised setting.
-    :param sep_token: The separator token used when constructing the log sequences during log grouping/partitioning.
+    :param sep_token: The separator token used when constructing the log sequences during log grouping/partitioning. (default = "[SEP]")
     :param max_token_len: The maximum token length of the input.
     :param min_token_count: The minimum number of occurrences of a token in the training data, for it to be
         considered in the vocab.
@@ -88,13 +86,12 @@ class ForecastNNVectorizerParams(Config):
 
 @factory.register("vectorization", "forecast_nn", ForecastNNVectorizerParams)
 class ForecastNN(VectorizationAlgo):
-    """Vectorizer Class for forecast based neural models for log representation learning."""
+    """Vectorizer Class for forecast based neural models for log representation learning.
+    
+    :param config: config object specifying parameters of forecast based neural log repersentation learning model.
+    """
 
     def __init__(self, config: ForecastNNVectorizerParams):
-        """
-        :param config: The config object specifying parameters of forecast based neural
-            log repersentation learning model.
-        """
         self.meta_data = {}
         self.config = config
         self.config.vectorizer_model_dirpath = os.path.join(
@@ -145,7 +142,7 @@ class ForecastNN(VectorizationAlgo):
     def fit(self, logrecord: LogRecordObject):
         """Fit method to train vectorizer.
 
-        :param logrecord: The logrecord object to train the vectorizer on.
+        :param logrecord: A log record object to train the vectorizer on.
         """
         if self.sequential_vectorizer.vocab is None or (
             self.config.feature_type == "semantics"
@@ -171,8 +168,8 @@ class ForecastNN(VectorizationAlgo):
     def transform(self, logrecord: LogRecordObject):
         """Transform method to run vectorizer on logrecord object.
 
-        :param logrecord: The logrecord object to be vectorized
-        :return: A ForecastNNVectorizedDataset object containing the vectorized dataset.
+        :param logrecord: A log record object to be vectorized.
+        :return: ForecastNNVectorizedDataset object containing the vectorized dataset.
         """
         if self.config.feature_type == "sequential":
             logline_features = self.sequential_vectorizer.transform(

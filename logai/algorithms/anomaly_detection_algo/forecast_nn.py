@@ -20,17 +20,13 @@ from torch.utils.data import DataLoader
 
 class ForcastBasedNeuralAD(NNAnomalyDetectionAlgo):
     """Forcasting based neural anomaly detection models taken from the deep-loglizer paper
-    (https://arxiv.org/pdf/2107.05908.pdf)
+    (https://arxiv.org/pdf/2107.05908.pdf).
 
-    Inherits:
-        NNAnomalyDetectionAlgo : interface of neural anomaly detection algorithms
+    :param config: The parameters of general forecasting based neural anomaly detection models.
     """
 
     def __init__(self, config: ForecastBasedNNParams):
-        """Initialization for forecasting based neural anomaly detection models.
-
-        :param config: The config for general forecasting based neural anomaly detection models.
-        """
+        
         self.model = None
         self.config = config
 
@@ -41,9 +37,9 @@ class ForcastBasedNeuralAD(NNAnomalyDetectionAlgo):
     ):
         """The fit method to train forecasting based neural anomaly detection models.
 
-        :param train_data: training dataset of type ForecastNNVectorizedDataset
+        :param train_data: The training dataset of type ForecastNNVectorizedDataset
             (consisting of session_idx, features, window_anomalies and window_labels).
-        :param dev_data: development dataset of type ForecastNNVectorizedDataset
+        :param dev_data: The development dataset of type ForecastNNVectorizedDataset
             (consisting of session_idx, features, window_anomalies and window_labels).
         """
         dataloader_train = DataLoader(
@@ -65,7 +61,7 @@ class ForcastBasedNeuralAD(NNAnomalyDetectionAlgo):
 
         :param test_data: The test dataset of type ForecastNNVectorizedDataset
             (consisting of session_idx, features, window_anomalies and window_labels).
-        :returns: A dict containing overall evaluation results.
+        :return: A dict containing overall evaluation results.
         """
         dataloader_test = DataLoader(
             test_data.dataset,
@@ -80,16 +76,11 @@ class ForcastBasedNeuralAD(NNAnomalyDetectionAlgo):
 @factory.register("detection", "lstm", LSTMParams)
 class ForecastBasedLSTM(ForcastBasedNeuralAD):
     """Forecasting based lstm model for log anomaly detection.
-
-    Inherits:
-        ForcastBasedNeuralAD: base class for forecast based neural models for anomaly detection.
+    :param config: A config object containing parameters for LSTM based anomaly detection model.
     """
 
     def __init__(self, config: LSTMParams):
-        """Initializing ForecastBasedLSTM object
-
-        :param config: A config object containing parameters for LSTM based anomaly detection model.
-        """
+        
         super().__init__(config)
         self.config = config
         self.model = LSTM(config=self.config)
@@ -98,16 +89,10 @@ class ForecastBasedLSTM(ForcastBasedNeuralAD):
 @factory.register("detection", "cnn", CNNParams)
 class ForecastBasedCNN(ForcastBasedNeuralAD):
     """Forecasting based cnn model for log anomaly detection.
-
-    Inherits:
-        ForcastBasedNeuralAD: base class for forecast based neural models for anomaly detection.
+    :param config: A config object containing parameters for CNN based anomaly detection model.
     """
 
     def __init__(self, config: CNNParams):
-        """Initializing ForecastBasedCNN object.
-
-        :param config: A config object containing parameters for CNN based anomaly detection model.
-        """
         super().__init__(config)
         self.config = config
         self.model = CNN(config=self.config)
@@ -116,17 +101,11 @@ class ForecastBasedCNN(ForcastBasedNeuralAD):
 @factory.register("detection", "transformer", TransformerParams)
 class ForecastBasedTransformer(ForcastBasedNeuralAD):
     """Forecasting based transformer model for log anomaly detection.
-
-    Inherits:
-        ForcastBasedNeuralAD: base class for forecast based neural models for anomaly detection.
+    :param config: A config object containing parameters for Transformer based anomaly detection model.
     """
 
     def __init__(self, config: TransformerParams):
-        """Initializing ForecastBasedTransformer object.
-
-        :param config: A config object containing parameters for
-            Transformer based anomaly detection model.
-        """
+        
         super().__init__(config)
         self.config = config
         self.model = Transformer(config=self.config)

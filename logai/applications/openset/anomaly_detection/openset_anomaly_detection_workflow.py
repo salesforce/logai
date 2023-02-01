@@ -34,12 +34,7 @@ logging.basicConfig(level=logging.INFO)
 def validate_config_dict(workflow_config_dict):
     """Method to validate the config dict with the schema
 
-    Args:
-        workflow_config_dict (dict): dict containing config
-        for anomaly detection workflow on open log datasets
-
-    Raises:
-        SchemaError: Schema Error
+    :param workflow_config_dict: (dict): dict containing config for anomaly detection workflow on open log datasets
     """
     try:
         config_schema.validate(workflow_config_dict)
@@ -54,20 +49,14 @@ def get_openset_ad_config(
     parse_logline: bool,
     training_type: str,
 ):
-    """Method to dynamically set some of the config parameters based on the given arguments
-    List of all possible supported anomaly detection types and vectorizer types
-    configurations can be found in the config yaml file
-    Avoid this function if you are directly setting all config parameters manually
+    """Method to dynamically set some of the config parameters based on the given arguments. List of all possible supported anomaly detection types and vectorizer types configurations can be found in the config yaml file. Avoid this function if you are directly setting all config parameters manually
     
-    Args:
-        config_filename (str): Name of the config file (currently supports hdfs and bgl)
-        anomaly_detection_type (str): string describing the type of anomaly detection
-        vectorizer_type (str): string describing the type of vectorizer.
-        parse_logline (bool): Whether to use log parsing or not
-        training_type (str): Whether to use "supervised" or "unsupervised" training
-
-    Returns:
-        OpenSetADWorkflowConfig: config object of type OpenSetADWorkflowConfig
+    :param config_filename: (str): Name of the config file (currently supports hdfs and bgl)
+    :param anomaly_detection_type: (str): string describing the type of anomaly detection
+    :param vectorizer_type: (str): string describing the type of vectorizer.
+    :param parse_logline: (bool): Whether to use log parsing or not
+    :param training_type: (str): Whether to use "supervised" or "unsupervised" training
+    :return: OpenSetADWorkflowConfig: config object of type OpenSetADWorkflowConfig
     """
     config_path = os.path.join(
         os.path.dirname(__file__), "configs", "{}.yaml".format(config_filename)
@@ -113,23 +102,17 @@ def get_openset_ad_config(
 
 @dataclass
 class OpenSetADWorkflowConfig(WorkFlowConfig):
-    """Config for Log Anomaly Detection workflow on Open Log datasets
+    """Config for Log Anomaly Detection workflow on Open Log dataset Inherits: WorkFlowConfig: Config object for specifying workflow parameters
 
-    Inherits:
-        WorkFlowConfig: Config object for specifying workflow parameters
-
-    dataset_name: str = None # name of the public open dataset
-    label_filepath: str = None # path to the separate file (if any) containing the anomaly detection labels
-    output_dir: str = None # path to output directory where all intermediate and final outputs would be dumped
-    parse_logline: bool = False # whether to parse or not
-    training_type: str = None # should be either supervised or unsupervised
-    deduplicate_test: bool = False # whether to de-duplicate the instances in the test data, while maintaining a count
-    of the number of each duplicated instance
-    test_data_frac_pos: float = 0.8 # fraction of the logs having positive class used for teest
-    test_data_frac_neg: float = 0.8 # fraction of the logs having negative class used for test
-    train_test_shuffle: bool = False # whether to use chronological ordering of the logs or to shuffle them when
-    creating the train test splits
-
+    :param dataset_name: str = None: name of the public open dataset
+    :param label_filepath: str = None: path to the separate file (if any) containing the anomaly detection labels
+    :param output_dir: str = None : path to output directory where all intermediate and final outputs would be dumped
+    :param parse_logline: bool = False : whether to parse or not
+    :param training_type: str = None: should be either supervised or unsupervised
+    :param deduplicate_test: bool = False : whether to de-duplicate the instances in the test data, while maintaining a count of the number of each duplicated instance
+    :param test_data_frac_pos: float = 0.8 : fraction of the logs having positive class used for teest
+    :param test_data_frac_neg: float = 0.8 : fraction of the logs having negative class used for test
+    :param train_test_shuffle: bool = False : whether to use chronological ordering of the logs or to shuffle them when creating the train test splits
     """
 
     dataset_name: str = None  # name of the public open dataset
@@ -150,13 +133,12 @@ class OpenSetADWorkflowConfig(WorkFlowConfig):
 
 
 class OpenSetADWorkflow:
-    def __init__(self, config: OpenSetADWorkflowConfig):
-        """Initializing the log anomaly detection workflow for open log datasets
+    """log anomaly detection workflow for open log datasets
 
-        Args:
-            config (OpenSetADWorkflowConfig): config object specifying
-            parameters for log anomaly detection over open datasets
-        """
+    :param config: (OpenSetADWorkflowConfig): config object specifying parameters for log anomaly detection over open datasets
+    """
+    def __init__(self, config: OpenSetADWorkflowConfig):
+        
         self.config = config
 
     def _get_parse_type_str(self):
@@ -257,8 +239,7 @@ class OpenSetADWorkflow:
     def load_data(self):
         """loads logrecord object from raw log dataset
 
-        Returns:
-            LogRecordObject : logrecord object created from the raw log dataset
+        :return: LogRecordObject : logrecord object created from the raw log dataset
         """
         self.load_dataloader()
         logrecord = self.dataloader.load_data()
@@ -272,11 +253,8 @@ class OpenSetADWorkflow:
     def preprocess_log_data(self, logrecord):
         """preprocesses logrecord object by doing custom dataset specific data cleaning and formatting
 
-        Args:
-            logrecord (LogRecordObject): log record object to be preprocessed
-
-        Returns:
-            LogRecordObject: preprocessed lgo record object using custom dataset-specific preprocessing
+        :param logrecord: (LogRecordObject): log record object to be preprocessed
+        :return:  LogRecordObject: preprocessed lgo record object using custom dataset-specific preprocessing
         """
         self.load_preprocessor()
         preprocessed_filepath = self._get_output_filename(suffix="preprocessed")
@@ -298,11 +276,8 @@ class OpenSetADWorkflow:
     def parse_log_data(self, logrecord):
         """parse logrecord object by applying standard log parsers as specified in the Config
 
-        Args:
-            logrecord (LogRecordObject): logrecord object to be parsed
-
-        Returns:
-            LogRecordObject: parsed logrecord object
+        :param logrecord: (LogRecordObject): logrecord object to be parsed
+        :return: LogRecordObject: parsed logrecord object
         """
         self.load_parser()
         parsed_filepath = self._get_output_filename(suffix=self._get_parse_type_str())
@@ -324,11 +299,8 @@ class OpenSetADWorkflow:
     def partition_log_data(self, logrecord: LogRecordObject):
         """partitioning logrecord object by applying session or sliding window based partitions
 
-        Args:
-            logrecord (LogRecordObject): logrecord object to be partitioned
-
-        Returns:
-            logrecord: partitioned logrecord object
+        :param logrecord: (LogRecordObject): logrecord object to be partitioned
+        :return: logrecord: partitioned logrecord object
         """
         self.load_partitioner()
         output_filepath_suffix = (
@@ -349,16 +321,12 @@ class OpenSetADWorkflow:
         return logrecord
 
     def generate_train_dev_test_data(self, logrecord: LogRecordObject):
-        """splitting open log datasets into train dev and test splits according to the parameters
-        specified in the config object
+        """splitting open log datasets into train dev and test splits according to the parameters specified in the config object
 
-        Args:
-            logrecord (LogRecordObject): logrecord object to be split into train, dev and test
-
-        Returns:
-            train_data: logrecord object containing training dataset
-            dev_data: logrecord object containing dev dataset
-            test_data: logrecord object containing test dataset
+        :param logrecord: (LogRecordObject): logrecord object to be split into train, dev and test
+        :return: - train_data: logrecord object containing training dataset.
+            - dev_data: logrecord object containing dev dataset.
+            - test_data: logrecord object containing test dataset
         """
         output_filepath_suffix = (
             self._get_parse_type_str()
@@ -407,15 +375,10 @@ class OpenSetADWorkflow:
         return train_data, dev_data, test_data
 
     def dedup_data(self, logrecord: LogRecordObject):
-        """Method to run deduplication of log records, where loglines having same body
-        and span id is collapsed into a single logline. The original occurrent count values of these
-        loglines is added as a pandas Series object in the 'attributes' property of the logrecord object.
+        """Method to run deduplication of log records, where loglines having same body and span id is collapsed into a single logline. The original occurrent count values of theseloglines is added as a pandas Series object in the 'attributes' property of the logrecord object.
 
-        Args:
-            logrecord (LogRecordObject): logrecord object to be deduplicated
-
-        Returns:
-            LogRecordObject: resulting logrecord object
+        :param logrecord: (LogRecordObject): logrecord object to be deduplicated
+        :return: LogRecordObject: resulting logrecord object
         """
         self.load_deduper()
         old_data_len = len(logrecord.body)
@@ -449,10 +412,9 @@ class OpenSetADWorkflow:
     def run_data_processing_workflow(self):
         """Running data processing pipeline for log anomaly detection workflow
 
-        Returns:
-            train_data: logrecord object containing training dataset
-            dev_data: logrecord object containing dev dataset
-            test_data: logrecord object containing test dataset
+        :return: - train_data: logrecord object containing training dataset.
+            - dev_data: logrecord object containing dev dataset.
+            - test_data: logrecord object containing test dataset
         """
         logrecord = self.load_data()
         logrecord = self.preprocess_log_data(logrecord=logrecord)
@@ -473,13 +435,9 @@ class OpenSetADWorkflow:
     def vectorizer_transform(self, logrecord: LogRecordObject, output_filename=None):
         """Applying vectorization on a logrecord object based on the kind of vectorizer specific in Config
 
-        Args:
-            logrecord (LogRecordObject): logrecord containing data to be vectorized
-            output_filename (str, optional): path to output file where the vectorized log data would be dumped.
-            Defaults to None.
-
-        Returns:
-            vectorized_output : vectorized data
+        :param logrecord: (LogRecordObject): logrecord containing data to be vectorized
+        :param output_filename: (str, optional): path to output file where the vectorized log data would be dumped. Defaults to None.
+        :return: vectorized_output : vectorized data
         """
         if output_filename and os.path.exists(output_filename):
             vectorized_output = pkl.load(open(output_filename, "rb"))
@@ -492,15 +450,12 @@ class OpenSetADWorkflow:
     def run_vectorizer(self, train_logrecord, dev_logrecord, test_logrecord):
         """Wrapper method for applying vectorization on train, dev and test logrecord objects
 
-        Args:
-            train_logrecord (LogRecordObject): logrecord object of the training dataset
-            dev_logrecord (LogRecordObject): logrecord object of the dev dataset
-            test_logrecord (LogRecordObject): logrecord object of the test dataset
-
-        Returns:
-            train_data : vectorized train data
-            dev_data: vectorized dev data
-            test_data: vectorized test data
+        :param train_logrecord: (LogRecordObject): logrecord object of the training dataset
+        :param dev_logrecord: (LogRecordObject): logrecord object of the dev dataset
+        :param test_logrecord: (LogRecordObject): logrecord object of the test dataset
+        :return: - train_data : vectorized train data.
+            - dev_data: vectorized dev data.
+            - test_data: vectorized test data.
         """
         self.load_vectorizer()
         self.vectorizer.fit(train_logrecord)
@@ -535,10 +490,9 @@ class OpenSetADWorkflow:
     def run_anomaly_detection(self, train_data, dev_data, test_data):
         """Method to train and run inference of anomaly detector
 
-        Args:
-            train_data: vectorized version of the train dataset
-            dev_data: vectorized version of the dev dataset
-            test_data: vectorized version of the test dataset
+        :param train_data: vectorized version of the train dataset
+        :param dev_data: vectorized version of the dev dataset
+        :param test_data: vectorized version of the test dataset
         """
         self.load_anomaly_detector()
         self.anomaly_detector.fit(train_data, dev_data)
@@ -582,24 +536,3 @@ class OpenSetADWorkflow:
         )
         logging.info("Going to Anomaly Detection")
         self.run_anomaly_detection(train_data, dev_data, test_data)
-
-
-if __name__ == "__main__":
-    # kwargs = {
-    #     "config_filename": "hdfs",
-    #     "anomaly_detection_type": "logbert_AD",
-    #     "vectorizer_type": "logbert" ,
-    #     "parse_logline": False ,
-    #     "training_type": "unsupervised"
-    # }
-
-    kwargs = {
-        "config_filename": "hdfs",
-        "anomaly_detection_type": "lstm_sequential_supervised_parsed_AD",
-        "vectorizer_type": "forecast_nn_sequential",
-        "parse_logline": True,
-        "training_type": "supervised",
-    }
-    config = get_openset_ad_config(**kwargs)
-    openset_AD_workflow = OpenSetADWorkflow(config)
-    openset_AD_workflow.execute()

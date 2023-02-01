@@ -36,8 +36,8 @@ class Preprocessor:
     def clean_log(self, loglines: pd.Series) -> pd.Series:
         """Cleans the input log data.
 
-        :param loglines: The raw loglines data to be cleaned.
-        :return: The cleaned loglines data.
+        :param loglines: The raw loglines data to be cleaned .
+        :return:pd.Series: The cleaned loglines data .
         """
         cleaned_log = loglines
         terms = pd.DataFrame()

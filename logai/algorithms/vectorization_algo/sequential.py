@@ -32,12 +32,13 @@ class SequentialVectorizerParams(Config):
 
 @factory.register("vectorization", "sequential", SequentialVectorizerParams)
 class Sequential(VectorizationAlgo):
-    """Sequential Vectorizer to convert a sequence of loglines to sequence of log ids."""
+    """Sequential Vectorizer to convert a sequence of loglines to sequence of log ids.
+
+    :param params: A config object for storing parameters of Sequential Vectorizer.
+    """
 
     def __init__(self, params: SequentialVectorizerParams):
-        """
-        :param params: The config object for storing parameters of Sequential Vectorizer.
-        """
+        
         self.params = params
         self.log_padding = "<pad>"
         self.log_oov = "<oov>"
@@ -55,7 +56,7 @@ class Sequential(VectorizationAlgo):
     def fit(self, loglines: pd.Series):
         """Fit method for training the sequential vectorizer.
 
-        :param loglines (pd.Series):  A pandas Series object containing the dataset on
+        :param loglines: A pandas Series object containing the dataset on
             which semantic vectorizer is trained (and the vocab is built).
             Each data instance should be a logline or sequence of loglines concatenated by separator token.
         """
@@ -82,7 +83,7 @@ class Sequential(VectorizationAlgo):
     def transform(self, loglines: pd.Series) -> pd.Series:
         """Transform method for applying sequential vectorizer to loglines.
 
-        :param loglines (pd.Series): A pandas Series containing the data to be vectorized.
+        :param loglines: A pandas Series containing the data to be vectorized.
             Each data instance should be a logline or sequence of loglines concatenated by separator token.
         :return: The vectorized loglines.
         """

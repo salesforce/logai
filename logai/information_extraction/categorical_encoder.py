@@ -73,7 +73,7 @@ class CategoricalEncoder:
 
     def fit_transform(self, features: pd.Series) -> Tuple[pd.DataFrame, list]:
         """
-        Transform the str features into categories.
+        Transforms the str features into categories.
 
         :param features: A list of features.
         :return: A list of encoded features.

@@ -38,19 +38,19 @@ class FileDataLoader:
 
     def __init__(self, config: DataLoaderConfig):
         """
-        Initialize FileDataLoader by consuming the configuration.
+        Initializes FileDataLoader by consuming the configuration.
         """
         self.config = config
 
     def load_data(self) -> LogRecordObject:
         """
-        Load log data with given configuration.
+        Loads log data with given configuration.
         Currently support file formats:
         - csv
         - tsv
         - other plain text format such as .log with proper parsing configurations
 
-        :return: LogRecordObject: the logs read from log files and converted into LogRecordObject.
+        :return: The logs read from log files and converted into LogRecordObject.
         """
         kwargs = self.config.reader_args
         fpath = self.config.filepath
@@ -76,7 +76,7 @@ class FileDataLoader:
 
     def _log_to_dataframe(self, fpath, log_format):
         """
-        Function to transform log file to dataframe
+        Function to transform log file to dataframe.
         """
         headers = []
         splitters = re.split(r"(<[^<>]+>)", log_format)
@@ -164,6 +164,6 @@ class DefaultDataLoader:
     # TODO: Placeholder to implement connector based data loader.
     def __init__(self):
         """
-        Initialize default data loader
+        Initializes default data loader.
         """
         self._logger = logging.Logger()

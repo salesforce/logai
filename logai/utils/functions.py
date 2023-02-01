@@ -17,15 +17,12 @@ from logai.utils import constants
 
 
 def pad(x, max_len: np.array, padding_value: int = 0):
-    """Method to trim or pad any 1-d numpy array to a given max length with the given padding value.
-
-    Args:
-        x (np.array): given 1-d numpy array to be padded/trimmed.
-        max_len (int): maximum length of padded/trimmed output.
-        padding_value (int, optional): padding value. Defaults to 0.
-
-    Returns:
-        np.array: padded/trimmed numpy array.
+    """Method to trim or pad any 1-d numpy array to a given max length with the given padding value
+    
+    :param x: (np.array): given 1-d numpy array to be padded/trimmed
+    :param max_len: (int): maximum length of padded/trimmed output
+    :param padding_value: (int, optional): padding value. Defaults to 0.
+    :return: np.array: padded/trimmed numpy array
     """
     flattened_vector = x
     fill_size = max_len - len(flattened_vector)
@@ -83,7 +80,7 @@ def pd_to_timeseries(log_features: pd.Series):
     Covert pandas.DataFrame to merlion.TimeSeries for log counter vectors.
 
     :param log_features: log feature dataframe must only contain two columns
-        ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
+      ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
     :return: merlion.TimeSeries type.
     """
     ts_df = log_features[constants.LOG_COUNTS]

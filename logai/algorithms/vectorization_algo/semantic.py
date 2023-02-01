@@ -25,17 +25,15 @@ from logai.algorithms.factory import factory
 @dataclass
 class SemanticVectorizerParams(Config):
     """
-    Configuration of Semantic vectorization of loglines (or sequence of log lines) using models like word2vc,
-    glove and fastText.
+    Configuration of Semantic vectorization of loglines (or sequence of log lines) using models like word2vc, glove and fastText.
 
-    :param max_token_len: The maximum token length of the input.
-    :param min_token_count: The minimum count of occurrences of a token in training data for it to be
-        considered in the vocab.
-    :param sep_token: The separator token used to separate log lines in input log sequence.
-    :param embedding_dim: The embedding dimension of the learnt token embeddings.
-    :param window: The window size parameter for word2vec and fastText models.
-    :param embedding_type: The type of embedding, currently supports glove, word2vec and fastText.
-    :param model_save_dir: The path to directory where vectorizer models would be saved.
+    :param max_token_len: maximum token length of the input.
+    :param min_token_count: minimum count of occurrences of a token in training data for it to be considered in the vocab.
+    :param sep_token: separator token used to separate log lines in input log sequence. Default is "[SEP]".
+    :param embedding_dim: embedding dimension of the learnt token embeddings.
+    :param window: window size parameter for word2vec and fastText models.
+    :param embedding_type: type of embedding, currently supports glove, word2vec and fastText. Default is "fasttext".
+    :param model_save_dir: path to directory where vectorizer models would be saved.
     """
 
     max_token_len: int = 10
@@ -53,12 +51,12 @@ class Semantic(VectorizationAlgo):
     Semantic vectorizer to convert loglines into token ids based on a embedding model and vocabulary
     (like word2vec, glove and fastText). It supports either pretrained models and pretrained vocabulary
     or training word embedding models like Word2Vec or FastText on the given training data.
+
+    :param params: A config object for semantic vectorizer.
     """
 
     def __init__(self, params: SemanticVectorizerParams):
-        """
-        :param params: The config object for semantic vectorizer.
-        """
+        
         self.params = params
         self.model = None
         self.vocab = None
@@ -203,8 +201,7 @@ class Semantic(VectorizationAlgo):
         """Transform method to run semantic vectorizer on loglines.
 
         :param loglines: The pandas Series containing the data to be vectorized.
-            Each data instance should be a logline or sequence of loglines concatenated by separator
-            token.
+            Each data instance should be a logline or sequence of loglines concatenated by separator token.
         :return: The vectorized log data.
         """
         log_vectors = []

@@ -14,7 +14,7 @@ import numpy as np
 
 class HetAnomalyDetectionConfig(AnomalyDetectionConfig):
     """
-    Heterogeneous Anomaly Detector Parameters
+    Heterogeneous Anomaly Detector Parameters.
 
     :param train_test_ratio: The ratio between test and training splits.
     """
@@ -26,7 +26,8 @@ class HetAnomalyDetector(AnomalyDetector):
     """
     Anomaly Detector Wrapper to handle heterogeneous log feature dataframe which include various attributes of log. For
     each attribute, we build its specific anomaly detector if the data satisfies the requirement.
-    This current version only supports anomaly detection on the constants.LOGLINE_COUNTS field (i.e. frequency count of the log events)
+    This current version only supports anomaly detection on the constants.LOGLINE_COUNTS field (i.e. frequency count of
+    the log events).
     """
 
     def __init__(self, config: HetAnomalyDetectionConfig):
@@ -40,11 +41,11 @@ class HetAnomalyDetector(AnomalyDetector):
 
     def preprocess(self, counter_df: pd.DataFrame):
         """
-        Split raw log feature dataframe by unique attribute ID
+        Splits raw log feature dataframe by unique attribute ID.
 
-        :param counter_df: log feature dataframe must contain at least two columns
+        :param counter_df: A log feature dataframe that must contain at least two columns
             ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
-            The rest of columns combinations are treated as log attribute ID
+            The rest of columns combinations are treated as log attribute ID.
         :return: The processed log feature dataframe.
         """
         ts_df = counter_df[[constants.LOG_COUNTS]]
@@ -55,13 +56,13 @@ class HetAnomalyDetector(AnomalyDetector):
         attr_list = counter_df["attribute"].unique()
         return attr_list
 
-    def fit_predict(self, log_feature: pd.DataFrame):
+    def fit_predict(self, log_feature: pd.DataFrame) -> pd.DataFrame:
         """
-        Train and predict anomaly scores
+        Trains a model and predicts anomaly scores.
 
-        :param log_features: log feature dataframe must contain at least two columns
+        :param log_features: A log feature dataframe that must contain at least two columns
             ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
-            The rest of columns combinations are treated as log attribute ID
+            The rest of columns combinations are treated as log attribute ID.
         :return: The predicted anomaly scores.
         """
         res = pd.DataFrame()

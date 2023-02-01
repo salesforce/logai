@@ -12,22 +12,18 @@ import numpy as np
 
 
 def tensor2flatten_arr(tensor):
-    """convert tensor to flat numpy array
-
-    Args:
-        tensor (torch.Tensor): tensor object
-
-    Returns:
-        numpy array: flat numpy array
+    """Convert tensor to flat numpy array.
+    
+    :param tensor: tensor object
+    :return: flat numpy array
     """
     return tensor.data.cpu().numpy().reshape(-1)
 
 
 def seed_everything(seed=1234):
-    """fix the random seeds throughout the python environment
+    """Fix the random seeds throughout the python environment
 
-    Args:
-        seed (int, optional): Seed value. Defaults to 1234.
+    :param seed: Seed value. Defaults to 1234.
     """
     random.seed(seed)
     os.environ["PYTHONHASHSEED"] = str(seed)
@@ -36,16 +32,12 @@ def seed_everything(seed=1234):
 
 
 def set_device(gpu: int = None):
-    """set device (cpu or gpu). Use -1 to specify cpu.
-    If not manually set device would be automatically set to gpu
-    if gpu is available otherwise cpu would be used
-
-    Args:
-        gpu (int, optional): device number of gpu (use -1 for cpu).
-         Defaults to None.
-
-    Returns:
-        torch.device : torch device type object
+    """Set device (cpu or gpu). Use -1 to specify cpu.
+    If not manually set device would be automatically set to gpu.
+    if gpu is available otherwise cpu would be used.
+    
+    :param gpu: device number of gpu (use -1 for cpu). Defaults to None.
+    :return:  torch device type object.
     """
     if not gpu:
         if torch.cuda.is_available():

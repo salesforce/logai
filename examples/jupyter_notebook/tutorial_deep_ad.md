@@ -236,7 +236,6 @@ workflow_config:
 Then to run the end to end log anomaly detection on the HDFS dataset using LSTM Anomaly Detector (a sequence-based deep-learning model), you can use a python script like below: 
 
 ```python
-import os 
 from logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow import OpenSetADWorkflowConfig
 from logai.utils.file_utils import read_file
 from logai.utils.dataset_utils import split_train_dev_test_for_anomaly_detection
@@ -299,6 +298,7 @@ print (predict_results)
 This kind of Anomaly Detection workflow for various Deep-Learning models and various experimental settings have also been automated in `logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow.OpenSetADWorkflow` class which can be easily invoked like the below example
 
 ```python
+import os 
 from logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow import OpenSetADWorkflow, get_openset_ad_config
 
 TEST_DATA_PATH = "tests/logai/test_data/HDFS_AD/HDFS_5k.log"

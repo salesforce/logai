@@ -35,8 +35,8 @@ def _js_divergence(p, q):
 class DistributionDivergenceParams(Config):
     """Parameters for distribution divergence based anomaly detector.
 
-    :param n_bins: number of bins to use to discretize the continuous distribution into a discrete distribution
-    :param type: list of types of distribution divergences. The allowed types are Kullback–Leibler ("KL"), Jensen–Shannon
+    :param n_bins: The number of bins to use to discretize the continuous distribution into a discrete distribution
+    :param type: A list of types of distribution divergences. The allowed types are Kullback–Leibler ("KL"), Jensen–Shannon
         ("JS"). It also allows a comma separated list of metrics like ("KL,JS" or "JS,KL").
     """
     n_bins: int = 100

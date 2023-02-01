@@ -16,14 +16,10 @@ from logai.algorithms.vectorization_algo.forecast_nn import ForecastNNVectorized
 
 @dataclass
 class TransformerParams(ForecastBasedNNParams):
-    """Config for transformer based log representation learning
+    """Config for transformer based log representation learning.
 
-    Inherits:
-        ForecastBasedNNParams : base class for parameters of forecasting based neural log representation moels
-        
-    nhead: int = 4 # number of attention heads
-    num_layers: int = 1  # number of hidden layers in the neural network
-
+    :param nhead: number of attention heads.
+    :param num_layers: number of hidden layers in the neural network.
     """
 
     nhead: int = 4
@@ -32,10 +28,7 @@ class TransformerParams(ForecastBasedNNParams):
 
 class Transformer(ForecastBasedNN):
     """Transformer based model for learning log representation through a self-supervised forecasting task over
-    log sequences
-
-    Inherits:
-        ForecastBasedNN : base class for forecast based neural log representation learning
+    log sequences.
     """
 
     def __init__(self, config: TransformerParams):
@@ -55,14 +48,10 @@ class Transformer(ForecastBasedNN):
         self.prediction_layer = nn.Linear(self.config.embedding_dim, num_labels)
 
     def forward(self, input_dict):
-        """forward method of transformer based model
+        """Forward method of transformer based model.
 
-        Args:
-            input_dict (dict): dict containing the session_idx, features, window_anomalies
-                and window_labels as in ForecastNNVectorizedDataset object
-
-        Returns:
-            dict: dict containing loss and prediction tensor
+        :param input_dict: dict containing the session_idx, features, window_anomalies and window_labels as in ForecastNNVectorizedDataset object.
+        :return: dict containing loss and prediction tensor.
         """
         if self.label_type == "anomaly":
             y = input_dict[ForecastNNVectorizedDataset.window_anomalies].long().view(-1)

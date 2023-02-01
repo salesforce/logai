@@ -17,7 +17,21 @@ import logging
 @dataclass
 class LogRecordObject:
     """
-    Log record object data model.
+    Log record object data model, compatible with log and event record definition in OpenTelemetry
+    https://opentelemetry.io/docs/reference/specification/logs/data-model/#log-and-event-record-definition.
+    
+    :param timestamp: The timestamp information of the log data.
+    :param attributes: The attributes of the log data (typically structured data with quantitative or categorical fields).
+    :param resource: The field denoting data source information generating the log data.
+    :param trace_id: The request trace id associated with the log data, if any.
+    :param span_id: The request span id associated with the log data, if any.
+    :param severity_text: The severity description or log level information.
+    :param severity_number: The severity number indicating log level.
+    :param body: The body of the log record, which contains the main information of the log. It can be consisting
+        of either unstructured, semi-structured or structured information.
+    :param labels: Any associated label information with the log (for e.g. binary anomaly label indicating
+        whether each line is anomalous or not).
+    :param _index: The indices of the log data.
     """
 
     timestamp: pd.DataFrame = pd.DataFrame()
@@ -73,7 +87,7 @@ class LogRecordObject:
     def from_dataframe(cls, data: pd.DataFrame, meta_data: dict = None):
         """
         Converts pandas.DataFrame to log record object.
-
+        
         :param data: The log data in pandas dataframe.
         :param meta_data: A dictionary that maps data.columns to fields of LogRecordObject.
         :return: A LogRecordObject object.
@@ -96,13 +110,9 @@ class LogRecordObject:
 
     def save_to_csv(self, filepath: str):
         """
-        Saves the logrecord object to a file.
-
-        Args:
-            filepath: The absolute path to filename where the logrecord object would be saved.
-
-        Raises:
-            Exception: Supports only file extensions (.csv, .json, and .pickle or .pkl).
+        Saves a log record object to file.
+        
+        :param filepath: The absolute path to filename where the logrecord object would be saved.
         """
         f = pathlib.Path(filepath)
         filepath_metadata = filepath.replace(f.suffix, "_metadata.json")
@@ -122,14 +132,10 @@ class LogRecordObject:
         return cls.from_dataframe(data=data, meta_data=meta_data)
 
     def select_by_index(self, indices: list, inplace: bool = False):
-        """Select a subset of a logrecord object based on selected indices.
-
-        Args:
-            indices: A list of indices to select.
-            inplace: Performs operation inplace or not. Defaults to False.
-
-        Returns:
-            LogRecordObject: Resulting logrecord object created from the selected indices.
+        """Selects a subset of a logrecord object based on selected indices.
+        
+        :param indices: A list of indices to select inplace (bool, optional): performs operation inplace or not.
+        :return: LogRecordObject: The resulting logr ecord object created from the selected indices.
         """
         if not inplace:
             target = LogRecordObject()
@@ -143,14 +149,10 @@ class LogRecordObject:
         return target
 
     def filter_by_index(self, indices: list, inplace: bool = False):
-        """Select a subset of a logrecord object by removing certain indices.
-
-        Args:
-            indices: A list of indices to remove.
-            inplace: Performs operation inplace or not. Defaults to False.
-
-        Returns:
-            LogRecordObject: Resulting logrecord object created after removing the indices.
+        """Selects a subset of a logrecord object by removing certain indices.
+        
+        :param indices: A list of indices to remove inplace (bool, optional): performs operation inplace or not.
+        :return: The resulting log record object created after removing the indices.
         """
         if not inplace:
             target = LogRecordObject()
@@ -165,9 +167,8 @@ class LogRecordObject:
 
     def dropna(self):
         """Method to drop entries containing NaN or null values in the logrecord object.
-
-        Returns:
-            LogRecordObject: Modified logrecord object after removing entries with NaN or null values.
+        
+        :return: The modified logrecord object after removing entries with NaN or null values.
         """
         null_body = self.body.isnull()
         null_body = null_body[null_body[constants.LOGLINE_NAME] == True]

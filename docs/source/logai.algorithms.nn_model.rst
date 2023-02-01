@@ -1,6 +1,15 @@
 logai.algorithms.nn\_model package
 ==================================
 
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   logai.algorithms.nn_model.forecast_nn
+   logai.algorithms.nn_model.logbert
+
 Submodules
 ----------
 

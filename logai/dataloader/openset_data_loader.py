@@ -16,9 +16,9 @@ from logai.dataloader.data_loader import FileDataLoader, DataLoaderConfig
 
 def get_config(dataset_name, filepath) -> DataLoaderConfig:
     """
-    Retrieve the configuration of open log datasets to load data.
-
-    :param dataset_name: Supported log dataset name from ("hdfs", "bgl", "HealthApp").
+    Retrieves the configuration of open log datasets to load data.
+    
+    :param dataset_name: The supported log dataset name from ("hdfs", "bgl", "HealthApp").
     :param filepath: The log file path.
     :return: The configuration to load open log datasets.
     """

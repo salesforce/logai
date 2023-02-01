@@ -19,30 +19,23 @@ from attr import dataclass
 
 @dataclass
 class CNNParams(ForecastBasedNNParams):
-    """Config for CNN based log representation learning
-
-    Inherits:
-        ForecastBasedNNParams: Config class for storing parameters of forecast based neural models
-
-    kernel_sizes: list = [2, 3, 4] # kernel size
+    """Config for CNN based log representation learning.
+    
+    :param kernel_sizes: the kernel size (default value: list = [2, 3, 4]).
     """
 
     kernel_sizes: list = [2, 3, 4]
 
 
 class CNN(ForecastBasedNN):
-    """CNN based model for learning log representation through a self-supervised forecasting task over log sequences
+    """
+    CNN based model for learning log representation through a self-supervised forecasting task over log sequences.
 
-    Args:
-        ForecastBasedNN: base class for forecasting based neural log representation learning
+    :param config: parameters for CNN log representation learning model.
     """
 
     def __init__(self, config: CNNParams):
-        """initialization for CNN based log representation learning
-
-        Args:
-            config (CNNParams): parameters for CNN log representation learning model
-        """
+        
         super().__init__(config)
         self.config = config
         self.config.model_name = "cnn"
@@ -65,14 +58,10 @@ class CNN(ForecastBasedNN):
         )
 
     def forward(self, input_dict):
-        """forward method for cnn model
+        """Forward method for cnn model.
 
-        Args:
-            input_dict (dict): dict containing the session_idx, features, window_anomalies
-                and window_labels as in ForecastNNVectorizedDataset object
-
-        Returns:
-            dict: dict containing loss and prediction tensor
+        :param input_dict : dict containing the session_idx, features, window_anomalies and window_labels as in ForecastNNVectorizedDataset object.
+        :return: dict containing loss and prediction tensor.
         """
         if self.label_type == "anomaly":
             y = input_dict[ForecastNNVectorizedDataset.window_anomalies].long().view(-1)

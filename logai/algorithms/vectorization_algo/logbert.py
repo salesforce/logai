@@ -29,18 +29,19 @@ from logai.algorithms.factory import factory
 
 @dataclass
 class LogBERTVectorizerParams(Config):
-    """Config class for logBERT Vectorizer.
+    """Config class for logBERT Vectorizer
 
-    :param model_name: The name of the model , using HuggingFace standardized naming.
-    :param use_fast: Whether to use fast tokenization or not.
-    :param truncation: Whether to truncate the input to max_token_len.
-    :param max_token_len: The maximum token length of input.
-    :param max_vocab_size: The maximum size of the vocabulary.
-    :param custom_tokens: The list of custom tokens.
-    :param train_batch_size: The batch size during training the vectorizer.
-    :param output_dir: The path to directory where the output would be saved.
-    :param tokenizer_dirpath: The path to the tokenizer where the vectorizer (logbert tokenizer) would be saved.
-    :param num_proc: The number of processes to be used when tokenizing.
+    :param model_name: name of the model , using HuggingFace standardized naming.
+    :param use_fast: whether to use fast tokenization or not.
+    :param truncation: whether to truncate the input to max_token_len.
+    :param max_token_len: maximum token length of input, if truncation is set to true.
+    :param max_vocab_size: maximum size  of the vocabulary.
+    :param custom_tokens: list of custom tokens.
+    :param train_batch_size: batch size during training the vectorizer.
+    :param output_dir: path to directory where the output would be saved.
+    :param tokenizer_dirpath: path to the tokenizer where the vectorizer (logbert tokenizer) would be saved.
+    :param num_proc: number of processes to be used when tokenizing.
+
     """
 
     model_name: str = ""
@@ -58,14 +59,13 @@ class LogBERTVectorizerParams(Config):
 @factory.register("vectorization", "logbert", LogBERTVectorizerParams)
 class LogBERT(VectorizationAlgo):
     """Vectorizer class for logbert.
+
+    :param config: A config object for specifying
+        parameters of log bert vectorizer.
     """
 
     def __init__(self, config: LogBERTVectorizerParams):
-        """
-        :param config: The config object for specifying
-            parameters of log bert vectorizer.
-        """
-
+    
         self.config = config
 
         self.special_tokens = ["[UNK]", "[PAD]", "[CLS]", "[SEP]", "[MASK]"]
@@ -104,7 +104,7 @@ class LogBERT(VectorizationAlgo):
     def fit(self, logrecord: LogRecordObject):
         """Fit method for training vectorizer for logbert.
 
-        :param logrecord: The logrecord object containing the training
+        :param logrecord: A log record object containing the training
             dataset over which vectorizer is trained.
         """
 
@@ -166,9 +166,9 @@ class LogBERT(VectorizationAlgo):
     def transform(self, logrecord: LogRecordObject):
         """Transform method for running vectorizer over logrecord object.
 
-        :param logrecord: The logrecord object containing the dataset
+        :param logrecord: A log record object containing the dataset
             to be vectorized.
-        :return: A HuggingFace dataset object.
+        :return: HuggingFace dataset object.
         """
         cleaned_logrecord = self._clean_dataset(logrecord)
         dataset = self._get_hf_dataset(cleaned_logrecord)
