@@ -40,7 +40,7 @@ class Word2Vec(VectorizationAlgo):
     Word2Vec algorithm for converting raw log data into word2vec vectors. This is a wrapper class for the Word2Vec
     model from gensim library https://radimrehurek.com/gensim/models/word2vec.html
 
-    :param max_token_len: the max token length to vectorize, longer sentences will be chopped.
+    :param max_token_len: The max token length to vectorize, longer sentences will be chopped.
     """
 
     def __init__(self, params: Word2VecParams):
@@ -49,10 +49,9 @@ class Word2Vec(VectorizationAlgo):
 
     def fit(self, loglines: pd.Series):
         """
-        Fit Word2Vec model.
+        Fits a Word2Vec model.
 
-        :param loglines: parsed loglines.
-        :return:
+        :param loglines: Parsed loglines.
         """
         max_token_len = self.params.max_token_len
 
@@ -73,10 +72,10 @@ class Word2Vec(VectorizationAlgo):
 
     def transform(self, loglines: pd.Series) -> pd.Series:
         """
-        Transform input loglines to log vectors
+        Transforms input loglines to log vectors.
 
-        :param loglines: pd.Series: input loglines.
-        :return: pd.Series
+        :param loglines: The input loglines.
+        :return: The transformed log vectors.
         """
         log_vectors = []
         max_len = 0
@@ -98,6 +97,6 @@ class Word2Vec(VectorizationAlgo):
 
     def summary(self):
         """
-        Generate model summary.
+        Generates model summary.
         """
         return self.model.summary()

@@ -60,7 +60,7 @@ class LogBERTVectorizerParams(Config):
 class LogBERT(VectorizationAlgo):
     """Vectorizer class for logbert.
 
-    :param config: config object for specifying
+    :param config: A config object for specifying
         parameters of log bert vectorizer.
     """
 
@@ -104,7 +104,7 @@ class LogBERT(VectorizationAlgo):
     def fit(self, logrecord: LogRecordObject):
         """Fit method for training vectorizer for logbert.
 
-        :param logrecord: logrecord object containing the training
+        :param logrecord: A log record object containing the training
             dataset over which vectorizer is trained.
         """
 
@@ -166,9 +166,8 @@ class LogBERT(VectorizationAlgo):
     def transform(self, logrecord: LogRecordObject):
         """Transform method for running vectorizer over logrecord object.
 
-        :param logrecord: logrecord object containing the dataset
+        :param logrecord: A log record object containing the dataset
             to be vectorized.
-
         :return: HuggingFace dataset object.
         """
         cleaned_logrecord = self._clean_dataset(logrecord)

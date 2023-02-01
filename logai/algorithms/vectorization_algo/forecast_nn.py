@@ -86,7 +86,7 @@ class ForecastNNVectorizerParams(Config):
 
 @factory.register("vectorization", "forecast_nn", ForecastNNVectorizerParams)
 class ForecastNN(VectorizationAlgo):
-    """Vectorizer Class for forecast based neural models for log representation learning
+    """Vectorizer Class for forecast based neural models for log representation learning.
     
     :param config: config object specifying parameters of forecast based neural log repersentation learning model.
     """
@@ -142,7 +142,7 @@ class ForecastNN(VectorizationAlgo):
     def fit(self, logrecord: LogRecordObject):
         """Fit method to train vectorizer.
 
-        :param logrecord: logrecord object to train the vectorizer on.
+        :param logrecord: A log record object to train the vectorizer on.
         """
         if self.sequential_vectorizer.vocab is None or (
             self.config.feature_type == "semantics"
@@ -166,9 +166,9 @@ class ForecastNN(VectorizationAlgo):
         self._dump_meta_data()
 
     def transform(self, logrecord: LogRecordObject):
-        """Transform method to run vectorizer on logrecord object
+        """Transform method to run vectorizer on logrecord object.
 
-        :param logrecord: logrecord object to be vectorized.
+        :param logrecord: A log record object to be vectorized.
         :return: ForecastNNVectorizedDataset object containing the vectorized dataset.
         """
         if self.config.feature_type == "sequential":

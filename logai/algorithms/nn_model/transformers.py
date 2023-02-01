@@ -27,14 +27,14 @@ from logai.utils import constants
 
 @dataclass
 class TransformerAlgoConfig(Config):
-    """Config class for Transformer based model for log classification tasks  
+    """Config class for Transformer based model for log classification tasks.
     """
     tokenizer_config: dict = {"name": "auto", "model": "bert-base-cased"}
     trainer_config: dict = {}
 
 
 class LogDataset(torch.utils.data.Dataset):
-    """Wrapper class for Log Dataset, to wrap over torch Dataset class 
+    """Wrapper class for Log Dataset, to wrap over torch Dataset class.
     """
     def __init__(self, encodings, labels):
         self.encodings = encodings
@@ -55,7 +55,7 @@ class TransformerAlgo:
     For e.g. log anomaly detection is one type of log classfication task where the labels
     are Normal (Label 0) or Anomalous (Label 1). Currently it supports only binary 
     classification, to change this `num_labels` of AutoModelForSequenceClassification 
-    has to be changed accordingly along with the prediction logic in predict method
+    has to be changed accordingly along with the prediction logic in predict method.
     """
     def __init__(self, config: TransformerAlgoConfig):
         self.config = config
@@ -69,20 +69,20 @@ class TransformerAlgo:
         return
 
     def save(self, output_dir: str):
-        """save model in given directory
+        """Save model in given directory.
 
-        :param output_dir: (str): path to output directory where model should be dumped 
+        :param output_dir: The path to output directory where model should be dumped.
         """
         self.trainer.save_model(output_dir)
         return
 
     def train(self, train_logs: pd.Series, train_labels: pd.Series):
-        """train method for Transformer based pretrained language model with
+        """Train method for Transformer based pretrained language model with
         a sequence classification head for supervised log classification task. 
-        Internally this method also splits the available training logs into train and dev data 
+        Internally this method also splits the available training logs into train and dev data.
 
-        :param train_logs: (pd.Series): training log vectors data (after LogVectorizer)
-        :param train_labels: (pd.Series): training label data 
+        :param train_logs: The training log vectors data (after LogVectorizer).
+        :param train_labels: The training label data.
         """
         train_logs = train_logs.rename(constants.LOG_EVENTS)
         if not self.tokenizer:
@@ -133,10 +133,10 @@ class TransformerAlgo:
 
     def train_with_native_torch(self, train_logs: pd.Series, train_labels: pd.Series):
         """
-        Train models in native torch way. Use as needed
+        Train models in native torch way.
 
-        :param train_logs: (pd.Series): training log features data (after LogVectorizer)
-        :param train_labels: (pd.Series): label data for training logs
+        :param train_logs: The training log features data (after LogVectorizer).
+        :param train_labels: The label data for training logs.
         """
         if not self.tokenizer:
             if self.config.tokenizer_config["name"] == "auto":
@@ -161,14 +161,13 @@ class TransformerAlgo:
         return
 
     def predict(self, test_logs: pd.Series, test_labels: pd.Series) -> Tuple[pd.Series, np.ndarray, Dict[str, float]]:
-        """Predict method for running evaluation on test log data
+        """Predict method for running evaluation on test log data.
 
-        :param test_logs: (pd.Series): test log features data (output of LogVectorizer)
-        :param test_labels: (pd.Series): labels of test log data 
-        :return:
-        - res (pd.Series): Predicted test labels as pandas Series object
-        - label_ids (`np.ndarray`, *optional*): True test labels (if the dataset contained some).
-        - metrics (`Dict[str, float]`, *optional*): The potential dictionary of metrics
+        :param test_logs: The test log features data (output of LogVectorizer).
+        :param test_labels: The labels of test log data.
+        :return: - res (pd.Series): Predicted test labels as pandas Series object.
+            - label_ids (`np.ndarray`, *optional*): True test labels (if the dataset contained some).
+            - metrics (`Dict[str, float]`, *optional*): The potential dictionary of metrics.
 
         """
         test_logs = test_logs.rename(constants.LOG_EVENTS)

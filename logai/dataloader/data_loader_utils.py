@@ -14,7 +14,7 @@ def generate_logformat_regex(log_format):
     """
     Function to generate regular expression to split log messages.
 
-    return: headers, regex
+    return: headers, regex.
     """
     headers = []
     splitters = re.split(r"(<[^<>]+>)", log_format)
@@ -57,7 +57,7 @@ def log_to_dataframe(log_file, regex, headers):
 
 def load_data(filename, log_format):
     """
-    Load log from given file and format.
+    Loads log from given file and format.
 
     :param filename: Files to read.
     :param log_format: Target log format.

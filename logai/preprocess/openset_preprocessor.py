@@ -15,7 +15,7 @@ from logai.utils import constants
 class OpenSetPreprocessor(Preprocessor):
     """Preprocessor class for Open log datasets.
         
-    :param config: config object specifying parameters of log preprocessing for open log datasets.
+    :param config: A config object specifying parameters of log preprocessing for open log datasets.
     """
     def __init__(self, config: PreprocessorConfig):
         super().__init__(config)
@@ -36,8 +36,8 @@ class OpenSetPreprocessor(Preprocessor):
     def clean_log(self, logrecord: LogRecordObject) -> LogRecordObject:
         """Preprocessing cleaning of logrecord object creating from open log datasets.
         
-        :param logrecord: logrecord object containing the raw log data from open datasets.
-        :return: cleaned logrecord object.
+        :param logrecord: A log record object containing the raw log data from open datasets.
+        :return: The cleaned logrecord object.
         """
         preprocessed_loglines, custom_patterns = super().clean_log(
             logrecord.body[constants.LOGLINE_NAME]

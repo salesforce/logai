@@ -51,7 +51,7 @@ class IsolationForestDetector(AnomalyDetectionAlgo):
     def __init__(self, params: IsolationForestParams):
         """Constructor for isolation forest based anomaly detector.
         
-        :param params: object of type IsolationForestParams containing parameters of Isolation Forest.
+        :param params: An object of IsolationForestParams containing parameters of Isolation Forest.
         """
         self.model = IsolationForest(
             n_estimators=params.n_estimators,

@@ -94,7 +94,7 @@ class IPLoM(ParsingAlgo):
     def parse(self, loglines: pd.Series) -> pd.Series:
         """Parsing method to parse the raw log data.
 
-        :param loglines: The raw log data
+        :param loglines: The raw log data.
         :returns: The parsed log data.
         """
         self._Step1(loglines)

@@ -31,10 +31,9 @@ def split_train_dev_test_for_anomaly_detection(
         If False, then it uses the chronological ordering, where the first (chronologically first) split will
         constitute train data, second one development data and third one as test data. Defaults to False.
 
-    :return:
-    - logrecord_train: logrecord object containing train data
-    - logrecord_dev: logrecord object containing dev data
-    - logrecord_test: logrecord object containing test data
+    :return: - logrecord_train: logrecord object containing train data.
+        - logrecord_dev: logrecord object containing dev data.
+        - logrecord_test: logrecord object containing test data.
     
     """
 

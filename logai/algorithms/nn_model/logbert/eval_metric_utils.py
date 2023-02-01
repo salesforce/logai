@@ -68,25 +68,24 @@ def __plot_scores_kde(scores_pos, scores_neg, fig_name):
 def compute_metrics(eval_metrics_per_instance_series, test_labels, test_counts=None):
     """Computing evaluation metric scores for anomaly detection.
 
-    :param eval_metrics_per_instance_series:(dict): dict object consisting 
+    :param eval_metrics_per_instance_series:(dict): dict object consisting
         of eval metrics for each instance index.
     :param test_labels:(dict): gold labels for each instance index.
     :param test_counts:(dict): counts of each instance index.
     :raises: Exception: IndexError if the indices of eval_metrics_per_instance_series
-         do not match with indices of test_labels.
-    :return: list of tuples containing labels and scores computed for each index
-    - y: list of anomaly label for each instance.
-    - loss_mean: list of mean loss (over all masked non-padded tokens) for each instance.
-    - loss_max: list of max loss (over all masked non-padded tokens) for each instance.
-    - loss_top6_mean: list of mean loss (averaged over top-k masked non-padded tokens) for each
-         instance, k = 6(following LanoBERT paper https://arxiv.org/pdf/2111.09564.pdf).
-    - scores_top6_max_prob: for each instance, we take the max prob. score obtained and average
-         over the top-k masked (non-padded) token prediction, k = 6.
-    - scores_top6_min_logprob: for each instance, we take the min logprob score obtained and average
-         over the top-k masked (non-padded) token prediction, k = 6.
-    - scores_top6_max_entropy: for each instance we take the max entropy score obtained and average 
+        do not match with indices of test_labels.
+    :return: list of tuples containing labels and scores computed for each index.
+        - y: list of anomaly label for each instance.
+        - loss_mean: list of mean loss (over all masked non-padded tokens) for each instance.
+        - loss_max: list of max loss (over all masked non-padded tokens) for each instance.
+        - loss_top6_mean: list of mean loss (averaged over top-k masked non-padded tokens) for each
+        instance, k = 6(following LanoBERT paper https://arxiv.org/pdf/2111.09564.pdf).
+        - scores_top6_max_prob: for each instance, we take the max prob. score obtained and average
         over the top-k masked (non-padded) token prediction, k = 6.
-
+        - scores_top6_min_logprob: for each instance, we take the min logprob score obtained and average
+        over the top-k masked (non-padded) token prediction, k = 6.
+        - scores_top6_max_entropy: for each instance we take the max entropy score obtained and average
+        over the top-k masked (non-padded) token prediction, k = 6.
     """
     eval_metrics_per_instance_series["indices"] = eval_metrics_per_instance_series[
         "indices"
@@ -189,13 +188,13 @@ def __compute_auc_roc(
     :param loss_mean: (list): list of mean loss (over all masked non-padded tokens) for each instance.
     :param loss_max: (list): list of max loss (over all masked non-padded tokens) for each instance.
     :param loss_top6_mean: (list): list of mean loss (averaged over top-k masked non-padded tokens)
-         for each instance, k = 6 (following LanoBERT paper https://arxiv.org/pdf/2111.09564.pdf).
+        for each instance, k = 6 (following LanoBERT paper https://arxiv.org/pdf/2111.09564.pdf).
     :param scores_top6_max_prob: (list): for each instance, we take the max prob. score obtained
-         and average over the top-k masked (non-padded) token prediction, k = 6.
+        and average over the top-k masked (non-padded) token prediction, k = 6.
     :param scores_top6_min_logprob: (list): for each instance, we take the min logprob score obtained
-         and average over the top-k masked (non-padded) token prediction, k = 6.
+        and average over the top-k masked (non-padded) token prediction, k = 6.
     :param scores_top6_max_entropy: (list): for each instance we take the max entropy score obtained
-         and average over the top-k masked (non-padded) token prediction, k = 6.
+        and average over the top-k masked (non-padded) token prediction, k = 6.
     :param plot_graph: (bool, optional): whether to plot roc graph. Defaults to False.
     :param plot_histogram: (bool, optional): whether to plot scores histogram. Defaults to False.
     """

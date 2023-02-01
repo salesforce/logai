@@ -20,6 +20,7 @@ def get_tokenizer(tokenizer_dirpath):
 
 def get_special_tokens():
     """gets special tokens
+
     :return: list of special tokens
     """
     return [

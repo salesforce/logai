@@ -76,12 +76,11 @@ class ETSDetector(AnomalyDetectionAlgo):
 
     def fit(self, log_features: pd.DataFrame):
         """
-
         Fit method to train ETS Anomaly Detector.
 
-        :param log_features: log feature dataframe must only contain two columns
+        :param log_features: A log feature dataframe that must only contain two columns
             ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
-        :return: train_scores: anomaly scores dataframe
+        :return: train_scores: The anomaly scores dataframe
             ['index':log_features.index, 'timestamps': datetime, 'anom_score': scores, 'trainval':
             whether it is training set.
         """
@@ -99,11 +98,11 @@ class ETSDetector(AnomalyDetectionAlgo):
 
     def predict(self, log_features: pd.DataFrame):
         """
-        Predict anomaly scores for log_feature["timestamp", constants.LOGLINE_COUNTS].
+        Predicts anomaly scores for log_feature["timestamp", constants.LOGLINE_COUNTS].
 
-        :param log_features: log feature dataframe must only contain two columns
+        :param log_features: A log feature dataframe that must only contain two columns
             ['timestamp': datetime, constants.LOGLINE_COUNTS: int].
-        :return: test_scores: anomaly scores dataframe
+        :return: test_scores: The anomaly scores dataframe
             ['index':log_features.index, 'timestamps': datetime, 'anom_score': scores, 'trainval':
             whether it is training set.
         """

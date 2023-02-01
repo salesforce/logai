@@ -44,10 +44,10 @@ class OneHotEncoding(CategoricalEncodingAlgo):
 
     def fit_transform(self, log_attributes: pd.DataFrame) -> pd.DataFrame:
         """
-        Fit and transform log attributes into one-hot encoding categories.
+        Fits and transforms log attributes into one-hot encoding categories.
         
-        :param log_attributes: list of log attributes in text form.
-        :return: pd.DataFrame object of categories in on-hot encoding.
+        :param log_attributes: A list of log attributes in text form.
+        :return: A pandas dataframe of categories in on-hot encoding.
         """
         col_names = log_attributes.columns
         if len(col_names) == 1:

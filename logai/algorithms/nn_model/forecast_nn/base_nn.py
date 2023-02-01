@@ -28,25 +28,25 @@ class ForecastBasedNNParams(Config):
     Config for neural representation learning for logs using forecasting based self-supervised tasks.
 
     :param model_name: name of the model.
-    :param metadata_filepath: path to file containing meta data (pretrained token embeddings in case if 
+    :param metadata_filepath: path to file containing meta data (pretrained token embeddings in case if
         semantic log representations are used in feature type).
     :param output_dir: path to output directory where the model would be dumped.
     :param feature_type: (should be "semantics" or "sequential")type of log feature representations used
-         for the log-lines or log-sequences.
-    :param label_type: type of label (should be "anomaly" or "next_log") based on whether supervised 
+        for the log-lines or log-sequences.
+    :param label_type: type of label (should be "anomaly" or "next_log") based on whether supervised
         or unsupervised (forcast based) model is being used.
-    :param eval_type: (should be "session" or None) whether to aggregate and report the evaluation 
+    :param eval_type: (should be "session" or None) whether to aggregate and report the evaluation
         metrics at the level of sessions (based on the span_id in the log data) or at the level of each logline.
     :param topk: the prediction at top-k to consider, when deciding whether an evaluation instance is an anomaly or not.
     :param embedding_dim: dimension of the embedding space. Both for sequential and semantic type feature representation,
-         the input log feature representation is passed through an embedding layer which projects it to the embedding_dim.
+        the input log feature representation is passed through an embedding layer which projects it to the embedding_dim.
     :param hidden_size: dimension of the hidden representations.
     :param freeze: whether to freeze the embedding layer to use the pretrained embeddings or to further train it on the given task.
     :param gpu: device number if gpu is used (otherwise -1 or None will use cpu).
     :param patience: number of eval_steps, the model waits for performance on validation data to improve, before early stopping the training.
     :param num_train_epochs: number of training epochs.
     :param batch_size: batch size.
-    :param learning_rate:learning rate.
+    :param learning_rate: learning rate.
     """
 
     model_name: str = None
@@ -71,8 +71,8 @@ class Embedder(nn.Module):
 
     :param vocab_size: vocabulary size.
     :param embedding_dim: embedding dimension.
-    :param pretrain_matrix: torch.Tensor object containing the pretrained embedding of the vocabulary tokens. Defaults to None.
-    :param freeze: Freeze embeddings to pretrained ones if set to True, otherwise makes the embeddings learnable. Defaults to False.
+    :param pretrain_matrix: torch.Tensor object containing the pretrained embedding of the vocabulary tokens.
+    :param freeze: Freeze embeddings to pretrained ones if set to True, otherwise makes the embeddings learnable.
     """
 
     def __init__(
@@ -82,8 +82,6 @@ class Embedder(nn.Module):
         pretrain_matrix: np.array = None,
         freeze: bool = False,
     ):
-
-        
         super(Embedder, self).__init__()
         if pretrain_matrix is not None:
             self.embedding_layer = nn.Embedding.from_pretrained(
@@ -101,6 +99,7 @@ class Embedder(nn.Module):
 class ForecastBasedNN(nn.Module):
     """
     Model for learning log representations through a forecasting based self-supervised task.
+
     :param config: ForecastBasedNNParams config class for parameters of forecasting based neural log representation models.
     """
 
@@ -141,7 +140,7 @@ class ForecastBasedNN(nn.Module):
         Predict method on test data.
 
         :param test_loader: dataloader (torch.utils.data.DataLoader) for test (or development) dataset.
-        :param dtype: can be of type "test" or "dev" based on which the predict method is called for. Defaults to "test".
+        :param dtype: can be of type "test" or "dev" based on which the predict method is called for.
         :return: dict object containing the overall evaluation metrics for test (or dev) data.
         """
         logging.info("Evaluating {} data.".format(dtype))
@@ -394,7 +393,8 @@ class ForecastBasedNN(nn.Module):
 
     def load_model(self, model_save_file: str = ""):
         """Loading model from file.
-        :param model_save_file : path to file where model would be saved. Defaults to "".
+
+        :param model_save_file: path to file where model would be saved.
         """
         logging.info("Loading model from {}".format(self.model_save_file))
         self.load_state_dict(torch.load(model_save_file, map_location=self.device))

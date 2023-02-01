@@ -25,7 +25,7 @@ class LabelEncoding(CategoricalEncodingAlgo):
         """
         Fits and transforms log_attributes into label encoding categories.
 
-        :param log_attributes: list of log attributes in text format.
+        :param log_attributes: A list of log attributes in text format.
         :return: The label encoding categories.
         """
 

@@ -121,24 +121,6 @@ class Node:
 @factory.register("parsing", "drain", DrainParams)
 class Drain(ParsingAlgo):
     def __init__(self, params: DrainParams, profiler=NullProfiler()):
-
-        """
-        Attributes
-        ----------
-            depth : max depth levels of log clusters. Minimum is 2.
-                For example, for depth==4:
-                Root is considered depth level 1.
-                Token count is considered depth level 2.
-                First log token is considered depth level 3.
-                Log clusters below first token node are considered depth level 4.
-            sim_th : similarity threshold - if percentage of similar tokens for a log message is below this
-                number, a new log cluster will be created.
-            max_children : max number of children of an internal node
-            max_clusters : max number of tracked clusters (unlimited by default).
-                When this number is reached, model starts replacing old clusters
-                with a new ones according to the LRU policy.
-            extra_delimiters: delimiters to apply when splitting log message into words (in addition to whitespace).
-        """
         if params.depth < 3:
             raise ValueError("depth argument must be at least 3")
 

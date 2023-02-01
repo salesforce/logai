@@ -324,10 +324,9 @@ class OpenSetADWorkflow:
         """splitting open log datasets into train dev and test splits according to the parameters specified in the config object
 
         :param logrecord: (LogRecordObject): logrecord object to be split into train, dev and test
-        :return:
-        - train_data: logrecord object containing training dataset
-        - dev_data: logrecord object containing dev dataset
-        - test_data: logrecord object containing test dataset
+        :return: - train_data: logrecord object containing training dataset.
+            - dev_data: logrecord object containing dev dataset.
+            - test_data: logrecord object containing test dataset
         """
         output_filepath_suffix = (
             self._get_parse_type_str()
@@ -413,10 +412,9 @@ class OpenSetADWorkflow:
     def run_data_processing_workflow(self):
         """Running data processing pipeline for log anomaly detection workflow
 
-        :return:
-        - train_data: logrecord object containing training dataset
-        - dev_data: logrecord object containing dev dataset
-        - test_data: logrecord object containing test dataset
+        :return: - train_data: logrecord object containing training dataset.
+            - dev_data: logrecord object containing dev dataset.
+            - test_data: logrecord object containing test dataset
         """
         logrecord = self.load_data()
         logrecord = self.preprocess_log_data(logrecord=logrecord)
@@ -455,10 +453,9 @@ class OpenSetADWorkflow:
         :param train_logrecord: (LogRecordObject): logrecord object of the training dataset
         :param dev_logrecord: (LogRecordObject): logrecord object of the dev dataset
         :param test_logrecord: (LogRecordObject): logrecord object of the test dataset
-        :return:
-        - train_data : vectorized train data
-        - dev_data: vectorized dev data
-        - test_data: vectorized test data
+        :return: - train_data : vectorized train data.
+            - dev_data: vectorized dev data.
+            - test_data: vectorized test data.
         """
         self.load_vectorizer()
         self.vectorizer.fit(train_logrecord)

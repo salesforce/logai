@@ -148,7 +148,5 @@ class TfIdf(VectorizationAlgo):
     def summary(self):
         """
         Generates model summary.
-
-        :return: TfidfVectorizer.summary.
         """
         return self.model.summary()

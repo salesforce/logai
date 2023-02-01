@@ -32,7 +32,7 @@ class SemanticVectorizerParams(Config):
     :param sep_token: separator token used to separate log lines in input log sequence. Default is "[SEP]".
     :param embedding_dim: embedding dimension of the learnt token embeddings.
     :param window: window size parameter for word2vec and fastText models.
-    :param embedding_type:type of embedding, currently supports glove, word2vec and fastText. Default is "fasttext".
+    :param embedding_type: type of embedding, currently supports glove, word2vec and fastText. Default is "fasttext".
     :param model_save_dir: path to directory where vectorizer models would be saved.
     """
 
@@ -52,7 +52,7 @@ class Semantic(VectorizationAlgo):
     (like word2vec, glove and fastText). It supports either pretrained models and pretrained vocabulary
     or training word embedding models like Word2Vec or FastText on the given training data.
 
-    :param params: config object for semantic vectorizer.
+    :param params: A config object for semantic vectorizer.
     """
 
     def __init__(self, params: SemanticVectorizerParams):
@@ -201,8 +201,7 @@ class Semantic(VectorizationAlgo):
         """Transform method to run semantic vectorizer on loglines.
 
         :param loglines: The pandas Series containing the data to be vectorized.
-            Each data instance should be a logline or sequence of loglines concatenated by separator
-            token.
+            Each data instance should be a logline or sequence of loglines concatenated by separator token.
         :return: The vectorized log data.
         """
         log_vectors = []

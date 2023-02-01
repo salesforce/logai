@@ -22,15 +22,15 @@ class ThunderbirdPreprocessor(OpenSetPreprocessor):
     def _get_ids(self, logrecord: LogRecordObject) -> pd.Series:
         """Get ids of loglines.
 
-        :param logrecord: logrecord object.
-        :return: pandas series containing the ids of te loglines.
+        :param logrecord: A log record object.
+        :return: A pandas series containing the ids of te loglines.
         """
         return logrecord.span_id[constants.SPAN_ID]
 
     def _get_labels(self, logrecord: LogRecordObject):
         """Get anomaly detection labels of loglines.
         
-        :param logrecord:  logrecord object containing hdfs data.
-        :return: containing the anomaly detection labels of loglines.
+        :param logrecord:  A log record object containing hdfs data.
+        :return: The anomaly detection labels of loglines.
         """
         return logrecord.labels[constants.LABELS].apply(lambda x: int(x != "-"))
