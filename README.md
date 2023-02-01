@@ -98,16 +98,16 @@ pip install logai
 LogAI core library is light-weight with limited dependent packages installed. Users can install optional dependencies
 to enable extended functionalities of LogAI.
 
-**Deep learning based log analysis**. To conduct deep learning model related tasks and run benchmarking,
+**Deep Learning Log Analysis**. To conduct deep learning model related tasks and run benchmarking,
 please install extra requirements by `pip install "logai[deep-learning]"`.
 
-**Enable LogAI GUI portal***. To use LogAI GUI portal, 
+**Enable LogAI GUI Portal***. To use LogAI GUI portal, 
 please install extra requirements by `pip install "logai[gui]"`.
 
-**LogAI development**. To contribute to LogAI development, build and test code changes, 
-please install extra requirements by: `pip install "logai[dev]"`.
+**LogAI Development**. To contribute to LogAI development, build and test code changes, 
+please install extra requirements by `pip install "logai[dev]"`.
 
-**Complete installation**. you can install the full list of dependencies by: `pip install "logai[all]"`.
+**Complete Installation**. you can install the full list of dependencies by `pip install "logai[all]"`.
 
 ### Known Issues
 
