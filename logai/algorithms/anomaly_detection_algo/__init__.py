@@ -8,22 +8,30 @@
 from .dbl import DBLDetector
 from .distribution_divergence import DistributionDivergence
 from .ets import ETSDetector
-from .forecast_nn import ForecastBasedLSTM, ForecastBasedCNN, ForecastBasedTransformer
 from .isolation_forest import IsolationForestDetector
 from .local_outlier_factor import LOFDetector
-from .logbert import LogBERT
 from .one_class_svm import OneClassSVMDetector
+from logai.utils.misc import is_torch_available, \
+    is_transformers_available
 
-
-__all__ = [
+_MODULES = [
     "DBLDetector",
     "DistributionDivergence",
     "ETSDetector",
-    "ForecastBasedLSTM",
-    "ForecastBasedCNN",
-    "ForecastBasedTransformer",
     "IsolationForestDetector",
     "LOFDetector",
-    "LogBERT",
-    "OneClassSVMDetector",
+    "OneClassSVMDetector"
 ]
+
+if is_torch_available() and is_transformers_available():
+    from .forecast_nn import ForecastBasedLSTM, ForecastBasedCNN, ForecastBasedTransformer
+    from .logbert import LogBERT
+
+    _MODULES += [
+        "LogBERT",
+        "ForecastBasedLSTM",
+        "ForecastBasedCNN",
+        "ForecastBasedTransformer"
+    ]
+
+__all__ = _MODULES

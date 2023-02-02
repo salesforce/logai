@@ -5,6 +5,8 @@
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 #
 #
+from logai.utils.misc import is_torch_available, \
+    is_transformers_available
 
 
 class AlgorithmFactory:
@@ -17,6 +19,10 @@ class AlgorithmFactory:
         "parsing": {},
         "clustering": {},
         "vectorization": {},
+    }
+    _algorithms_with_torch = {
+        "lstm", "cnn", "transformer",
+        "logbert", "forecast_nn"
     }
 
     def __new__(cls):
@@ -58,6 +64,17 @@ class AlgorithmFactory:
         """
         return cls._algorithms[task].pop(name, None)
 
+    def _check_algorithm(self, task, name):
+        if name in self._algorithms_with_torch:
+            if not is_torch_available():
+                raise ImportError("Python lib torch is not installed, "
+                                  "please install it via `pip install torch`.")
+            if not is_transformers_available():
+                raise ImportError("Python lib transformers is not installed, "
+                                  "please install it via `pip install transformers`.")
+        assert name in self._algorithms[task], \
+            f"Unknown algorithm {name}, please choose from {self._algorithms[task].keys()}."
+
     def get_config_class(self, task, name):
         """
         Gets the corresponding configuration class given an algorithm name.
@@ -65,7 +82,7 @@ class AlgorithmFactory:
         :param task: The task name.
         :param name: The algorithm name.
         """
-        assert name in self._algorithms[task], f"Unknown algorithm {name}."
+        self._check_algorithm(task, name)
         return self._algorithms[task][name][0]
 
     def get_algorithm_class(self, task, name):
@@ -75,7 +92,7 @@ class AlgorithmFactory:
         :param task: The task name.
         :param name: The algorithm name.
         """
-        assert name in self._algorithms[task], f"Unknown algorithm {name}."
+        self._check_algorithm(task, name)
         return self._algorithms[task][name][1]
 
     def get_config(self, task, name, config_dict):
@@ -86,7 +103,7 @@ class AlgorithmFactory:
         :param name: The algorithm name.
         :param config_dict: The config dictionary.
         """
-        assert name in self._algorithms[task], f"Unknown algorithm {name}."
+        self._check_algorithm(task, name)
         return self._algorithms[task][name][0].from_dict(config_dict)
 
     def get_algorithm(self, task, name, config):
@@ -97,7 +114,7 @@ class AlgorithmFactory:
         :param name: The algorithm name.
         :param config: The config instance.
         """
-        assert name in self._algorithms[task], f"Unknown algorithm {name}."
+        self._check_algorithm(task, name)
         config_class, algorithm_class = self._algorithms[task][name]
         if config and config.algo_params:
             assert isinstance(

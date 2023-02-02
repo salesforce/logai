@@ -76,11 +76,11 @@ class ForcastBasedNeuralAD(NNAnomalyDetectionAlgo):
 @factory.register("detection", "lstm", LSTMParams)
 class ForecastBasedLSTM(ForcastBasedNeuralAD):
     """Forecasting based lstm model for log anomaly detection.
+
     :param config: A config object containing parameters for LSTM based anomaly detection model.
     """
 
     def __init__(self, config: LSTMParams):
-        
         super().__init__(config)
         self.config = config
         self.model = LSTM(config=self.config)
@@ -89,6 +89,7 @@ class ForecastBasedLSTM(ForcastBasedNeuralAD):
 @factory.register("detection", "cnn", CNNParams)
 class ForecastBasedCNN(ForcastBasedNeuralAD):
     """Forecasting based cnn model for log anomaly detection.
+
     :param config: A config object containing parameters for CNN based anomaly detection model.
     """
 
@@ -101,11 +102,11 @@ class ForecastBasedCNN(ForcastBasedNeuralAD):
 @factory.register("detection", "transformer", TransformerParams)
 class ForecastBasedTransformer(ForcastBasedNeuralAD):
     """Forecasting based transformer model for log anomaly detection.
+
     :param config: A config object containing parameters for Transformer based anomaly detection model.
     """
 
     def __init__(self, config: TransformerParams):
-        
         super().__init__(config)
         self.config = config
         self.model = Transformer(config=self.config)
