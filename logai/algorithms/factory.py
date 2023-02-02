@@ -66,12 +66,9 @@ class AlgorithmFactory:
 
     def _check_algorithm(self, task, name):
         if name in self._algorithms_with_torch:
-            if not is_torch_available():
-                raise ImportError("Python lib torch is not installed, "
-                                  "please install it via `pip install torch`.")
-            if not is_transformers_available():
-                raise ImportError("Python lib transformers is not installed, "
-                                  "please install it via `pip install transformers`.")
+            if not is_torch_available() or not is_transformers_available():
+                raise ImportError("Some deep learning packages are missing. "
+                                  "Please install them via `pip install logai[deep-learning]`.")
         assert name in self._algorithms[task], \
             f"Unknown algorithm {name}, please choose from {self._algorithms[task].keys()}."
 
