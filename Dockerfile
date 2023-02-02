@@ -15,7 +15,7 @@ RUN apt-get install nano
 # Install dependencies
 RUN pip install --upgrade pip gunicorn
 RUN pip install ".[all]"
-RUN python -m nltk.downloader
+RUN python -m nltk.downloader punkt
 
 # Setup PYTHONPATH
 ENV PYTHONPATH "${PYTHONPATH}:./"
