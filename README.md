@@ -46,24 +46,13 @@ For full license text, see the LICENSE file in the repo root or https://opensour
 * [License](#license)
 
 ## Introduction
-
-Software and System logs record runtime information about processes executing within a system. 
-These logs have become the most critical and ubiquitous forms of observability data that help developers 
-understand system behavior, monitor system health and resolve issues. However, the volume of logs generated can be 
-humongous (of the order of petabytes per day) especially for complex distributed systems, such as cloud, 
-search engine, social media, etc. This has propelled a lot of research on developing AI-based log based analytics and 
-intelligence solutions that can process huge volume of raw logs and generate insights. In order to enable 
-users to perform multiple types of AI-based log analysis tasks in a uniform manner, 
-we introduce LogAI, a one-stop open source library for log analytics and intelligence. 
-LogAI supports tasks such as log summarization, log clustering and log anomaly detection. 
-It adopts the OpenTelemetry data model, to enable compatibility with different log management platforms. 
-LogAI provides an unified model interface and provides popular time-series, statistical learning and deep 
-learning models. Alongside this, LogAI also provides an out-of-the-box GUI for users to conduct interactive 
+LogAI is a one-stop open source library for log analytics and intelligence. LogAI supports various log analytics and log intelligence tasks such as log summarization, log clustering, log anomaly detection and more. It adopts the OpenTelemetry data model, to enable compatibility with different log management platforms. LogAI provides an unified model interface and provides popular time-series, statistical learning and deep 
+learning models. Alongside this, LogAI also provides an out-of-the-box GUI toolkit for users to conduct interactive log 
 analysis. With LogAI, we can also easily benchmark popular deep learning algorithms for log anomaly detection 
-without putting in redundant effort to process the logs. We have opensourced LogAI to cater to a wide range of 
-applications benefiting both academic research and industrial prototyping.
+without putting in redundant effort to process the logs. We have opensourced LogAI to facilitate a wide range of 
+applications benefiting both academic research and industrial prototyping. 
 
-## Compare LogAI with other AI-based Log Analysis Tools
+## Compare LogAI with other Log Analysis Tools
  
 Below table compares LogAI with several existing AI-based log analysis Tools, include both commercial log management platforms
 like NewRelic and DataDog, or popular log analysis open source tools on Github. 
