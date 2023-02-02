@@ -1,0 +1,16 @@
+#Ignore the git and cache folders
+.git
+.cache
+
+docs
+examples
+/.pytest_cache/
+/.github/
+/build/
+/dist/
+/logai.egg-info/
+/tests/
+/venv/
+/docs/
+/examples/
+/img/

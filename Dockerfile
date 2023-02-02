@@ -1,13 +1,22 @@
 # Dockerfile
 
-FROM python:3.9
+FROM python:3.9-slim
+
+# Create work dir
+RUN mkdir wd
+WORKDIR wd
+
+COPY . .
+
+# Setup env
 RUN apt-get update
 RUN apt-get install nano
 
-RUN mkdir wd
-WORKDIR wd
-RUN pip3 install '.[gui]'
+# Install dependencies
+RUN pip install --upgrade pip gunicorn
+RUN pip install ".[gui]"
 
-COPY ./ ./
-
-CMD [ "gunicorn", "--workers=1", "-b 0.0.0.0:80", "--threads=1", "gui/application:server"]
+# Setup PYTHONPATH
+ENV PYTHONPATH "${PYTHONPATH}:./"
+# Run locally on port 80
+CMD [ "gunicorn", "--workers=1", "-b 0.0.0.0:80", "--threads=1", "gui.application:server"]
