@@ -46,9 +46,9 @@ For full license text, see the LICENSE file in the repo root or https://opensour
 * [License](#license)
 
 ## Introduction
-LogAI is a one-stop open source library for log analytics and intelligence. LogAI supports various log analytics and log intelligence tasks such as log summarization, log clustering, log anomaly detection and more. It adopts the OpenTelemetry data model, to enable compatibility with different log management platforms. LogAI provides an unified model interface and provides popular time-series, statistical learning and deep 
+LogAI is a one-stop open source library for log analytics and intelligence. LogAI supports various log analytics and log intelligence tasks such as log summarization, log clustering, log anomaly detection and more. It adopts the OpenTelemetry data model, to enable compatibility with different log management platforms. LogAI provides a unified model interface and integrates popular time-series, statistical learning and deep 
 learning models. Alongside this, LogAI also provides an out-of-the-box GUI toolkit for users to conduct interactive log 
-analysis. With LogAI, we can also easily benchmark popular deep learning algorithms for log anomaly detection 
+analysis. With LogAI, we can also easily benchmark popular ML and deep-learning algorithms for log anomaly detection 
 without putting in redundant effort to process the logs. We have opensourced LogAI to facilitate a wide range of 
 applications benefiting both academic research and industrial prototyping. 
 
