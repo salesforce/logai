@@ -1,0 +1,20 @@
+# docker-compose.yaml
+
+version: '3.9'
+
+services:
+
+  dash:
+    build:
+      context: .
+    container_name: '${COMPOSE_PROJECT_NAME}'
+    hostname: '${COMPOSE_PROJECT_NAME}'
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 4096M
+        reservations:
+          memory: 512M
+    ports:
+      - 9080:80
