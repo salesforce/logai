@@ -14,7 +14,7 @@ RUN apt-get install nano
 
 # Install dependencies
 RUN pip install --upgrade pip gunicorn
-RUN pip install ".[gui]"
+RUN pip install ".[all]"
 
 # Setup PYTHONPATH
 ENV PYTHONPATH "${PYTHONPATH}:./"
