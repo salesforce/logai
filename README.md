@@ -52,7 +52,7 @@ analysis. With LogAI, we can also easily benchmark popular ML and deep-learning 
 without putting in redundant effort to process the logs. We have opensourced LogAI to facilitate a wide range of 
 applications benefiting both academic research and industrial prototyping. 
 
-## Compare LogAI with other Log Analysis Tools
+## LogAI vs. other Log Analysis Tools
  
 Below table compares LogAI with several existing AI-based log analysis Tools, include both commercial log management platforms
 like NewRelic and DataDog, or popular log analysis open source tools on Github. 
