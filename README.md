@@ -51,10 +51,8 @@ learning models. Alongside this, LogAI also provides an out-of-the-box GUI toolk
 analysis. With LogAI, we can also easily benchmark popular ML and deep-learning algorithms for log anomaly detection 
 without putting in redundant effort to process the logs. We have opensourced LogAI to facilitate a wide range of 
 applications benefiting both academic research and industrial prototyping. 
-
-## LogAI vs. other Log Analysis Tools
  
-Below table compares LogAI with several existing AI-based log analysis Tools, include both commercial log management platforms
+The following table compares LogAI with several existing log analysis Tools, include both commercial log management platforms
 like NewRelic and DataDog, or popular log analysis open source tools on Github. 
 
 | Coverage  | LogAI | NewRelic Log Monitoring | DataDog Log Explorer | logparser | loglizer | deep-loglizer | log3C | 
