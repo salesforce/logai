@@ -75,7 +75,7 @@ You can install LogAI core library using `pip install`:
 ```shell
 
 # Check out LogAI code repo from Github
-git clone https://git.soma.salesforce.com/SalesforceResearch/logai.git
+git clone https://github.com/salesforce/logai.git
 cd logai
 
 # [Optional] Create virtual environment
@@ -123,7 +123,7 @@ You can also start a local LogAI service and use the GUI portal to explore LogAI
 ```shell
 
 # Check out LogAI code repo from Github
-git clone https://git.soma.salesforce.com/SalesforceResearch/logai.git
+git clone https://github.com/salesforce/logai.git
 cd logai
 
 # [Optional] Create virtual environment
