@@ -38,7 +38,7 @@ extras_require = {
         "toml>=0.10.2",
         "build>=0.7.0",
         "jupyter>=1.0.0",
-        "ipykernel>=6.19.4",
+        "ipykernel>=6.16",
         "pytest>=6.2.5",
     ]
 }
