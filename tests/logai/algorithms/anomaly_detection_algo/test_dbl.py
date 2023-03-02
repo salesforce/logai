@@ -44,9 +44,3 @@ class TestDBLDetector:
                 res = res.append(anom_score)
         assert (res.index == counter_df.index).all(), "Res.index should be identical to counter_df.index"
         assert len(res) == len(counter_df.index), "length of res should be equal to length of counter_df"
-
-        return
-
-
-
-

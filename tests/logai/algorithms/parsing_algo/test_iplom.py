@@ -22,5 +22,3 @@ class TestIPLoM:
         parsed_loglines = parser.parse(logrecord_body['logline'])
         assert isinstance(parser, IPLoM)
         assert isinstance(parsed_loglines, pd.Series), 'parse returns pandas.Series'
-
-

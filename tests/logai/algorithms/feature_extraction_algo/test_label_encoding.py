@@ -31,7 +31,3 @@ class TestLabelEncoding:
 
         assert isinstance(res, pd.DataFrame), "results not in pandas.DataFrame"
         assert (res.columns == ["animals_categorical", "moves_categorical"]).all(), "results does not have correct column names"
-
-
-
-

@@ -51,7 +51,6 @@ class TestLogRecordObject:
                 "Level",
                 "span_id",
             ], "unexpected column name."
-        return
 
     def test_serialize_deserialize(self):
         if not os.path.exists(TEST_OUTPUT_PATH):

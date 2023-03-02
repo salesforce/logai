@@ -52,5 +52,3 @@ class TestDrain:
         assert parser.clusters_counter > 0, "log cluster number should be greater than zero after fit"
         assert isinstance(parser, Drain)
         assert isinstance(parsed_loglines, pd.Series), 'parse returns pandas.Series'
-
-

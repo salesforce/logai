@@ -77,6 +77,4 @@ class TestAnomalyDetector:
                     labels = anomaly_detector.predict(test)
 
             assert isinstance(labels, pd.DataFrame), 'labels are not pd.DataFrame'
-
             assert 'anom_score' in labels.columns, 'labels must contain anom_score column'
-

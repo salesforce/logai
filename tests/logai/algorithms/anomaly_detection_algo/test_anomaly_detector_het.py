@@ -29,5 +29,3 @@ class TestHetAnomalyDetector:
         )
         res = model.fit_predict(counter_df)
         print(res.head())
-        return
-

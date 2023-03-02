@@ -32,8 +32,8 @@ class TestOpenSetLogAnomalyDetection:
         kwargs = {
             "config_filename": "bgl",
             "anomaly_detection_type": "logbert_AD",
-            "vectorizer_type": "logbert" ,
-            "parse_logline": False ,
+            "vectorizer_type": "logbert",
+            "parse_logline": False,
             "training_type": "unsupervised"
         }
 
@@ -41,9 +41,7 @@ class TestOpenSetLogAnomalyDetection:
         self._setup(config)
         workflow = OpenSetADWorkflow(config)
         workflow.execute()
-        return
 
-    
     def test_bgl_lstm_sequential_unsupervised_parsed_ad(self):
         kwargs = {
             "config_filename": "bgl",
@@ -56,248 +54,222 @@ class TestOpenSetLogAnomalyDetection:
         self._setup(config)
         workflow = OpenSetADWorkflow(config)
         workflow.execute()
-        return
 
     @pytest.mark.skip(reason="currently not testing this")
     def test_bgl_lstm_sequential_supervised_parsed_ad(self):
         kwargs = {
             "config_filename": "bgl",
             "anomaly_detection_type": "lstm_sequential_supervised_parsed_AD",
-            "vectorizer_type": "forecast_nn_sequential" ,
-            "parse_logline": True ,
+            "vectorizer_type": "forecast_nn_sequential",
+            "parse_logline": True,
             "training_type": "supervised"
         }
         config = get_openset_ad_config(**kwargs)
         self._setup(config)
         workflow = OpenSetADWorkflow(config)
         workflow.execute()
-
-        return
 
     @pytest.mark.skip(reason="currently not testing this")
     def test_bgl_lstm_sequential_unsupervised_nonparsed_ad(self):
         kwargs = {
             "config_filename": "bgl",
             "anomaly_detection_type": "lstm_sequential_unsupervised_nonparsed_AD",
-            "vectorizer_type": "forecast_nn_sequential" ,
-            "parse_logline": False ,
+            "vectorizer_type": "forecast_nn_sequential",
+            "parse_logline": False,
             "training_type": "unsupervised"
         }
         config = get_openset_ad_config(**kwargs)
         self._setup(config)
         workflow = OpenSetADWorkflow(config)
         workflow.execute()
-
-        return
 
     @pytest.mark.skip(reason="currently not testing this")
     def test_bgl_lstm_sequential_supervised_nonparsed_ad(self):
         kwargs = {
             "config_filename": "bgl",
             "anomaly_detection_type": "lstm_sequential_supervised_nonparsed_AD",
-            "vectorizer_type": "forecast_nn_sequential" ,
-            "parse_logline": False ,
+            "vectorizer_type": "forecast_nn_sequential",
+            "parse_logline": False,
             "training_type": "supervised"
         }
         config = get_openset_ad_config(**kwargs)
         self._setup(config)
         workflow = OpenSetADWorkflow(config)
         workflow.execute()
-        return
 
     @pytest.mark.skip(reason="currently not testing this")
     def test_bgl_lstm_semantics_supervised_nonparsed_ad(self):
         kwargs = {
             "config_filename": "bgl",
             "anomaly_detection_type": "lstm_semantics_supervised_nonparsed_AD",
-            "vectorizer_type": "forecast_nn_sequential" ,
-            "parse_logline": True ,
+            "vectorizer_type": "forecast_nn_sequential",
+            "parse_logline": True,
             "training_type": "supervised"
         }
         config = get_openset_ad_config(**kwargs)
         self._setup(config)
         workflow = OpenSetADWorkflow(config)
         workflow.execute()
-        return
 
     @pytest.mark.skip(reason="currently not testing this")
     def test_bgl_lstm_semantics_unsupervised_nonparsed_ad(self):
-
         kwargs = {
             "config_filename": "bgl",
             "anomaly_detection_type": "lstm_semantics_unsupervised_nonparsed_AD",
-            "vectorizer_type": "forecast_nn_sequential" ,
-            "parse_logline": True ,
+            "vectorizer_type": "forecast_nn_sequential",
+            "parse_logline": True,
             "training_type": "unsupervised"
         }
         config = get_openset_ad_config(**kwargs)
         self._setup(config)
         workflow = OpenSetADWorkflow(config)
         workflow.execute()
-        return
 
-    
     def test_bgl_transformer_sequential_unsupervised_parsed_ad(self):
         kwargs = {
             "config_filename": "bgl",
             "anomaly_detection_type": "transformer_sequential_unsupervised_parsed_AD",
-            "vectorizer_type": "forecast_nn_sequential" ,
-            "parse_logline": True ,
+            "vectorizer_type": "forecast_nn_sequential",
+            "parse_logline": True,
             "training_type": "unsupervised"
         }
         config = get_openset_ad_config(**kwargs)
         self._setup(config)
         workflow = OpenSetADWorkflow(config)
         workflow.execute()
-        return
 
     @pytest.mark.skip(reason="currently not testing this")
     def test_bgl_transformer_sequential_supervised_parsed_ad(self):
         kwargs = {
             "config_filename": "bgl",
             "anomaly_detection_type": "transformer_sequential_supervised_parsed_AD",
-            "vectorizer_type": "forecast_nn_sequential" ,
-            "parse_logline": True ,
+            "vectorizer_type": "forecast_nn_sequential",
+            "parse_logline": True,
             "training_type": "supervised"
         }
         config = get_openset_ad_config(**kwargs)
         self._setup(config)
         workflow = OpenSetADWorkflow(config)
         workflow.execute()
-        return
 
     @pytest.mark.skip(reason="currently not testing this")
     def test_bgl_transformer_sequential_unsupervised_nonparsed_ad(self):
         kwargs = {
             "config_filename": "bgl",
             "anomaly_detection_type": "transformer_sequential_unsupervised_nonparsed_AD",
-            "vectorizer_type": "forecast_nn_sequential" ,
-            "parse_logline": False ,
+            "vectorizer_type": "forecast_nn_sequential",
+            "parse_logline": False,
             "training_type": "unsupervised"
         }
         config = get_openset_ad_config(**kwargs)
         self._setup(config)
         workflow = OpenSetADWorkflow(config)
         workflow.execute()
-        return
 
     @pytest.mark.skip(reason="currently not testing this")
     def test_bgl_transformer_sequential_supervised_nonparsed_ad(self):
         kwargs = {
             "config_filename": "bgl",
             "anomaly_detection_type": "transformer_sequential_supervised_nonparsed_AD",
-            "vectorizer_type": "forecast_nn_sequential" ,
-            "parse_logline": False ,
+            "vectorizer_type": "forecast_nn_sequential",
+            "parse_logline": False,
             "training_type": "supervised"
         }
         config = get_openset_ad_config(**kwargs)
         self._setup(config)
         workflow = OpenSetADWorkflow(config)
         workflow.execute()
-        return
 
     @pytest.mark.skip(reason="currently not testing this")
     def test_bgl_transformer_semantics_supervised_nonparsed_ad(self):
-
         kwargs = {
             "config_filename": "bgl",
             "anomaly_detection_type": "transformer_semantics_supervised_nonparsed_AD",
-            "vectorizer_type": "forecast_nn_sequential" ,
-            "parse_logline": True ,
+            "vectorizer_type": "forecast_nn_sequential",
+            "parse_logline": True,
             "training_type": "supervised"
         }
         config = get_openset_ad_config(**kwargs)
         self._setup(config)
         workflow = OpenSetADWorkflow(config)
         workflow.execute()
-        return
 
     @pytest.mark.skip(reason="currently not testing this")
     def test_bgl_transformer_semantics_unsupervised_nonparsed_ad(self):
-
         kwargs = {
             "config_filename": "bgl",
             "anomaly_detection_type": "transformer_semantics_unsupervised_nonparsed_AD",
-            "vectorizer_type": "forecast_nn_sequential" ,
-            "parse_logline": True ,
+            "vectorizer_type": "forecast_nn_sequential",
+            "parse_logline": True,
             "training_type": "unsupervised"
         }
         config = get_openset_ad_config(**kwargs)
         self._setup(config)
         workflow = OpenSetADWorkflow(config)
         workflow.execute()
-        return
-
 
     def test_bgl_cnn_sequential_unsupervised_parsed_ad(self):
         kwargs = {
             "config_filename": "bgl",
             "anomaly_detection_type": "cnn_sequential_unsupervised_parsed_AD",
-            "vectorizer_type": "forecast_nn_sequential" ,
-            "parse_logline": True ,
+            "vectorizer_type": "forecast_nn_sequential",
+            "parse_logline": True,
             "training_type": "unsupervised"
         }
         config = get_openset_ad_config(**kwargs)
         self._setup(config)
         workflow = OpenSetADWorkflow(config)
         workflow.execute()
-        return
 
     @pytest.mark.skip(reason="currently not testing this")
     def test_bgl_cnn_sequential_supervised_parsed_ad(self):
         kwargs = {
             "config_filename": "bgl",
             "anomaly_detection_type": "cnn_sequential_supervised_parsed_AD",
-            "vectorizer_type": "forecast_nn_sequential" ,
-            "parse_logline": True ,
+            "vectorizer_type": "forecast_nn_sequential",
+            "parse_logline": True,
             "training_type": "supervised"
         }
         config = get_openset_ad_config(**kwargs)
         self._setup(config)
         workflow = OpenSetADWorkflow(config)
         workflow.execute()
-
-        return
 
     @pytest.mark.skip(reason="currently not testing this")
     def test_bgl_cnn_sequential_unsupervised_nonparsed_ad(self):
         kwargs = {
             "config_filename": "bgl",
             "anomaly_detection_type": "cnn_sequential_unsupervised_nonparsed_AD",
-            "vectorizer_type": "forecast_nn_sequential" ,
-            "parse_logline": False ,
+            "vectorizer_type": "forecast_nn_sequential",
+            "parse_logline": False,
             "training_type": "unsupervised"
         }
         config = get_openset_ad_config(**kwargs)
         self._setup(config)
         workflow = OpenSetADWorkflow(config)
         workflow.execute()
-        return
 
     @pytest.mark.skip(reason="currently not testing this")
     def test_bgl_cnn_sequential_supervised_nonparsed_ad(self):
         kwargs = {
             "config_filename": "bgl",
             "anomaly_detection_type": "cnn_sequential_supervised_nonparsed_AD",
-            "vectorizer_type": "forecast_nn_sequential" ,
-            "parse_logline": False ,
+            "vectorizer_type": "forecast_nn_sequential",
+            "parse_logline": False,
             "training_type": "supervised"
         }
         config = get_openset_ad_config(**kwargs)
         self._setup(config)
         workflow = OpenSetADWorkflow(config)
         workflow.execute()
-
-        return
 
     @pytest.mark.skip(reason="currently not testing this")
     def test_bgl_cnn_semantics_supervised_nonparsed_ad(self):
-
         kwargs = {
             "config_filename": "bgl",
             "anomaly_detection_type": "cnn_semantics_supervised_nonparsed_AD",
-            "vectorizer_type": "forecast_nn_sequential" ,
-            "parse_logline": True ,
+            "vectorizer_type": "forecast_nn_sequential",
+            "parse_logline": True,
             "training_type": "supervised"
         }
         config = get_openset_ad_config(**kwargs)
@@ -305,21 +277,16 @@ class TestOpenSetLogAnomalyDetection:
         workflow = OpenSetADWorkflow(config)
         workflow.execute()
 
-        return
-
     @pytest.mark.skip(reason="currently not testing this")
     def test_bgl_cnn_semantics_unsupervised_nonparsed_ad(self):
-
         kwargs = {
             "config_filename": "bgl",
             "anomaly_detection_type": "cnn_semantics_unsupervised_nonparsed_AD",
-            "vectorizer_type": "forecast_nn_sequential" ,
-            "parse_logline": True ,
+            "vectorizer_type": "forecast_nn_sequential",
+            "parse_logline": True,
             "training_type": "unsupervised"
         }
         config = get_openset_ad_config(**kwargs)
         self._setup(config)
         workflow = OpenSetADWorkflow(config)
         workflow.execute()
-
-        return

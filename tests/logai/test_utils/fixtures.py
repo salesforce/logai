@@ -58,14 +58,17 @@ def log_features():
 
 @pytest.fixture
 def log_counter_df():
-    path = os.path.join(TEST_DATA_PATH, "default_counter_df")
-    counter_df = pd.read_pickle(path)
+    path = os.path.join(TEST_DATA_PATH, "default_counter_df.csv")
+    # counter_df = pd.read_pickle(path)
+    counter_df = pd.read_csv(path)
     counter_df.columns = [
         "Action",
         "ID",
         constants.LOG_TIMESTAMPS,
         constants.LOG_COUNTS,
     ]
+    counter_df[constants.LOG_TIMESTAMPS] = \
+        pd.to_datetime(counter_df[constants.LOG_TIMESTAMPS])
     return counter_df
 
 

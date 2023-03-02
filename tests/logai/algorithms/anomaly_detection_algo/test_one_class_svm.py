@@ -33,6 +33,3 @@ class TestOneClassSVM:
         assert isinstance(detector.model, OneClassSVM), "Model must be OneClassSVM"
         res = detector.predict(log_features)
         assert isinstance(res, pd.DataFrame), "result must be pd.DataFrame"
-
-
-

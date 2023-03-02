@@ -75,15 +75,10 @@ class TestLogAnomalyDetection:
                 algo_name="dbl",
             )
         )
-        pass
 
     def test_execute(self):
-
         app = LogAnomalyDetection(self.config)
-
         app.execute()
-
-        return
 
     def test_hdfs_data_ets(self):
         json_config = """{
@@ -132,10 +127,8 @@ class TestLogAnomalyDetection:
         app.execute()
         print(app.anomaly_results.head(5))
 
-        pass
-
     def test_hdfs_data(self):
-            json_config = """{
+        json_config = """{
       "open_set_data_loader_config": {
         "dataset_name": "HDFS"
       },
@@ -171,17 +164,15 @@ class TestLogAnomalyDetection:
 
     }
     """
-            config = json.loads(json_config)
-            print(config)
-            workflow_config = WorkFlowConfig.from_dict(config)
-            print(workflow_config)
-            workflow_config.open_set_data_loader_config.filepath = TEST_HDFS_PATH
-            app = LogAnomalyDetection(workflow_config)
-            #
-            app.execute()
-            print(app.anomaly_results.head(5))
-
-            pass
+        config = json.loads(json_config)
+        print(config)
+        workflow_config = WorkFlowConfig.from_dict(config)
+        print(workflow_config)
+        workflow_config.open_set_data_loader_config.filepath = TEST_HDFS_PATH
+        app = LogAnomalyDetection(workflow_config)
+        #
+        app.execute()
+        print(app.anomaly_results.head(5))
 
     def test_bgl_data(self):
         json_config = """{
@@ -228,5 +219,3 @@ class TestLogAnomalyDetection:
         #
         app.execute()
         print(app.anomaly_results.head(5))
-
-        pass

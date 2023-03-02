@@ -24,7 +24,6 @@ class TestETSDetector:
     def test_ets_detector(self, log_counter_df):
         counter_df = log_counter_df
 
-
         ts_df = counter_df[[constants.LOG_COUNTS]]
         ts_df.index = counter_df[constants.LOG_TIMESTAMPS]
         counter_df["attribute"] = counter_df.drop([constants.LOG_COUNTS, constants.LOG_TIMESTAMPS], axis=1).apply(
@@ -58,6 +57,3 @@ class TestETSDetector:
         print(len(res), counter_df.shape[0])
         assert (res.index == counter_df.index).all(), "Res.index should be identical to counter_df.index"
         assert len(res) == len(counter_df.index), "length of res should be equal to length of counter_df"
-
-        return
-
