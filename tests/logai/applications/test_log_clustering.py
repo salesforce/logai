@@ -62,29 +62,17 @@ class TestLogClustering:
                 algo_name='kmeans',
             ),
         )
-        pass
 
     def test_execute(self):
-
         app = LogClustering(self.config)
-
         app.execute()
-
         print(app.clusters)
-        return
 
     def test_logline_with_clusters(self):
         app = LogClustering(self.config)
-
         app.execute()
-
         res = app.logline_with_clusters.dropna()
-
         print(res.shape[0])
-
-
-        return
-
 
     def test_hdfs_data(self):
         json_config = """{
@@ -124,11 +112,7 @@ class TestLogClustering:
         print(workflow_config)
         workflow_config.open_set_data_loader_config.filepath = TEST_HDFS_PATH
         app = LogClustering(workflow_config)
-        #
         app.execute()
-
-        pass
-
 
     def test_bgl_data(self):
         json_config = """{
@@ -168,7 +152,4 @@ class TestLogClustering:
         print(workflow_config)
         workflow_config.open_set_data_loader_config.filepath = TEST_BGL_PATH
         app = LogClustering(workflow_config)
-        #
         app.execute()
-
-        pass

@@ -45,11 +45,3 @@ class TestClustering:
             labels = clustering.predict(log_features)
 
             assert isinstance(labels, pd.Series), 'labels are not pd.Series'
-
-
-
-
-
-
-
-

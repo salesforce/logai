@@ -35,7 +35,6 @@ class TestFileDataLoader:
             datetime_format='%Y%m%d-%H:%M:%S:%f'
         )
         self._is_valid(file_config)
-        return
 
     def test_read_tsv(self):
         test_fpath = os.path.join(TEST_DATA_PATH, "HealthApp_format_2000.tsv")
@@ -53,7 +52,6 @@ class TestFileDataLoader:
         )
 
         self._is_valid(file_config)
-        return
 
     def test_read_with_sep(self):
 
@@ -75,7 +73,6 @@ class TestFileDataLoader:
         )
 
         self._is_valid(file_config)
-        return
 
     def test_read_without_dimensions(self):
         test_fpath = os.path.join(TEST_DATA_PATH, "HealthApp_2000.log")
@@ -92,7 +89,6 @@ class TestFileDataLoader:
         assert logrecord.attributes.empty, "Should not have attributes"
         assert len(logrecord.body.columns) == 1, "Should only have one body column"
         assert logrecord.body.columns[0] == constants.LOGLINE_NAME, "body name does not match"
-        return
 
     def test_read_with_log_format(self):
         test_fpath = os.path.join(TEST_DATA_PATH, "HDFS/HDFS_2000.log")
@@ -119,10 +115,7 @@ class TestFileDataLoader:
         assert logrecord.attributes.columns[0] == 'Level', "Attributes column name is not correct."
         assert logrecord.span_id.columns[0] == 'span_id', "Span_id name is not correct."
         assert (logrecord.timestamp.columns[0]) == constants.LOG_TIMESTAMPS, "Timestamp should contain 1 columns"
-
         print(logrecord.timestamp.head(5))
-
-        return
 
     def test_read_with_log_format_bgl(self):
         test_fpath = os.path.join(TEST_DATA_PATH, "BGL_2000.log")
@@ -152,8 +145,6 @@ class TestFileDataLoader:
         assert len(logrecord.timestamp.columns) == 1, "Timestamp should contain 1 columns"
         print(logrecord.body.head(5))
 
-        return
-
     def test_to_datetime(self):
         test_fpath = os.path.join(TEST_DATA_PATH, "HDFS/HDFS_2000.log")
         file_config = DataLoaderConfig(
@@ -180,8 +171,6 @@ class TestFileDataLoader:
         assert len(logrecord.timestamp.columns) == 1, "Timestamp should contain 2 columns"
         print(logrecord.timestamp.head(5))
 
-        return
-
     # Script to create test files.
 
     def _is_valid(self, file_config):
@@ -194,4 +183,3 @@ class TestFileDataLoader:
         assert len(logrecord.attributes.columns) == 2, "Attributes should contain 2 columns"
         for c in logrecord.attributes.columns:
             assert c in ["Action", "ID"], "Attribute column name does not match"
-        pass

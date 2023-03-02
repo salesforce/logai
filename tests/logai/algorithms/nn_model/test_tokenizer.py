@@ -23,5 +23,3 @@ class TestTokenizer:
             tokenizer.normalizer = normalizers.Sequence(
                 [normalizers.NFD(), normalizers.StripAccents()])
         tokenizer.pre_tokenizer = pre_tokenizers.BertPreTokenizer()
-
-        return

@@ -38,5 +38,3 @@ class TestTransformers:
 
         for l in y_label_pred:
             assert l in [0, 1], 'result should be either 0 or 1'
-
-

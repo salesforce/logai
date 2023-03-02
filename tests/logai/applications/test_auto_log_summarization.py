@@ -18,9 +18,9 @@ from logai.information_extraction.feature_extractor import FeatureExtractorConfi
 from logai.information_extraction.log_parser import LogParserConfig
 from logai.preprocess.preprocessor import PreprocessorConfig
 
-
 TEST_LOG_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'test_data/HealthApp_2000.log')
 TEST_HDFS_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'test_data/HDFS/HDFS_2000.log')
+
 
 class TestAutoLogSummarization:
     def setup(self):
@@ -69,12 +69,8 @@ class TestAutoLogSummarization:
         logline = 'onReceive action: android.intent.action.SCREEN_ON'
         log_pattern, para_list = parsing_app.find_log_pattern(logline, True)
 
-
-
         assert isinstance(log_pattern, str), "log pattern is an string"
         assert isinstance(para_list, pd.DataFrame), "parameter list should be a pd.DataFrame"
-
-        return
 
     def test_openset_data_loader_hdfs(self):
         json_config = """{
@@ -101,9 +97,3 @@ class TestAutoLogSummarization:
 
         parsing_app = AutoLogSummarization(workflow_config)
         parsing_app.execute()
-
-        return
-
-
-
-

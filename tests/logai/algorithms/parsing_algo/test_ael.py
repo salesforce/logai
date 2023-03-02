@@ -24,4 +24,3 @@ class TestAEL:
         parsed_loglines = parser.parse(logrecord_body['logline'])
 
         assert isinstance(parsed_loglines, pd.Series), 'parse returns pandas.Series'
-

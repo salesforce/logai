@@ -36,4 +36,3 @@ class TestTfIdf:
         res = model.transform(loglines)
         assert isinstance(res, pd.Series), "result is not a pandas.Series"
         assert len(loglines) == len(res), "result length should match input"
-        return
