@@ -46,15 +46,14 @@ extras_require["all"] = sum(extras_require.values(), [])
 
 setup(
     name="logai",
-    version="0.1.4",
+    version="0.1.5",
     description="LogAI is unified framework for AI-based log analytics",
     long_description_content_type="text/markdown",
     long_description=readme,
     author="Qian Cheng, Amrita Saha, Wenzhuo Yang, Chenghao Liu, Gerald Woo, Doyen Sahoo, Steven Hoi",
     author_email="logai@salesforce.com",
-    python_requires=">=3.8.0,<4",
+    python_requires=">=3.7.0,<4",
     install_requires=[
-        "scikit-learn>=1.2",
         "schema>=0.7.5",
         "salesforce-merlion>=1.0.0",
         "Cython>=0.29.30",
