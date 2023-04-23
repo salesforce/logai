@@ -133,6 +133,7 @@ source venv/bin/activate # activate virtual env
 # install LogAI and GUI dependencies
 pip install ".[dev]"
 pip install ".[gui]"
+pip install ".[deep-learning]"
 
 # Start LogAI service
 export PYTHONPATH='.'  # make sure to add current root to PYTHONPATH
