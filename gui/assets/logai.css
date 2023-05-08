@@ -14,7 +14,7 @@ For full license text, see the LICENSE file in the repo root or https://opensour
   }
 @font-face{
     font-family:"Salesforce Sans";
-    src:url("../assets/fonts/SalesforceSans-Bold") format("woff");
+    src:url("../assets/fonts/SalesforceSans-Bold.woff") format("woff");
     font-weight:700;
     font-display:swap;
   }
@@ -197,7 +197,6 @@ H5, H3 {
     border: solid 2px #1B96FF
 }
 .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner .column-header-name{
-    color:white !important;
     font-family: 'Salesforce Sans' !important;
 }
 .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner td .dash-cell-value.unfocused{
