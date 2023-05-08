@@ -139,7 +139,7 @@ export PYTHONPATH='.'  # make sure to add current root to PYTHONPATH
 python3 gui/application.py # Run local plotly dash server.
 ```
 
-Then open the LogAI portal via http://localhost:8050/ or http://127.0.0.1:8050/ in your browser:
+Then open the LogAI portal via http://127.0.0.1:8050/ or http://YOUR_SERVER_IP:8050 in your browser:
 
 ![portal](img/logai_gui_landing.png)
 
