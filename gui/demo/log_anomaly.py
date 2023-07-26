@@ -45,6 +45,11 @@ class LogAnomaly(ParamInfoMixin):
             "ETSDetector",
             "ETSDetectorParams",
         ),
+        "logbert": (
+            "logai.algorithms.anomaly_detection_algo.logbert",
+            "LogBERT",
+            "LogBERTConfig"
+        )
     }
 
     def __init__(self):

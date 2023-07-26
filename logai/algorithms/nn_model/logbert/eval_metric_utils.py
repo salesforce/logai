@@ -5,6 +5,8 @@
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 #
 #
+import os.path
+
 from sklearn import metrics
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -13,7 +15,10 @@ import numpy as np
 import logging
 
 
-def __plot_roc(x, y, label, y_name, x_name, fig_name):
+ground_truth, prediction_score = [], []
+
+
+def __plot_roc(x, y, label, y_name, x_name, fig_name, output_dir=None):
     """Plotting roc curve.
 
     :param x:(np.array): array of x values.
@@ -27,15 +32,17 @@ def __plot_roc(x, y, label, y_name, x_name, fig_name):
     plt.ylabel(y_name)
     plt.xlabel(x_name)
     plt.legend(loc=4)
-    plt.savefig(fig_name)
-
+    if output_dir:
+        plt.savefig(os.path.join(os.path.join(output_dir, fig_name)))
+    else:
+        plt.savefig(fig_name)
     plt.figure().clear()
     plt.close()
     plt.cla()
     plt.clf()
 
 
-def __plot_scores_kde(scores_pos, scores_neg, fig_name):
+def __plot_scores_kde(scores_pos, scores_neg, fig_name, output_name=None):
     """Plotting kernel density estimation of positive and negative scores.
 
     :param scores_pos: (np.array): array of positive scores.
@@ -50,8 +57,10 @@ def __plot_scores_kde(scores_pos, scores_neg, fig_name):
 
     fig2 = plt.figure()
     sns.kdeplot(scores_neg, bw=0.5, color="red")
-
-    pp = PdfPages(fig_name)
+    if output_name:
+        pp = PdfPages(os.path.join(output_name, fig_name))
+    else:
+        pp = PdfPages(fig_name)
     fig_nums = plt.get_fignums()
     figs = [plt.figure(n) for n in fig_nums]
     for fig in figs:
@@ -65,7 +74,7 @@ def __plot_scores_kde(scores_pos, scores_neg, fig_name):
     plt.cla()
 
 
-def compute_metrics(eval_metrics_per_instance_series, test_labels, test_counts=None):
+def compute_metrics(eval_metrics_per_instance_series, test_labels, test_counts=None, output_dir=None):
     """Computing evaluation metric scores for anomaly detection.
 
     :param eval_metrics_per_instance_series:(dict): dict object consisting
@@ -166,6 +175,7 @@ def compute_metrics(eval_metrics_per_instance_series, test_labels, test_counts=N
         scores_top6_max_prob,
         scores_top6_min_logprob,
         scores_top6_max_entropy,
+        output_dir=output_dir
     )
 
     return
@@ -179,8 +189,9 @@ def __compute_auc_roc(
     scores_top6_max_prob,
     scores_top6_min_logprob,
     scores_top6_max_entropy,
-    plot_graph=False,
-    plot_histogram=False,
+    plot_graph=True,
+    plot_histogram=True,
+    output_dir=None
 ):
     """Computing AUROC for each of the type of metrics
 
@@ -199,52 +210,59 @@ def __compute_auc_roc(
     :param plot_histogram: (bool, optional): whether to plot scores histogram. Defaults to False.
     """
 
-    __compute_auc_roc_for_metric(
-        y=y,
-        metric=loss_mean,
-        metric_name_str="loss_mean",
-        plot_graph=plot_graph,
-        plot_histogram=plot_histogram,
-    )
-    __compute_auc_roc_for_metric(
-        y=y,
-        metric=loss_max,
-        metric_name_str="loss_max",
-        plot_graph=plot_graph,
-        plot_histogram=plot_histogram,
-    )
-    __compute_auc_roc_for_metric(
-        y=y,
-        metric=loss_top6_mean,
-        metric_name_str="loss_top6_mean",
-        plot_graph=plot_graph,
-        plot_histogram=plot_histogram,
-    )
-    __compute_auc_roc_for_metric(
+    # __compute_auc_roc_for_metric(
+    #     y=y,
+    #     metric=loss_mean,
+    #     metric_name_str="loss_mean",
+    #     plot_graph=plot_graph,
+    #     plot_histogram=plot_histogram,
+    # )
+    # __compute_auc_roc_for_metric(
+    #     y=y,
+    #     metric=loss_max,
+    #     metric_name_str="loss_max",
+    #     plot_graph=plot_graph,
+    #     plot_histogram=plot_histogram,
+    # )
+    # __compute_auc_roc_for_metric(
+    #     y=y,
+    #     metric=loss_top6_mean,
+    #     metric_name_str="loss_top6_mean",
+    #     plot_graph=plot_graph,
+    #     plot_histogram=plot_histogram,
+    # )
+    compute_auc_roc_for_metric(
         y=y,
         metric=scores_top6_max_prob,
         metric_name_str="scores_top6_max_prob",
         plot_graph=plot_graph,
         plot_histogram=plot_histogram,
+        output_dir=output_dir
     )  # Note that avg scores printed for this metric would be 1 - actual probability
-    __compute_auc_roc_for_metric(
-        y=y,
-        metric=scores_top6_min_logprob,
-        metric_name_str="scores_top6_min_logprob",
-        plot_graph=plot_graph,
-        plot_histogram=plot_histogram,
-    )
-    __compute_auc_roc_for_metric(
-        y=y,
-        metric=scores_top6_max_entropy,
-        metric_name_str="scores_top6_max_entropy",
-        plot_graph=plot_graph,
-        plot_histogram=plot_histogram,
-    )
+
+    ground_truth.extend(y)
+    prediction_score.extend(scores_top6_max_prob)
+
+    # compute_auc_roc_for_metric(
+    #     y=y,
+    #     metric=scores_top6_min_logprob,
+    #     metric_name_str="scores_top6_min_logprob",
+    #     plot_graph=plot_graph,
+    #     plot_histogram=plot_histogram,
+    #     output_dir=output_dir
+    # )
+    # compute_auc_roc_for_metric(
+    #     y=y,
+    #     metric=scores_top6_max_entropy,
+    #     metric_name_str="scores_top6_max_entropy",
+    #     plot_graph=plot_graph,
+    #     plot_histogram=plot_histogram,
+    #     output_dir=output_dir
+    # )
 
 
-def __compute_auc_roc_for_metric(
-    y, metric, metric_name_str, plot_graph=False, plot_histogram=False
+def compute_auc_roc_for_metric(
+    y, metric, metric_name_str, plot_graph=True, plot_histogram=True, output_dir=None
 ):
     """Computing AUROC for each metric.
 
@@ -275,9 +293,30 @@ def __compute_auc_roc_for_metric(
         fpr_mean, tpr_mean, thresholds = metrics.roc_curve(y, metric, pos_label=1)
         auc_mean = metrics.roc_auc_score(y, metric)
         logging.info("AUC of {}: {}".format(metric_name_str, auc_mean))
+        # logging.info("fpr_mean {}: tpr_mean:{} thresholds:{}".format(fpr_mean, tpr_mean, thresholds))
+        # Find the index of the threshold that maximizes the Youden's J statistic (sum of TPR and TNR minus 1)
+        j_stat = tpr_mean - fpr_mean
+        optimal_threshold_index = np.argmax(j_stat)
+        # Get the optimal threshold
+        optimal_threshold = thresholds[optimal_threshold_index]
 
-    except:
-        pass
+
+        logging.info("Optimal Threshold:{}".format(str(optimal_threshold)))
+        sensitivity, specificity, precision, f1_score, TP, FN, FP, TN = calculate_f1_score(y, metric, optimal_threshold)
+        log_content = "{}:  sensitivity {}, specificity {}, precision {}, f1_score {}, TP {}, FN {}, FP {}, TN {}".format(
+            metric_name_str, sensitivity, specificity, precision, f1_score, TP, FN, FP, TN)
+        logging.info(log_content)
+        if output_dir:
+            path = os.path.join(output_dir, metric_name_str + "_threshold")
+            with open(path, "a") as fp:
+                fp.write(str(optimal_threshold) + "\n")
+
+            path = os.path.join(output_dir, "f1_score")
+            with open(path, "a") as fp:
+                fp.write(log_content + "\n")
+
+    except Exception as err:
+        print(err)
 
     logging.info("\n")
 
@@ -289,6 +328,35 @@ def __compute_auc_roc_for_metric(
             "tpr_mean",
             "fpr_mean",
             metric_name_str + "_auc.png",
+            output_dir=output_dir
         )
     if plot_histogram:
-        __plot_scores_kde(metric_pos, metric_neg, metric_name_str + "_hist.pdf")
+        __plot_scores_kde(metric_pos, metric_neg, metric_name_str + "_hist.pdf", output_name=output_dir)
+
+
+def calculate_f1_score(true_labels, predicted_probs, threshold=0.5):
+    sensitivity, specificity, precision, f1_score, TP, FN, FP, TN = 0,0,0,0,0,0,0,0
+    # Convert predicted probabilities to binary predictions based on threshold
+    try:
+        predicted_labels = [1 if prob >= threshold else 0 for prob in predicted_probs]
+
+        # Confusion matrix
+        TP = sum((predicted_labels[i] == 1) and (true_labels[i] == 1) for i in range(len(true_labels)))
+        FN = sum((predicted_labels[i] == 0) and (true_labels[i] == 1) for i in range(len(true_labels)))
+        FP = sum((predicted_labels[i] == 1) and (true_labels[i] == 0) for i in range(len(true_labels)))
+        TN = sum((predicted_labels[i] == 0) and (true_labels[i] == 0) for i in range(len(true_labels)))
+
+        # Sensitivity (Recall)
+        sensitivity = TP / (TP + FN)
+
+        # Specificity
+        specificity = TN / (TN + FP)
+
+        # Precision
+        precision = TP / (TP + FP)
+
+        # F1 Score
+        f1_score = 2 * (precision * sensitivity) / (precision + sensitivity)
+    except:
+        pass
+    return sensitivity, specificity, precision, f1_score, TP, FN, FP, TN

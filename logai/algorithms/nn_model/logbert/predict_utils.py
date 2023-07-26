@@ -92,6 +92,7 @@ class PredictionLabelSmoother(LabelSmoother):
     epsilon: float = 0.0
     ignore_index: int = -100
     eval_metrics_per_instance = [[], [], [], [], [], [], [], []]
+    found_masked_token = []
 
     def __call__(self, model_output, labels, indices):
         logits = (
@@ -119,6 +120,13 @@ class PredictionLabelSmoother(LabelSmoother):
 
         probs.masked_fill_(padding_mask, 1.0)
         log_probs.masked_fill_(padding_mask, 0.0)
+
+        # top_10_predictions, _ = torch.topk(probs, k=10, dim=-1)
+        # labels_expanded = labels.expand(-1, -1, 10)
+        # is_label_present = (top_10_predictions == labels_expanded).any(dim=-1)
+        # output = is_label_present.max(dim=-1).values
+        # count_of_ones = torch.sum(output == 1)
+        # print(count_of_ones)
 
         predictive_prob = probs.max(dim=-1)[0]
         predictive_prob_top6 = torch.topk(predictive_prob, k=6, dim=1, largest=False)[

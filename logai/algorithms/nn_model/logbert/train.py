@@ -51,6 +51,8 @@ class LogBERTTrain:
             per_device_eval_batch_size=self.config.per_device_eval_batch_size,
             weight_decay=self.config.weight_decay,
             save_steps=self.config.save_steps,
+            save_strategy=self.config.save_strategy,
+            save_total_limit=self.config.save_total_limit,
             eval_steps=self.config.eval_steps,
             resume_from_checkpoint=self.config.resume_from_checkpoint,
         )

@@ -54,6 +54,8 @@ class LogBERTConfig(Config):
     num_eval_shards: int = 10
     weight_decay: float = 0.0001
     save_steps: int = 50
+    save_strategy: str = "epoch"
+    save_total_limit: int = 3
     eval_steps: int = 50
     resume_from_checkpoint: bool = True
     output_dir: str = None
