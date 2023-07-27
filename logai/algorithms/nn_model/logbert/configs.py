@@ -32,7 +32,7 @@ class LogBERTConfig(Config):
     :param logging_steps: int = 10 : number of steps after which the output is logged.
     :param save_steps: int = 50 : number of steps after which the model is saved.
     :param eval_steps: int = 50 : number of steps after which evaluation is run.
-    :param resume_from_checkpoint: bool = True : whether to resume from a given model checkpoint. 
+    :param resume_from_checkpoint: str = "" : path from where model training can be resumed from a checkpoint.
         If set to true, it will find the latest checkpoint saved in the dir and use that to load the model.
     :param output_dir: str = None : output directory where the model would be saved.
     :param tokenizer_dirpath: str = None : path to directory containing the tokenizer.
@@ -57,6 +57,6 @@ class LogBERTConfig(Config):
     save_strategy: str = "epoch"
     save_total_limit: int = 3
     eval_steps: int = 50
-    resume_from_checkpoint: bool = True
+    resume_from_checkpoint: str = ""
     output_dir: str = None
     tokenizer_dirpath: str = None

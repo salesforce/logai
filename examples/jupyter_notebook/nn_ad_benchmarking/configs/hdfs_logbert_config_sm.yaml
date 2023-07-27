@@ -69,6 +69,9 @@ workflow_config:
           num_train_epochs: 10
           per_device_train_batch_size: 4
           save_steps: 50
+          save_strategy: "epoch"
+          save_total_limit: 3
+          resume_from_checkpoint: "/Users/mohit.gurnani/projects/logai/examples/jupyter_notebook/nn_ad_benchmarking/temp_output2/HDFS_1.5G_parsed_session_unsupervised_AD/bert-base-cased/checkpoint-50"
           mask_ngram: 8
           tokenizer_dirpath: "/Users/mohit.gurnani/projects/logai/examples/jupyter_notebook/nn_ad_benchmarking/temp_output2/HDFS_1.5G_parsed_session_unsupervised_AD/bert-base-cased_tokenizer"
           output_dir: "/Users/mohit.gurnani/projects/logai/examples/jupyter_notebook/nn_ad_benchmarking/temp_output2/HDFS_1.5G_parsed_session_unsupervised_AD"

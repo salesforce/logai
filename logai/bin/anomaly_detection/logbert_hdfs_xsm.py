@@ -92,45 +92,14 @@ def get_features(tokenizer_path, data_path, data=None):
   return features
 
 
-# dev_features = get_features(dev_tokenizer_path, dev_filepath, dev_data)
-# train_features = get_features(train_tokenizer_path, train_filepath, train_data)
+dev_features = get_features(dev_tokenizer_path, dev_filepath, dev_data)
+train_features = get_features(train_tokenizer_path, train_filepath, train_data)
 
 anomaly_detector = NNAnomalyDetector(config=config.nn_anomaly_detection_config)
-# anomaly_detector.fit(train_features, dev_features)
+anomaly_detector.fit(train_features, dev_features)
 
+del train_features, dev_features
 
 test_features = get_features(test_tokenizer_path, test_filepath)
 predict_results = anomaly_detector.predict(test_features)
 print(predict_results)
-
-# anomalies = predict_results["anom_score"]
-#
-# _ad_results = pd.DataFrame(anomalies.rename("result"))
-#
-# anomaly_group_indices = _ad_results[_ad_results["result"] > 0.0].index.values
-#
-# anomaly_indices = []
-#
-# for indices in anomaly_group_indices:
-#     anomaly_indices += test_data.indices[indices]
-#
-# anomaly_labels = [True if i in anomaly_indices else False for i in test_data.indices]
-#
-# test_data.df['Is_Anomaly'] = anomaly_labels
-#
-# print(test_data)
-# for indices in self._index_group["event_index"].iloc[anomaly_group_indices]:
-#   anomaly_indices += indices
-#
-# df = pd.DataFrame(self.loglines)
-# df["_id"] = df.index.values
-#
-# df["is_anomaly"] = [True if i in anomaly_indices else False for i in df["_id"]]
-# self._loglines_with_anomalies = df
-#
-# res = (
-#   self._loglines_with_anomalies.join(self.attributes)
-#   .join(self.timestamps)
-#   .join(self.event_group)
-# )
-# return res

@@ -111,7 +111,10 @@ class LogBERTTrain:
 
         self._initialize_trainer(model, train_dataset, dev_dataset)
 
-        self.trainer.train()
+        if self.config.resume_from_checkpoint:
+            self.trainer.train(resume_from_checkpoint=self.config.resume_from_checkpoint)
+        else:
+            self.trainer.train()
 
     def evaluate(self):
         """Evaluate methof for evaluating logbert model on dev data using perplexity metric."""

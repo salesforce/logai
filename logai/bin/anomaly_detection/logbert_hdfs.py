@@ -23,45 +23,45 @@ config_parsed = read_file(config_path)
 config_dict = config_parsed["workflow_config"]
 config = OpenSetADWorkflowConfig.from_dict(config_dict)
 
-# loaded_filepath = os.path.join(config.output_dir, 'HDFS_1.5G_loaded.csv')
-# dataloader = FileDataLoader(config.data_loader_config)
-# logrecord = dataloader.load_data()
-# logrecord.save_to_csv(loaded_filepath)
-# print (logrecord.body[constants.LOGLINE_NAME])
-#
-# preprocessor = HDFSPreprocessor(config.preprocessor_config, config.label_filepath)
-# preprocessed_filepath = os.path.join(config.output_dir, 'HDFS_1.5G_processed.csv')
-# logrecord = preprocessor.clean_log(logrecord)
-# logrecord.save_to_csv(preprocessed_filepath)
-# print (logrecord.body[constants.LOGLINE_NAME])
-#
-# #####
-# partitioner = OpenSetPartitioner(config.open_set_partitioner_config)
-# partitioned_filepath = os.path.join(config.output_dir, 'HDFS_1.5G_nonparsed_session.csv')
-# logrecord = partitioner.partition(logrecord)
-# logrecord.save_to_csv(partitioned_filepath)
-# print (logrecord.body[constants.LOGLINE_NAME])
+loaded_filepath = os.path.join(config.output_dir, 'HDFS_1.5G_loaded.csv')
+dataloader = FileDataLoader(config.data_loader_config)
+logrecord = dataloader.load_data()
+logrecord.save_to_csv(loaded_filepath)
+print (logrecord.body[constants.LOGLINE_NAME])
+
+preprocessor = HDFSPreprocessor(config.preprocessor_config, config.label_filepath)
+preprocessed_filepath = os.path.join(config.output_dir, 'HDFS_1.5G_processed.csv')
+logrecord = preprocessor.clean_log(logrecord)
+logrecord.save_to_csv(preprocessed_filepath)
+print (logrecord.body[constants.LOGLINE_NAME])
+
+#####
+partitioner = OpenSetPartitioner(config.open_set_partitioner_config)
+partitioned_filepath = os.path.join(config.output_dir, 'HDFS_1.5G_nonparsed_session.csv')
+logrecord = partitioner.partition(logrecord)
+logrecord.save_to_csv(partitioned_filepath)
+print (logrecord.body[constants.LOGLINE_NAME])
 
 train_filepath = os.path.join(config.output_dir, 'HDFS_1.5G_nonparsed_session_supervised_train.csv')
 dev_filepath = os.path.join(config.output_dir, 'HDFS_1.5G_nonparsed_session_supervised_dev.csv')
 test_filepath = os.path.join(config.output_dir, 'HDFS_1.5G_nonparsed_session_supervised_test.csv')
-#
-# (train_data, dev_data, test_data) = split_train_dev_test_for_anomaly_detection(
-#                 logrecord,training_type=config.training_type,
-#                 test_data_frac_neg_class=config.test_data_frac_neg,
-#                 test_data_frac_pos_class=config.test_data_frac_pos,
-#                 shuffle=config.train_test_shuffle
-#             )
-#
-# train_data.save_to_csv(train_filepath)
-# dev_data.save_to_csv(dev_filepath)
-# test_data.save_to_csv(test_filepath)
-# print ('Train/Dev/Test Anomalous', len(train_data.labels[train_data.labels[constants.LABELS]==1]),
-#                                    len(dev_data.labels[dev_data.labels[constants.LABELS]==1]),
-#                                    len(test_data.labels[test_data.labels[constants.LABELS]==1]))
-# print ('Train/Dev/Test Normal', len(train_data.labels[train_data.labels[constants.LABELS]==0]),
-#                                    len(dev_data.labels[dev_data.labels[constants.LABELS]==0]),
-#                                    len(test_data.labels[test_data.labels[constants.LABELS]==0]))
+
+(train_data, dev_data, test_data) = split_train_dev_test_for_anomaly_detection(
+                logrecord,training_type=config.training_type,
+                test_data_frac_neg_class=config.test_data_frac_neg,
+                test_data_frac_pos_class=config.test_data_frac_pos,
+                shuffle=config.train_test_shuffle
+            )
+
+train_data.save_to_csv(train_filepath)
+dev_data.save_to_csv(dev_filepath)
+test_data.save_to_csv(test_filepath)
+print ('Train/Dev/Test Anomalous', len(train_data.labels[train_data.labels[constants.LABELS]==1]),
+                                   len(dev_data.labels[dev_data.labels[constants.LABELS]==1]),
+                                   len(test_data.labels[test_data.labels[constants.LABELS]==1]))
+print ('Train/Dev/Test Normal', len(train_data.labels[train_data.labels[constants.LABELS]==0]),
+                                   len(dev_data.labels[dev_data.labels[constants.LABELS]==0]),
+                                   len(test_data.labels[test_data.labels[constants.LABELS]==0]))
 
 dev_tokenizer_path = os.path.join(config.output_dir, "dev_tokenizer")
 train_tokenizer_path = os.path.join(config.output_dir, "train_tokenizer")
@@ -96,39 +96,6 @@ train_features = get_features(train_tokenizer_path, train_filepath)
 anomaly_detector = NNAnomalyDetector(config=config.nn_anomaly_detection_config)
 anomaly_detector.fit(train_features, dev_features)
 
-
 test_features = get_features(test_tokenizer_path, test_filepath)
 predict_results = anomaly_detector.predict(test_features)
 print(predict_results)
-
-# anomalies = predict_results["anom_score"]
-#
-# _ad_results = pd.DataFrame(anomalies.rename("result"))
-#
-# anomaly_group_indices = _ad_results[_ad_results["result"] > 0.0].index.values
-#
-# anomaly_indices = []
-#
-# for indices in anomaly_group_indices:
-#     anomaly_indices += test_data.indices[indices]
-#
-# anomaly_labels = [True if i in anomaly_indices else False for i in test_data.indices]
-#
-# test_data.df['Is_Anomaly'] = anomaly_labels
-#
-# print(test_data)
-# for indices in self._index_group["event_index"].iloc[anomaly_group_indices]:
-#   anomaly_indices += indices
-#
-# df = pd.DataFrame(self.loglines)
-# df["_id"] = df.index.values
-#
-# df["is_anomaly"] = [True if i in anomaly_indices else False for i in df["_id"]]
-# self._loglines_with_anomalies = df
-#
-# res = (
-#   self._loglines_with_anomalies.join(self.attributes)
-#   .join(self.timestamps)
-#   .join(self.event_group)
-# )
-# return res
