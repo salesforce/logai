@@ -92,13 +92,13 @@ def get_features(tokenizer_path, data_path, data=None):
   return features
 
 
-dev_features = get_features(dev_tokenizer_path, dev_filepath, dev_data)
-train_features = get_features(train_tokenizer_path, train_filepath, train_data)
+#dev_features = get_features(dev_tokenizer_path, dev_filepath, dev_data)
+#train_features = get_features(train_tokenizer_path, train_filepath, train_data)
 
 anomaly_detector = NNAnomalyDetector(config=config.nn_anomaly_detection_config)
-anomaly_detector.fit(train_features, dev_features)
+#anomaly_detector.fit(train_features, dev_features)
 
-del train_features, dev_features
+#del train_features, dev_features
 
 test_features = get_features(test_tokenizer_path, test_filepath)
 predict_results = anomaly_detector.predict(test_features)

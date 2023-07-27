@@ -68,6 +68,7 @@ workflow_config:
           learning_rate: 0.0001
           num_train_epochs: 10
           per_device_train_batch_size: 4
+          per_device_eval_batch_size: 25
           save_strategy: "epoch"
           save_total_limit: 3
           resume_from_checkpoint: "/Users/mohit.gurnani/projects/logai/examples/jupyter_notebook/nn_ad_benchmarking/temp_output3/HDFS_5k_parsed_session_unsupervised_AD/bert-base-cased/checkpoint-150"

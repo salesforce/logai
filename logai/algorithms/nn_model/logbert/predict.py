@@ -58,7 +58,7 @@ class LogBERTPredict:
             self.model_dirpath,
             per_device_eval_batch_size=self.config.per_device_eval_batch_size,
             eval_accumulation_steps=self.config.eval_accumulation_steps,
-            resume_from_checkpoint=True,
+            resume_from_checkpoint=self.config.resume_from_checkpoint,
         )
 
     def _generate_masked_input(self, examples, indices):

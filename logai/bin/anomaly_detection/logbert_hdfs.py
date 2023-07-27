@@ -45,23 +45,24 @@ print (logrecord.body[constants.LOGLINE_NAME])
 train_filepath = os.path.join(config.output_dir, 'HDFS_1.5G_nonparsed_session_supervised_train.csv')
 dev_filepath = os.path.join(config.output_dir, 'HDFS_1.5G_nonparsed_session_supervised_dev.csv')
 test_filepath = os.path.join(config.output_dir, 'HDFS_1.5G_nonparsed_session_supervised_test.csv')
+train_data, dev_data, test_data = None, None, None
 
-(train_data, dev_data, test_data) = split_train_dev_test_for_anomaly_detection(
-                logrecord,training_type=config.training_type,
-                test_data_frac_neg_class=config.test_data_frac_neg,
-                test_data_frac_pos_class=config.test_data_frac_pos,
-                shuffle=config.train_test_shuffle
-            )
+# (train_data, dev_data, test_data) = split_train_dev_test_for_anomaly_detection(
+#                 logrecord,training_type=config.training_type,
+#                 test_data_frac_neg_class=config.test_data_frac_neg,
+#                 test_data_frac_pos_class=config.test_data_frac_pos,
+#                 shuffle=config.train_test_shuffle
+#             )
 
-train_data.save_to_csv(train_filepath)
-dev_data.save_to_csv(dev_filepath)
-test_data.save_to_csv(test_filepath)
-print ('Train/Dev/Test Anomalous', len(train_data.labels[train_data.labels[constants.LABELS]==1]),
-                                   len(dev_data.labels[dev_data.labels[constants.LABELS]==1]),
-                                   len(test_data.labels[test_data.labels[constants.LABELS]==1]))
-print ('Train/Dev/Test Normal', len(train_data.labels[train_data.labels[constants.LABELS]==0]),
-                                   len(dev_data.labels[dev_data.labels[constants.LABELS]==0]),
-                                   len(test_data.labels[test_data.labels[constants.LABELS]==0]))
+# train_data.save_to_csv(train_filepath)
+# dev_data.save_to_csv(dev_filepath)
+# test_data.save_to_csv(test_filepath)
+# print ('Train/Dev/Test Anomalous', len(train_data.labels[train_data.labels[constants.LABELS]==1]),
+#                                    len(dev_data.labels[dev_data.labels[constants.LABELS]==1]),
+#                                    len(test_data.labels[test_data.labels[constants.LABELS]==1]))
+# print ('Train/Dev/Test Normal', len(train_data.labels[train_data.labels[constants.LABELS]==0]),
+#                                    len(dev_data.labels[dev_data.labels[constants.LABELS]==0]),
+#                                    len(test_data.labels[test_data.labels[constants.LABELS]==0]))
 
 dev_tokenizer_path = os.path.join(config.output_dir, "dev_tokenizer")
 train_tokenizer_path = os.path.join(config.output_dir, "train_tokenizer")
@@ -89,12 +90,13 @@ def get_features(tokenizer_path, data_path):
   print("Vectorization complete for %s" % tokenizer_path)
   return features
 
-
 dev_features = get_features(dev_tokenizer_path, dev_filepath)
 train_features = get_features(train_tokenizer_path, train_filepath)
 
 anomaly_detector = NNAnomalyDetector(config=config.nn_anomaly_detection_config)
 anomaly_detector.fit(train_features, dev_features)
+
+#del train_features, dev_features
 
 test_features = get_features(test_tokenizer_path, test_filepath)
 predict_results = anomaly_detector.predict(test_features)
