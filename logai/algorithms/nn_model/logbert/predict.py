@@ -9,7 +9,7 @@ from transformers import BertForMaskedLM, DataCollatorWithPadding
 from datasets import Dataset as HFDataset
 import numpy as np
 import pandas as pd
-from .eval_metric_utils import compute_metrics, calculate_f1_score, ground_truth, prediction_score, \
+from .eval_metric_utils import compute_metrics, ground_truth, prediction_score, \
     compute_auc_roc_for_metric
 from .predict_utils import Predictor, PredictionLabelSmoother
 from transformers import TrainingArguments
@@ -23,7 +23,7 @@ from .tokenizer_utils import (
     get_tokenizer,
     get_mask_id,
 )
-import torch
+
 
 class LogBERTPredict:
     """Class for running inference on logBERT model for unsupervised log anomaly detection.
@@ -177,34 +177,6 @@ class LogBERTPredict:
                 )
             )
 
-            # # Get the masked input data and corresponding predictions
-            # inputs = test_masked_lm_shard["input_ids"]
-            # predictions = test_results.predictions
-            # # Convert predictions to a tensor
-            # predictions_tensor = torch.tensor(predictions)
-            # try:
-            #     # Loop through each instance in the shard
-            #     for i in range(len(inputs)):
-            #         # Convert attention_mask to a tensor
-            #         attention_mask_tensor = torch.tensor(test_masked_lm_shard["attention_mask"][i])
-            #
-            #         # Get the actual mask words for the current instance
-            #         actual_mask_words = [inputs[i][j] for j in attention_mask_tensor.nonzero().squeeze().tolist()]
-            #
-            #         # Get the predicted words for the current instance (top 6 predictions)
-            #         top6_predictions = torch.topk(predictions_tensor[i][attention_mask_tensor], k=6).indices.tolist()
-            #
-            #         # Compute the number of correctly predicted tokens
-            #         num_correct = sum(token in top6_predictions for token in actual_mask_words)
-            #
-            #         # Check if at least 80% of tokens are correctly predicted
-            #         is_normal_log = num_correct >= 0.8 * len(actual_mask_words)
-            #
-            #         # Append the anomaly prediction result (True for anomaly, False for normal) to the list
-            #         anomaly_predictions.append(is_normal_log)
-            #
-            # except Exception as err:
-            #     print(err)
 
             data_columns = [
                 "indices",
@@ -239,29 +211,26 @@ class LogBERTPredict:
                     eval_metrics_per_instance_series, test_labels, test_counts, output_dir=self.config.output_dir
                 )
 
-        for threshold in [0.05, 0.1, 0.15, 0.18, 0.19, 0.2, 0.21, 0.22, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.60]:
-            sensitivity, specificity, precision, f1_score, TP, FN, FP, TN = calculate_f1_score(ground_truth,
-                                                                                               prediction_score,
-                                                                                               threshold)
-            log_content = "Overall threshold:{} sensitivity {}, specificity {}, precision {}, f1_score {}, TP {}, FN {}, FP {}, TN {}".format(
-                    threshold,
-                    sensitivity,
-                    specificity,
-                    precision,
-                    f1_score, TP,
-                    FN, FP, TN)
-            logging.info(log_content)
-            with open(os.path.join(self.config.output_dir, "overall_f1_score"), "a") as fp:
-                fp.write(log_content+"\n")
+        try:
+            compute_auc_roc_for_metric(
+                y=ground_truth,
+                metric=prediction_score,
+                metric_name_str="overall_end_scores_top6_prob",
+                plot_graph=True,
+                plot_histogram=True,
+                output_dir=self.config.output_dir
+            )
+        except Exception as err:
+            print(err)
 
-        compute_auc_roc_for_metric(
-            y=ground_truth,
-            metric=prediction_score,
-            metric_name_str="overall_end_scores_top6_prob",
-            plot_graph=True,
-            plot_histogram=True,
-            output_dir=self.config.output_dir
-        )
+        try:
+            with open(os.path.join(self.config.output_dir, "outcome"), "a") as fp:
+                for idx in range(len(ground_truth)):
+                    if idx < len(prediction_score):
+                        content = "%s,  %s" % (ground_truth[idx], prediction_score[idx])
+                        fp.write(content + "\n")
+        except Exception as err:
+            print(err)
 
         del ground_truth[:], prediction_score[:]
 
