@@ -2,7 +2,7 @@ import re
 from collections import OrderedDict
 
 
-class ParseNutanixLogs(object):
+class ParseLogs(object):
   """
   class which contains logic to automatically detect iterator
   """
@@ -188,7 +188,7 @@ class ParseNutanixLogs(object):
 
 
 if __name__ == "__main__":
-  parser = ParseNutanixLogs()
+  parser = ParseLogs()
   print(parser.extract_log_details(["2021-01-26 17:40:29,123Z - "
                                          "INFO NIOServerCxn.Factory:0.0.0.0/"
                                          "0.0.0.0:9876:NIOServerCnxnFactory"

@@ -6,9 +6,9 @@
 ##
 ##
 workflow_config:  
-  label_filepath: "/Users/mohit.gurnani/.dataset/hdfs/anomaly_label.csv"
+  label_filepath: "/home/ml/projects/logai/examples/datasets/HDFS_AD/anomaly_label.csv"
   parse_logline: False  
-  output_dir: "/Users/mohit.gurnani/projects/logai/examples/jupyter_notebook/nn_ad_benchmarking/temp_output3"
+  output_dir: "/home/ml/data/temp_output_hdfs1"
   output_file_type: "csv"
   training_type: "unsupervised"
   deduplicate_test: True
@@ -16,7 +16,7 @@ workflow_config:
   dataset_name: hdfs
 
   data_loader_config:
-    filepath: "/Users/mohit.gurnani/projects/logai/examples/datasets/HDFS_AD/HDFS_5k.log"
+    filepath: "/home/ml/projects/logai/examples/datasets/HDFS_20000.log"
     reader_args: 
       log_format: "<Date> <Time> <Pid> <Level> <Component> <Content>"
     log_type: "log"
@@ -57,7 +57,7 @@ workflow_config:
       model_name: "bert-base-cased"
       max_token_len: 384
       custom_tokens: ["BLOCK", "IP", "HEX", "INT"]
-      output_dir: "/Users/mohit.gurnani/projects/logai/examples/jupyter_notebook/nn_ad_benchmarking/temp_output3/HDFS_5k_parsed_session_unsupervised_AD"
+      output_dir: "/home/ml/data/temp_output_hdfs1/tokenizer"
       tokenizer_dirname: "logbert_tokenizer"
 
   nn_anomaly_detection_config:
@@ -65,14 +65,14 @@ workflow_config:
       algo_params:
           pretrain_from_scratch: False
           model_name: "bert-base-cased"
-          learning_rate: 0.0001
+          learning_rate: 0.00001
           num_train_epochs: 10
-          per_device_train_batch_size: 4
-          per_device_eval_batch_size: 25
+          per_device_train_batch_size: 40
+          per_device_eval_batch_size: 20
           save_strategy: "epoch"
           save_total_limit: 3
-          resume_from_checkpoint: "/Users/mohit.gurnani/projects/logai/examples/jupyter_notebook/nn_ad_benchmarking/temp_output3/HDFS_5k_parsed_session_unsupervised_AD/bert-base-cased/checkpoint-150"
+            #resume_from_checkpoint: "/home/ml/data/temp_output_hdfs1/model/bert-base-cased/checkpoint-3120"
           mask_ngram: 8
-          tokenizer_dirpath: "/Users/mohit.gurnani/projects/logai/examples/jupyter_notebook/nn_ad_benchmarking/temp_output3/HDFS_5k_parsed_session_unsupervised_AD/bert-base-cased_tokenizer"
-          output_dir: "/Users/mohit.gurnani/projects/logai/examples/jupyter_notebook/nn_ad_benchmarking/temp_output3/HDFS_5k_parsed_session_unsupervised_AD"
-
+          tokenizer_dirpath: "/home/ml/data/temp_output_hdfs1/tokenizer/bert-base-cased_tokenizer"
+          output_dir: "/home/ml/data/temp_output_hdfs1/model"
+          eval_accumulation_steps: 5

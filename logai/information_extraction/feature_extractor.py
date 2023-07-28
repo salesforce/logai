@@ -102,12 +102,43 @@ class FeatureExtractor:
         input_df = self._get_input_df(log_pattern, attributes, timestamps)
 
         gb = self._get_group(input_df)
-
         event_index_list = self._get_group_index(gb)
         event_index_list[constants.LOG_COUNTS] = event_index_list["event_index"].apply(
             lambda x: len(x)
         )
         return event_index_list
+        # small_group = event_index_list[event_index_list[constants.LOG_COUNTS] <= 30]
+        # large_group = event_index_list[event_index_list[constants.LOG_COUNTS] > 30]
+        #
+        # if large_group.empty:
+        #     return event_index_list
+        # else:
+        #
+        #     # Function to explode a column containing a list or copy the column as-is if it contains a single number
+        #     def explode_or_copy(col):
+        #         if isinstance(col.iloc[0], list):
+        #             return col.explode(ignore_index=True)
+        #         else:
+        #             return col
+        #
+        #     # Apply the function to each column in the DataFrame
+        #     deflated_large_df = large_group.apply(explode_or_copy)
+        #
+        #     # deflated_large_df = pd.concat([large_group[col].explode(ignore_index=True) for col in large_group.columns], axis=1)
+        #
+        #     # Deflate large groups back to normal DataFrame and set log_count to 1 for each row
+        #     # deflated_large_df = large_group.explode('event_index', ignore_index=True)
+        #     deflated_large_df = deflated_large_df.drop(constants.LOG_COUNTS, axis=1)
+        #     self.config.group_by_time = "3S"
+        #     gb = self._get_group(deflated_large_df)
+        #     large_df = self._get_group_index(gb)
+        #     large_df[constants.LOG_COUNTS] = large_df["event_index"].apply(
+        #         lambda x: len(x)
+        #     )
+        #     final_df = pd.concat([large_df, small_group])
+        #     # Drop the original index and reset index for the final DataFrame
+        #     final_df.reset_index(drop=True, inplace=True)
+        #     return final_df
 
     def convert_to_feature_vector(
         self,

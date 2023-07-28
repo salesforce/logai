@@ -28,10 +28,12 @@ PARSED_LOGLINE_NAME = "parsed_logline"
 PARAMETER_LIST_NAME = "parameter_list"
 LOG_EVENTS = "log_events"
 LOG_TIMESTAMPS = "timestamp"
+LOG_SEVERITY_NUMBER = "severity_number"
 SPAN_ID = "span_id"
 EVENT_INDEX = "event_index"
 LABELS = "labels"
-
+LOG_LEVEL = "log_level"
+SOURCE_FILE = "source_file"
 # Counts
 LOG_COUNTS = "counts"
 

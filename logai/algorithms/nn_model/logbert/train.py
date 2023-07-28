@@ -50,6 +50,7 @@ class LogBERTTrain:
             per_device_train_batch_size=self.config.per_device_train_batch_size,
             per_device_eval_batch_size=self.config.per_device_eval_batch_size,
             weight_decay=self.config.weight_decay,
+            gradient_accumulation_steps=self.config.gradient_accumulation_steps,
             save_steps=self.config.save_steps,
             save_strategy=self.config.save_strategy,
             save_total_limit=self.config.save_total_limit,

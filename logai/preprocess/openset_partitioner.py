@@ -29,6 +29,7 @@ class OpenSetPartitionerConfig(Config):
     sliding_window: int = 0
     session_window: bool = True
     logsequence_delim: str = "[SEP]"
+    group_by_time: str = None
 
 
 class OpenSetPartitioner:
@@ -52,13 +53,14 @@ class OpenSetPartitioner:
             )
             self.partitioner = Partitioner(partitioner_config)
         elif config.session_window:
-            fe_config = FeatureExtractorConfig.from_dict(
-                {
-                    "sliding_window": 20,
-                    "steps": 20,
-                    "group_by_category": [constants.SPAN_ID],
-                }
-            )
+            session_window_config = {
+                "sliding_window": 20,
+                "steps": 20,
+                "group_by_category": [constants.SPAN_ID],
+            }
+            if config.group_by_time:
+                session_window_config["group_by_time"] = config.group_by_time
+            fe_config = FeatureExtractorConfig.from_dict(session_window_config)
             self.feature_extractor = FeatureExtractor(fe_config)
 
     def _get_group_sliding_window(
@@ -136,9 +138,11 @@ class OpenSetPartitioner:
             lambda x: int(sum(x) > 0)
         )
         partitioned_ids = partitioned_data[constants.SPAN_ID]
+        log_counts = partitioned_data[constants.LOG_COUNTS]
         logrecord.body = pd.DataFrame({constants.LOGLINE_NAME: partitioned_loglines})
         logrecord.labels = pd.DataFrame({constants.LABELS: partitioned_labels})
         logrecord.span_id = pd.DataFrame({constants.SPAN_ID: partitioned_ids})
+        logrecord.attributes = pd.DataFrame({constants.LOG_COUNTS: log_counts})
         return logrecord
 
     def partition(self, logrecord):

@@ -41,7 +41,7 @@ class LogBERTVectorizerParams(Config):
     :param output_dir: path to directory where the output would be saved.
     :param tokenizer_dirpath: path to the tokenizer where the vectorizer (logbert tokenizer) would be saved.
     :param num_proc: number of processes to be used when tokenizing.
-
+    :param dataset: Which dataset is being used
     """
 
     model_name: str = ""
@@ -54,6 +54,7 @@ class LogBERTVectorizerParams(Config):
     output_dir: str = None
     tokenizer_dirpath: str = None
     num_proc: int = 4
+    dataset: str = None
 
 
 @factory.register("vectorization", "logbert", LogBERTVectorizerParams)
@@ -112,7 +113,11 @@ class LogBERT(VectorizationAlgo):
             return
 
         cleaned_logrecord = self._clean_dataset(logrecord)
-        dataset = self._get_hf_dataset(cleaned_logrecord)
+
+        if self.config.dataset == "normal":
+            dataset = self._get_normal_dataset(cleaned_logrecord)
+        else:
+            dataset = self._get_hf_dataset(cleaned_logrecord)
 
         def batch_iterator():
             for i in range(0, len(dataset), self.config.train_batch_size):
@@ -204,3 +209,23 @@ class LogBERT(VectorizationAlgo):
             )
         hf_data = HFDataset.from_pandas(loglines_df)
         return hf_data
+
+    def _get_normal_dataset(self, logrecord: LogRecordObject):
+        if constants.LOG_COUNTS in logrecord.attributes and constants.LOG_SEVERITY_NUMBER in logrecord.severity_number:
+            loglines_df = pd.DataFrame(
+                {
+                    constants.LOGLINE_NAME: logrecord.body[constants.LOGLINE_NAME],
+                    constants.LABELS: logrecord.labels[constants.LABELS],
+                    constants.LOG_COUNTS: logrecord.attributes[constants.LOG_COUNTS],
+                    constants.LOG_SEVERITY_NUMBER: logrecord.severity_number[constants.LOG_SEVERITY_NUMBER]
+                }
+            )
+        else:
+            loglines_df = pd.DataFrame(
+                {
+                    constants.LOGLINE_NAME: logrecord.body[constants.LOGLINE_NAME],
+                    constants.LABELS: logrecord.labels[constants.LABELS],
+                }
+            )
+        data = HFDataset.from_pandas(loglines_df)
+        return data

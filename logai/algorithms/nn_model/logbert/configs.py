@@ -43,6 +43,7 @@ class LogBERTConfig(Config):
     model_dirname: str = None
     mlm_probability: float = 0.15
     mask_ngram: int = 1
+    gradient_accumulation_steps: int = 1
     max_token_len: int = 384
     evaluation_strategy: str = "steps"
     num_train_epochs: int = 20
