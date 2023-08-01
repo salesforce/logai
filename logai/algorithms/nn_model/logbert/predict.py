@@ -129,7 +129,7 @@ class LogBERTPredict:
             args=self.predictor_args,
             train_dataset=None,
             eval_dataset=None,
-            data_collator=self.data_collator,
+            data_collator=self.data_collator
         )
         self.predictor.label_smoother = PredictionLabelSmoother(
             epsilon=self.predictor_args.label_smoothing_factor

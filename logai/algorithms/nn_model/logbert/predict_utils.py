@@ -80,6 +80,10 @@ class Predictor(Trainer):
 
         return (loss, outputs) if return_outputs else loss
 
+    def preprocess_logits_for_metrics(self, logits, labels):
+        pred_ids = torch.argmax(logits[0], dim=-1)
+        return pred_ids, labels
+
 
 class PredictionLabelSmoother(LabelSmoother):
     """

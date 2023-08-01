@@ -12,6 +12,7 @@ workflow_config:
   deduplicate_test: True
   test_data_frac_pos: 0.5
   dataset_name: normal
+  train_test_shuffle: True
 
   data_loader_config:
     train: "/Users/mohit.gurnani/Downloads/data/train_data.csv"
@@ -21,7 +22,7 @@ workflow_config:
     session_window: True
     sliding_window: -1
     logsequence_delim: "[SEP]"
-    group_by_time: "3S"
+    group_by_time: "4S"
 
   log_vectorizer_config:
     algo_name: "logbert"
@@ -38,12 +39,13 @@ workflow_config:
       algo_name: "logbert"
       algo_params:
           pretrain_from_scratch: False
+          max_token_len: 384
           model_name: "bert-base-cased"
           learning_rate: 0.0001
-          num_train_epochs: 10
+          num_train_epochs: 5
           per_device_train_batch_size: 4
           per_device_eval_batch_size: 25
-          save_strategy: "epoch"
+          save_strategy: "steps"
           save_total_limit: 3
           mask_ngram: 8
           tokenizer_dirpath: "/Users/mohit.gurnani/projects/logai/examples/jupyter_notebook/nn_ad_benchmarking/temp_output_n/models/bert-base-cased_tokenizer"

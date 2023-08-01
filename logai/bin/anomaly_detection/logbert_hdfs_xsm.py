@@ -53,8 +53,8 @@ def get_features(tokenizer_path, data_path, data=None):
 
 
 parser = argparse.ArgumentParser(description="Set some values")
-parser.add_argument("config_file", type=str, help="The value is path of your config file")
-parser.add_argument("predict_only", type=str, help="Use 1 for predict_only, 2 for training/prediction")
+parser.add_argument("--config_file", type=str, required=True, help="The value is path of your config file")
+parser.add_argument("--predict_only", type=str, required=True, help="Use 1 for predict_only, 2 for training/prediction")
 
 args = parser.parse_args()
 

@@ -128,21 +128,40 @@ class OpenSetPartitioner:
 
         partitioned_data = self.feature_extractor.convert_to_counter_vector(
             log_pattern=logrecord.body[constants.LOGLINE_NAME],
-            attributes=logrecord.span_id.join(logrecord.labels),
+            attributes=logrecord.span_id.join([logrecord.labels, logrecord.severity_number]),
             timestamps=logrecord.timestamp[constants.LOG_TIMESTAMPS],
         )
+        partitioned_data = partitioned_data[
+            (partitioned_data[constants.LOG_COUNTS] >= 3) & (partitioned_data[constants.LOG_COUNTS] <= 15)]
+
+        partitioned_labels = partitioned_data[constants.LABELS].apply(
+            lambda x: int(sum(x) > 0)
+        )
+
+        partitioned_severity_num = partitioned_data[constants.LOG_SEVERITY_NUMBER].apply(max)
+
+        partitions_that_are_normal = partitioned_labels[partitioned_labels == 0]
+        partitions_that_are_abnormal = partitioned_labels[partitioned_labels > 0]
+
+
         partitioned_loglines = partitioned_data[constants.LOGLINE_NAME].apply(
             lambda x: self.config.logsequence_delim.join(x)
         )
         partitioned_labels = partitioned_data[constants.LABELS].apply(
             lambda x: int(sum(x) > 0)
         )
+
         partitioned_ids = partitioned_data[constants.SPAN_ID]
         log_counts = partitioned_data[constants.LOG_COUNTS]
+
+
         logrecord.body = pd.DataFrame({constants.LOGLINE_NAME: partitioned_loglines})
         logrecord.labels = pd.DataFrame({constants.LABELS: partitioned_labels})
         logrecord.span_id = pd.DataFrame({constants.SPAN_ID: partitioned_ids})
         logrecord.attributes = pd.DataFrame({constants.LOG_COUNTS: log_counts})
+        logrecord.timestamp = pd.DataFrame({constants.LOG_TIMESTAMPS: partitioned_data[constants.LOG_TIMESTAMPS]})
+        logrecord.severity_number = pd.DataFrame({constants.LOG_SEVERITY_NUMBER: partitioned_severity_num})
+        logrecord.severity_text.drop(columns=constants.LOG_LEVEL, inplace=True)
         return logrecord
 
     def partition(self, logrecord):

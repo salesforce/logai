@@ -49,14 +49,16 @@ def split_train_dev_test_for_anomaly_detection(
         stratify = None
     else:
         stratify = logrecord.labels[constants.LABELS]
-
+    body_indexes = logrecord.body['logline'].index.tolist()
     train_ids, test_ids, train_labels, test_labels = train_test_split(
-        logrecord.span_id[constants.SPAN_ID],
+        body_indexes,
         logrecord.labels[constants.LABELS],
-        test_size=0.2,
+        test_size=0.1,
         shuffle=shuffle,
         stratify=stratify,
     )
+
+
     if not shuffle:
         stratify = None
     else:
@@ -88,18 +90,18 @@ def split_train_dev_test_for_anomaly_detection(
         train_ids = list(set(train_ids))
         dev_ids = list(set(dev_ids))
 
-    indices_train = list(
-        logrecord.span_id.loc[
-            logrecord.span_id[constants.SPAN_ID].isin(train_ids)
-        ].index
-    )
-    indices_dev = list(
-        logrecord.span_id.loc[logrecord.span_id[constants.SPAN_ID].isin(dev_ids)].index
-    )
-    indices_test = list(
-        logrecord.span_id.loc[logrecord.span_id[constants.SPAN_ID].isin(test_ids)].index
-    )
-
+    # indices_train = list(
+    #     logrecord.span_id.loc[
+    #         logrecord.span_id[constants.SPAN_ID].isin(train_ids)
+    #     ].index
+    # )
+    # indices_dev = list(
+    #     logrecord.span_id.loc[logrecord.span_id[constants.SPAN_ID].isin(dev_ids)].index
+    # )
+    # indices_test = list(
+    #     logrecord.span_id.loc[logrecord.span_id[constants.SPAN_ID].isin(test_ids)].index
+    # )
+    indices_train, indices_dev, indices_test = train_ids, dev_ids, test_ids
     print(
         "indices_train/dev/test: ",
         len(indices_train),
@@ -110,4 +112,11 @@ def split_train_dev_test_for_anomaly_detection(
     logrecord_dev = logrecord.select_by_index(indices_dev)
     logrecord_test = logrecord.select_by_index(indices_test)
 
+    sampling_count = logrecord_test.labels[logrecord_test.labels['labels'] == 0].shape[0] // 8
+    normal_data = logrecord_test.labels[logrecord_test.labels['labels'] == 0]
+    abnormal_data = logrecord_test.labels[logrecord_test.labels['labels'] > 0]
+    abnormal_data = abnormal_data.sample(n=sampling_count)
+    normal_data = normal_data.sample(n=sampling_count)
+    new_test_data = pd.concat([normal_data, abnormal_data])
+    logrecord_test = logrecord.select_by_index(new_test_data.index.tolist())
     return logrecord_train, logrecord_dev, logrecord_test

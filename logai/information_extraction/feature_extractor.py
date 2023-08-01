@@ -106,6 +106,7 @@ class FeatureExtractor:
         event_index_list[constants.LOG_COUNTS] = event_index_list["event_index"].apply(
             lambda x: len(x)
         )
+        filtered_event_idx_lst = event_index_list[(event_index_list[constants.LOG_COUNTS] >= 3) & (event_index_list[constants.LOG_COUNTS] <= 15)]
         return event_index_list
         # small_group = event_index_list[event_index_list[constants.LOG_COUNTS] <= 30]
         # large_group = event_index_list[event_index_list[constants.LOG_COUNTS] > 30]

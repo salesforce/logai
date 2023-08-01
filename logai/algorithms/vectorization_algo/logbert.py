@@ -71,8 +71,8 @@ class LogBERT(VectorizationAlgo):
 
         self.special_tokens = ["[UNK]", "[PAD]", "[CLS]", "[SEP]", "[MASK]"]
 
-        if self.config.custom_tokens is not None:
-            self.special_tokens.extend(self.config.custom_tokens)
+        # if self.config.custom_tokens is not None:
+        #     self.special_tokens.extend(self.config.custom_tokens)
 
         tokenizer_dirname = self.config.model_name + "_tokenizer"
         if self.config.tokenizer_dirpath == "" or self.config.tokenizer_dirpath is None:
@@ -112,7 +112,7 @@ class LogBERT(VectorizationAlgo):
         if os.listdir(self.config.tokenizer_dirpath):
             return
 
-        cleaned_logrecord = self._clean_dataset(logrecord)
+        cleaned_logrecord = logrecord #self._clean_dataset(logrecord)
 
         if self.config.dataset == "normal":
             dataset = self._get_normal_dataset(cleaned_logrecord)
@@ -158,6 +158,7 @@ class LogBERT(VectorizationAlgo):
         )
 
     def _clean_dataset(self, logrecord: LogRecordObject):
+        return logrecord
         special_tokens = self._get_all_special_tokens()
         loglines = logrecord.body[constants.LOGLINE_NAME]
         loglines_removed_special_tokens = loglines.apply(
@@ -176,7 +177,10 @@ class LogBERT(VectorizationAlgo):
         :return: HuggingFace dataset object.
         """
         cleaned_logrecord = self._clean_dataset(logrecord)
-        dataset = self._get_hf_dataset(cleaned_logrecord)
+        if self.config.dataset == "normal":
+            dataset = self._get_normal_dataset(cleaned_logrecord)
+        else:
+            dataset = self._get_hf_dataset(cleaned_logrecord)
         tokenized_dataset = dataset.map(
             self._tokenize_function,
             batched=True,
