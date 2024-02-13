@@ -70,16 +70,16 @@ def split_train_dev_test_for_anomaly_detection(
     test_ids = list(set(test_ids))
 
     if training_type == "unsupervised":
-        train_ids_labels = pd.DataFrame({"ids": train_ids, "labels": train_labels})
-        train_ids_pos = train_ids_labels[train_ids_labels["labels"] == 1]["ids"]
-        dev_ids_labels = pd.DataFrame({"ids": dev_ids, "labels": dev_labels})
-        dev_ids_pos = dev_ids_labels[dev_ids_labels["labels"] == 1]["ids"]
-
-        train_ids = train_ids_labels[train_ids_labels["labels"] == 0]["ids"]
-        dev_ids = dev_ids_labels[dev_ids_labels["labels"] == 0]["ids"]
-
-        test_ids.extend(train_ids_pos)
-        test_ids.extend(dev_ids_pos)
+        # train_ids_labels = pd.DataFrame({"ids": train_ids, "labels": train_labels})
+        # train_ids_pos = train_ids_labels[train_ids_labels["labels"] == 1]["ids"]
+        # dev_ids_labels = pd.DataFrame({"ids": dev_ids, "labels": dev_labels})
+        # dev_ids_pos = dev_ids_labels[dev_ids_labels["labels"] == 1]["ids"]
+        #
+        # train_ids = train_ids_labels[train_ids_labels["labels"] == 0]["ids"]
+        # dev_ids = dev_ids_labels[dev_ids_labels["labels"] == 0]["ids"]
+        #
+        # test_ids.extend(train_ids_pos)
+        # test_ids.extend(dev_ids_pos)
 
         if len(dev_ids) == 0:
             train_ids, dev_ids = train_test_split(
@@ -112,11 +112,12 @@ def split_train_dev_test_for_anomaly_detection(
     logrecord_dev = logrecord.select_by_index(indices_dev)
     logrecord_test = logrecord.select_by_index(indices_test)
 
-    sampling_count = logrecord_test.labels[logrecord_test.labels['labels'] == 0].shape[0] // 8
-    normal_data = logrecord_test.labels[logrecord_test.labels['labels'] == 0]
-    abnormal_data = logrecord_test.labels[logrecord_test.labels['labels'] > 0]
-    abnormal_data = abnormal_data.sample(n=sampling_count)
-    normal_data = normal_data.sample(n=sampling_count)
-    new_test_data = pd.concat([normal_data, abnormal_data])
-    logrecord_test = logrecord.select_by_index(new_test_data.index.tolist())
+    # Lets skip sampling
+    # sampling_count = logrecord_test.labels[logrecord_test.labels['labels'] == 0].shape[0] // 8
+    # normal_data = logrecord_test.labels[logrecord_test.labels['labels'] == 0]
+    # abnormal_data = logrecord_test.labels[logrecord_test.labels['labels'] > 0]
+    # abnormal_data = abnormal_data.sample(n=sampling_count)
+    # normal_data = normal_data.sample(n=sampling_count)
+    # new_test_data = pd.concat([normal_data, abnormal_data])
+    # logrecord_test = logrecord.select_by_index(new_test_data.index.tolist())
     return logrecord_train, logrecord_dev, logrecord_test

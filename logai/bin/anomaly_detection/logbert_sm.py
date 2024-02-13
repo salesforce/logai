@@ -7,7 +7,6 @@ from logai.algorithms.nn_model.logbert.configs import LogBERTConfig
 from logai.algorithms.vectorization_algo.logbert import LogBERTVectorizerParams
 from logai.applications.openset.anomaly_detection.openset_anomaly_detection_workflow import OpenSetADWorkflowConfig, validate_config_dict
 from logai.dataloader.data_model import LogRecordObject
-from logai.dataloader.parse_logs import ParseLogs
 from logai.preprocess.mask_logs import MaskLogLine
 from logai.utils.file_utils import read_file
 from logai.utils.dataset_utils import split_train_dev_test_for_anomaly_detection

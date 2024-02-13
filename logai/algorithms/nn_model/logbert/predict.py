@@ -5,7 +5,7 @@
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 #
 #
-from transformers import BertForMaskedLM, DataCollatorWithPadding
+from transformers import BertForMaskedLM, DataCollatorWithPadding, BertForSequenceClassification, BertTokenizerFast
 from datasets import Dataset as HFDataset
 import numpy as np
 import pandas as pd
@@ -135,7 +135,7 @@ class LogBERTPredict:
             epsilon=self.predictor_args.label_smoothing_factor
         )
 
-    def predict(self, test_dataset: HFDataset):
+    def predict(self, test_dataset: HFDataset, **kwargs):
         """Method for running inference on logbert to predict anomalous loglines in test dataset.
 
         :param test_dataset: test dataset of type huggingface Dataset object.
@@ -235,3 +235,75 @@ class LogBERTPredict:
         del ground_truth[:], prediction_score[:]
 
         return eval_metrics_per_instance_series
+
+
+class LogBERTMultiClassificationPredict:
+    """Class for running inference on logBERT model for unsupervised log anomaly detection.
+
+    :param config: config object describing the parameters of logbert model.
+    """
+
+    def __init__(self, config: LogBERTConfig):
+
+        self.config = config
+        self.model_dirpath = os.path.join(
+            self.config.output_dir, self.config.model_name
+        )
+
+        self.model = None
+        self.tokenizer = BertTokenizerFast.from_pretrained("bert-base-cased", max_length=512)
+
+    def load_model(self, **kwargs):
+        """Loading logbert model from the model dir path as specified in the logBERTConfig config"""
+        checkpoint_dir = "checkpoint-" + str(
+            max(
+                [
+                    int(x.split("-")[1])
+                    for x in os.listdir(self.model_dirpath)
+                    if x.startswith("checkpoint")
+                ]
+            )
+        )
+        model_checkpoint = os.path.abspath(
+            os.path.join(self.model_dirpath, checkpoint_dir)
+        )
+        logging.info("Loading model from {}".format(model_checkpoint))
+
+        self.model = BertForSequenceClassification.from_pretrained(model_checkpoint,
+                                                                   num_labels=kwargs.get("num_labels"),
+                                                                   id2label=kwargs.get("id2label"),
+                                                                   label2id=kwargs.get("label2id"))
+        self.model.to(kwargs.get("device"))
+
+    def predict(self, text, **kwargs):
+        """Method for running inference on logbert to predict anomalous loglines in test dataset.
+
+        :param test_dataset: test dataset of type huggingface Dataset object.
+        :return: dict containing instance-wise loss and scores.
+        """
+        if not self.model:
+            self.load_model()
+
+        inputs = self.tokenizer(text, padding=True, truncation=True, max_length=512, return_tensors="pt").to("cuda")
+
+        # Get model output (logits)
+        outputs = self.model(**inputs)
+
+        probs = outputs[0].softmax(1)
+        """ Explanation outputs: The BERT model returns a tuple containing the output logits (and possibly other elements depending on the model configuration). In this case, the output logits are the first element in the tuple, which is why we access it using outputs[0].
+
+        outputs[0]: This is a tensor containing the raw output logits for each class. The shape of the tensor is (batch_size, num_classes) where batch_size is the number of input samples (in this case, 1, as we are predicting for a single input text) and num_classes is the number of target classes.
+
+        softmax(1): The softmax function is applied along dimension 1 (the class dimension) to convert the raw logits into class probabilities. Softmax normalizes the logits so that they sum to 1, making them interpretable as probabilities. """
+
+        # Get the index of the class with the highest probability
+        # argmax() finds the index of the maximum value in the tensor along a specified dimension.
+        # By default, if no dimension is specified, it returns the index of the maximum value in the flattened tensor.
+        pred_label_idx = probs.argmax()
+
+        # Now map the predicted class index to the actual class label
+        # Since pred_label_idx is a tensor containing a single value (the predicted class index),
+        # the .item() method is used to extract the value as a scalar
+        pred_label = self.model.config.id2label[pred_label_idx.item()]
+
+        return probs, pred_label_idx, pred_label

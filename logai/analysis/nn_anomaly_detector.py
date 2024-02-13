@@ -28,6 +28,7 @@ class NNAnomalyDetector:
         self,
         train_data: ForecastNNVectorizedDataset or HFDataset,
         dev_data: ForecastNNVectorizedDataset or HFDataset,
+        **kwargs
     ):
         """
         Trains an anomaly detection given the training and validation datasets.
@@ -35,13 +36,13 @@ class NNAnomalyDetector:
         :param train_data: The training dataset.
         :param dev_data: The validation dataset
         """
-        return self.anomaly_detector.fit(train_data, dev_data)
+        return self.anomaly_detector.fit(train_data, dev_data, **kwargs)
 
-    def predict(self, test_data: ForecastNNVectorizedDataset or HFDataset):
+    def predict(self, test_data: ForecastNNVectorizedDataset or HFDataset, **kwargs):
         """
         Predicts anomalies given the test dataset.
 
         :param test_data: The test dataset.
         :return: A pandas dataframe containing the prediction results.
         """
-        return self.anomaly_detector.predict(test_data)
+        return self.anomaly_detector.predict(test_data, **kwargs)

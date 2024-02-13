@@ -36,6 +36,7 @@ class LogBERTConfig(Config):
         If set to true, it will find the latest checkpoint saved in the dir and use that to load the model.
     :param output_dir: str = None : output directory where the model would be saved.
     :param tokenizer_dirpath: str = None : path to directory containing the tokenizer.
+    :param multi_classifier: bool = False : whether its a multi classifier
     """
 
     pretrain_from_scratch: bool = True
@@ -61,3 +62,4 @@ class LogBERTConfig(Config):
     resume_from_checkpoint: str = ""
     output_dir: str = None
     tokenizer_dirpath: str = None
+    multi_classifier: bool = False

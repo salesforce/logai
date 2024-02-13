@@ -128,7 +128,7 @@ class OpenSetPartitioner:
 
         partitioned_data = self.feature_extractor.convert_to_counter_vector(
             log_pattern=logrecord.body[constants.LOGLINE_NAME],
-            attributes=logrecord.span_id.join([logrecord.labels, logrecord.severity_number]),
+            attributes=logrecord.span_id.join([logrecord.labels, logrecord.severity_number, logrecord.body[constants.SOURCE_FILE]]),
             timestamps=logrecord.timestamp[constants.LOG_TIMESTAMPS],
         )
         partitioned_data = partitioned_data[
@@ -147,6 +147,10 @@ class OpenSetPartitioner:
         partitioned_loglines = partitioned_data[constants.LOGLINE_NAME].apply(
             lambda x: self.config.logsequence_delim.join(x)
         )
+        paritioned_file_names = partitioned_data[constants.SOURCE_FILE].apply(
+            lambda x: self.config.logsequence_delim.join(list(set(x)))
+        )
+
         partitioned_labels = partitioned_data[constants.LABELS].apply(
             lambda x: int(sum(x) > 0)
         )
@@ -154,8 +158,7 @@ class OpenSetPartitioner:
         partitioned_ids = partitioned_data[constants.SPAN_ID]
         log_counts = partitioned_data[constants.LOG_COUNTS]
 
-
-        logrecord.body = pd.DataFrame({constants.LOGLINE_NAME: partitioned_loglines})
+        logrecord.body = pd.DataFrame({constants.LOGLINE_NAME: partitioned_loglines, constants.SOURCE_FILE: paritioned_file_names})
         logrecord.labels = pd.DataFrame({constants.LABELS: partitioned_labels})
         logrecord.span_id = pd.DataFrame({constants.SPAN_ID: partitioned_ids})
         logrecord.attributes = pd.DataFrame({constants.LOG_COUNTS: log_counts})

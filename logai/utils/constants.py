@@ -32,8 +32,8 @@ LOG_SEVERITY_NUMBER = "severity_number"
 SPAN_ID = "span_id"
 EVENT_INDEX = "event_index"
 LABELS = "labels"
-LOG_LEVEL = "log_level"
-SOURCE_FILE = "source_file"
+LOG_LEVEL = "severity"
+SOURCE_FILE = "filename"
 # Counts
 LOG_COUNTS = "counts"
 
