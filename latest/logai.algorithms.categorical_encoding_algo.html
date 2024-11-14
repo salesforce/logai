@@ -1,22 +1,23 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>logai.algorithms.categorical_encoding_algo package &mdash; LogAI  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/theme.css?v=7272f7be" />
+
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -109,190 +110,22 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="logai-algorithms-categorical-encoding-algo-package">
-<h1>logai.algorithms.categorical_encoding_algo package<a class="headerlink" href="#logai-algorithms-categorical-encoding-algo-package" title="Permalink to this heading"></a></h1>
+  <section id="logai-algorithms-categorical-encoding-algo-package">
+<h1>logai.algorithms.categorical_encoding_algo package<a class="headerlink" href="#logai-algorithms-categorical-encoding-algo-package" title="Link to this heading"></a></h1>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
-<section id="module-logai.algorithms.categorical_encoding_algo.label_encoding">
-<span id="logai-algorithms-categorical-encoding-algo-label-encoding-module"></span><h2>logai.algorithms.categorical_encoding_algo.label_encoding module<a class="headerlink" href="#module-logai.algorithms.categorical_encoding_algo.label_encoding" title="Permalink to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="logai.algorithms.categorical_encoding_algo.label_encoding.LabelEncoding">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.categorical_encoding_algo.label_encoding.</span></span><span class="sig-name descname"><span class="pre">LabelEncoding</span></span><a class="headerlink" href="#logai.algorithms.categorical_encoding_algo.label_encoding.LabelEncoding" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="logai.algorithms.html#logai.algorithms.algo_interfaces.CategoricalEncodingAlgo" title="logai.algorithms.algo_interfaces.CategoricalEncodingAlgo"><code class="xref py py-class docutils literal notranslate"><span class="pre">CategoricalEncodingAlgo</span></code></a></p>
-<p>This is a wrapper class for LabelEncoder from scikit-learn library. For more details see
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html">https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html</a>.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="logai.algorithms.categorical_encoding_algo.label_encoding.LabelEncoding.fit_transform">
-<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_attributes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.categorical_encoding_algo.label_encoding.LabelEncoding.fit_transform" title="Permalink to this definition"></a></dt>
-<dd><p>Fits and transforms log_attributes into label encoding categories.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>log_attributes</strong> – A list of log attributes in text format.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The label encoding categories.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
+<section id="logai-algorithms-categorical-encoding-algo-label-encoding-module">
+<h2>logai.algorithms.categorical_encoding_algo.label_encoding module<a class="headerlink" href="#logai-algorithms-categorical-encoding-algo-label-encoding-module" title="Link to this heading"></a></h2>
 </section>
-<section id="module-logai.algorithms.categorical_encoding_algo.one_hot_encoding">
-<span id="logai-algorithms-categorical-encoding-algo-one-hot-encoding-module"></span><h2>logai.algorithms.categorical_encoding_algo.one_hot_encoding module<a class="headerlink" href="#module-logai.algorithms.categorical_encoding_algo.one_hot_encoding" title="Permalink to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="logai.algorithms.categorical_encoding_algo.one_hot_encoding.OneHotEncoding">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.categorical_encoding_algo.one_hot_encoding.</span></span><span class="sig-name descname"><span class="pre">OneHotEncoding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.algorithms.categorical_encoding_algo.one_hot_encoding.OneHotEncodingParams" title="logai.algorithms.categorical_encoding_algo.one_hot_encoding.OneHotEncodingParams"><span class="pre">OneHotEncodingParams</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.categorical_encoding_algo.one_hot_encoding.OneHotEncoding" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="logai.algorithms.html#logai.algorithms.algo_interfaces.CategoricalEncodingAlgo" title="logai.algorithms.algo_interfaces.CategoricalEncodingAlgo"><code class="xref py py-class docutils literal notranslate"><span class="pre">CategoricalEncodingAlgo</span></code></a></p>
-<p>This is a wrapper class for OneHotEncoder from scikit-learn library
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html">https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html</a>.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="logai.algorithms.categorical_encoding_algo.one_hot_encoding.OneHotEncoding.fit_transform">
-<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_attributes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#logai.algorithms.categorical_encoding_algo.one_hot_encoding.OneHotEncoding.fit_transform" title="Permalink to this definition"></a></dt>
-<dd><p>Fits and transforms log attributes into one-hot encoding categories.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>log_attributes</strong> – A list of log attributes in text form.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A pandas dataframe of categories in on-hot encoding.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="logai.algorithms.categorical_encoding_algo.one_hot_encoding.OneHotEncodingParams">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.categorical_encoding_algo.one_hot_encoding.</span></span><span class="sig-name descname"><span class="pre">OneHotEncodingParams</span></span><a class="headerlink" href="#logai.algorithms.categorical_encoding_algo.one_hot_encoding.OneHotEncodingParams" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
-<p>Configuration for One-Hot Encoding. For more details on the parameters see
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html">https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html</a>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>categories</strong> – Categories (unique values) per feature.</p></li>
-<li><p><strong>drop</strong> – Specifies a methodology to use to drop one of the categories per feature.</p></li>
-<li><p><strong>dtype</strong> – Desired dtype of output.</p></li>
-<li><p><strong>handle_unknown</strong> – Specifies the way unknown categories are handled during transform.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="logai.algorithms.categorical_encoding_algo.one_hot_encoding.OneHotEncodingParams.categories">
-<span class="sig-name descname"><span class="pre">categories</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'auto'</span></em><a class="headerlink" href="#logai.algorithms.categorical_encoding_algo.one_hot_encoding.OneHotEncodingParams.categories" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="logai.algorithms.categorical_encoding_algo.one_hot_encoding.OneHotEncodingParams.drop">
-<span class="sig-name descname"><span class="pre">drop</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">object</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#logai.algorithms.categorical_encoding_algo.one_hot_encoding.OneHotEncodingParams.drop" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="logai.algorithms.categorical_encoding_algo.one_hot_encoding.OneHotEncodingParams.dtype">
-<span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#logai.algorithms.categorical_encoding_algo.one_hot_encoding.OneHotEncodingParams.dtype" title="Permalink to this definition"></a></dt>
-<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">float64</span></code></p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="logai.algorithms.categorical_encoding_algo.one_hot_encoding.OneHotEncodingParams.handle_unknown">
-<span class="sig-name descname"><span class="pre">handle_unknown</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'error'</span></em><a class="headerlink" href="#logai.algorithms.categorical_encoding_algo.one_hot_encoding.OneHotEncodingParams.handle_unknown" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<section id="logai-algorithms-categorical-encoding-algo-one-hot-encoding-module">
+<h2>logai.algorithms.categorical_encoding_algo.one_hot_encoding module<a class="headerlink" href="#logai-algorithms-categorical-encoding-algo-one-hot-encoding-module" title="Link to this heading"></a></h2>
 </section>
-<section id="module-logai.algorithms.categorical_encoding_algo.ordinal_encoding">
-<span id="logai-algorithms-categorical-encoding-algo-ordinal-encoding-module"></span><h2>logai.algorithms.categorical_encoding_algo.ordinal_encoding module<a class="headerlink" href="#module-logai.algorithms.categorical_encoding_algo.ordinal_encoding" title="Permalink to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="logai.algorithms.categorical_encoding_algo.ordinal_encoding.OrdinalEncoding">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.categorical_encoding_algo.ordinal_encoding.</span></span><span class="sig-name descname"><span class="pre">OrdinalEncoding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.algorithms.categorical_encoding_algo.ordinal_encoding.OrdinalEncodingParams" title="logai.algorithms.categorical_encoding_algo.ordinal_encoding.OrdinalEncodingParams"><span class="pre">OrdinalEncodingParams</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.categorical_encoding_algo.ordinal_encoding.OrdinalEncoding" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="logai.algorithms.html#logai.algorithms.algo_interfaces.CategoricalEncodingAlgo" title="logai.algorithms.algo_interfaces.CategoricalEncodingAlgo"><code class="xref py py-class docutils literal notranslate"><span class="pre">CategoricalEncodingAlgo</span></code></a></p>
-<p>Implementation of ordinal encoder. This is a wrapper class for the OrdinalEncoder from scikit learn
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html">https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html</a>.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="logai.algorithms.categorical_encoding_algo.ordinal_encoding.OrdinalEncoding.fit_transform">
-<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_attributes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#logai.algorithms.categorical_encoding_algo.ordinal_encoding.OrdinalEncoding.fit_transform" title="Permalink to this definition"></a></dt>
-<dd><p>Fits and transforms log attributes into ordinal encoding categories.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>log_attributes</strong> – A list of log attributes in text format.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A pandas dataframe of ordinal encoding categories.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="logai.algorithms.categorical_encoding_algo.ordinal_encoding.OrdinalEncodingParams">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.categorical_encoding_algo.ordinal_encoding.</span></span><span class="sig-name descname"><span class="pre">OrdinalEncodingParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">categories:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype:</span> <span class="pre">~numpy.float64</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'numpy.float64'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handle_unknown:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'error'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unknown_value:</span> <span class="pre">object</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.categorical_encoding_algo.ordinal_encoding.OrdinalEncodingParams" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
-<p>Configuration of OrdinalEncoding. For more details on the parameters see
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html">https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html</a>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>categories</strong> – Categories (unique values) per feature.</p></li>
-<li><p><strong>dtype</strong> – Desired dtype of output.</p></li>
-<li><p><strong>handle_unknown</strong> – Specifies the way unknown categories are handled during transform.</p></li>
-<li><p><strong>unknown_value</strong> – When the parameter handle_unknown is set to ‘use_encoded_value’,
-this parameter is required and will set the encoded value of unknown categories.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="logai.algorithms.categorical_encoding_algo.ordinal_encoding.OrdinalEncodingParams.categories">
-<span class="sig-name descname"><span class="pre">categories</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#logai.algorithms.categorical_encoding_algo.ordinal_encoding.OrdinalEncodingParams.categories" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="logai.algorithms.categorical_encoding_algo.ordinal_encoding.OrdinalEncodingParams.dtype">
-<span class="sig-name descname"><span class="pre">dtype</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float64</span></em><a class="headerlink" href="#logai.algorithms.categorical_encoding_algo.ordinal_encoding.OrdinalEncodingParams.dtype" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="logai.algorithms.categorical_encoding_algo.ordinal_encoding.OrdinalEncodingParams.handle_unknown">
-<span class="sig-name descname"><span class="pre">handle_unknown</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#logai.algorithms.categorical_encoding_algo.ordinal_encoding.OrdinalEncodingParams.handle_unknown" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="logai.algorithms.categorical_encoding_algo.ordinal_encoding.OrdinalEncodingParams.unknown_value">
-<span class="sig-name descname"><span class="pre">unknown_value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">object</span></em><a class="headerlink" href="#logai.algorithms.categorical_encoding_algo.ordinal_encoding.OrdinalEncodingParams.unknown_value" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<section id="logai-algorithms-categorical-encoding-algo-ordinal-encoding-module">
+<h2>logai.algorithms.categorical_encoding_algo.ordinal_encoding module<a class="headerlink" href="#logai-algorithms-categorical-encoding-algo-ordinal-encoding-module" title="Link to this heading"></a></h2>
 </section>
 <section id="module-logai.algorithms.categorical_encoding_algo">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-logai.algorithms.categorical_encoding_algo" title="Permalink to this heading"></a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-logai.algorithms.categorical_encoding_algo" title="Link to this heading"></a></h2>
 </section>
 </section>
 

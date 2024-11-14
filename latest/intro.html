@@ -1,22 +1,23 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Introduction &mdash; LogAI  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/theme.css?v=7272f7be" />
+
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -93,33 +94,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<a class="reference internal image-reference" href="_images/logai_logo.jpg"><img alt="_images/logai_logo.jpg" class="align-center" src="_images/logai_logo.jpg" style="width: 650px;" /></a>
+  <a class="reference internal image-reference" href="_images/logai_logo.jpg"><img alt="_images/logai_logo.jpg" class="align-center" src="_images/logai_logo.jpg" style="width: 650px;" />
+</a>
 <section id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h1>
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h1>
 <p>Software and System logs record runtime information about processes executing within a system.
 These logs have become the most critical and ubiquitous forms of observability data that help developers
 understand system behavior, monitor system health and resolve issues. However, the volume of logs generated can be
@@ -136,22 +114,24 @@ analysis. With LogAI, we can also easily benchmark popular deep learning algorit
 without putting in redundant effort to process the logs. We have opensourced LogAI to cater to a wide range of
 applications benefiting both academic research and industrial prototyping.</p>
 <section id="logai-architecture">
-<h2>LogAI Architecture<a class="headerlink" href="#logai-architecture" title="Permalink to this heading"></a></h2>
+<h2>LogAI Architecture<a class="headerlink" href="#logai-architecture" title="Link to this heading"></a></h2>
 <p>LogAI is separated into the GUI module and core library module.</p>
 </section>
 <section id="logai-core-library">
-<h2>LogAI Core Library<a class="headerlink" href="#logai-core-library" title="Permalink to this heading"></a></h2>
+<h2>LogAI Core Library<a class="headerlink" href="#logai-core-library" title="Link to this heading"></a></h2>
 <p>The core library module contains four main layers: data layer, pre-processing layer, information extraction layer and
 analysis layer. Each layer contains the components to process logs in a standard way. LogAI applications, such as log
 summarization, log clustering, unsupervised log anomaly detection, are created on top of the components of the four
 layers.</p>
-<a class="reference internal image-reference" href="_images/LogAIDesign.png"><img alt="_images/LogAIDesign.png" src="_images/LogAIDesign.png" style="width: 750px;" /></a>
+<a class="reference internal image-reference" href="_images/LogAIDesign.png"><img alt="_images/LogAIDesign.png" src="_images/LogAIDesign.png" style="width: 750px;" />
+</a>
 </section>
 <section id="logai-gui-portal">
-<h2>LogAI GUI Portal<a class="headerlink" href="#logai-gui-portal" title="Permalink to this heading"></a></h2>
+<h2>LogAI GUI Portal<a class="headerlink" href="#logai-gui-portal" title="Link to this heading"></a></h2>
 <p>The GUI module contains the implementation
 of a GUI portal that talks to backend analysis applications. The portal is supported using <a class="reference external" href="https://github.com/plotly/dash">Plotly Dash</a>.</p>
-<a class="reference internal image-reference" href="_images/logai_summarization_res.png"><img alt="_images/logai_summarization_res.png" src="_images/logai_summarization_res.png" style="width: 750px;" /></a>
+<a class="reference internal image-reference" href="_images/logai_summarization_res.png"><img alt="_images/logai_summarization_res.png" src="_images/logai_summarization_res.png" style="width: 750px;" />
+</a>
 </section>
 </section>
 

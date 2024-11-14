@@ -1,22 +1,23 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Developers’ Guide &mdash; LogAI  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/theme.css?v=7272f7be" />
+
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -94,37 +95,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="developers-guide">
-<h1>Developers’ Guide<a class="headerlink" href="#developers-guide" title="Permalink to this heading"></a></h1>
+  <section id="developers-guide">
+<h1>Developers’ Guide<a class="headerlink" href="#developers-guide" title="Link to this heading"></a></h1>
 <p>This guide if for people who want to contribute to LogAI codebase.
 The guide includes how to run and test LogAI in local environment.</p>
 <section id="install-dependencies">
-<h2>Install dependencies<a class="headerlink" href="#install-dependencies" title="Permalink to this heading"></a></h2>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://git.soma.salesforce.com/SalesforceResearch/logai.git
+<h2>Install dependencies<a class="headerlink" href="#install-dependencies" title="Link to this heading"></a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/salesforce/logai.git
 <span class="nb">cd</span><span class="w"> </span>logai
 python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv<span class="w"> </span><span class="c1"># create virtual environment</span>
 <span class="nb">source</span><span class="w"> </span>venv/bin/activate<span class="w"> </span><span class="c1"># activate virtual env</span>
@@ -133,26 +110,27 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 </div>
 </section>
 <section id="build-wheels-package">
-<h2>Build wheels package<a class="headerlink" href="#build-wheels-package" title="Permalink to this heading"></a></h2>
+<h2>Build wheels package<a class="headerlink" href="#build-wheels-package" title="Link to this heading"></a></h2>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>setup.py<span class="w"> </span>bdist_wheel
 </pre></div>
 </div>
 <p>Then you can find the .whl package in <code class="code highlight shell docutils literal highlight-shell">./dist/</code>.</p>
 </section>
 <section id="install-log-ai-from-wheels">
-<h2>Install Log-AI from wheels<a class="headerlink" href="#install-log-ai-from-wheels" title="Permalink to this heading"></a></h2>
+<h2>Install Log-AI from wheels<a class="headerlink" href="#install-log-ai-from-wheels" title="Link to this heading"></a></h2>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>logai-<span class="o">{</span>version<span class="o">}</span>-py2.py3-none-any.whl
 </pre></div>
 </div>
 </section>
 <section id="use-gui-to-explore-logai">
-<h2>Use GUI to explore LogAI<a class="headerlink" href="#use-gui-to-explore-logai" title="Permalink to this heading"></a></h2>
+<h2>Use GUI to explore LogAI<a class="headerlink" href="#use-gui-to-explore-logai" title="Link to this heading"></a></h2>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="w">  </span><span class="c1"># make sure to add current root to PYTHONPATH</span>
 python3<span class="w"> </span>gui/application.py<span class="w"> </span><span class="c1"># Run local plotly dash server.</span>
 </pre></div>
 </div>
 <p>Then open the LogAI portal via <code class="code highlight shell docutils literal highlight-shell">http://localhost:8050/</code> or <code class="code highlight shell docutils literal highlight-shell">http://127.0.0.1:8050/</code> in your browser:</p>
-<a class="reference internal image-reference" href="_images/log_summarization.png"><img alt="_images/log_summarization.png" src="_images/log_summarization.png" style="width: 750px;" /></a>
+<a class="reference internal image-reference" href="_images/log_summarization.png"><img alt="_images/log_summarization.png" src="_images/log_summarization.png" style="width: 750px;" />
+</a>
 </section>
 </section>
 

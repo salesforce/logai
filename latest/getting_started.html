@@ -1,22 +1,23 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Getting Started &mdash; LogAI  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/theme.css?v=7272f7be" />
+
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -99,35 +100,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<a class="reference internal image-reference" href="_images/logai_logo.jpg"><img alt="_images/logai_logo.jpg" class="align-center" src="_images/logai_logo.jpg" style="width: 650px;" /></a>
+  <a class="reference internal image-reference" href="_images/logai_logo.jpg"><img alt="_images/logai_logo.jpg" class="align-center" src="_images/logai_logo.jpg" style="width: 650px;" />
+</a>
 <section id="getting-started">
-<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading"></a></h1>
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h1>
 <section id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h2>
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
 <p>You can install LogAI core library using <code class="code highlight shell docutils literal highlight-shell">pip<span class="w"> </span>install</code>:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check out LogAI code repo from Github</span>
 git<span class="w"> </span>clone<span class="w"> </span>https://git.soma.salesforce.com/SalesforceResearch/logai.git
@@ -143,7 +121,7 @@ pip<span class="w"> </span>install<span class="w"> </span>logai
 </div>
 </section>
 <section id="install-optional-dependencies">
-<h2>Install Optional Dependencies<a class="headerlink" href="#install-optional-dependencies" title="Permalink to this heading"></a></h2>
+<h2>Install Optional Dependencies<a class="headerlink" href="#install-optional-dependencies" title="Link to this heading"></a></h2>
 <p>LogAI core library is light-weight with limited dependent packages installed. Users can install optional dependencies
 to enable extended functionalities of LogAI.</p>
 <p><strong>Deep Learning Log Analysis</strong>. To conduct deep learning model related tasks and run benchmarking,
@@ -155,12 +133,12 @@ please install extra requirements by <code class="code highlight shell docutils 
 <p><strong>Complete installation</strong>. you can install the full list of dependencies by <code class="code highlight shell docutils literal highlight-shell">pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;logai[all]&quot;</span></code>.</p>
 </section>
 <section id="use-logai">
-<h2>Use LogAI<a class="headerlink" href="#use-logai" title="Permalink to this heading"></a></h2>
+<h2>Use LogAI<a class="headerlink" href="#use-logai" title="Link to this heading"></a></h2>
 <p>Below we briefly introduce several ways to explore and use LogAI, including exploring LogAI GUI
 portal, benchmarking deep-learning based log anomaly detection using LogAI, and building your
 own log analysis application with LogAI.</p>
 <section id="explore-logai-gui-portal">
-<h3>Explore LogAI GUI Portal<a class="headerlink" href="#explore-logai-gui-portal" title="Permalink to this heading"></a></h3>
+<h3>Explore LogAI GUI Portal<a class="headerlink" href="#explore-logai-gui-portal" title="Link to this heading"></a></h3>
 <p>You can also start a local LogAI service and use the GUI portal to explore LogAI.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check out LogAI code repo from Github</span>
 git<span class="w"> </span>clone<span class="w"> </span>https://git.soma.salesforce.com/SalesforceResearch/logai.git
@@ -180,10 +158,11 @@ python3<span class="w"> </span>gui/application.py<span class="w"> </span><span c
 </pre></div>
 </div>
 <p>Then open the LogAI portal via <code class="code highlight shell docutils literal highlight-shell">http://localhost:8050/</code> or <code class="code highlight shell docutils literal highlight-shell">http://127.0.0.1:8050/</code> in your browser:</p>
-<a class="reference internal image-reference" href="_images/logai_summarization_res.png"><img alt="_images/logai_summarization_res.png" src="_images/logai_summarization_res.png" style="width: 750px;" /></a>
+<a class="reference internal image-reference" href="_images/logai_summarization_res.png"><img alt="_images/logai_summarization_res.png" src="_images/logai_summarization_res.png" style="width: 750px;" />
+</a>
 </section>
 <section id="run-simple-time-series-anomaly-detection-application">
-<h3>Run Simple Time-series Anomaly Detection Application<a class="headerlink" href="#run-simple-time-series-anomaly-detection-application" title="Permalink to this heading"></a></h3>
+<h3>Run Simple Time-series Anomaly Detection Application<a class="headerlink" href="#run-simple-time-series-anomaly-detection-application" title="Link to this heading"></a></h3>
 <p>You can also use LogAI in more programtic ways. LogAI supports configuration files in <cite>.json</cite> or <cite>.yaml</cite>.
 Below is a sample <cite>log_anomaly_detection_config.json</cite> configuration for anomaly detection application.
 Make sure to set <cite>filepath</cite> to the target log dataset file path.</p>
@@ -243,7 +222,7 @@ Make sure to set <cite>filepath</cite> to the target log dataset file path.</p>
 <a class="reference external" href="https://github.com/salesforce/logai/blob/main/examples/jupyter_notebook/log_anomaly_detection_example.ipynb">Tutorial: Use Log Anomaly Detection Application</a>.</p>
 </section>
 <section id="build-customized-logai-applications">
-<h3>Build Customized LogAI Applications<a class="headerlink" href="#build-customized-logai-applications" title="Permalink to this heading"></a></h3>
+<h3>Build Customized LogAI Applications<a class="headerlink" href="#build-customized-logai-applications" title="Link to this heading"></a></h3>
 <p>You can build your own customized log analysis applications using LogAI. Here we show two examples:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/salesforce/logai/blob/main/examples/jupyter_notebook/tutorial_log_clustering.ipynb">Tutorial: Log Clustering Using LogAI</a></p></li>
@@ -251,7 +230,7 @@ Make sure to set <cite>filepath</cite> to the target log dataset file path.</p>
 </ul>
 </section>
 <section id="deep-learning-anomaly-detection-benchmarking">
-<h3>Deep-learning Anomaly Detection Benchmarking<a class="headerlink" href="#deep-learning-anomaly-detection-benchmarking" title="Permalink to this heading"></a></h3>
+<h3>Deep-learning Anomaly Detection Benchmarking<a class="headerlink" href="#deep-learning-anomaly-detection-benchmarking" title="Link to this heading"></a></h3>
 <p>LogAI can be used to benchmark deep-learning anomaly detection results.
 A <a class="reference external" href="https://github.com/salesforce/logai/blob/main/examples/jupyter_notebook/tutorial_deep_ad.md">tutorial</a> is provided for
 Anomaly Detection Benchmarking using LSTM anomaly detector for HDFS Dataset. More examples of deep-learning anomaly

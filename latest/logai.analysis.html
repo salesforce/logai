@@ -1,22 +1,23 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>logai.analysis package &mdash; LogAI  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/theme.css?v=7272f7be" />
+
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -108,228 +109,22 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="logai-analysis-package">
-<h1>logai.analysis package<a class="headerlink" href="#logai-analysis-package" title="Permalink to this heading"></a></h1>
+  <section id="logai-analysis-package">
+<h1>logai.analysis package<a class="headerlink" href="#logai-analysis-package" title="Link to this heading"></a></h1>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
-<section id="module-logai.analysis.anomaly_detector">
-<span id="logai-analysis-anomaly-detector-module"></span><h2>logai.analysis.anomaly_detector module<a class="headerlink" href="#module-logai.analysis.anomaly_detector" title="Permalink to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="logai.analysis.anomaly_detector.AnomalyDetectionConfig">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.analysis.anomaly_detector.</span></span><span class="sig-name descname"><span class="pre">AnomalyDetectionConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">algo_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'one_class_svm'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algo_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.analysis.anomaly_detector.AnomalyDetectionConfig" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
-<p>Config class for AnomalyDetector.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>algo_name</strong> – The algorithm name.</p></li>
-<li><p><strong>algo_params</strong> – The algorithm parameters.</p></li>
-<li><p><strong>custom_params</strong> – Additional customized parameters.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="logai.analysis.anomaly_detector.AnomalyDetectionConfig.algo_name">
-<span class="sig-name descname"><span class="pre">algo_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#logai.analysis.anomaly_detector.AnomalyDetectionConfig.algo_name" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="logai.analysis.anomaly_detector.AnomalyDetectionConfig.algo_params">
-<span class="sig-name descname"><span class="pre">algo_params</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">object</span></em><a class="headerlink" href="#logai.analysis.anomaly_detector.AnomalyDetectionConfig.algo_params" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="logai.analysis.anomaly_detector.AnomalyDetectionConfig.custom_params">
-<span class="sig-name descname"><span class="pre">custom_params</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">object</span></em><a class="headerlink" href="#logai.analysis.anomaly_detector.AnomalyDetectionConfig.custom_params" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="logai.analysis.anomaly_detector.AnomalyDetectionConfig.from_dict">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.analysis.anomaly_detector.AnomalyDetectionConfig.from_dict" title="Permalink to this definition"></a></dt>
-<dd><p>Loads a config from a config dict.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config_dict</strong> – The config parameters in a dict.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="logai.analysis.anomaly_detector.AnomalyDetector">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.analysis.anomaly_detector.</span></span><span class="sig-name descname"><span class="pre">AnomalyDetector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.analysis.anomaly_detector.AnomalyDetectionConfig" title="logai.analysis.anomaly_detector.AnomalyDetectionConfig"><span class="pre">AnomalyDetectionConfig</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.analysis.anomaly_detector.AnomalyDetector" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="logai.analysis.anomaly_detector.AnomalyDetector.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.analysis.anomaly_detector.AnomalyDetector.fit" title="Permalink to this definition"></a></dt>
-<dd><p>Trains an anomaly detection given the training dataset.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>log_features</strong> – The training dataset.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="logai.analysis.anomaly_detector.AnomalyDetector.predict">
-<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#logai.analysis.anomaly_detector.AnomalyDetector.predict" title="Permalink to this definition"></a></dt>
-<dd><p>Predicts anomalies given the test dataset.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>log_features</strong> – The test dataset.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A pandas dataframe containing the prediction results.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
+<section id="logai-analysis-anomaly-detector-module">
+<h2>logai.analysis.anomaly_detector module<a class="headerlink" href="#logai-analysis-anomaly-detector-module" title="Link to this heading"></a></h2>
 </section>
-<section id="module-logai.analysis.clustering">
-<span id="logai-analysis-clustering-module"></span><h2>logai.analysis.clustering module<a class="headerlink" href="#module-logai.analysis.clustering" title="Permalink to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="logai.analysis.clustering.Clustering">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.analysis.clustering.</span></span><span class="sig-name descname"><span class="pre">Clustering</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.analysis.clustering.ClusteringConfig" title="logai.analysis.clustering.ClusteringConfig"><span class="pre">ClusteringConfig</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.analysis.clustering.Clustering" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Clustering Application class defines log clustering workflow.
-It includes which algorithm to use.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="logai.analysis.clustering.Clustering.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.analysis.clustering.Clustering.fit" title="Permalink to this definition"></a></dt>
-<dd><p>Fit method of Clustering algorithm, to train on the given log features data.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>log_features</strong> – The training log features data.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="logai.analysis.clustering.Clustering.predict">
-<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#logai.analysis.clustering.Clustering.predict" title="Permalink to this definition"></a></dt>
-<dd><p>Predict method of Clustering algorithm, to run inference on given test log features.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>log_features</strong> – The test log features data.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The cluster output (label).</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="logai.analysis.clustering.ClusteringConfig">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.analysis.clustering.</span></span><span class="sig-name descname"><span class="pre">ClusteringConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">algo_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'dbscan'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algo_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.analysis.clustering.ClusteringConfig" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="logai.html#logai.config_interfaces.Config" title="logai.config_interfaces.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
-<p>Config class for Clustering algorithms.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>algo_name</strong> – The algorithm name.</p></li>
-<li><p><strong>algo_params</strong> – The algorithm parameters.</p></li>
-<li><p><strong>custom_params</strong> – Additional customized parameters.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="logai.analysis.clustering.ClusteringConfig.algo_name">
-<span class="sig-name descname"><span class="pre">algo_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#logai.analysis.clustering.ClusteringConfig.algo_name" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="logai.analysis.clustering.ClusteringConfig.algo_params">
-<span class="sig-name descname"><span class="pre">algo_params</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">object</span></em><a class="headerlink" href="#logai.analysis.clustering.ClusteringConfig.algo_params" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="logai.analysis.clustering.ClusteringConfig.custom_params">
-<span class="sig-name descname"><span class="pre">custom_params</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">object</span></em><a class="headerlink" href="#logai.analysis.clustering.ClusteringConfig.custom_params" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="logai.analysis.clustering.ClusteringConfig.from_dict">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.analysis.clustering.ClusteringConfig.from_dict" title="Permalink to this definition"></a></dt>
-<dd><p>Loads a config from a config dict.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config_dict</strong> – The config parameters in a dict.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
+<section id="logai-analysis-clustering-module">
+<h2>logai.analysis.clustering module<a class="headerlink" href="#logai-analysis-clustering-module" title="Link to this heading"></a></h2>
 </section>
-<section id="module-logai.analysis.nn_anomaly_detector">
-<span id="logai-analysis-nn-anomaly-detector-module"></span><h2>logai.analysis.nn_anomaly_detector module<a class="headerlink" href="#module-logai.analysis.nn_anomaly_detector" title="Permalink to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="logai.analysis.nn_anomaly_detector.NNAnomalyDetector">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.analysis.nn_anomaly_detector.</span></span><span class="sig-name descname"><span class="pre">NNAnomalyDetector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#logai.analysis.anomaly_detector.AnomalyDetectionConfig" title="logai.analysis.anomaly_detector.AnomalyDetectionConfig"><span class="pre">AnomalyDetectionConfig</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.analysis.nn_anomaly_detector.NNAnomalyDetector" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="logai.analysis.nn_anomaly_detector.NNAnomalyDetector.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizedDataset" title="logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizedDataset"><span class="pre">ForecastNNVectorizedDataset</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dev_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizedDataset" title="logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizedDataset"><span class="pre">ForecastNNVectorizedDataset</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.analysis.nn_anomaly_detector.NNAnomalyDetector.fit" title="Permalink to this definition"></a></dt>
-<dd><p>Trains an anomaly detection given the training and validation datasets.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>train_data</strong> – The training dataset.</p></li>
-<li><p><strong>dev_data</strong> – The validation dataset</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="logai.analysis.nn_anomaly_detector.NNAnomalyDetector.predict">
-<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizedDataset" title="logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizedDataset"><span class="pre">ForecastNNVectorizedDataset</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.analysis.nn_anomaly_detector.NNAnomalyDetector.predict" title="Permalink to this definition"></a></dt>
-<dd><p>Predicts anomalies given the test dataset.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>test_data</strong> – The test dataset.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A pandas dataframe containing the prediction results.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
+<section id="logai-analysis-nn-anomaly-detector-module">
+<h2>logai.analysis.nn_anomaly_detector module<a class="headerlink" href="#logai-analysis-nn-anomaly-detector-module" title="Link to this heading"></a></h2>
 </section>
 <section id="module-logai.analysis">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-logai.analysis" title="Permalink to this heading"></a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-logai.analysis" title="Link to this heading"></a></h2>
 </section>
 </section>
 

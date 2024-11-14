@@ -1,22 +1,23 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>logai.algorithms package &mdash; LogAI  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/theme.css?v=7272f7be" />
+
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -108,862 +109,111 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="logai-algorithms-package">
-<h1>logai.algorithms package<a class="headerlink" href="#logai-algorithms-package" title="Permalink to this heading"></a></h1>
+  <section id="logai-algorithms-package">
+<h1>logai.algorithms package<a class="headerlink" href="#logai-algorithms-package" title="Link to this heading"></a></h1>
 <section id="subpackages">
-<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading"></a></h2>
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html">logai.algorithms.anomaly_detection_algo package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#module-logai.algorithms.anomaly_detection_algo.anomaly_detector_het">logai.algorithms.anomaly_detection_algo.anomaly_detector_het module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.anomaly_detector_het.HetAnomalyDetectionConfig"><code class="docutils literal notranslate"><span class="pre">HetAnomalyDetectionConfig</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.anomaly_detector_het.HetAnomalyDetectionConfig.train_test_ratio"><code class="docutils literal notranslate"><span class="pre">HetAnomalyDetectionConfig.train_test_ratio</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.anomaly_detector_het.HetAnomalyDetector"><code class="docutils literal notranslate"><span class="pre">HetAnomalyDetector</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.anomaly_detector_het.HetAnomalyDetector.fit_predict"><code class="docutils literal notranslate"><span class="pre">HetAnomalyDetector.fit_predict()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.anomaly_detector_het.HetAnomalyDetector.preprocess"><code class="docutils literal notranslate"><span class="pre">HetAnomalyDetector.preprocess()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#module-logai.algorithms.anomaly_detection_algo.dbl">logai.algorithms.anomaly_detection_algo.dbl module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.dbl.DBLDetector"><code class="docutils literal notranslate"><span class="pre">DBLDetector</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.dbl.DBLDetector.fit"><code class="docutils literal notranslate"><span class="pre">DBLDetector.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.dbl.DBLDetector.predict"><code class="docutils literal notranslate"><span class="pre">DBLDetector.predict()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.dbl.DBLDetectorParams"><code class="docutils literal notranslate"><span class="pre">DBLDetectorParams</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.dbl.DBLDetectorParams.fixed_period"><code class="docutils literal notranslate"><span class="pre">DBLDetectorParams.fixed_period</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.dbl.DBLDetectorParams.kwargs"><code class="docutils literal notranslate"><span class="pre">DBLDetectorParams.kwargs</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.dbl.DBLDetectorParams.threshold"><code class="docutils literal notranslate"><span class="pre">DBLDetectorParams.threshold</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.dbl.DBLDetectorParams.train_window"><code class="docutils literal notranslate"><span class="pre">DBLDetectorParams.train_window</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.dbl.DBLDetectorParams.trends"><code class="docutils literal notranslate"><span class="pre">DBLDetectorParams.trends</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.dbl.DBLDetectorParams.wind_sz"><code class="docutils literal notranslate"><span class="pre">DBLDetectorParams.wind_sz</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#module-logai.algorithms.anomaly_detection_algo.distribution_divergence">logai.algorithms.anomaly_detection_algo.distribution_divergence module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.distribution_divergence.DistributionDivergence"><code class="docutils literal notranslate"><span class="pre">DistributionDivergence</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.distribution_divergence.DistributionDivergence.fit"><code class="docutils literal notranslate"><span class="pre">DistributionDivergence.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.distribution_divergence.DistributionDivergence.predict"><code class="docutils literal notranslate"><span class="pre">DistributionDivergence.predict()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.distribution_divergence.DistributionDivergenceParams"><code class="docutils literal notranslate"><span class="pre">DistributionDivergenceParams</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.distribution_divergence.DistributionDivergenceParams.n_bins"><code class="docutils literal notranslate"><span class="pre">DistributionDivergenceParams.n_bins</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.distribution_divergence.DistributionDivergenceParams.type"><code class="docutils literal notranslate"><span class="pre">DistributionDivergenceParams.type</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#module-logai.algorithms.anomaly_detection_algo.ets">logai.algorithms.anomaly_detection_algo.ets module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.ets.ETSDetector"><code class="docutils literal notranslate"><span class="pre">ETSDetector</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.ets.ETSDetector.fit"><code class="docutils literal notranslate"><span class="pre">ETSDetector.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.ets.ETSDetector.predict"><code class="docutils literal notranslate"><span class="pre">ETSDetector.predict()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.ets.ETSDetectorParams"><code class="docutils literal notranslate"><span class="pre">ETSDetectorParams</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.ets.ETSDetectorParams.damped_trend"><code class="docutils literal notranslate"><span class="pre">ETSDetectorParams.damped_trend</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.ets.ETSDetectorParams.error"><code class="docutils literal notranslate"><span class="pre">ETSDetectorParams.error</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.ets.ETSDetectorParams.kwargs"><code class="docutils literal notranslate"><span class="pre">ETSDetectorParams.kwargs</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.ets.ETSDetectorParams.max_forecast_steps"><code class="docutils literal notranslate"><span class="pre">ETSDetectorParams.max_forecast_steps</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.ets.ETSDetectorParams.refit"><code class="docutils literal notranslate"><span class="pre">ETSDetectorParams.refit</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.ets.ETSDetectorParams.seasonal"><code class="docutils literal notranslate"><span class="pre">ETSDetectorParams.seasonal</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.ets.ETSDetectorParams.seasonal_periods"><code class="docutils literal notranslate"><span class="pre">ETSDetectorParams.seasonal_periods</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.ets.ETSDetectorParams.target_seq_index"><code class="docutils literal notranslate"><span class="pre">ETSDetectorParams.target_seq_index</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.ets.ETSDetectorParams.trend"><code class="docutils literal notranslate"><span class="pre">ETSDetectorParams.trend</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#module-logai.algorithms.anomaly_detection_algo.forecast_nn">logai.algorithms.anomaly_detection_algo.forecast_nn module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.forecast_nn.ForcastBasedNeuralAD"><code class="docutils literal notranslate"><span class="pre">ForcastBasedNeuralAD</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.forecast_nn.ForcastBasedNeuralAD.fit"><code class="docutils literal notranslate"><span class="pre">ForcastBasedNeuralAD.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.forecast_nn.ForcastBasedNeuralAD.predict"><code class="docutils literal notranslate"><span class="pre">ForcastBasedNeuralAD.predict()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.forecast_nn.ForecastBasedCNN"><code class="docutils literal notranslate"><span class="pre">ForecastBasedCNN</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.forecast_nn.ForecastBasedLSTM"><code class="docutils literal notranslate"><span class="pre">ForecastBasedLSTM</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.forecast_nn.ForecastBasedTransformer"><code class="docutils literal notranslate"><span class="pre">ForecastBasedTransformer</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#module-logai.algorithms.anomaly_detection_algo.isolation_forest">logai.algorithms.anomaly_detection_algo.isolation_forest module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.isolation_forest.IsolationForestDetector"><code class="docutils literal notranslate"><span class="pre">IsolationForestDetector</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.isolation_forest.IsolationForestDetector.fit"><code class="docutils literal notranslate"><span class="pre">IsolationForestDetector.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.isolation_forest.IsolationForestDetector.predict"><code class="docutils literal notranslate"><span class="pre">IsolationForestDetector.predict()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.isolation_forest.IsolationForestParams"><code class="docutils literal notranslate"><span class="pre">IsolationForestParams</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.isolation_forest.IsolationForestParams.bootstrap"><code class="docutils literal notranslate"><span class="pre">IsolationForestParams.bootstrap</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.isolation_forest.IsolationForestParams.contamination"><code class="docutils literal notranslate"><span class="pre">IsolationForestParams.contamination</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.isolation_forest.IsolationForestParams.max_features"><code class="docutils literal notranslate"><span class="pre">IsolationForestParams.max_features</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.isolation_forest.IsolationForestParams.max_samples"><code class="docutils literal notranslate"><span class="pre">IsolationForestParams.max_samples</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.isolation_forest.IsolationForestParams.n_estimators"><code class="docutils literal notranslate"><span class="pre">IsolationForestParams.n_estimators</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.isolation_forest.IsolationForestParams.n_jobs"><code class="docutils literal notranslate"><span class="pre">IsolationForestParams.n_jobs</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.isolation_forest.IsolationForestParams.random_state"><code class="docutils literal notranslate"><span class="pre">IsolationForestParams.random_state</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.isolation_forest.IsolationForestParams.verbose"><code class="docutils literal notranslate"><span class="pre">IsolationForestParams.verbose</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.isolation_forest.IsolationForestParams.warm_start"><code class="docutils literal notranslate"><span class="pre">IsolationForestParams.warm_start</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#module-logai.algorithms.anomaly_detection_algo.local_outlier_factor">logai.algorithms.anomaly_detection_algo.local_outlier_factor module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.local_outlier_factor.LOFDetector"><code class="docutils literal notranslate"><span class="pre">LOFDetector</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.local_outlier_factor.LOFDetector.fit"><code class="docutils literal notranslate"><span class="pre">LOFDetector.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.local_outlier_factor.LOFDetector.predict"><code class="docutils literal notranslate"><span class="pre">LOFDetector.predict()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.local_outlier_factor.LOFParams"><code class="docutils literal notranslate"><span class="pre">LOFParams</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.local_outlier_factor.LOFParams.algorithm"><code class="docutils literal notranslate"><span class="pre">LOFParams.algorithm</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.local_outlier_factor.LOFParams.contamination"><code class="docutils literal notranslate"><span class="pre">LOFParams.contamination</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.local_outlier_factor.LOFParams.leaf_size"><code class="docutils literal notranslate"><span class="pre">LOFParams.leaf_size</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.local_outlier_factor.LOFParams.metric"><code class="docutils literal notranslate"><span class="pre">LOFParams.metric</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.local_outlier_factor.LOFParams.metric_params"><code class="docutils literal notranslate"><span class="pre">LOFParams.metric_params</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.local_outlier_factor.LOFParams.n_jobs"><code class="docutils literal notranslate"><span class="pre">LOFParams.n_jobs</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.local_outlier_factor.LOFParams.n_neighbors"><code class="docutils literal notranslate"><span class="pre">LOFParams.n_neighbors</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.local_outlier_factor.LOFParams.novelty"><code class="docutils literal notranslate"><span class="pre">LOFParams.novelty</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.local_outlier_factor.LOFParams.p"><code class="docutils literal notranslate"><span class="pre">LOFParams.p</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#module-logai.algorithms.anomaly_detection_algo.logbert">logai.algorithms.anomaly_detection_algo.logbert module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.logbert.LogBERT"><code class="docutils literal notranslate"><span class="pre">LogBERT</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.logbert.LogBERT.fit"><code class="docutils literal notranslate"><span class="pre">LogBERT.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.logbert.LogBERT.predict"><code class="docutils literal notranslate"><span class="pre">LogBERT.predict()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#module-logai.algorithms.anomaly_detection_algo.one_class_svm">logai.algorithms.anomaly_detection_algo.one_class_svm module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.one_class_svm.OneClassSVMDetector"><code class="docutils literal notranslate"><span class="pre">OneClassSVMDetector</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.one_class_svm.OneClassSVMDetector.fit"><code class="docutils literal notranslate"><span class="pre">OneClassSVMDetector.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.one_class_svm.OneClassSVMDetector.predict"><code class="docutils literal notranslate"><span class="pre">OneClassSVMDetector.predict()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.one_class_svm.OneClassSVMParams"><code class="docutils literal notranslate"><span class="pre">OneClassSVMParams</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.one_class_svm.OneClassSVMParams.cache_size"><code class="docutils literal notranslate"><span class="pre">OneClassSVMParams.cache_size</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.one_class_svm.OneClassSVMParams.coef0"><code class="docutils literal notranslate"><span class="pre">OneClassSVMParams.coef0</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.one_class_svm.OneClassSVMParams.degree"><code class="docutils literal notranslate"><span class="pre">OneClassSVMParams.degree</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.one_class_svm.OneClassSVMParams.gamma"><code class="docutils literal notranslate"><span class="pre">OneClassSVMParams.gamma</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.one_class_svm.OneClassSVMParams.kernel"><code class="docutils literal notranslate"><span class="pre">OneClassSVMParams.kernel</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.one_class_svm.OneClassSVMParams.nu"><code class="docutils literal notranslate"><span class="pre">OneClassSVMParams.nu</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.one_class_svm.OneClassSVMParams.shrinking"><code class="docutils literal notranslate"><span class="pre">OneClassSVMParams.shrinking</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.one_class_svm.OneClassSVMParams.tol"><code class="docutils literal notranslate"><span class="pre">OneClassSVMParams.tol</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.one_class_svm.OneClassSVMParams.verbose"><code class="docutils literal notranslate"><span class="pre">OneClassSVMParams.verbose</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#module-logai.algorithms.anomaly_detection_algo">Module contents</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.DBLDetector"><code class="docutils literal notranslate"><span class="pre">DBLDetector</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.DBLDetector.fit"><code class="docutils literal notranslate"><span class="pre">DBLDetector.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.DBLDetector.predict"><code class="docutils literal notranslate"><span class="pre">DBLDetector.predict()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.DistributionDivergence"><code class="docutils literal notranslate"><span class="pre">DistributionDivergence</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.DistributionDivergence.fit"><code class="docutils literal notranslate"><span class="pre">DistributionDivergence.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.DistributionDivergence.predict"><code class="docutils literal notranslate"><span class="pre">DistributionDivergence.predict()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.ETSDetector"><code class="docutils literal notranslate"><span class="pre">ETSDetector</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.ETSDetector.fit"><code class="docutils literal notranslate"><span class="pre">ETSDetector.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.ETSDetector.predict"><code class="docutils literal notranslate"><span class="pre">ETSDetector.predict()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.ForecastBasedCNN"><code class="docutils literal notranslate"><span class="pre">ForecastBasedCNN</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.ForecastBasedLSTM"><code class="docutils literal notranslate"><span class="pre">ForecastBasedLSTM</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.ForecastBasedTransformer"><code class="docutils literal notranslate"><span class="pre">ForecastBasedTransformer</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.IsolationForestDetector"><code class="docutils literal notranslate"><span class="pre">IsolationForestDetector</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.IsolationForestDetector.fit"><code class="docutils literal notranslate"><span class="pre">IsolationForestDetector.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.IsolationForestDetector.predict"><code class="docutils literal notranslate"><span class="pre">IsolationForestDetector.predict()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.LOFDetector"><code class="docutils literal notranslate"><span class="pre">LOFDetector</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.LOFDetector.fit"><code class="docutils literal notranslate"><span class="pre">LOFDetector.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.LOFDetector.predict"><code class="docutils literal notranslate"><span class="pre">LOFDetector.predict()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.LogBERT"><code class="docutils literal notranslate"><span class="pre">LogBERT</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.LogBERT.fit"><code class="docutils literal notranslate"><span class="pre">LogBERT.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.LogBERT.predict"><code class="docutils literal notranslate"><span class="pre">LogBERT.predict()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.OneClassSVMDetector"><code class="docutils literal notranslate"><span class="pre">OneClassSVMDetector</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.OneClassSVMDetector.fit"><code class="docutils literal notranslate"><span class="pre">OneClassSVMDetector.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai.algorithms.anomaly_detection_algo.OneClassSVMDetector.predict"><code class="docutils literal notranslate"><span class="pre">OneClassSVMDetector.predict()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai-algorithms-anomaly-detection-algo-anomaly-detector-het-module">logai.algorithms.anomaly_detection_algo.anomaly_detector_het module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai-algorithms-anomaly-detection-algo-dbl-module">logai.algorithms.anomaly_detection_algo.dbl module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai-algorithms-anomaly-detection-algo-distribution-divergence-module">logai.algorithms.anomaly_detection_algo.distribution_divergence module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai-algorithms-anomaly-detection-algo-ets-module">logai.algorithms.anomaly_detection_algo.ets module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai-algorithms-anomaly-detection-algo-forecast-nn-module">logai.algorithms.anomaly_detection_algo.forecast_nn module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai-algorithms-anomaly-detection-algo-isolation-forest-module">logai.algorithms.anomaly_detection_algo.isolation_forest module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai-algorithms-anomaly-detection-algo-local-outlier-factor-module">logai.algorithms.anomaly_detection_algo.local_outlier_factor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai-algorithms-anomaly-detection-algo-logbert-module">logai.algorithms.anomaly_detection_algo.logbert module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#logai-algorithms-anomaly-detection-algo-one-class-svm-module">logai.algorithms.anomaly_detection_algo.one_class_svm module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.anomaly_detection_algo.html#module-contents">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="logai.algorithms.categorical_encoding_algo.html">logai.algorithms.categorical_encoding_algo package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="logai.algorithms.categorical_encoding_algo.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.categorical_encoding_algo.html#module-logai.algorithms.categorical_encoding_algo.label_encoding">logai.algorithms.categorical_encoding_algo.label_encoding module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.categorical_encoding_algo.html#logai.algorithms.categorical_encoding_algo.label_encoding.LabelEncoding"><code class="docutils literal notranslate"><span class="pre">LabelEncoding</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.categorical_encoding_algo.html#logai.algorithms.categorical_encoding_algo.label_encoding.LabelEncoding.fit_transform"><code class="docutils literal notranslate"><span class="pre">LabelEncoding.fit_transform()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.categorical_encoding_algo.html#module-logai.algorithms.categorical_encoding_algo.one_hot_encoding">logai.algorithms.categorical_encoding_algo.one_hot_encoding module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.categorical_encoding_algo.html#logai.algorithms.categorical_encoding_algo.one_hot_encoding.OneHotEncoding"><code class="docutils literal notranslate"><span class="pre">OneHotEncoding</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.categorical_encoding_algo.html#logai.algorithms.categorical_encoding_algo.one_hot_encoding.OneHotEncoding.fit_transform"><code class="docutils literal notranslate"><span class="pre">OneHotEncoding.fit_transform()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.categorical_encoding_algo.html#logai.algorithms.categorical_encoding_algo.one_hot_encoding.OneHotEncodingParams"><code class="docutils literal notranslate"><span class="pre">OneHotEncodingParams</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.categorical_encoding_algo.html#logai.algorithms.categorical_encoding_algo.one_hot_encoding.OneHotEncodingParams.categories"><code class="docutils literal notranslate"><span class="pre">OneHotEncodingParams.categories</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.categorical_encoding_algo.html#logai.algorithms.categorical_encoding_algo.one_hot_encoding.OneHotEncodingParams.drop"><code class="docutils literal notranslate"><span class="pre">OneHotEncodingParams.drop</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.categorical_encoding_algo.html#logai.algorithms.categorical_encoding_algo.one_hot_encoding.OneHotEncodingParams.dtype"><code class="docutils literal notranslate"><span class="pre">OneHotEncodingParams.dtype</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.categorical_encoding_algo.html#logai.algorithms.categorical_encoding_algo.one_hot_encoding.OneHotEncodingParams.handle_unknown"><code class="docutils literal notranslate"><span class="pre">OneHotEncodingParams.handle_unknown</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.categorical_encoding_algo.html#module-logai.algorithms.categorical_encoding_algo.ordinal_encoding">logai.algorithms.categorical_encoding_algo.ordinal_encoding module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.categorical_encoding_algo.html#logai.algorithms.categorical_encoding_algo.ordinal_encoding.OrdinalEncoding"><code class="docutils literal notranslate"><span class="pre">OrdinalEncoding</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.categorical_encoding_algo.html#logai.algorithms.categorical_encoding_algo.ordinal_encoding.OrdinalEncoding.fit_transform"><code class="docutils literal notranslate"><span class="pre">OrdinalEncoding.fit_transform()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.categorical_encoding_algo.html#logai.algorithms.categorical_encoding_algo.ordinal_encoding.OrdinalEncodingParams"><code class="docutils literal notranslate"><span class="pre">OrdinalEncodingParams</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.categorical_encoding_algo.html#logai.algorithms.categorical_encoding_algo.ordinal_encoding.OrdinalEncodingParams.categories"><code class="docutils literal notranslate"><span class="pre">OrdinalEncodingParams.categories</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.categorical_encoding_algo.html#logai.algorithms.categorical_encoding_algo.ordinal_encoding.OrdinalEncodingParams.dtype"><code class="docutils literal notranslate"><span class="pre">OrdinalEncodingParams.dtype</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.categorical_encoding_algo.html#logai.algorithms.categorical_encoding_algo.ordinal_encoding.OrdinalEncodingParams.handle_unknown"><code class="docutils literal notranslate"><span class="pre">OrdinalEncodingParams.handle_unknown</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.categorical_encoding_algo.html#logai.algorithms.categorical_encoding_algo.ordinal_encoding.OrdinalEncodingParams.unknown_value"><code class="docutils literal notranslate"><span class="pre">OrdinalEncodingParams.unknown_value</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.categorical_encoding_algo.html#logai-algorithms-categorical-encoding-algo-label-encoding-module">logai.algorithms.categorical_encoding_algo.label_encoding module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.categorical_encoding_algo.html#logai-algorithms-categorical-encoding-algo-one-hot-encoding-module">logai.algorithms.categorical_encoding_algo.one_hot_encoding module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.categorical_encoding_algo.html#logai-algorithms-categorical-encoding-algo-ordinal-encoding-module">logai.algorithms.categorical_encoding_algo.ordinal_encoding module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="logai.algorithms.categorical_encoding_algo.html#module-logai.algorithms.categorical_encoding_algo">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="logai.algorithms.clustering_algo.html">logai.algorithms.clustering_algo package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="logai.algorithms.clustering_algo.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.clustering_algo.html#module-logai.algorithms.clustering_algo.birch">logai.algorithms.clustering_algo.birch module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.birch.BirchAlgo"><code class="docutils literal notranslate"><span class="pre">BirchAlgo</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.birch.BirchAlgo.fit"><code class="docutils literal notranslate"><span class="pre">BirchAlgo.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.birch.BirchAlgo.predict"><code class="docutils literal notranslate"><span class="pre">BirchAlgo.predict()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.birch.BirchParams"><code class="docutils literal notranslate"><span class="pre">BirchParams</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.birch.BirchParams.branching_factor"><code class="docutils literal notranslate"><span class="pre">BirchParams.branching_factor</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.birch.BirchParams.n_clusters"><code class="docutils literal notranslate"><span class="pre">BirchParams.n_clusters</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.birch.BirchParams.threshold"><code class="docutils literal notranslate"><span class="pre">BirchParams.threshold</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.clustering_algo.html#module-logai.algorithms.clustering_algo.dbscan">logai.algorithms.clustering_algo.dbscan module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.dbscan.DbScanAlgo"><code class="docutils literal notranslate"><span class="pre">DbScanAlgo</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.dbscan.DbScanAlgo.fit"><code class="docutils literal notranslate"><span class="pre">DbScanAlgo.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.dbscan.DbScanAlgo.predict"><code class="docutils literal notranslate"><span class="pre">DbScanAlgo.predict()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.dbscan.DbScanParams"><code class="docutils literal notranslate"><span class="pre">DbScanParams</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.dbscan.DbScanParams.algorithm"><code class="docutils literal notranslate"><span class="pre">DbScanParams.algorithm</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.dbscan.DbScanParams.eps"><code class="docutils literal notranslate"><span class="pre">DbScanParams.eps</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.dbscan.DbScanParams.leaf_size"><code class="docutils literal notranslate"><span class="pre">DbScanParams.leaf_size</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.dbscan.DbScanParams.metric"><code class="docutils literal notranslate"><span class="pre">DbScanParams.metric</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.dbscan.DbScanParams.metric_params"><code class="docutils literal notranslate"><span class="pre">DbScanParams.metric_params</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.dbscan.DbScanParams.min_samples"><code class="docutils literal notranslate"><span class="pre">DbScanParams.min_samples</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.dbscan.DbScanParams.n_jobs"><code class="docutils literal notranslate"><span class="pre">DbScanParams.n_jobs</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.dbscan.DbScanParams.p"><code class="docutils literal notranslate"><span class="pre">DbScanParams.p</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.clustering_algo.html#module-logai.algorithms.clustering_algo.kmeans">logai.algorithms.clustering_algo.kmeans module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.kmeans.KMeansAlgo"><code class="docutils literal notranslate"><span class="pre">KMeansAlgo</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.kmeans.KMeansAlgo.fit"><code class="docutils literal notranslate"><span class="pre">KMeansAlgo.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.kmeans.KMeansAlgo.predict"><code class="docutils literal notranslate"><span class="pre">KMeansAlgo.predict()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.kmeans.KMeansParams"><code class="docutils literal notranslate"><span class="pre">KMeansParams</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.kmeans.KMeansParams.algorithm"><code class="docutils literal notranslate"><span class="pre">KMeansParams.algorithm</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.kmeans.KMeansParams.copy_x"><code class="docutils literal notranslate"><span class="pre">KMeansParams.copy_x</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.kmeans.KMeansParams.init"><code class="docutils literal notranslate"><span class="pre">KMeansParams.init</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.kmeans.KMeansParams.max_iter"><code class="docutils literal notranslate"><span class="pre">KMeansParams.max_iter</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.kmeans.KMeansParams.n_clusters"><code class="docutils literal notranslate"><span class="pre">KMeansParams.n_clusters</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.kmeans.KMeansParams.n_init"><code class="docutils literal notranslate"><span class="pre">KMeansParams.n_init</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.kmeans.KMeansParams.random_state"><code class="docutils literal notranslate"><span class="pre">KMeansParams.random_state</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.kmeans.KMeansParams.tol"><code class="docutils literal notranslate"><span class="pre">KMeansParams.tol</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.kmeans.KMeansParams.verbose"><code class="docutils literal notranslate"><span class="pre">KMeansParams.verbose</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.clustering_algo.html#module-logai.algorithms.clustering_algo">Module contents</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.BirchAlgo"><code class="docutils literal notranslate"><span class="pre">BirchAlgo</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.BirchAlgo.fit"><code class="docutils literal notranslate"><span class="pre">BirchAlgo.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.BirchAlgo.predict"><code class="docutils literal notranslate"><span class="pre">BirchAlgo.predict()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.DbScanAlgo"><code class="docutils literal notranslate"><span class="pre">DbScanAlgo</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.DbScanAlgo.fit"><code class="docutils literal notranslate"><span class="pre">DbScanAlgo.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.DbScanAlgo.predict"><code class="docutils literal notranslate"><span class="pre">DbScanAlgo.predict()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.KMeansAlgo"><code class="docutils literal notranslate"><span class="pre">KMeansAlgo</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.KMeansAlgo.fit"><code class="docutils literal notranslate"><span class="pre">KMeansAlgo.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai.algorithms.clustering_algo.KMeansAlgo.predict"><code class="docutils literal notranslate"><span class="pre">KMeansAlgo.predict()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai-algorithms-clustering-algo-birch-module">logai.algorithms.clustering_algo.birch module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai-algorithms-clustering-algo-dbscan-module">logai.algorithms.clustering_algo.dbscan module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.clustering_algo.html#logai-algorithms-clustering-algo-kmeans-module">logai.algorithms.clustering_algo.kmeans module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.clustering_algo.html#module-contents">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="logai.algorithms.nn_model.html">logai.algorithms.nn_model package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="logai.algorithms.nn_model.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="logai.algorithms.nn_model.forecast_nn.html">logai.algorithms.nn_model.forecast_nn package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="logai.algorithms.nn_model.forecast_nn.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.nn_model.forecast_nn.html#module-logai.algorithms.nn_model.forecast_nn.base_nn">logai.algorithms.nn_model.forecast_nn.base_nn module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.nn_model.forecast_nn.html#module-logai.algorithms.nn_model.forecast_nn.cnn">logai.algorithms.nn_model.forecast_nn.cnn module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.nn_model.forecast_nn.html#module-logai.algorithms.nn_model.forecast_nn.lstm">logai.algorithms.nn_model.forecast_nn.lstm module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.nn_model.forecast_nn.html#module-logai.algorithms.nn_model.forecast_nn.transformer">logai.algorithms.nn_model.forecast_nn.transformer module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.nn_model.forecast_nn.html#module-logai.algorithms.nn_model.forecast_nn.utils">logai.algorithms.nn_model.forecast_nn.utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.nn_model.forecast_nn.html#logai-algorithms-nn-model-forecast-nn-base-nn-module">logai.algorithms.nn_model.forecast_nn.base_nn module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.nn_model.forecast_nn.html#logai-algorithms-nn-model-forecast-nn-cnn-module">logai.algorithms.nn_model.forecast_nn.cnn module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.nn_model.forecast_nn.html#logai-algorithms-nn-model-forecast-nn-lstm-module">logai.algorithms.nn_model.forecast_nn.lstm module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.nn_model.forecast_nn.html#logai-algorithms-nn-model-forecast-nn-transformer-module">logai.algorithms.nn_model.forecast_nn.transformer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.nn_model.forecast_nn.html#logai-algorithms-nn-model-forecast-nn-utils-module">logai.algorithms.nn_model.forecast_nn.utils module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="logai.algorithms.nn_model.forecast_nn.html#module-logai.algorithms.nn_model.forecast_nn">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="logai.algorithms.nn_model.logbert.html">logai.algorithms.nn_model.logbert package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="logai.algorithms.nn_model.logbert.html#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="logai.algorithms.nn_model.logbert.html#module-logai.algorithms.nn_model.logbert.configs">logai.algorithms.nn_model.logbert.configs module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.nn_model.logbert.html#module-logai.algorithms.nn_model.logbert.eval_metric_utils">logai.algorithms.nn_model.logbert.eval_metric_utils module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.nn_model.logbert.html#module-logai.algorithms.nn_model.logbert.predict">logai.algorithms.nn_model.logbert.predict module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.nn_model.logbert.html#module-logai.algorithms.nn_model.logbert.predict_utils">logai.algorithms.nn_model.logbert.predict_utils module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.nn_model.logbert.html#module-logai.algorithms.nn_model.logbert.tokenizer_utils">logai.algorithms.nn_model.logbert.tokenizer_utils module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.nn_model.logbert.html#module-logai.algorithms.nn_model.logbert.train">logai.algorithms.nn_model.logbert.train module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.nn_model.logbert.html#logai-algorithms-nn-model-logbert-eval-metric-utils-module">logai.algorithms.nn_model.logbert.eval_metric_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.nn_model.logbert.html#logai-algorithms-nn-model-logbert-predict-module">logai.algorithms.nn_model.logbert.predict module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.nn_model.logbert.html#logai-algorithms-nn-model-logbert-predict-utils-module">logai.algorithms.nn_model.logbert.predict_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.nn_model.logbert.html#logai-algorithms-nn-model-logbert-tokenizer-utils-module">logai.algorithms.nn_model.logbert.tokenizer_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.nn_model.logbert.html#logai-algorithms-nn-model-logbert-train-module">logai.algorithms.nn_model.logbert.train module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="logai.algorithms.nn_model.logbert.html#module-logai.algorithms.nn_model.logbert">Module contents</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="logai.algorithms.nn_model.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.nn_model.html#module-logai.algorithms.nn_model.transformers">logai.algorithms.nn_model.transformers module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.nn_model.html#logai.algorithms.nn_model.transformers.LogDataset"><code class="docutils literal notranslate"><span class="pre">LogDataset</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.nn_model.html#logai.algorithms.nn_model.transformers.TransformerAlgo"><code class="docutils literal notranslate"><span class="pre">TransformerAlgo</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.nn_model.html#logai.algorithms.nn_model.transformers.TransformerAlgo.predict"><code class="docutils literal notranslate"><span class="pre">TransformerAlgo.predict()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.nn_model.html#logai.algorithms.nn_model.transformers.TransformerAlgo.save"><code class="docutils literal notranslate"><span class="pre">TransformerAlgo.save()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.nn_model.html#logai.algorithms.nn_model.transformers.TransformerAlgo.train"><code class="docutils literal notranslate"><span class="pre">TransformerAlgo.train()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.nn_model.html#logai.algorithms.nn_model.transformers.TransformerAlgo.train_with_native_torch"><code class="docutils literal notranslate"><span class="pre">TransformerAlgo.train_with_native_torch()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.nn_model.html#logai.algorithms.nn_model.transformers.TransformerAlgoConfig"><code class="docutils literal notranslate"><span class="pre">TransformerAlgoConfig</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.nn_model.html#logai.algorithms.nn_model.transformers.TransformerAlgoConfig.tokenizer_config"><code class="docutils literal notranslate"><span class="pre">TransformerAlgoConfig.tokenizer_config</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.nn_model.html#logai.algorithms.nn_model.transformers.TransformerAlgoConfig.trainer_config"><code class="docutils literal notranslate"><span class="pre">TransformerAlgoConfig.trainer_config</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.nn_model.html#logai-algorithms-nn-model-transformers-module">logai.algorithms.nn_model.transformers module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="logai.algorithms.nn_model.html#module-logai.algorithms.nn_model">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="logai.algorithms.parsing_algo.html">logai.algorithms.parsing_algo package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="logai.algorithms.parsing_algo.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.parsing_algo.html#module-logai.algorithms.parsing_algo.ael">logai.algorithms.parsing_algo.ael module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.ael.AEL"><code class="docutils literal notranslate"><span class="pre">AEL</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.ael.AEL.categorize"><code class="docutils literal notranslate"><span class="pre">AEL.categorize()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.ael.AEL.fit"><code class="docutils literal notranslate"><span class="pre">AEL.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.ael.AEL.has_diff"><code class="docutils literal notranslate"><span class="pre">AEL.has_diff()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.ael.AEL.load_data"><code class="docutils literal notranslate"><span class="pre">AEL.load_data()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.ael.AEL.merge_event"><code class="docutils literal notranslate"><span class="pre">AEL.merge_event()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.ael.AEL.parse"><code class="docutils literal notranslate"><span class="pre">AEL.parse()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.ael.AEL.reconcile"><code class="docutils literal notranslate"><span class="pre">AEL.reconcile()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.ael.AEL.tokenize"><code class="docutils literal notranslate"><span class="pre">AEL.tokenize()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.ael.AELParams"><code class="docutils literal notranslate"><span class="pre">AELParams</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.ael.AELParams.keep_para"><code class="docutils literal notranslate"><span class="pre">AELParams.keep_para</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.ael.AELParams.merge_percent"><code class="docutils literal notranslate"><span class="pre">AELParams.merge_percent</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.ael.AELParams.minEventCount"><code class="docutils literal notranslate"><span class="pre">AELParams.minEventCount</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.ael.AELParams.rex"><code class="docutils literal notranslate"><span class="pre">AELParams.rex</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.ael.Event"><code class="docutils literal notranslate"><span class="pre">Event</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.ael.Event.refresh_id"><code class="docutils literal notranslate"><span class="pre">Event.refresh_id()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.parsing_algo.html#module-logai.algorithms.parsing_algo.drain">logai.algorithms.parsing_algo.drain module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.Drain"><code class="docutils literal notranslate"><span class="pre">Drain</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.Drain.clusters"><code class="docutils literal notranslate"><span class="pre">Drain.clusters</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.Drain.fit"><code class="docutils literal notranslate"><span class="pre">Drain.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.Drain.has_numbers"><code class="docutils literal notranslate"><span class="pre">Drain.has_numbers()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.Drain.match"><code class="docutils literal notranslate"><span class="pre">Drain.match()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.Drain.parse"><code class="docutils literal notranslate"><span class="pre">Drain.parse()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.DrainParams"><code class="docutils literal notranslate"><span class="pre">DrainParams</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.DrainParams.depth"><code class="docutils literal notranslate"><span class="pre">DrainParams.depth</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.DrainParams.extra_delimiters"><code class="docutils literal notranslate"><span class="pre">DrainParams.extra_delimiters</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.DrainParams.from_dict"><code class="docutils literal notranslate"><span class="pre">DrainParams.from_dict()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.DrainParams.max_children"><code class="docutils literal notranslate"><span class="pre">DrainParams.max_children</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.DrainParams.max_clusters"><code class="docutils literal notranslate"><span class="pre">DrainParams.max_clusters</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.DrainParams.param_str"><code class="docutils literal notranslate"><span class="pre">DrainParams.param_str</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.DrainParams.sim_th"><code class="docutils literal notranslate"><span class="pre">DrainParams.sim_th</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.LogCluster"><code class="docutils literal notranslate"><span class="pre">LogCluster</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.LogCluster.cluster_id"><code class="docutils literal notranslate"><span class="pre">LogCluster.cluster_id</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.LogCluster.get_template"><code class="docutils literal notranslate"><span class="pre">LogCluster.get_template()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.LogCluster.log_template_tokens"><code class="docutils literal notranslate"><span class="pre">LogCluster.log_template_tokens</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.LogCluster.size"><code class="docutils literal notranslate"><span class="pre">LogCluster.size</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.LogClusterCache"><code class="docutils literal notranslate"><span class="pre">LogClusterCache</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.LogClusterCache.get"><code class="docutils literal notranslate"><span class="pre">LogClusterCache.get()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.Node"><code class="docutils literal notranslate"><span class="pre">Node</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.Node.cluster_ids"><code class="docutils literal notranslate"><span class="pre">Node.cluster_ids</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.Node.key_to_child_node"><code class="docutils literal notranslate"><span class="pre">Node.key_to_child_node</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.NullProfiler"><code class="docutils literal notranslate"><span class="pre">NullProfiler</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.NullProfiler.end_section"><code class="docutils literal notranslate"><span class="pre">NullProfiler.end_section()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.NullProfiler.report"><code class="docutils literal notranslate"><span class="pre">NullProfiler.report()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.NullProfiler.start_section"><code class="docutils literal notranslate"><span class="pre">NullProfiler.start_section()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.Profiler"><code class="docutils literal notranslate"><span class="pre">Profiler</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.Profiler.end_section"><code class="docutils literal notranslate"><span class="pre">Profiler.end_section()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.Profiler.report"><code class="docutils literal notranslate"><span class="pre">Profiler.report()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.drain.Profiler.start_section"><code class="docutils literal notranslate"><span class="pre">Profiler.start_section()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.parsing_algo.html#module-logai.algorithms.parsing_algo.iplom">logai.algorithms.parsing_algo.iplom module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.iplom.Event"><code class="docutils literal notranslate"><span class="pre">Event</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.iplom.IPLoM"><code class="docutils literal notranslate"><span class="pre">IPLoM</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.iplom.IPLoM.DetermineP1P2"><code class="docutils literal notranslate"><span class="pre">IPLoM.DetermineP1P2()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.iplom.IPLoM.Get_Mapping_Position"><code class="docutils literal notranslate"><span class="pre">IPLoM.Get_Mapping_Position()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.iplom.IPLoM.Get_Rank_Posistion"><code class="docutils literal notranslate"><span class="pre">IPLoM.Get_Rank_Posistion()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.iplom.IPLoM.PrintEventStats"><code class="docutils literal notranslate"><span class="pre">IPLoM.PrintEventStats()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.iplom.IPLoM.PrintPartitions"><code class="docutils literal notranslate"><span class="pre">IPLoM.PrintPartitions()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.iplom.IPLoM.fit"><code class="docutils literal notranslate"><span class="pre">IPLoM.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.iplom.IPLoM.parse"><code class="docutils literal notranslate"><span class="pre">IPLoM.parse()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.iplom.IPLoMParams"><code class="docutils literal notranslate"><span class="pre">IPLoMParams</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.iplom.IPLoMParams.CT"><code class="docutils literal notranslate"><span class="pre">IPLoMParams.CT</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.iplom.IPLoMParams.PST"><code class="docutils literal notranslate"><span class="pre">IPLoMParams.PST</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.iplom.IPLoMParams.keep_para"><code class="docutils literal notranslate"><span class="pre">IPLoMParams.keep_para</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.iplom.IPLoMParams.logformat"><code class="docutils literal notranslate"><span class="pre">IPLoMParams.logformat</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.iplom.IPLoMParams.lowerBound"><code class="docutils literal notranslate"><span class="pre">IPLoMParams.lowerBound</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.iplom.IPLoMParams.maxEventLen"><code class="docutils literal notranslate"><span class="pre">IPLoMParams.maxEventLen</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.iplom.IPLoMParams.rex"><code class="docutils literal notranslate"><span class="pre">IPLoMParams.rex</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.iplom.IPLoMParams.step2Support"><code class="docutils literal notranslate"><span class="pre">IPLoMParams.step2Support</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.iplom.IPLoMParams.upperBound"><code class="docutils literal notranslate"><span class="pre">IPLoMParams.upperBound</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.iplom.Partition"><code class="docutils literal notranslate"><span class="pre">Partition</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.parsing_algo.html#module-logai.algorithms.parsing_algo">Module contents</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.AEL"><code class="docutils literal notranslate"><span class="pre">AEL</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.AEL.categorize"><code class="docutils literal notranslate"><span class="pre">AEL.categorize()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.AEL.fit"><code class="docutils literal notranslate"><span class="pre">AEL.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.AEL.has_diff"><code class="docutils literal notranslate"><span class="pre">AEL.has_diff()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.AEL.load_data"><code class="docutils literal notranslate"><span class="pre">AEL.load_data()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.AEL.merge_event"><code class="docutils literal notranslate"><span class="pre">AEL.merge_event()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.AEL.parse"><code class="docutils literal notranslate"><span class="pre">AEL.parse()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.AEL.reconcile"><code class="docutils literal notranslate"><span class="pre">AEL.reconcile()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.AEL.tokenize"><code class="docutils literal notranslate"><span class="pre">AEL.tokenize()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.Drain"><code class="docutils literal notranslate"><span class="pre">Drain</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.Drain.clusters"><code class="docutils literal notranslate"><span class="pre">Drain.clusters</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.Drain.fit"><code class="docutils literal notranslate"><span class="pre">Drain.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.Drain.has_numbers"><code class="docutils literal notranslate"><span class="pre">Drain.has_numbers()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.Drain.match"><code class="docutils literal notranslate"><span class="pre">Drain.match()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.Drain.parse"><code class="docutils literal notranslate"><span class="pre">Drain.parse()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.IPLoM"><code class="docutils literal notranslate"><span class="pre">IPLoM</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.IPLoM.DetermineP1P2"><code class="docutils literal notranslate"><span class="pre">IPLoM.DetermineP1P2()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.IPLoM.Get_Mapping_Position"><code class="docutils literal notranslate"><span class="pre">IPLoM.Get_Mapping_Position()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.IPLoM.Get_Rank_Posistion"><code class="docutils literal notranslate"><span class="pre">IPLoM.Get_Rank_Posistion()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.IPLoM.PrintEventStats"><code class="docutils literal notranslate"><span class="pre">IPLoM.PrintEventStats()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.IPLoM.PrintPartitions"><code class="docutils literal notranslate"><span class="pre">IPLoM.PrintPartitions()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.IPLoM.fit"><code class="docutils literal notranslate"><span class="pre">IPLoM.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai.algorithms.parsing_algo.IPLoM.parse"><code class="docutils literal notranslate"><span class="pre">IPLoM.parse()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai-algorithms-parsing-algo-ael-module">logai.algorithms.parsing_algo.ael module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai-algorithms-parsing-algo-drain-module">logai.algorithms.parsing_algo.drain module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.parsing_algo.html#logai-algorithms-parsing-algo-iplom-module">logai.algorithms.parsing_algo.iplom module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.parsing_algo.html#module-contents">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="logai.algorithms.vectorization_algo.html">logai.algorithms.vectorization_algo package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#module-logai.algorithms.vectorization_algo.fasttext">logai.algorithms.vectorization_algo.fasttext module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.fasttext.FastText"><code class="docutils literal notranslate"><span class="pre">FastText</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.fasttext.FastText.fit"><code class="docutils literal notranslate"><span class="pre">FastText.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.fasttext.FastText.summary"><code class="docutils literal notranslate"><span class="pre">FastText.summary()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.fasttext.FastText.transform"><code class="docutils literal notranslate"><span class="pre">FastText.transform()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.fasttext.FastTextParams"><code class="docutils literal notranslate"><span class="pre">FastTextParams</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.fasttext.FastTextParams.epochs"><code class="docutils literal notranslate"><span class="pre">FastTextParams.epochs</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.fasttext.FastTextParams.max_token_len"><code class="docutils literal notranslate"><span class="pre">FastTextParams.max_token_len</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.fasttext.FastTextParams.min_count"><code class="docutils literal notranslate"><span class="pre">FastTextParams.min_count</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.fasttext.FastTextParams.sample"><code class="docutils literal notranslate"><span class="pre">FastTextParams.sample</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.fasttext.FastTextParams.sg"><code class="docutils literal notranslate"><span class="pre">FastTextParams.sg</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.fasttext.FastTextParams.vector_size"><code class="docutils literal notranslate"><span class="pre">FastTextParams.vector_size</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.fasttext.FastTextParams.window"><code class="docutils literal notranslate"><span class="pre">FastTextParams.window</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.fasttext.FastTextParams.workers"><code class="docutils literal notranslate"><span class="pre">FastTextParams.workers</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#module-logai.algorithms.vectorization_algo.forecast_nn">logai.algorithms.vectorization_algo.forecast_nn module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.forecast_nn.ForecastNN"><code class="docutils literal notranslate"><span class="pre">ForecastNN</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.forecast_nn.ForecastNN.fit"><code class="docutils literal notranslate"><span class="pre">ForecastNN.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.forecast_nn.ForecastNN.transform"><code class="docutils literal notranslate"><span class="pre">ForecastNN.transform()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizedDataset"><code class="docutils literal notranslate"><span class="pre">ForecastNNVectorizedDataset</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizedDataset.features"><code class="docutils literal notranslate"><span class="pre">ForecastNNVectorizedDataset.features</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizedDataset.session_idx"><code class="docutils literal notranslate"><span class="pre">ForecastNNVectorizedDataset.session_idx</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizedDataset.window_anomalies"><code class="docutils literal notranslate"><span class="pre">ForecastNNVectorizedDataset.window_anomalies</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizedDataset.window_labels"><code class="docutils literal notranslate"><span class="pre">ForecastNNVectorizedDataset.window_labels</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizerParams"><code class="docutils literal notranslate"><span class="pre">ForecastNNVectorizerParams</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizerParams.embedding_dim"><code class="docutils literal notranslate"><span class="pre">ForecastNNVectorizerParams.embedding_dim</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizerParams.feature_type"><code class="docutils literal notranslate"><span class="pre">ForecastNNVectorizerParams.feature_type</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizerParams.label_type"><code class="docutils literal notranslate"><span class="pre">ForecastNNVectorizerParams.label_type</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizerParams.max_token_len"><code class="docutils literal notranslate"><span class="pre">ForecastNNVectorizerParams.max_token_len</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizerParams.min_token_count"><code class="docutils literal notranslate"><span class="pre">ForecastNNVectorizerParams.min_token_count</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizerParams.output_dir"><code class="docutils literal notranslate"><span class="pre">ForecastNNVectorizerParams.output_dir</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizerParams.semanticvec_config"><code class="docutils literal notranslate"><span class="pre">ForecastNNVectorizerParams.semanticvec_config</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizerParams.sep_token"><code class="docutils literal notranslate"><span class="pre">ForecastNNVectorizerParams.sep_token</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizerParams.sequentialvec_config"><code class="docutils literal notranslate"><span class="pre">ForecastNNVectorizerParams.sequentialvec_config</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizerParams.vectorizer_metadata_filepath"><code class="docutils literal notranslate"><span class="pre">ForecastNNVectorizerParams.vectorizer_metadata_filepath</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.forecast_nn.ForecastNNVectorizerParams.vectorizer_model_dirpath"><code class="docutils literal notranslate"><span class="pre">ForecastNNVectorizerParams.vectorizer_model_dirpath</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#module-logai.algorithms.vectorization_algo.logbert">logai.algorithms.vectorization_algo.logbert module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.logbert.LogBERT"><code class="docutils literal notranslate"><span class="pre">LogBERT</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.logbert.LogBERT.fit"><code class="docutils literal notranslate"><span class="pre">LogBERT.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.logbert.LogBERT.transform"><code class="docutils literal notranslate"><span class="pre">LogBERT.transform()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.logbert.LogBERTVectorizerParams"><code class="docutils literal notranslate"><span class="pre">LogBERTVectorizerParams</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.logbert.LogBERTVectorizerParams.custom_tokens"><code class="docutils literal notranslate"><span class="pre">LogBERTVectorizerParams.custom_tokens</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.logbert.LogBERTVectorizerParams.max_token_len"><code class="docutils literal notranslate"><span class="pre">LogBERTVectorizerParams.max_token_len</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.logbert.LogBERTVectorizerParams.max_vocab_size"><code class="docutils literal notranslate"><span class="pre">LogBERTVectorizerParams.max_vocab_size</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.logbert.LogBERTVectorizerParams.model_name"><code class="docutils literal notranslate"><span class="pre">LogBERTVectorizerParams.model_name</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.logbert.LogBERTVectorizerParams.num_proc"><code class="docutils literal notranslate"><span class="pre">LogBERTVectorizerParams.num_proc</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.logbert.LogBERTVectorizerParams.output_dir"><code class="docutils literal notranslate"><span class="pre">LogBERTVectorizerParams.output_dir</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.logbert.LogBERTVectorizerParams.tokenizer_dirpath"><code class="docutils literal notranslate"><span class="pre">LogBERTVectorizerParams.tokenizer_dirpath</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.logbert.LogBERTVectorizerParams.train_batch_size"><code class="docutils literal notranslate"><span class="pre">LogBERTVectorizerParams.train_batch_size</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.logbert.LogBERTVectorizerParams.truncation"><code class="docutils literal notranslate"><span class="pre">LogBERTVectorizerParams.truncation</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.logbert.LogBERTVectorizerParams.use_fast"><code class="docutils literal notranslate"><span class="pre">LogBERTVectorizerParams.use_fast</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#module-logai.algorithms.vectorization_algo.semantic">logai.algorithms.vectorization_algo.semantic module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.semantic.Semantic"><code class="docutils literal notranslate"><span class="pre">Semantic</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.semantic.Semantic.fit"><code class="docutils literal notranslate"><span class="pre">Semantic.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.semantic.Semantic.summary"><code class="docutils literal notranslate"><span class="pre">Semantic.summary()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.semantic.Semantic.transform"><code class="docutils literal notranslate"><span class="pre">Semantic.transform()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.semantic.SemanticVectorizerParams"><code class="docutils literal notranslate"><span class="pre">SemanticVectorizerParams</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.semantic.SemanticVectorizerParams.embedding_dim"><code class="docutils literal notranslate"><span class="pre">SemanticVectorizerParams.embedding_dim</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.semantic.SemanticVectorizerParams.embedding_type"><code class="docutils literal notranslate"><span class="pre">SemanticVectorizerParams.embedding_type</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.semantic.SemanticVectorizerParams.max_token_len"><code class="docutils literal notranslate"><span class="pre">SemanticVectorizerParams.max_token_len</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.semantic.SemanticVectorizerParams.min_token_count"><code class="docutils literal notranslate"><span class="pre">SemanticVectorizerParams.min_token_count</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.semantic.SemanticVectorizerParams.model_save_dir"><code class="docutils literal notranslate"><span class="pre">SemanticVectorizerParams.model_save_dir</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.semantic.SemanticVectorizerParams.sep_token"><code class="docutils literal notranslate"><span class="pre">SemanticVectorizerParams.sep_token</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.semantic.SemanticVectorizerParams.window"><code class="docutils literal notranslate"><span class="pre">SemanticVectorizerParams.window</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#module-logai.algorithms.vectorization_algo.sequential">logai.algorithms.vectorization_algo.sequential module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.sequential.Sequential"><code class="docutils literal notranslate"><span class="pre">Sequential</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.sequential.Sequential.fit"><code class="docutils literal notranslate"><span class="pre">Sequential.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.sequential.Sequential.transform"><code class="docutils literal notranslate"><span class="pre">Sequential.transform()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.sequential.SequentialVectorizerParams"><code class="docutils literal notranslate"><span class="pre">SequentialVectorizerParams</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.sequential.SequentialVectorizerParams.max_token_len"><code class="docutils literal notranslate"><span class="pre">SequentialVectorizerParams.max_token_len</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.sequential.SequentialVectorizerParams.model_save_dir"><code class="docutils literal notranslate"><span class="pre">SequentialVectorizerParams.model_save_dir</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.sequential.SequentialVectorizerParams.sep_token"><code class="docutils literal notranslate"><span class="pre">SequentialVectorizerParams.sep_token</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#module-logai.algorithms.vectorization_algo.tfidf">logai.algorithms.vectorization_algo.tfidf module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.tfidf.TfIdf"><code class="docutils literal notranslate"><span class="pre">TfIdf</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.tfidf.TfIdf.fit"><code class="docutils literal notranslate"><span class="pre">TfIdf.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.tfidf.TfIdf.summary"><code class="docutils literal notranslate"><span class="pre">TfIdf.summary()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.tfidf.TfIdf.transform"><code class="docutils literal notranslate"><span class="pre">TfIdf.transform()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.tfidf.TfIdfParams"><code class="docutils literal notranslate"><span class="pre">TfIdfParams</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.tfidf.TfIdfParams.analyzer"><code class="docutils literal notranslate"><span class="pre">TfIdfParams.analyzer</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.tfidf.TfIdfParams.binary"><code class="docutils literal notranslate"><span class="pre">TfIdfParams.binary</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.tfidf.TfIdfParams.decode_error"><code class="docutils literal notranslate"><span class="pre">TfIdfParams.decode_error</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.tfidf.TfIdfParams.dtype"><code class="docutils literal notranslate"><span class="pre">TfIdfParams.dtype</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.tfidf.TfIdfParams.encoding"><code class="docutils literal notranslate"><span class="pre">TfIdfParams.encoding</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.tfidf.TfIdfParams.input"><code class="docutils literal notranslate"><span class="pre">TfIdfParams.input</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.tfidf.TfIdfParams.lowercase"><code class="docutils literal notranslate"><span class="pre">TfIdfParams.lowercase</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.tfidf.TfIdfParams.max_df"><code class="docutils literal notranslate"><span class="pre">TfIdfParams.max_df</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.tfidf.TfIdfParams.max_features"><code class="docutils literal notranslate"><span class="pre">TfIdfParams.max_features</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.tfidf.TfIdfParams.min_df"><code class="docutils literal notranslate"><span class="pre">TfIdfParams.min_df</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.tfidf.TfIdfParams.ngram_range"><code class="docutils literal notranslate"><span class="pre">TfIdfParams.ngram_range</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.tfidf.TfIdfParams.norm"><code class="docutils literal notranslate"><span class="pre">TfIdfParams.norm</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.tfidf.TfIdfParams.preprocessor"><code class="docutils literal notranslate"><span class="pre">TfIdfParams.preprocessor</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.tfidf.TfIdfParams.smooth_idf"><code class="docutils literal notranslate"><span class="pre">TfIdfParams.smooth_idf</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.tfidf.TfIdfParams.stop_words"><code class="docutils literal notranslate"><span class="pre">TfIdfParams.stop_words</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.tfidf.TfIdfParams.strip_accents"><code class="docutils literal notranslate"><span class="pre">TfIdfParams.strip_accents</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.tfidf.TfIdfParams.sublinear_tf"><code class="docutils literal notranslate"><span class="pre">TfIdfParams.sublinear_tf</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.tfidf.TfIdfParams.token_pattern"><code class="docutils literal notranslate"><span class="pre">TfIdfParams.token_pattern</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.tfidf.TfIdfParams.tokenizer"><code class="docutils literal notranslate"><span class="pre">TfIdfParams.tokenizer</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.tfidf.TfIdfParams.use_idf"><code class="docutils literal notranslate"><span class="pre">TfIdfParams.use_idf</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.tfidf.TfIdfParams.vocabulary"><code class="docutils literal notranslate"><span class="pre">TfIdfParams.vocabulary</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#module-logai.algorithms.vectorization_algo.word2vec">logai.algorithms.vectorization_algo.word2vec module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.word2vec.Word2Vec"><code class="docutils literal notranslate"><span class="pre">Word2Vec</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.word2vec.Word2Vec.fit"><code class="docutils literal notranslate"><span class="pre">Word2Vec.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.word2vec.Word2Vec.summary"><code class="docutils literal notranslate"><span class="pre">Word2Vec.summary()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.word2vec.Word2Vec.transform"><code class="docutils literal notranslate"><span class="pre">Word2Vec.transform()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.word2vec.Word2VecParams"><code class="docutils literal notranslate"><span class="pre">Word2VecParams</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.word2vec.Word2VecParams.max_token_len"><code class="docutils literal notranslate"><span class="pre">Word2VecParams.max_token_len</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.word2vec.Word2VecParams.min_count"><code class="docutils literal notranslate"><span class="pre">Word2VecParams.min_count</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.word2vec.Word2VecParams.vector_size"><code class="docutils literal notranslate"><span class="pre">Word2VecParams.vector_size</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.word2vec.Word2VecParams.window"><code class="docutils literal notranslate"><span class="pre">Word2VecParams.window</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#module-logai.algorithms.vectorization_algo">Module contents</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.FastText"><code class="docutils literal notranslate"><span class="pre">FastText</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.FastText.fit"><code class="docutils literal notranslate"><span class="pre">FastText.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.FastText.summary"><code class="docutils literal notranslate"><span class="pre">FastText.summary()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.FastText.transform"><code class="docutils literal notranslate"><span class="pre">FastText.transform()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.ForecastNN"><code class="docutils literal notranslate"><span class="pre">ForecastNN</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.ForecastNN.fit"><code class="docutils literal notranslate"><span class="pre">ForecastNN.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.ForecastNN.transform"><code class="docutils literal notranslate"><span class="pre">ForecastNN.transform()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.LogBERT"><code class="docutils literal notranslate"><span class="pre">LogBERT</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.LogBERT.fit"><code class="docutils literal notranslate"><span class="pre">LogBERT.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.LogBERT.transform"><code class="docutils literal notranslate"><span class="pre">LogBERT.transform()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.Semantic"><code class="docutils literal notranslate"><span class="pre">Semantic</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.Semantic.fit"><code class="docutils literal notranslate"><span class="pre">Semantic.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.Semantic.summary"><code class="docutils literal notranslate"><span class="pre">Semantic.summary()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.Semantic.transform"><code class="docutils literal notranslate"><span class="pre">Semantic.transform()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.Sequential"><code class="docutils literal notranslate"><span class="pre">Sequential</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.Sequential.fit"><code class="docutils literal notranslate"><span class="pre">Sequential.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.Sequential.transform"><code class="docutils literal notranslate"><span class="pre">Sequential.transform()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.TfIdf"><code class="docutils literal notranslate"><span class="pre">TfIdf</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.TfIdf.fit"><code class="docutils literal notranslate"><span class="pre">TfIdf.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.TfIdf.summary"><code class="docutils literal notranslate"><span class="pre">TfIdf.summary()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.TfIdf.transform"><code class="docutils literal notranslate"><span class="pre">TfIdf.transform()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.Word2Vec"><code class="docutils literal notranslate"><span class="pre">Word2Vec</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.Word2Vec.fit"><code class="docutils literal notranslate"><span class="pre">Word2Vec.fit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.Word2Vec.summary"><code class="docutils literal notranslate"><span class="pre">Word2Vec.summary()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai.algorithms.vectorization_algo.Word2Vec.transform"><code class="docutils literal notranslate"><span class="pre">Word2Vec.transform()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai-algorithms-vectorization-algo-fasttext-module">logai.algorithms.vectorization_algo.fasttext module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai-algorithms-vectorization-algo-forecast-nn-module">logai.algorithms.vectorization_algo.forecast_nn module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai-algorithms-vectorization-algo-logbert-module">logai.algorithms.vectorization_algo.logbert module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai-algorithms-vectorization-algo-semantic-module">logai.algorithms.vectorization_algo.semantic module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai-algorithms-vectorization-algo-sequential-module">logai.algorithms.vectorization_algo.sequential module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai-algorithms-vectorization-algo-tfidf-module">logai.algorithms.vectorization_algo.tfidf module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#logai-algorithms-vectorization-algo-word2vec-module">logai.algorithms.vectorization_algo.word2vec module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logai.algorithms.vectorization_algo.html#module-contents">Module contents</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </section>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
-<section id="module-logai.algorithms.algo_interfaces">
-<span id="logai-algorithms-algo-interfaces-module"></span><h2>logai.algorithms.algo_interfaces module<a class="headerlink" href="#module-logai.algorithms.algo_interfaces" title="Permalink to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="logai.algorithms.algo_interfaces.AnomalyDetectionAlgo">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.algo_interfaces.</span></span><span class="sig-name descname"><span class="pre">AnomalyDetectionAlgo</span></span><a class="headerlink" href="#logai.algorithms.algo_interfaces.AnomalyDetectionAlgo" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
-<p>Interface for clustering algorithms</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="logai.algorithms.algo_interfaces.AnomalyDetectionAlgo.fit">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.algo_interfaces.AnomalyDetectionAlgo.fit" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="logai.algorithms.algo_interfaces.AnomalyDetectionAlgo.predict">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#logai.algorithms.algo_interfaces.AnomalyDetectionAlgo.predict" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="logai.algorithms.algo_interfaces.CategoricalEncodingAlgo">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.algo_interfaces.</span></span><span class="sig-name descname"><span class="pre">CategoricalEncodingAlgo</span></span><a class="headerlink" href="#logai.algorithms.algo_interfaces.CategoricalEncodingAlgo" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
-<p>Interface for categorical encoders</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="logai.algorithms.algo_interfaces.CategoricalEncodingAlgo.fit_transform">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_attributes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#logai.algorithms.algo_interfaces.CategoricalEncodingAlgo.fit_transform" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="logai.algorithms.algo_interfaces.ClusteringAlgo">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.algo_interfaces.</span></span><span class="sig-name descname"><span class="pre">ClusteringAlgo</span></span><a class="headerlink" href="#logai.algorithms.algo_interfaces.ClusteringAlgo" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
-<p>Interface for clustering algorithms</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="logai.algorithms.algo_interfaces.ClusteringAlgo.fit">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.algo_interfaces.ClusteringAlgo.fit" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="logai.algorithms.algo_interfaces.ClusteringAlgo.predict">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.algo_interfaces.ClusteringAlgo.predict" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="logai.algorithms.algo_interfaces.FeatureExtractionAlgo">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.algo_interfaces.</span></span><span class="sig-name descname"><span class="pre">FeatureExtractionAlgo</span></span><a class="headerlink" href="#logai.algorithms.algo_interfaces.FeatureExtractionAlgo" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
-<p>Interface for feature extraction algorithms</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="logai.algorithms.algo_interfaces.FeatureExtractionAlgo.extract">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">extract</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.algo_interfaces.FeatureExtractionAlgo.extract" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="logai.algorithms.algo_interfaces.NNAnomalyDetectionAlgo">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.algo_interfaces.</span></span><span class="sig-name descname"><span class="pre">NNAnomalyDetectionAlgo</span></span><a class="headerlink" href="#logai.algorithms.algo_interfaces.NNAnomalyDetectionAlgo" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="logai.algorithms.algo_interfaces.NNAnomalyDetectionAlgo.fit">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dev_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="logai.dataloader.html#logai.dataloader.data_model.LogRecordObject" title="logai.dataloader.data_model.LogRecordObject"><span class="pre">LogRecordObject</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.algo_interfaces.NNAnomalyDetectionAlgo.fit" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="logai.algorithms.algo_interfaces.NNAnomalyDetectionAlgo.predict">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="logai.dataloader.html#logai.dataloader.data_model.LogRecordObject" title="logai.dataloader.data_model.LogRecordObject"><span class="pre">LogRecordObject</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.algo_interfaces.NNAnomalyDetectionAlgo.predict" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="logai.algorithms.algo_interfaces.ParsingAlgo">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.algo_interfaces.</span></span><span class="sig-name descname"><span class="pre">ParsingAlgo</span></span><a class="headerlink" href="#logai.algorithms.algo_interfaces.ParsingAlgo" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
-<p>Interface for parsing algorithms.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="logai.algorithms.algo_interfaces.ParsingAlgo.fit">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loglines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.algo_interfaces.ParsingAlgo.fit" title="Permalink to this definition"></a></dt>
-<dd><p>fit parsing algorithm with input</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>loglines</strong> – pd.Series of loglines as input</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>pd.Dataframe</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="logai.algorithms.algo_interfaces.ParsingAlgo.parse">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loglines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#logai.algorithms.algo_interfaces.ParsingAlgo.parse" title="Permalink to this definition"></a></dt>
-<dd><p>parse loglines
-:param loglines: pd.Series of loglines to parse
-:return: pd.Dataframe of parsed results [“loglines”, “parsed_loglines”, “parameter_list”].</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="logai.algorithms.algo_interfaces.VectorizationAlgo">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.algo_interfaces.</span></span><span class="sig-name descname"><span class="pre">VectorizationAlgo</span></span><a class="headerlink" href="#logai.algorithms.algo_interfaces.VectorizationAlgo" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
-<p>Interface for logline vectorization algorithms</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="logai.algorithms.algo_interfaces.VectorizationAlgo.fit">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loglines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.algo_interfaces.VectorizationAlgo.fit" title="Permalink to this definition"></a></dt>
-<dd><p>fit vectorizor with input.
-:param loglines:
-:return:</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="logai.algorithms.algo_interfaces.VectorizationAlgo.transform">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loglines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#logai.algorithms.algo_interfaces.VectorizationAlgo.transform" title="Permalink to this definition"></a></dt>
-<dd><p>transform given loglines into vectors.
-:param loglines:
-:return:</p>
-</dd></dl>
-
-</dd></dl>
-
+<section id="logai-algorithms-algo-interfaces-module">
+<h2>logai.algorithms.algo_interfaces module<a class="headerlink" href="#logai-algorithms-algo-interfaces-module" title="Link to this heading"></a></h2>
 </section>
 <section id="module-logai.algorithms.factory">
-<span id="logai-algorithms-factory-module"></span><h2>logai.algorithms.factory module<a class="headerlink" href="#module-logai.algorithms.factory" title="Permalink to this heading"></a></h2>
+<span id="logai-algorithms-factory-module"></span><h2>logai.algorithms.factory module<a class="headerlink" href="#module-logai.algorithms.factory" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="logai.algorithms.factory.AlgorithmFactory">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.factory.</span></span><span class="sig-name descname"><span class="pre">AlgorithmFactory</span></span><a class="headerlink" href="#logai.algorithms.factory.AlgorithmFactory" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logai.algorithms.factory.</span></span><span class="sig-name descname"><span class="pre">AlgorithmFactory</span></span><a class="headerlink" href="#logai.algorithms.factory.AlgorithmFactory" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>The singleton factory class for all the supported algorithms.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.factory.AlgorithmFactory.get_algorithm">
-<span class="sig-name descname"><span class="pre">get_algorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.factory.AlgorithmFactory.get_algorithm" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_algorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.factory.AlgorithmFactory.get_algorithm" title="Link to this definition"></a></dt>
 <dd><p>Gets a algorithm instance given an algorithm name and a config instance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -978,7 +228,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.factory.AlgorithmFactory.get_algorithm_class">
-<span class="sig-name descname"><span class="pre">get_algorithm_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.factory.AlgorithmFactory.get_algorithm_class" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_algorithm_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.factory.AlgorithmFactory.get_algorithm_class" title="Link to this definition"></a></dt>
 <dd><p>Gets the corresponding algorithm class given an algorithm name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -992,7 +242,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.factory.AlgorithmFactory.get_config">
-<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.factory.AlgorithmFactory.get_config" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.factory.AlgorithmFactory.get_config" title="Link to this definition"></a></dt>
 <dd><p>Gets a configuration instance given an algorithm name and a config dict.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1007,7 +257,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.factory.AlgorithmFactory.get_config_class">
-<span class="sig-name descname"><span class="pre">get_config_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.factory.AlgorithmFactory.get_config_class" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_config_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.factory.AlgorithmFactory.get_config_class" title="Link to this definition"></a></dt>
 <dd><p>Gets the corresponding configuration class given an algorithm name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1021,12 +271,12 @@
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="logai.algorithms.factory.AlgorithmFactory.instance">
-<span class="sig-name descname"><span class="pre">instance</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;logai.algorithms.factory.AlgorithmFactory</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#logai.algorithms.factory.AlgorithmFactory.instance" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">instance</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;logai.algorithms.factory.AlgorithmFactory</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#logai.algorithms.factory.AlgorithmFactory.instance" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.factory.AlgorithmFactory.register">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_class</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.factory.AlgorithmFactory.register" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_class</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.factory.AlgorithmFactory.register" title="Link to this definition"></a></dt>
 <dd><p>Registers the algorithm name and the configuration class for an algorithm class.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1041,7 +291,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="logai.algorithms.factory.AlgorithmFactory.unregister">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">unregister</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.factory.AlgorithmFactory.unregister" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">unregister</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logai.algorithms.factory.AlgorithmFactory.unregister" title="Link to this definition"></a></dt>
 <dd><p>Unregisters a registered algorithm.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1057,7 +307,7 @@
 
 </section>
 <section id="module-logai.algorithms">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-logai.algorithms" title="Permalink to this heading"></a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-logai.algorithms" title="Link to this heading"></a></h2>
 </section>
 </section>
 

@@ -1,22 +1,23 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Explore LogAI GUI Portal &mdash; LogAI  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/theme.css?v=7272f7be" />
+
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -102,44 +103,22 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<a class="reference internal image-reference" href="_images/logai_logo.jpg"><img alt="_images/logai_logo.jpg" class="align-center" src="_images/logai_logo.jpg" style="width: 650px;" /></a>
+  <a class="reference internal image-reference" href="_images/logai_logo.jpg"><img alt="_images/logai_logo.jpg" class="align-center" src="_images/logai_logo.jpg" style="width: 650px;" />
+</a>
 <section id="explore-logai-gui-portal">
-<h1>Explore LogAI GUI Portal<a class="headerlink" href="#explore-logai-gui-portal" title="Permalink to this heading"></a></h1>
+<h1>Explore LogAI GUI Portal<a class="headerlink" href="#explore-logai-gui-portal" title="Link to this heading"></a></h1>
 <p>You can also start a local LogAI service and use the GUI portal to explore LogAI.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="w">  </span><span class="c1"># make sure to add current root to PYTHONPATH</span>
 python3<span class="w"> </span>gui/application.py<span class="w"> </span><span class="c1"># Run local plotly dash server.</span>
 </pre></div>
 </div>
 <p>Then open the LogAI portal via <code class="code highlight shell docutils literal highlight-shell">http://localhost:8050/</code> or <code class="code highlight shell docutils literal highlight-shell">http://127.0.0.1:8050/</code> in your browser:</p>
-<a class="reference internal image-reference" href="_images/logai_gui_landing.png"><img alt="_images/logai_gui_landing.png" src="_images/logai_gui_landing.png" style="width: 750px;" /></a>
+<a class="reference internal image-reference" href="_images/logai_gui_landing.png"><img alt="_images/logai_gui_landing.png" src="_images/logai_gui_landing.png" style="width: 750px;" />
+</a>
 <p>The control panel is on the left side of the page. There are three applications you can choose from:
 Log Summarization, Log Clustering and Anomaly Detection.</p>
 <section id="control-panel">
-<h2>Control Panel<a class="headerlink" href="#control-panel" title="Permalink to this heading"></a></h2>
+<h2>Control Panel<a class="headerlink" href="#control-panel" title="Link to this heading"></a></h2>
 <p><strong>File Setting</strong>. You can select the log type and log files to be processed. Now LogAI supports three
 public datasets: HDFS, BGL and HealthApp. For each log type we included several sample log data. After
 log file selected, you can choose the attributes you want to be involved in log processing. The selected
@@ -151,22 +130,24 @@ algorithm and change the parameters in each algorithm section. After algorithm c
 run the application.</p>
 </section>
 <section id="log-summarization">
-<h2>Log Summarization<a class="headerlink" href="#log-summarization" title="Permalink to this heading"></a></h2>
+<h2>Log Summarization<a class="headerlink" href="#log-summarization" title="Link to this heading"></a></h2>
 <p>Log summarization App summarize and group the raw logs by log patterns and attributes. You can click on
 each log pattern and see what the pattern looks like and the dynamic values in each position. You can also
 see the chart of occurrance trend of this pattern on the right side.</p>
-<a class="reference internal image-reference" href="_images/logai_summarization_res.png"><img alt="_images/logai_summarization_res.png" src="_images/logai_summarization_res.png" style="width: 750px;" /></a>
+<a class="reference internal image-reference" href="_images/logai_summarization_res.png"><img alt="_images/logai_summarization_res.png" src="_images/logai_summarization_res.png" style="width: 750px;" />
+</a>
 </section>
 <section id="log-clustering">
-<h2>Log Clustering<a class="headerlink" href="#log-clustering" title="Permalink to this heading"></a></h2>
+<h2>Log Clustering<a class="headerlink" href="#log-clustering" title="Link to this heading"></a></h2>
 <p>Log clustering App groups raw logs into clusters by calculating the semantic representation of each logline.
 Then using clustering algorithms to generate log clusters. In this example, we choose k-mean where <cite>k==8</cite> to
 generate 8 clusters. The result is shown as a pie chart and you can click each portion of the pie chart to check
 the raw logs in this cluster.</p>
-<a class="reference internal image-reference" href="_images/logai_clustering_res.png"><img alt="_images/logai_clustering_res.png" src="_images/logai_clustering_res.png" style="width: 750px;" /></a>
+<a class="reference internal image-reference" href="_images/logai_clustering_res.png"><img alt="_images/logai_clustering_res.png" src="_images/logai_clustering_res.png" style="width: 750px;" />
+</a>
 </section>
 <section id="anomaly-detection">
-<h2>Anomaly Detection<a class="headerlink" href="#anomaly-detection" title="Permalink to this heading"></a></h2>
+<h2>Anomaly Detection<a class="headerlink" href="#anomaly-detection" title="Link to this heading"></a></h2>
 <p>Log anomaly detection App conduct log anomaly detection tasks. Similar to log clustering, log anomaly detection
 also needs to extract information from raw logs and generate reprentation of loglines. Depend on the type of anomaly detection,
 The representation can be different.
@@ -175,7 +156,8 @@ into log counter vectors by given time interval. Then ETS is performed on the ge
 anomalous timestamps on the counter vector time-series.</p>
 <p><strong>Semantic anomaly detection</strong>. If we use unsupervised outlier detection algorithms such as One-class SVM, the raw logs will
 be converted into semantic vectors and feed the One-class SVM model. Then the model will detect anomalous loglines.</p>
-<a class="reference internal image-reference" href="_images/logai_anomaly_detection.png"><img alt="_images/logai_anomaly_detection.png" src="_images/logai_anomaly_detection.png" style="width: 750px;" /></a>
+<a class="reference internal image-reference" href="_images/logai_anomaly_detection.png"><img alt="_images/logai_anomaly_detection.png" src="_images/logai_anomaly_detection.png" style="width: 750px;" />
+</a>
 <p>LogAI GUI portal is just an example to demo LogAI capabilities. We know this may not be the best way to visualize the
 results and there might be bugs in how the results are displayed. We will keep working with the open source community
 to improve usability of the portal. Any feedbacks and contributions are welcome :blush:.</p>
