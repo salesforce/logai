@@ -14,7 +14,7 @@ Install dependencies
 
 .. code-block:: shell
 
-    git clone https://git.soma.salesforce.com/SalesforceResearch/logai.git
+    git clone https://github.com/salesforce/logai.git
     cd logai
     python3 -m venv venv # create virtual environment
     source venv/bin/activate # activate virtual env
