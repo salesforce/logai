@@ -1,9 +1,9 @@
 GitPython
 beautifulsoup4
 ipykernel
-nbsphinx
 pandoc
-sphinx
+sphinx==6.2.1
+nbsphinx
 sphinx_autodoc_typehints
 sphinx_rtd_theme
 recommonmark
